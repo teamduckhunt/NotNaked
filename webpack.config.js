@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -33,7 +33,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'Client/dist'),
     filename: 'index_bundle.js',
   },
   plugins: [
