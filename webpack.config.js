@@ -18,13 +18,13 @@ module.exports = {
         },
       },
       {
-        test: /\\.css$/,
+        test: /\.css$/i,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1,
+              // importLoaders: 1,
               modules: true,
             },
           },
@@ -33,7 +33,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, 'Client/dist'),
+    path: path.resolve(__dirname, 'client/dist'),
     filename: 'index_bundle.js',
   },
   plugins: [
