@@ -1,8 +1,10 @@
+require("dotenv").config();
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './Client/index.js',
+  entry: './Client/index.jsx',
   module: {
     rules: [
       {
