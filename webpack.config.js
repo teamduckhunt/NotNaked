@@ -7,6 +7,8 @@ module.exports = {
   entry: './Client/index.jsx',
   module: {
     rules: [
+      { test: /\.svg$/, use: 'svg-inline-loader' },
+
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
