@@ -1,13 +1,12 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import ItemCard from '../helpers/ItemCard/ItemCard.jsx';
+import PropTypes from 'prop-types';
+import RelatedItemCard from './RelatedItemCard/RelatedItemCard.jsx';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { useRelatedProductsIdQuery } from '../../../services/products';
 
-export default function RelatedProductList() {
-  // TODO: get current page's product id and use that as input to useRelatedProducts
-  const currentDetailPageId = 40344;
-  const { data, error, isLoading } = useRelatedProductsIdQuery(currentDetailPageId);
+export default function RelatedProductList({ currentViewItemId }) {
+  const { data, error, isLoading } = useRelatedProductsIdQuery(currentViewItemId);
 
   if (error) {
     return <>Oh no, there was an error</>;
@@ -18,12 +17,17 @@ export default function RelatedProductList() {
   }
 
   if (data) {
-    // This data is just id so need to loop through to
-    console.log(data);
     return (
-      <ListContainer>
-        {data.map((productId) => <ItemCard key={productId} productId={productId} />)}
-      </ListContainer>
+      <>
+        <p>My Related Products!!!</p>
+        <ListContainer>
+          {data.map((productId) => <RelatedItemCard key={productId} productId={productId} />)}
+        </ListContainer>
+      </>
     );
   }
 }
+
+RelatedProductList.propTypes = {
+  currentViewItemId: PropTypes.number.isRequired,
+};

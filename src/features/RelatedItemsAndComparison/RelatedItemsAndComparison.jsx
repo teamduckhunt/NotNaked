@@ -2,19 +2,23 @@
 /* eslint-disable max-len */
 /* eslint-disable import/extensions */
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import RelatedProductList from './RelatedProductsList/RelatedProductList.jsx';
 import OutfitList from './OutfitList/OutfitList.jsx';
 // import styles from './RelatedItemsAndComparison.module.css';
 
-export default function RelatedItemsAndComparison() {
+export default function RelatedItemsAndComparison({ currentViewItemId }) {
   return (
-    <div>
-      <h2>I am RelatedItemsAndComparison</h2>
+    <>
+      <RelatedProductList currentViewItemId={currentViewItemId} />
       <OutfitList />
-      <RelatedProductList />
-    </div>
+    </>
   );
 }
+
+RelatedItemsAndComparison.propTypes = {
+  currentViewItemId: PropTypes.number.isRequired,
+};
+
 // TODO: Set up to get related products of a product
-// && should I be creating a state with this data?
+// && should I be creating a state with this data?40344

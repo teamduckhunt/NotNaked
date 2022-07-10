@@ -12,7 +12,7 @@ export default function App() {
       {/* <Overview /> */}
       {/* <QuestionsAndAnswers /> */}
       {/* <RatingsAndReviews /> */}
-      <RelatedItemsAndComparison />
+      <RelatedItemsAndComparison currentViewItemId={40344} />
     </div>
   );
 }

@@ -9,26 +9,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../../services/products';
 import Card from '../../../UI/Card.jsx';
-import styles from './ItemCard.module.css';
+import styles from './RelatedItemCard.module.css';
 
-export default function ItemCard({ productId }) {
-  // const {
-  //   data: stylesData,
-  //   error: stylesError,
-  //   isLoading: isStylesLoading
-  // } = useProductStylesQuery(productId);
-
+export default function RelatedItemCard({ productId }) {
   const {
     data: product,
     error: productInfoError,
-    isLoading: isProductLoading
+    isLoading: isProductLoading,
   } = useProductInformationByIdQuery(productId);
 
   const image = 'https://picsum.photos/200';
-  // if (stylesData) {
-  //   console.log(stylesData);
-  //   // image = data.results[0].photos.thumbnail_url;
-  // }
 
   if (productInfoError) {
     return <>Oh no, there was an error</>;
@@ -55,6 +45,12 @@ export default function ItemCard({ productId }) {
   );
 }
 
-ItemCard.propTypes = {
+RelatedItemCard.propTypes = {
   productId: PropTypes.number.isRequired,
 };
+
+// const {
+//   data: stylesData,
+//   error: stylesError,
+//   isLoading: isStylesLoading
+// } = useProductStylesQuery(productId);
