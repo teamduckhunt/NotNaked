@@ -30,17 +30,17 @@ export default function OutfitItemCard({ productId, handleDeleteOutfit}) {
   // TODO: prevent event bubbling when x is clicked to delete from outfit list
   return (
     <Card className={styles.product_card}>
-      <div className={styles.product_card_header}>
+      <header className={styles.product_card_header}>
         <img className={styles.product_img} src={image} alt="nothing" />
         <i className={styles.product_action_button} onClick={handleDeleteOutfit}> x </i>
-      </div>
-      <div className={styles.product_card_body}>
+      </header>
+      <footer className={styles.product_card_body}>
         <p>{product.category}</p>
         <p>{product.name}</p>
         {/* TODO: default price needs to change with sales and also styles */}
         <p>${product.default_price}</p>
         <p>**** duck rating here</p>
-      </div>
+      </footer>
     </Card>
   );
 }
