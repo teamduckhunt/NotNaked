@@ -3,14 +3,14 @@
   padding: 4px 12px;
   border-radius: 12px;
   color: white;
-  background-color: #e2b4bd;
-  border: 1px solid #e2b4bd;
+  background-color: #de627b;
+  border: 1px solid #de627b;
   cursor: pointer;
 }
 
 .button:hover,
 .button:active {
   /*TODO: different color and border-color */
-  background-color: #e2b4bd;
-  border-color: #e2b4bd;
+  background-color: #de97a5;
+  border-color: #de97a5;
 }

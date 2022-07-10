@@ -4,10 +4,15 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable react/button-has-type */
 import React from 'react';
-import styles from './Cards.module.css';
+import styles from './Card.module.css';
 
-const Card = (props) => (
-  <div className={`${styles.card} ${props.className}`}>{props.children}</div>
-);
-
-export default Card;
+export default function Card(props) {
+  return (
+    <div
+      className={`${styles.card} ${props.className}`}
+      onClick={props.onClick}
+    >
+      {props.children}
+    </div>
+  );
+}
