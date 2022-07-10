@@ -1,16 +1,7 @@
-/* eslint-disable default-param-last */
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 
-const mainReducer = (state = { isLoading: false }, action) => {
-  if (action.type === 'toggleLoading') {
-    return {
-      isLoading: !state.isLoading,
-    };
-  }
-
-  return state;
-};
-
-const store = createStore(mainReducer);
+const store = configureStore({
+  reducer: {},
+});
 
 export default store;
