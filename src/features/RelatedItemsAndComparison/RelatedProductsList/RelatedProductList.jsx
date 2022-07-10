@@ -1,18 +1,25 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import PropTypes from 'prop-types';
-import ItemsCard from '../ItemsCard/ItemCard.jsx';
+import ItemsCard from '../helpers/ItemsCard/ItemCard.jsx';
+import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
+import { useProductsByPageNCountQuery } from '../../../services/products';
 
-export default function RelatedProductList({ products }) {
-  const { data: relatedProductList, error: productError, isLoading: isProductLoading } = products;
-  if (productError) {
+export default function RelatedProductList() {
+  const { data, error, isLoading } = useProductsByPageNCountQuery(1, 10);
+
+  if (error) {
     return <>Oh no, there was an error</>;
   }
 
-  return isProductLoading ? <>Loading...</> :
-    relatedProductList.map((product) => <ItemsCard product={product} />);
-}
+  if (isLoading) {
+    return <>Loading...</>;
+  }
 
-RelatedProductList.propTypes = {
-  products: PropTypes.arrayOf.isRequired,
-};
+  if (data) {
+    return (
+      <ListContainer>
+        {data.map((product) => <ItemsCard key={product.id} product={product} />)}
+      </ListContainer>
+    );
+  };
+}

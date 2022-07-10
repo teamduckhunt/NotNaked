@@ -1,22 +1,10 @@
-.product_list {
-  /* FIXME: */
-  display: inline;
-  border: 1px solid black;
-}
-
-.product {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-}
-
 .product_card {
   display: flex;
   flex-direction: column;
   align-items: center;
   border:1px solid black;
   width: 250px;
-  margin: 24px;
+  /* margin: 0px auto; */
   cursor: pointer;
 }
 

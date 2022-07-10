@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-one-expression-per-line */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import Card from '../../UI/Card.jsx';
+// import PropTypes from 'prop-types';
+import Card from '../../../UI/Card.jsx';
 import styles from './ItemCard.module.css';
 
 export default function ItemsCard({ product }) {
@@ -24,6 +25,6 @@ export default function ItemsCard({ product }) {
   );
 }
 // shape === object
-ItemsCard.propTypes = {
-  product: PropTypes.shape.isRequired,
-};
+// ItemsCard.propTypes = {
+//   product: PropTypes.shape.isRequired,
+// };
