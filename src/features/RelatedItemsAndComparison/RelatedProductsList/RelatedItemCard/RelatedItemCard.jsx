@@ -52,7 +52,7 @@ export default function RelatedItemCard({ productId }) {
       <Card className={styles.product_card} onClick={() => setOpenModal(true)}>
         <header className={styles.product_card_header}>
           <img className={styles.product_img} src={image} alt="random" />
-          <div className={styles.product_star}> x </div>
+          <div className={styles.product_action_button}> * </div>
         </header>
         <footer className={styles.product_card_body}>
           <p>{product.category}</p>
