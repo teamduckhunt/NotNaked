@@ -12,6 +12,7 @@ export default function RelatedItemsAndComparison() {
   const dispatch = useDispatch();
   const { data: allProductsData, error: productError, isLoading: isProductLoading } = useProductsByPageNCountQuery(1, 10);
   let products = null;
+
   if (productError) {
     products = <>Oh no, there was an error</>;
   } else if (isProductLoading) {
