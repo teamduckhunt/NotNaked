@@ -1,11 +1,13 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import ItemsCard from '../helpers/ItemsCard/ItemCard.jsx';
+import ItemCard from '../helpers/ItemCard/ItemCard.jsx';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
-import { useProductsByPageNCountQuery } from '../../../services/products';
+import { useRelatedProductsIdQuery } from '../../../services/products';
 
 export default function RelatedProductList() {
-  const { data, error, isLoading } = useProductsByPageNCountQuery(1, 10);
+  // TODO: get current page's product id and use that as input to useRelatedProducts
+  const currentDetailPageId = 40344;
+  const { data, error, isLoading } = useRelatedProductsIdQuery(currentDetailPageId);
 
   if (error) {
     return <>Oh no, there was an error</>;
@@ -16,10 +18,12 @@ export default function RelatedProductList() {
   }
 
   if (data) {
+    // This data is just id so need to loop through to
+    console.log(data);
     return (
       <ListContainer>
-        {data.map((product) => <ItemsCard key={product.id} product={product} />)}
+        {data.map((productId) => <ItemCard key={productId} productId={productId} />)}
       </ListContainer>
     );
-  };
+  }
 }

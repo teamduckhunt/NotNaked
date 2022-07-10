@@ -16,5 +16,5 @@ export default function RelatedItemsAndComparison() {
     </div>
   );
 }
-// TODO: Set up to get related produccts of a product
+// TODO: Set up to get related products of a product
 // && should I be creating a state with this data?

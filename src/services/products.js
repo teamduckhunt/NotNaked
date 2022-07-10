@@ -16,7 +16,22 @@ export const productsApi = createApi({
     productsByPageNCount: builder.query({
       query: (page = 1, count = 10) => `?page=${page}&count=${count}`,
     }),
+    productInformationById: builder.query({
+      query: (productId) => `/${productId}`,
+    }),
+    relatedProductsId: builder.query({
+      query: (productId) => `/${productId}/related`,
+    }),
+    productStyles: builder.query({
+      query: (productId) => `/${productId}/styles`,
+    }),
   }),
 });
 
-export const { useAllProductsQuery, useProductsByPageNCountQuery } = productsApi;
+export const {
+  useAllProductsQuery,
+  useProductsByPageNCountQuery,
+  useProductInformationByIdQuery,
+  useRelatedProductsIdQuery,
+  useProductStylesQuery,
+} = productsApi;

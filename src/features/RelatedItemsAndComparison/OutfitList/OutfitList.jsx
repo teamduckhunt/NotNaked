@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import ItemsCard from '../helpers/ItemsCard/ItemCard.jsx';
+// import ItemsCard from '../helpers/ItemsCard/ItemCard.jsx';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 // import PropTypes from 'prop-types';
 
