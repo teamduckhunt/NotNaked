@@ -9,9 +9,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../../services/products';
 import Card from '../../../UI/Card.jsx';
-import styles from './RelatedItemCard.module.css';
+import styles from './OutfitItemCard.module.css';
 
-export default function RelatedItemCard({ productId }) {
+export default function OutfitItemCard({ productId, handleDeleteOutfit}) {
   const {
     data: product,
     error: productInfoError,
@@ -29,10 +29,10 @@ export default function RelatedItemCard({ productId }) {
   }
 
   return (
-    <Card className={styles.product_card} onClick={() => alert(`${product.name} clicked!!!`)}>
+    <Card className={styles.product_card}>
       <div className={styles.product_card_header}>
         <img className={styles.product_img} src={image} alt="nothing" />
-        <div className={styles.product_star}> x </div>
+        <div className={styles.product_star} onClick={handleDeleteOutfit}> x </div>
       </div>
       <div className={styles.product_card_body}>
         <p>{product.category}</p>
@@ -45,8 +45,9 @@ export default function RelatedItemCard({ productId }) {
   );
 }
 
-RelatedItemCard.propTypes = {
+OutfitItemCard.propTypes = {
   productId: PropTypes.number.isRequired,
+  handleDeleteOutfit: PropTypes.func.isRequired,
 };
 
 // const {

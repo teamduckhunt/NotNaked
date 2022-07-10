@@ -1,0 +1,32 @@
+.product_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border:1px solid black;
+  width: 250px;
+  /* margin: 0px auto; */
+  cursor: pointer;
+}
+
+.product_card:hover, .product_card:active {
+  box-shadow: 6px, 6px, 12px, rgba(0, 0, 0, 0.5);
+}
+
+.product_card_header {
+  /* FIXME: */
+  flex:1;
+  color: black;
+}
+
+.product_img {
+  /* FIXME: */
+  color: black;
+}
+
+.product_star {
+  /* FIXME: */
+  color: black;
+}
+.product_card_body {
+  flex:1;
+}

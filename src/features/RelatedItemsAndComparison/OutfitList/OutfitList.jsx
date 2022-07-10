@@ -10,6 +10,7 @@ import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { addOutfit, deleteOutfit }  from './outfitListSlice.jsx';
 import Button from '../../UI/Button.jsx';
 import styles from './OutfitList.module.css';
+import OutfitItemCard from './OutfitItemCard/OutfitItemCard.jsx';
 
 export default function OutfitList({ currentViewItemId }) {
   const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(false);
@@ -28,8 +29,6 @@ export default function OutfitList({ currentViewItemId }) {
     dispatch(deleteOutfit(productId));
   };
 
-  console.log(userOutfitList);
-
   return (
     <>
       <p>My Outfit List!!!</p>
@@ -37,13 +36,11 @@ export default function OutfitList({ currentViewItemId }) {
         {!isCurrentItemAdded && <Button onClick={() => handleAddOutfit()}>Add to List</Button>}
         {userOutfitList.length > 0
         && userOutfitList.map((outfitId) =>
-          <p
+          <OutfitItemCard
             key={outfitId}
-            className={styles.outfit}
-            onClick={() => handleDeleteOutfit(outfitId)}
-          >
-            {outfitId}
-          </p>)}
+            productId = {outfitId}
+            handleDeleteOutfit={() => handleDeleteOutfit(outfitId)}
+          />)}
       </ListContainer>
     </>
   );
