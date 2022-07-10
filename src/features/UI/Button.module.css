@@ -1,5 +1,16 @@
 .button {
-  padding: 12px;
+  /* top/bottom, left/right */
+  padding: 4px 12px;
   border-radius: 12px;
+  color: white;
   background-color: #e2b4bd;
+  border: 1px solid #e2b4bd;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  /*TODO: different color and border-color */
+  background-color: #e2b4bd;
+  border-color: #e2b4bd;
 }

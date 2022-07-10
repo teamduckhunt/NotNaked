@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+require('dot-env').config();
+
 export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({
