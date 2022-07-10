@@ -49,10 +49,10 @@ export default function RelatedItemCard({ productId }) {
     <>
       {openModal && createPortal(<div className={styles.backdrop} onClick={() => setOpenModal(false)}/>, document.getElementById('backdrop'))}
       {openModal && createPortal(<TempModal onClick={setOpenModal} />, document.getElementById('modal'))}
-      <Card className={styles.product_card} onClick={() => setOpenModal(true)}>
+      <Card className={styles.product_card}>
         <header className={styles.product_card_header}>
           <img className={styles.product_img} src={image} alt="random" />
-          <div className={styles.product_action_button}> * </div>
+          <div className={styles.product_action_button} onClick={() => setOpenModal(true)}> * </div>
         </header>
         <footer className={styles.product_card_body}>
           <p>{product.category}</p>
