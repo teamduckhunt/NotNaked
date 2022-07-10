@@ -13,7 +13,7 @@ export const outfitListSlice = createSlice({
     },
     deleteOutfit: (state, action) => {
       const deleteItemIndex = state.outfitList.indexOf((outfitId) => outfitId === action.payload);
-      state.splice(deleteItemIndex, 1);
+      state.outfitList.splice(deleteItemIndex, 1);
     },
   },
 });

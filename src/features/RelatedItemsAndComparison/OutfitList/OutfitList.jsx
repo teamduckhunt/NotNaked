@@ -1,3 +1,7 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable react/jsx-wrap-multilines */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -5,6 +9,7 @@ import PropTypes from 'prop-types';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { addOutfit, deleteOutfit }  from './outfitListSlice.jsx';
 import Button from '../../UI/Button.jsx';
+import styles from './OutfitList.module.css';
 
 export default function OutfitList({ currentViewItemId }) {
   const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(false);
@@ -16,12 +21,12 @@ export default function OutfitList({ currentViewItemId }) {
     dispatch(addOutfit(currentViewItemId));
   };
 
-  // const handleDeleteOutfit = (productId) => {
-  //   if (productId === currentViewItemId) {
-  //     setIsCurrentItemAdded(false);
-  //   }
-  //   dispatch(deleteOutfit(productId));
-  // };
+  const handleDeleteOutfit = (productId) => {
+    if (productId === currentViewItemId) {
+      setIsCurrentItemAdded(false);
+    }
+    dispatch(deleteOutfit(productId));
+  };
 
   console.log(userOutfitList);
 
@@ -30,8 +35,15 @@ export default function OutfitList({ currentViewItemId }) {
       <p>My Outfit List!!!</p>
       <ListContainer>
         {!isCurrentItemAdded && <Button onClick={() => handleAddOutfit()}>Add to List</Button>}
-        {/* {userOutfitList.length > 0
-        && userOutfitList.map((outfitId) => <div handleDeleteOutfit={() => handleDeleteOutfit(outfitId)}>{outfitId}</div>)} */}
+        {userOutfitList.length > 0
+        && userOutfitList.map((outfitId) =>
+          <p
+            key={outfitId}
+            className={styles.outfit}
+            onClick={() => handleDeleteOutfit(outfitId)}
+          >
+            {outfitId}
+          </p>)}
       </ListContainer>
     </>
   );
