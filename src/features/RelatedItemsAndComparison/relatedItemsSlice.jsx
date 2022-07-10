@@ -8,8 +8,8 @@ export const relatedItemsSlice = createSlice({
   name: 'relatedItems',
   initialState,
   reducers: {
-    addRelatedItems: (state) => {
-      state.relatedItems.push('newItem');
+    addRelatedItems: (state, action) => {
+      state.relatedItems.push(action.payload);
     },
   },
 });
