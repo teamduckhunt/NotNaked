@@ -47,7 +47,7 @@ export default function RelatedItemCard({ productId }) {
 
   return (
     <>
-      {openModal && createPortal(<div className={styles.backdrop} />, document.getElementById('backdrop'))}
+      {openModal && createPortal(<div className={styles.backdrop} onClick={() => setOpenModal(false)}/>, document.getElementById('backdrop'))}
       {openModal && createPortal(<TempModal onClick={setOpenModal} />, document.getElementById('modal'))}
       <Card className={styles.product_card} onClick={() => setOpenModal(true)}>
         <header className={styles.product_card_header}>
