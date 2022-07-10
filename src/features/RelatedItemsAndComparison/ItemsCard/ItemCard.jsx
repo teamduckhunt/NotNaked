@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/forbid-prop-types */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../../UI/Card.jsx';
@@ -23,7 +23,7 @@ export default function ItemsCard({ product }) {
     </Card>
   );
 }
-
+// shape === object
 ItemsCard.propTypes = {
-  product: PropTypes.object.isRequired,
+  product: PropTypes.shape.isRequired,
 };
