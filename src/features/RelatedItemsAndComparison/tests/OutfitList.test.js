@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-undef */
 /**
  * @jest-environment jsdom
  */
@@ -5,6 +7,7 @@
 import 'whatwg-fetch';
 import '@testing-library/jest-dom';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import store from '../../../app/store';
@@ -31,19 +34,27 @@ describe('Testing OutfitList', () => {
     render(
       <Provider store={store}>
         <OutfitList currentViewItemId={40344} />
-      </Provider>
+      </Provider>,
     );
     // returns an element or an error
     const addToListBtn = screen.getByText('Add to List');
     expect(addToListBtn).toBeInTheDocument();
   });
 
-  // test('add button is not visible when current detailed product is in the list', () => {
-  //   render(<OutfitList />);
-  //   // returns an element or an error
-  //   const addToListBtn = screen.getByText('Add to list');
-  //   expect(addToListBtn).toBeInTheDocument();
-  // });
+  test('add button is not visible when current detailed product is in the list', () => {
+    render(
+      <Provider store={store}>
+        <OutfitList currentViewItemId={40344} />
+      </Provider>,
+    );
+    const addToListBtn = screen.getByText('Add to List');
+
+    act(() => {
+      addToListBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(addToListBtn).not.toBeInTheDocument();
+  });
 });
 
 // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
