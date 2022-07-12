@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-undef */
@@ -7,17 +10,9 @@
 
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
-import {
-  Link,
-
-} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  useProductStylesQuery,
-  useProductInformationByIdQuery,
-} from '../../../../services/products';
-import Card from '../../../UI/Card.jsx';
-import styles from './RelatedItemCard.module.css';
+import { useProductStylesQuery, useProductInformationByIdQuery} from '../../../../services/products';
+import ListCard from '../../helpers/ListContainer/ListCard.jsx';
 import ComparisonModal from '../../ComparisonModal/ComparisonModal.jsx';
 
 export default function RelatedItemCard({ productId }) {
@@ -37,43 +32,22 @@ export default function RelatedItemCard({ productId }) {
   if (isProductLoading) {
     return <>Loading...</>;
   }
+  const handleOnClick = () => {
+    setOpenModal(true);
+  };
 
   return (
     <>
       {openModal
-      && createPortal(
-        <div
-          className={styles.backdrop}
-          onClick={() => setOpenModal(false)}
-        />,
-        document.getElementById('backdrop'),
-      )}
-      {openModal
-        && createPortal(
-          <ComparisonModal onClick={setOpenModal} />,
-          document.getElementById('modal'),
-        )}
-      <Card className={styles.product_card}>
-        <header className={styles.product_card_header}>
-          <Link to={`/product/${productId}`}>
-            <img className={styles.product_img} src={image} alt='random' />
-          </Link>
-          <div
-            className={styles.product_action_button}
-            onClick={() => setOpenModal(true)}
-          >
-            {' '}
-            *{' '}
-          </div>
-        </header>
-        <footer className={styles.product_card_body}>
-          <p>{product.category}</p>
-          <p>{product.name}</p>
-          {/* TODO: default price needs to change with sales and also styles */}
-          <p>${product.default_price}</p>
-          <p>**** duck rating here</p>
-        </footer>
-      </Card>
+      && createPortal(<div className={styles.backdrop} onClick={() => setOpenModal(false)} />, document.getElementById('backdrop'))}
+      {openModal && createPortal(<ComparisonModal onClick={setOpenModal} />, document.getElementById('modal'))}
+      <ListCard
+        product={product}
+        productId={productId}
+        productImage={image}
+        actionButtonIcon="⭐️"
+        handleOnClick={handleOnClick}
+      />
     </>
   );
 }

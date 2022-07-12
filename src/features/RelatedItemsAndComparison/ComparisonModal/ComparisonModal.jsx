@@ -2,21 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../../UI/Card.jsx';
+import Button from '../../UI/Button.jsx';
 import styles from './ComparisonModal.module.css';
 
 export default function ComparisonModal({ onClick }) {
-  const tempModalStyles = {
-    backgroundColor: 'pink',
-    margin: '0 auto',
-    width: '250px',
-  };
-
   return (
-    <Card className={styles.modal} styles={tempModalStyles}>
+    <Card className={styles.modal}>
       <h3>Comparison Modal Here based on condition</h3>
-      <button type="button" onClick={() => onClick(false)}>
+      <Button type="button" onClick={() => onClick(false)}>
         X
-      </button>
+      </Button>
     </Card>
   );
 }

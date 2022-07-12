@@ -2,4 +2,5 @@ const state = {
   outfitList: [],
 };
 
-export const testUseAppSeletor = (f) => f(state);
+const testUseAppSeletor = (f) => f(state);
+export default testUseAppSeletor;

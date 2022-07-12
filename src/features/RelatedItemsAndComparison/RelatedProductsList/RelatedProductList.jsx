@@ -19,7 +19,7 @@ export default function RelatedProductList({ currentViewItemId }) {
   if (data) {
     return (
       <>
-        <p>My Related Products!!!</p>
+        <p>Related Products</p>
         <ListContainer>
           {data.map((productId) => <RelatedItemCard key={productId} productId={productId} />)}
         </ListContainer>
