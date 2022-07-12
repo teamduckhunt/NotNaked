@@ -1,16 +1,14 @@
-/* eslint-disable default-param-last */
-import { createStore } from 'redux';
+/* eslint-disable import/extensions */
+import { configureStore } from '@reduxjs/toolkit';
+import relatedItemReducer from '../features/RelatedItemsAndComparison/relatedItemsSlice.jsx';
+import { productsApi } from '../services/products.js';
 
-const mainReducer = (state = { isLoading: false }, action) => {
-  if (action.type === 'toggleLoading') {
-    return {
-      isLoading: !state.isLoading,
-    };
-  }
-
-  return state;
-};
-
-const store = createStore(mainReducer);
+const store = configureStore({
+  reducer: {
+    relatedItems: relatedItemReducer,
+    [productsApi.reducerPath]: productsApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsApi.middleware),
+});
 
 export default store;
