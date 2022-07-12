@@ -5,7 +5,7 @@ export const productsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products',
     prepareHeaders(headers) {
-      headers.set('Authorization', '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');
+      headers.set('Authorization', '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');
       return headers;
     },
   }),

@@ -5,7 +5,7 @@ export const questionsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions',
     prepareHeaders(headers) {
-      headers.set('Authorization', 'TO DO');
+      headers.set('Authorization', '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');
       return headers;
     },
   }),
