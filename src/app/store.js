@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import { configureStore } from '@reduxjs/toolkit';
-import relatedItemReducer from '../features/RelatedItemsAndComparison/relatedItemsSlice.jsx';
+// import relatedItemReducer from '../features/RelatedItemsAndComparison/relatedItemsSlice.jsx';
 import outfitListReducer from '../features/RelatedItemsAndComparison/OutfitList/outfitListSlice.jsx';
 import questionsAndAnswersReducer from '../features/QuestionsAndAnswers/questionsAndAnswersSlice.jsx';
 import { productsApi } from '../services/products.js';
