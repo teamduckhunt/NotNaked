@@ -7,9 +7,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
-import { addOutfit, deleteOutfit }  from './outfitListSlice.jsx';
+import { addOutfit, deleteOutfit } from './outfitListSlice.jsx';
 import Button from '../../UI/Button.jsx';
-import styles from './OutfitList.module.css';
+// import styles from './OutfitList.module.css';
 import OutfitItemCard from './OutfitItemCard/OutfitItemCard.jsx';
 
 export default function OutfitList({ currentViewItemId }) {
@@ -38,7 +38,7 @@ export default function OutfitList({ currentViewItemId }) {
         && userOutfitList.map((outfitId) =>
           <OutfitItemCard
             key={outfitId}
-            productId = {outfitId}
+            productId={outfitId}
             handleDeleteOutfit={() => handleDeleteOutfit(outfitId)}
           />)}
       </ListContainer>
