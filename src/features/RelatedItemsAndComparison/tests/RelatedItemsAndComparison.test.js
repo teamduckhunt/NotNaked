@@ -23,9 +23,9 @@ afterEach(() => {
 });
 
 // TODO: Build a test here
-// it('test test', () => {
-//   act(() => {
-//     render(<RelatedItemsAndComparison />, container);
-//   });
-//   expect(container.textContent).toBe('Hey, stranger');
-// });
+it('test test', () => {
+  act(() => {
+    render(<RelatedItemsAndComparison />, container);
+  });
+  // expect(container.textContent).toBe('Hey, stranger');
+});
