@@ -11,7 +11,6 @@ export const relatedItemsSlice = createSlice({
     addRelatedItems: (state, action) => {
       state.relatedItems.push(action.payload);
     },
-    
   },
 });
 
