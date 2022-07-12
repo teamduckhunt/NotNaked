@@ -15,7 +15,6 @@ import styles from './App.module.css';
 
 function ProductDetailPage() {
   const { productId } = useParams();
-  console.log(productId);
   return (
     <div id="app" className={styles.app}>
       {/* <Overview /> */}

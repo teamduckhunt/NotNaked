@@ -10,7 +10,7 @@ import { createPortal } from 'react-dom';
 import {
   Link,
 
-} from "react-router-dom";
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   useProductStylesQuery,
@@ -40,16 +40,16 @@ export default function RelatedItemCard({ productId }) {
 
   return (
     <>
-      {openModal &&
-        createPortal(
-          <div
-            className={styles.backdrop}
-            onClick={() => setOpenModal(false)}
-          />,
-          document.getElementById('backdrop')
-        )}
-      {openModal &&
-        createPortal(
+      {openModal
+      && createPortal(
+        <div
+          className={styles.backdrop}
+          onClick={() => setOpenModal(false)}
+        />,
+        document.getElementById('backdrop'),
+      )}
+      {openModal
+        && createPortal(
           <ComparisonModal onClick={setOpenModal} />,
           document.getElementById('modal'),
         )}
