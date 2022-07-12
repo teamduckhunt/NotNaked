@@ -1,0 +1,6 @@
+.listContainer {
+  display: flex;
+  overflow:scroll;
+  gap: 24px;
+  background-color: rgba(0,0,0, 0.25)
+}
