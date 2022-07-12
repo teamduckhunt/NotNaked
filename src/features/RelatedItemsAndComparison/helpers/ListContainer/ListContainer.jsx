@@ -4,6 +4,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import styles from './ListContainer.module.css';
 
+// TODO: this wrapper should also provide carousel functionality
 export default function ListContainer({ children }) {
   return <div className={styles.listContainer}>{children}</div>;
 }
