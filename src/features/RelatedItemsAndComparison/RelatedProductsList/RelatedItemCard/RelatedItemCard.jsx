@@ -7,6 +7,10 @@
 
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import {
+  Link,
+
+} from "react-router-dom";
 import PropTypes from 'prop-types';
 import {
   useProductStylesQuery,
@@ -51,7 +55,9 @@ export default function RelatedItemCard({ productId }) {
         )}
       <Card className={styles.product_card}>
         <header className={styles.product_card_header}>
-          <img className={styles.product_img} src={image} alt='random' />
+          <Link to={`/product/${productId}`}>
+            <img className={styles.product_img} src={image} alt='random' />
+          </Link>
           <div
             className={styles.product_action_button}
             onClick={() => setOpenModal(true)}
