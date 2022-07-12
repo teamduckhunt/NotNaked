@@ -8,7 +8,7 @@ import { questionsApi } from '../services/questions.js';
 
 const store = configureStore({
   reducer: {
-    relatedItems: relatedItemReducer,
+    // relatedItems: relatedItemReducer,
     [productsApi.reducerPath]: productsApi.reducer,
     outfitList: outfitListReducer,
     [questionsApi.reducerPath]: questionsApi.reducer,
