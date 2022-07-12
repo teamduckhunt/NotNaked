@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import QuestionList from './QuestionsList/QuestionsList';
+import QuestionList from './QuestionsList/QuestionsList.jsx';
 
 export default function QuestionsAndAnswers({ currentViewItemId }) {
   return (
     <p>
-      {/* <QuestionList currentViewItemId={currentViewItemId}/> */}
-      This work? {currentViewItemId}
+      <QuestionList currentViewItemId={currentViewItemId} />
     </p>
   );
 }
