@@ -34,13 +34,13 @@ export default function OutfitList({ currentViewItemId }) {
       <p>My Outfit List!!!</p>
       <ListContainer>
         {!isCurrentItemAdded && <Button onClick={() => handleAddOutfit()}>Add to List</Button>}
-        {userOutfitList.length > 0
+        {/* {userOutfitList.length > 0
         && userOutfitList.map((outfitId) =>
           <OutfitItemCard
             key={outfitId}
             productId={outfitId}
             handleDeleteOutfit={() => handleDeleteOutfit(outfitId)}
-          />)}
+          />)} */}
       </ListContainer>
     </>
   );
