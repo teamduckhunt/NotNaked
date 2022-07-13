@@ -31,7 +31,7 @@ export default function AnswerCard({ a }) {
       </div>
       <div className={styles.info} id="info">
         <p>
-          by {a.answerer_name}, {date}
+          by {a.answerer_name}, &nbsp;{date}
         </p>
         <p className={styles.details}>
           Helpful?&nbsp;&nbsp;
