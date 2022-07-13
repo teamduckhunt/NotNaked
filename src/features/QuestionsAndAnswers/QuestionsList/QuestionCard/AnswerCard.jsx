@@ -31,7 +31,9 @@ export default function AnswerCard({ a }) {
       </div>
       <div className={styles.info} id="info">
         <p>
-          by {a.answerer_name}, &nbsp;{date}
+          by {a.answerer_name.toLowerCase() === 'seller' && <strong>{a.answerer_name}</strong>}
+          {a.answerer_name.toLowerCase() !== 'seller' && `${a.answerer_name}`},
+          &nbsp;&nbsp;{date}
         </p>
         <p className={styles.details}>
           Helpful?&nbsp;&nbsp;
