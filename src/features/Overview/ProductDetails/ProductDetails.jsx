@@ -1,10 +1,30 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import '../Overview.module.css'; //
+import { useProductInformationByIdQuery } from '../../../services/products.js';
 
-export default function ProductDetails() {
-  return (
-    <div>
-      <p>Product Details go here :O</p>
-    </div>
-  );
+export default function ProductDetails({ currentViewItemId }) {
+  const {
+    data: product,
+    error,
+    isLoading,
+  } = useProductInformationByIdQuery(currentViewItemId);
+
+  if (error) {
+    console.log(error);
+    return <div>There is an error!</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (product) {
+    return (
+      <div>
+        <b>{product.slogan}</b>
+        <p>{product.description}</p>
+        {/* <p>{product.features}</p> */}
+      </div>
+    );
+  }
 }

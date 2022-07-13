@@ -1,8 +1,10 @@
+/* eslint-disable import/extensions */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import StyleCard from './StyleCard';
+import { useProductStylesQuery } from '../../../services/products.js';
 
 function StyleList({ styles, updateStyles }) {
   return (

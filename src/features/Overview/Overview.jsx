@@ -14,16 +14,16 @@ export default function Overview({ currentViewItemId }) {
     <div>
       <div className={styles.overviewHeaders}>
         <div className={styles.imagegallery}>
-          <ImageGallery />
+          <ImageGallery currentViewItemId={currentViewItemId} />
         </div>
         <div className={styles.productinfo}>
-          <ProductInfo />
-          <StyleSelector />
-          <AddToCart />
+          <ProductInfo currentViewItemId={currentViewItemId} />
+          <StyleSelector currentViewItemId={currentViewItemId} />
+          <AddToCart currentViewItemId={currentViewItemId} />
         </div>
       </div>
       <div className={styles.productdetails}>
-        <ProductDetails />
+        <ProductDetails currentViewItemId={currentViewItemId} />
       </div>
     </div>
   );
