@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-undef */
@@ -8,8 +10,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './AnswerCard.module.css';
+import {
+  useAddAnswerHelpfulMutation, useReportAnswerMutation,
+} from '../../../../services/questions';
 
 export default function AnswerCard({ a }) {
+  const [addHelpful] = useAddAnswerHelpfulMutation();
+  const [reportAnswer] = useReportAnswerMutation();
+
   return (
     <>
       <div id="answer">
@@ -23,10 +31,11 @@ export default function AnswerCard({ a }) {
           by {a.answerer_name}
         </p>
         <p className={styles.details}>
-          Helpful?&nbsp; <u>Yes</u> ({a.helpfulness})
+          Helpful?&nbsp;&nbsp;
+          <u onClick={() => addHelpful(a.answer_id)}>Yes</u> ({a.helpfulness})
         </p>
         <p className={styles.details}>
-          <u>Report</u>
+          <u onClick={() => reportAnswer(a.answer_id)}>Report</u>
         </p>
       </div>
     </>

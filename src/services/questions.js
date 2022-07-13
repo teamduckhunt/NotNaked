@@ -52,7 +52,7 @@ export const questionsApi = createApi({
     }),
     addAnswerHelpful: builder.mutation({
       query: (answerId) => ({
-        url: `/${answerId}/helpful`,
+        url: `/answers/${answerId}/helpful`,
         method: 'PUT',
       }),
       invalidatesTags: ['Answers'],
