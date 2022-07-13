@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import QuestionCard from './QuestionCard/QuestionCard.jsx';
 import { useAllQuestionsQuery } from '../../../services/questions';
+import styles from './QuestionsList.module.css';
 
 export default function QuestionsList({ currentViewItemId }) {
   const { data, error, isLoading } = useAllQuestionsQuery(currentViewItemId);
@@ -17,10 +18,9 @@ export default function QuestionsList({ currentViewItemId }) {
 
   if (data) {
     return (
-      <>
-        <p>My QuestionList!!!</p>
-        {/* <QuestionCard /> */}
-      </>
+      <div className={styles.list} id="list">
+        {data.results.map((q) => <QuestionCard key={q.question_id} q={q} />)}
+      </div>
     );
   }
 }
