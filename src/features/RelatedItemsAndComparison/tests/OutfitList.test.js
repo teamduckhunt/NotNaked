@@ -4,66 +4,66 @@
  * @jest-environment jsdom
  */
 
-import 'whatwg-fetch';
-import '@testing-library/jest-dom';
-import React from 'react';
-import { act } from 'react-dom/test-utils';
-import { Provider } from 'react-redux';
-import { render, screen } from '@testing-library/react';
-import store from '../../../app/store';
-import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
-import OutfitList from '../OutfitList/OutfitList.jsx';
-import testUseAppSeletor from '../../../app/test-app.selector';
+ import 'whatwg-fetch';
+ import '@testing-library/jest-dom';
+ import React from 'react';
+ import { act } from 'react-dom/test-utils';
+ import { Provider } from 'react-redux';
+ import { render, screen } from '@testing-library/react';
+ import store from '../../../app/store';
+ import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
+ import OutfitList from '../OutfitList/OutfitList.jsx';
+ import testUseAppSeletor from '../../../app/test-app.selector';
 
-jest.mock('../../../app/redux-hooks');
+ jest.mock('../../../app/redux-hooks');
 
-// import renderWithProviders from '../../../utils/test.utils';
+ // import renderWithProviders from '../../../utils/test.utils';
 
-describe('Testing OutfitList', () => {
-  beforeEach(() => {
-    useAppSelector.mockImplementation(testUseAppSeletor);
-    useAppDispatch.mockImplementation(() => jest.fn);
-  });
+ describe('Testing OutfitList', () => {
+   beforeEach(() => {
+     useAppSelector.mockImplementation(testUseAppSeletor);
+     useAppDispatch.mockImplementation(() => jest.fn);
+   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+   afterEach(() => {
+     jest.clearAllMocks();
+   });
 
-  test('add button is visible when current detailed product is not in the list', () => {
-    // renderWithProviders(<Provider store={store}><OutfitList /></Provider>);
-    render(
-      <Provider store={store}>
-        <OutfitList currentViewItemId={40344} />
-      </Provider>,
-    );
-    // returns an element or an error
-    const addToListBtn = screen.getByText('Add to List');
-    expect(addToListBtn).toBeInTheDocument();
-  });
+   test('add button is visible when current detailed product is not in the list', () => {
+     // renderWithProviders(<Provider store={store}><OutfitList /></Provider>);
+     render(
+       <Provider store={store}>
+         <OutfitList currentViewItemId={40344} />
+       </Provider>,
+     );
+     // returns an element or an error
+     const addToListBtn = screen.getByText('Add to List');
+     expect(addToListBtn).toBeInTheDocument();
+   });
 
-  test('add button is not visible when current detailed product is in the list', () => {
-    render(
-      <Provider store={store}>
-        <OutfitList currentViewItemId={40344} />
-      </Provider>,
-    );
-    const addToListBtn = screen.getByText('Add to List');
+   test('add button is not visible when current detailed product is in the list', () => {
+     render(
+       <Provider store={store}>
+         <OutfitList currentViewItemId={40344} />
+       </Provider>,
+     );
+     const addToListBtn = screen.getByText('Add to List');
 
-    act(() => {
-      addToListBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    });
+     act(() => {
+       addToListBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+     });
 
-    expect(addToListBtn).not.toBeInTheDocument();
-  });
-});
+     expect(addToListBtn).not.toBeInTheDocument();
+   });
+ });
 
-// https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
-// https://www.npmjs.com/package/jest-css-modules-transform
-// https://www.npmjs.com/package/babel-jest
-// https://redux.js.org/usage/writing-tests
-// https://medium.com/@johnmcdowell0801/testing-rtk-query-with-jest-cdfa5aaf3dc1
-// https://www.npmjs.com/package/whatwg-fetch
-// https://github.com/reduxjs/redux-toolkit/issues/2084
-// https://github.com/vercel/next.js/issues/8145
-// https://www.npmjs.com/package/jest-environment-jsdom
-// https://www.npmjs.com/package/whatwg-fetch
+ // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
+ // https://www.npmjs.com/package/jest-css-modules-transform
+ // https://www.npmjs.com/package/babel-jest
+ // https://redux.js.org/usage/writing-tests
+ // https://medium.com/@johnmcdowell0801/testing-rtk-query-with-jest-cdfa5aaf3dc1
+ // https://www.npmjs.com/package/whatwg-fetch
+ // https://github.com/reduxjs/redux-toolkit/issues/2084
+ // https://github.com/vercel/next.js/issues/8145
+ // https://www.npmjs.com/package/jest-environment-jsdom
+ // https://www.npmjs.com/package/whatwg-fetch
