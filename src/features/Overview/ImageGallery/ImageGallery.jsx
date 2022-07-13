@@ -1,7 +1,12 @@
 import React from 'react';
+// import '../Overview.module.css'; //
 
-export default ImageGallery() {
+export default function ImageGallery() {
+  const image = 'https://picsum.photos/200';
   return (
-
-  )
+    <div>
+      Image carousel goes here
+      <img src={image} alt="random" />
+    </div>
+  );
 }
