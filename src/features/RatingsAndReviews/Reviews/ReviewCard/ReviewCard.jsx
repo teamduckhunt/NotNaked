@@ -39,6 +39,7 @@ export default function ReviewCard({ review }) {
       </div>
     );
   };
+  console.log(review);
   return (
     <>
       {/* ***** Duck rating here */}
@@ -53,8 +54,11 @@ export default function ReviewCard({ review }) {
         </div>
       </div>
       <div>
-        <img src={image} alt={review.reviwer_name} height={100} />
+        {review.photos.map((photo) => (
+          <img src={photo} alt={review.reviwer_name} height={100} />
+        ))}
       </div>
+
       {/* conditional check for if prop is recommended */}
       {review.recommend && <div> ✅ I Recommend this Product</div>}
       {review.response !== null && (
@@ -85,18 +89,10 @@ ReviewCard.propTypes = {
 };
 
 // NOTES :
-// May need to use useState for the thumbnail images
 
-// create a UI component that can render each image thumbnail in modal
-// function Image({ fileName }) {
-//   return (
-//     <img  src={fileName}/>
-//   )
-// }
+// May need to use useState for the thumbnail images, will need a modal popup
 
-// render each image by passing the photos [array] to a <div>
-// array.map( image => {
-//   return (
-//     <Image fileName = { image }/>
-//   )
-// })
+// add star rating visual
+
+// add conditional to check if email address is assocated with verified purchase.
+// add 'verified purchase' infront of reviewer name.
