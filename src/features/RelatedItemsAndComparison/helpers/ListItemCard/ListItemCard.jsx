@@ -14,6 +14,7 @@ export default function ListItemCard({
   productImage,
   actionButtonIcon,
   handleOnClick,
+  averageRating,
 }) {
   return (
     <Card className={styles.product_card}>
@@ -34,7 +35,7 @@ export default function ListItemCard({
         <p>{product.name}</p>
         {/* TODO: default price needs to change with sales and also styles */}
         <p>${product.default_price}</p>
-        <p>**** duck rating here</p>
+        <p>{averageRating.toFixed(2)}</p>
       </footer>
     </Card>
   );

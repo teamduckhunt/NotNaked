@@ -14,11 +14,14 @@ import PropTypes from 'prop-types';
 import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../services/products';
 import ListItemCard from '../helpers/ListItemCard/ListItemCard.jsx';
 import ComparisonModal from '../ComparisonModal/ComparisonModal.jsx';
+import { useGetReviewMetadataQuery } from '../../../services/reviews';
+import getAverageRating from '../../../helpers/getAverageRating/getAverageRating';
 
 export default function RelatedProductItem({ productId }) {
   const [toggleModal, setToggleModal] = useState(false);
   const { data, error, isLoading } = useProductInformationByIdQuery(productId);
-  const { data: styles } = useProductStylesQuery(productId);
+  const {data: metaData, isLoading: metaLoading} = useGetReviewMetadataQuery(productId);
+  const { data: styles, isLoading: stylesLoading } = useProductStylesQuery(productId);
   const image = styles?.results[0].photos[0].thumbnail_url || 'https://picsum.photos/200';
 
   const handleModalToggle = () => {
@@ -29,9 +32,12 @@ export default function RelatedProductItem({ productId }) {
     return <>Oh no, there was an error</>;
   }
 
-  if (isLoading) {
+  if (isLoading || stylesLoading || metaLoading) {
     return <>Loading...</>;
   }
+
+  console.log(metaData);
+  const averageRating = getAverageRating(metaData);
 
   return (
     <>
@@ -39,6 +45,7 @@ export default function RelatedProductItem({ productId }) {
       && createPortal(<ComparisonModal handleModalToggle={handleModalToggle} />, document.getElementById('modal'))}
       <ListItemCard
         product={data}
+        averageRating={averageRating}
         productId={productId}
         productImage={image}
         actionButtonIcon="⭐️"
