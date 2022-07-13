@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReviewList from './Reviews/ReviewList.jsx';
