@@ -17,7 +17,13 @@ export default function ReviewList({ currentViewItemId }) {
       ) : data ? (
         <>
           <h3>Reviews List</h3>
-          {data.results.map((review) => <ReviewCard key={review.review_id} review={review} />)}
+          {data.results.map((review) => (
+            <ReviewCard
+              key={review.review_id}
+              review={review}
+              currentViewItemId={currentViewItemId}
+            />
+          ))}
         </>
       ) : null}
     </div>

@@ -1,26 +1,42 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable import/extensions */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addHelpfulCount, subtractHelpfulCount } from './reviewCardSlice.jsx';
 import Button from '../../../UI/Button.jsx';
+import { useGetAllReviewsByProductIdQuery, useAddHelpfulCountMutation, useReportReviewMutation } from '../../../../services/reviews.js';
 
 export default function ReviewCard({ review }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleAddHelpfulness = () => {
-    dispatch(addHelpfulCount(review));
-  };
+  const [showBody, setShowBody] = useState(false);
 
-  const handleSubtractHelpfulness = () => {
-    dispatch(subtractHelpfulCount(review));
-  };
+  const [incrementHelpfulCount] = useAddHelpfulCountMutation();
+  const [reportReview] = useReportReviewMutation();
 
   const image = 'https://picsum.photos/200';
-  console.log('Next Review', review);
 
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
+  const { bodyContent } = review.body.length;
+  const determineBodyLength = () => {
+    if (showBody) {
+      return (
+        <div>
+          <p>{review.body}</p>
+          <Button onClick={() => { setShowBody(false); }}>Show Less...</Button>
+        </div>
+      );
+    }
+    const toShow = `${review.body.substring(0, 250)}...`;
+    return (
+      <div>
+        <p> {toShow} </p>
+        <Button onClick={() => { setShowBody(true); }}>Show More...</Button>
+      </div>
+    );
+  };
   return (
     <>
       {/* ***** Duck rating here */}
@@ -30,14 +46,16 @@ export default function ReviewCard({ review }) {
       </div>
       <div>
         <p>{review.summary}</p>
-        <p>{review.body}</p>
+        <div>
+          {determineBodyLength()}
+        </div>
       </div>
       <div>
         <img src={image} alt={review.reviwer_name} height={100} />
       </div>
       {/* conditional check for if prop is recommended */}
-      {review.recommend && <div> Check Mark I Recommend this Product</div>}
-      {review.response === null && (
+      {review.recommend && <div> ✅ I Recommend this Product</div>}
+      {review.response !== null && (
         <div>
           Response:
           <p>{review.response}</p>
@@ -45,9 +63,9 @@ export default function ReviewCard({ review }) {
       )}
       <div>
         Helpful?
-        <Button onClick={() => handleAddHelpfulness}>Yes</Button>
+        <Button onClick={() => incrementHelpfulCount(review.review_id)}>Yes</Button>
         {`(${review.helpfulness})`}
-        <Button onClick={() => handleSubtractHelpfulness}>No</Button>
+        <Button onClick={() => reportReview(review.review_id)}>Report</Button>
       </div>
     </>
   );
@@ -57,29 +75,19 @@ ReviewCard.propTypes = {
   review: PropTypes.shape.isRequired,
 };
 
-// Will need to useState for the Show More button
-// Also useState for the thumbnail images
+// NOTES :
+// May need to use useState for the thumbnail images
 
-// ReviewCard will need a slice file for the Yes / No regarding the review being helpful.
-
-// create a UI component that can render each image thumbnail
+// create a UI component that can render each image thumbnail in modal
 // function Image({ fileName }) {
 //   return (
 //     <img  src={fileName}/>
 //   )
 // }
 
-// function App() {
-//   const array = ["1.jpg", "2.jpg", "3.jpg"]
-//   render(
-//     <>
-//       {
-//         array.map( image => {
-//           return (
-//             <Image fileName = { image }/>
-//           )
-//         })
-//       }
-//     </>
-//   );
-// }
+// render each image by passing the photos [array] to a <div>
+// array.map( image => {
+//   return (
+//     <Image fileName = { image }/>
+//   )
+// })
