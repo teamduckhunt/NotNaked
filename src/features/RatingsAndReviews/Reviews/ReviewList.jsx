@@ -33,6 +33,3 @@ export default function ReviewList({ currentViewItemId }) {
 ReviewList.propTypes = {
   currentViewItemId: PropTypes.number.isRequired,
 };
-
-// Dont need any slice files here, user will not do any sorting
-// actions in these files. instead these files will be subscribed to the state.
