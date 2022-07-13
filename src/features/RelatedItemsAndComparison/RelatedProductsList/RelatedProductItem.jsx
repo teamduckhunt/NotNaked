@@ -41,8 +41,7 @@ export default function RelatedProductItem({ productId }) {
 
   return (
     <>
-      {toggleModal
-      && createPortal(<ComparisonModal handleModalToggle={handleModalToggle} />, document.getElementById('modal'))}
+      {toggleModal && <ComparisonModal handleModalToggle={handleModalToggle} />}
       <ListItemCard
         product={data}
         averageRating={averageRating}
