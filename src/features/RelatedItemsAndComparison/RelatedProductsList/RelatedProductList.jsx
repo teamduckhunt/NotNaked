@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
-import RelatedItemCard from './RelatedItemCard/RelatedItemCard.jsx';
+import RelatedProductItem from './RelatedProductItem.jsx';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { useRelatedProductsIdQuery } from '../../../services/products';
 
@@ -19,9 +19,9 @@ export default function RelatedProductList({ currentViewItemId }) {
   if (data) {
     return (
       <>
-        <p>My Related Products!!!</p>
+        <p>My Related Products</p>
         <ListContainer>
-          {data.map((productId) => <RelatedItemCard key={productId} productId={productId} />)}
+          {data.map((productId) => <RelatedProductItem key={productId} productId={productId} />)}
         </ListContainer>
       </>
     );
