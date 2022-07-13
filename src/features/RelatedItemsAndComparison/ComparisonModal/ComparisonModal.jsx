@@ -1,17 +1,14 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable no-undef */
 /* eslint-disable import/extensions */
 import React from 'react';
-import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import Card from '../../UI/Card.jsx';
 import Button from '../../UI/Button.jsx';
-import styles from './ComparisonModal.module.css';
+import Modal from '../../UI/Modal.jsx';
 
-export default function ComparisonModal({ handleModalToggle}) {
+export default function ComparisonModal({ handleModalToggle }) {
   return (
-    <>
-      {createPortal(<div className={styles.backdrop} />, document.getElementById('backdrop'))}
-      <Card className={styles.modal}>
+    <Modal>
         <span>COMPARING</span>
         <div>
           <span>Product #1</span>
@@ -25,8 +22,7 @@ export default function ComparisonModal({ handleModalToggle}) {
         <Button type="button" onClick={() => handleModalToggle()}>
           X
         </Button>
-      </Card>
-    </>
+    </Modal>
   );
 }
 
