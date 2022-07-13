@@ -1,0 +1,21 @@
+.productinfo {
+  float: right;
+  border: 2px solid black;
+  position: relative;
+  margin-left: 100px
+}
+
+.imagegallery {
+  float: left;
+  position: relative
+}
+
+.productdetails {
+  /* border: 2px solid  black; */
+  position: relative;
+  /* bottom: 0 */
+}
+
+body {
+  display: inline-block
+}
