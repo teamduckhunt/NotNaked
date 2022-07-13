@@ -7,25 +7,18 @@
 
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import {
+  Link,
+
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../../services/products';
+import {
+  useProductStylesQuery,
+  useProductInformationByIdQuery,
+} from '../../../../services/products';
 import Card from '../../../UI/Card.jsx';
 import styles from './RelatedItemCard.module.css';
-
-function TempModal({ onClick }) {
-  const tempModalStyles = {
-    backgroundColor: 'pink',
-    margin: '0 auto',
-    width: '250px',
-  };
-
-  return (
-    <Card className={styles.modal} styles={tempModalStyles}>
-      <h3>Comparison Modal Here based on condition</h3>
-      <button type="button" onClick={() => onClick(false)}>X</button>
-    </Card>
-  );
-}
+import ComparisonModal from '../../ComparisonModal/ComparisonModal.jsx';
 
 export default function RelatedItemCard({ productId }) {
   const [openModal, setOpenModal] = useState(false);
@@ -47,12 +40,31 @@ export default function RelatedItemCard({ productId }) {
 
   return (
     <>
-      {openModal && createPortal(<div className={styles.backdrop} onClick={() => setOpenModal(false)}/>, document.getElementById('backdrop'))}
-      {openModal && createPortal(<TempModal onClick={setOpenModal} />, document.getElementById('modal'))}
+      {openModal
+      && createPortal(
+        <div
+          className={styles.backdrop}
+          onClick={() => setOpenModal(false)}
+        />,
+        document.getElementById('backdrop'),
+      )}
+      {openModal
+        && createPortal(
+          <ComparisonModal onClick={setOpenModal} />,
+          document.getElementById('modal'),
+        )}
       <Card className={styles.product_card}>
         <header className={styles.product_card_header}>
-          <img className={styles.product_img} src={image} alt="random" />
-          <div className={styles.product_action_button} onClick={() => setOpenModal(true)}> * </div>
+          <Link to={`/product/${productId}`}>
+            <img className={styles.product_img} src={image} alt='random' />
+          </Link>
+          <div
+            className={styles.product_action_button}
+            onClick={() => setOpenModal(true)}
+          >
+            {' '}
+            *{' '}
+          </div>
         </header>
         <footer className={styles.product_card_body}>
           <p>{product.category}</p>
@@ -69,9 +81,3 @@ export default function RelatedItemCard({ productId }) {
 RelatedItemCard.propTypes = {
   productId: PropTypes.number.isRequired,
 };
-
-// const {
-//   data: stylesData,
-//   error: stylesError,
-//   isLoading: isStylesLoading
-// } = useProductStylesQuery(productId);
