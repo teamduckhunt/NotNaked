@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { addOutfit, deleteOutfit } from './outfitListSlice.jsx';
 import Button from '../../UI/Button.jsx';
-// import styles from './OutfitList.module.css';
 import OutfitItemCard from './OutfitItemCard/OutfitItemCard.jsx';
+// import styles from './OutfitList.module.css';
 
 export default function OutfitList({ currentViewItemId }) {
   const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(false);

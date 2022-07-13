@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../../services/products';
-import ListCard from '../../helpers/ListContainer/ListCard.jsx';
+import ListItemCard from '../../helpers/ListItemCard/ListItemCard.jsx';
 import ComparisonModal from '../../ComparisonModal/ComparisonModal.jsx';
 import styles from './RelatedItemCard.module.css';
 
@@ -22,6 +22,10 @@ export default function RelatedItemCard({ productId }) {
 
   const image = 'https://picsum.photos/200';
 
+  const handleOnClick = () => {
+    setOpenModal(true);
+  };
+
   if (error) {
     return <>Oh no, there was an error</>;
   }
@@ -29,16 +33,13 @@ export default function RelatedItemCard({ productId }) {
   if (isLoading) {
     return <>Loading...</>;
   }
-  const handleOnClick = () => {
-    setOpenModal(true);
-  };
 
   return (
     <>
       {openModal
       && createPortal(<div className={styles.backdrop} onClick={() => setOpenModal(false)} />, document.getElementById('backdrop'))}
       {openModal && createPortal(<ComparisonModal onClick={setOpenModal} />, document.getElementById('modal'))}
-      <ListCard
+      <ListItemCard
         product={data}
         productId={productId}
         productImage={image}

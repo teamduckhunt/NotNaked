@@ -6,9 +6,9 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from '../../../UI/Card.jsx';
-import styles from './ListCard.module.css';
+import styles from './ListItemCard.module.css';
 
-export default function ListCard({
+export default function ListItemCard({
   product,
   productId,
   productImage,

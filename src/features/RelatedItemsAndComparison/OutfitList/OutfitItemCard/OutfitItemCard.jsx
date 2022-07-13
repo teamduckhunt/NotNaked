@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../../services/products';
-import ListCard from '../../helpers/ListContainer/ListCard.jsx';
+import ListItemCard from '../../helpers/ListItemCard/ListItemCard.jsx';
 import Card from '../../../UI/Card.jsx';
 import styles from './OutfitItemCard.module.css';
 
@@ -27,7 +27,7 @@ export default function OutfitItemCard({ productId, handleDeleteOutfit }) {
 
   // TODO: prevent event bubbling when x is clicked to delete from outfit list
   return (
-    <ListCard
+    <ListItemCard
       product={data}
       productId={productId}
       productImage={image}
