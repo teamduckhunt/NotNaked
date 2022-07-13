@@ -23,12 +23,7 @@ export default function AnswerCard({ a }) {
 
   return (
     <>
-      <div id="answer">
-        <p>
-          <strong>A: </strong>
-          {a.body}
-        </p>
-      </div>
+      {a.body}
       <div className={styles.info} id="info">
         <p>
           by {a.answerer_name.toLowerCase() === 'seller' && <strong>{a.answerer_name}</strong>}

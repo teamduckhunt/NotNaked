@@ -48,7 +48,12 @@ export default function QuestionCard({ q }) {
             <u>Add Answer</u>
           </p>
         </div>
-        {data.results.map((a) => <AnswerCard key={a.answer_id} a={a} />)}
+        <div id="answer">
+          <p>
+            <strong>A: </strong>
+            {data.results.map((a) => <AnswerCard key={a.answer_id} a={a} />)}
+          </p>
+        </div>
       </>
     );
   }
