@@ -19,7 +19,6 @@ export default function QuestionsList({ currentViewItemId }) {
   if (data) {
     return (
       <div className={styles.list} id="list">
-        <p>My Question List!!!</p>
         {data.results.map((q) => <QuestionCard key={q.question_id} q={q} />)}
       </div>
     );

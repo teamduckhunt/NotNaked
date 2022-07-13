@@ -1,3 +1,7 @@
 .qa {
   margin-left: 28%;
 }
+
+.notbold {
+  font-weight: normal;
+}

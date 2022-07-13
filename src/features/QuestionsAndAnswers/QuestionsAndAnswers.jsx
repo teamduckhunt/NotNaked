@@ -7,6 +7,9 @@ import styles from './QuestionsAndAnswers.module.css';
 export default function QuestionsAndAnswers({ currentViewItemId }) {
   return (
     <div className={styles.qa} id="QA">
+      <h5 className={styles.notbold}>
+        QUESTIONS & ANSWERS
+      </h5>
       <QuestionList currentViewItemId={currentViewItemId} />
     </div>
   );
