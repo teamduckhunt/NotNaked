@@ -23,6 +23,11 @@ export default function ReviewCard({ review }) {
 
   const { bodyContent } = review.body.length;
   const determineBodyLength = () => {
+    if (showBody <= 250) {
+      return (
+        <p>{review.body}</p>
+      );
+    }
     if (showBody) {
       return (
         <div>
@@ -39,7 +44,7 @@ export default function ReviewCard({ review }) {
       </div>
     );
   };
-  console.log(review);
+  // console.log(review);
   return (
     <>
       {/* ***** Duck rating here */}
@@ -96,3 +101,6 @@ ReviewCard.propTypes = {
 
 // add conditional to check if email address is assocated with verified purchase.
 // add 'verified purchase' infront of reviewer name.
+
+// remove show button when character limit is under 250.
+
