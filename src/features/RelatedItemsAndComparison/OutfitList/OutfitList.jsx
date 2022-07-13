@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable import/extensions */
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
 import PropTypes from 'prop-types';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { addOutfit, deleteOutfit } from './outfitListSlice.jsx';
@@ -14,8 +14,8 @@ import OutfitItemCard from './OutfitItemCard/OutfitItemCard.jsx';
 
 export default function OutfitList({ currentViewItemId }) {
   const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(false);
-  const userOutfitList = useSelector((state) => state.outfitList.outfitList);
-  const dispatch = useDispatch();
+  const userOutfitList = useAppSelector((state) => state.outfitList.outfitList);
+  const dispatch = useAppDispatch();
 
   const handleAddOutfit = () => {
     setIsCurrentItemAdded(true);
@@ -34,8 +34,7 @@ export default function OutfitList({ currentViewItemId }) {
       <p>My Outfit List!!!</p>
       <ListContainer>
         {!isCurrentItemAdded && <Button onClick={() => handleAddOutfit()}>Add to List</Button>}
-        {userOutfitList.length > 0
-        && userOutfitList.map((outfitId) =>
+        { userOutfitList?.map((outfitId) =>
           <OutfitItemCard
             key={outfitId}
             productId={outfitId}

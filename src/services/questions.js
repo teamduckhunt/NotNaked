@@ -7,7 +7,6 @@ export const questionsApi = createApi({
     baseUrl: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions',
     prepareHeaders(headers) {
       headers.set('Authorization', `${API_KEY}`);
-
       return headers;
     },
   }),
