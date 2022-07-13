@@ -4,3 +4,5 @@ const state = {
 
 const testUseAppSeletor = (f) => f(state);
 export default testUseAppSeletor;
+
+

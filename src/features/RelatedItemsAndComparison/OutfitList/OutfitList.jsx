@@ -36,6 +36,9 @@ export default function OutfitList({ currentViewItemId }) {
         {<Button onClick={() => handleAddOutfit()}>Add to List</Button>}
         {userOutfitList?.map((outfitId) =>
           <OutfitListItem
+        {!isCurrentItemAdded && <Button onClick={() => handleAddOutfit()}>Add to List</Button>}
+        { userOutfitList?.map((outfitId) =>
+          <OutfitItemCard
             key={outfitId}
             productId={outfitId}
             handleDeleteOutfit={handleDeleteOutfit.bind(null, outfitId)}
