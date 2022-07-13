@@ -58,3 +58,5 @@ export default function ReviewList({ currentViewItemId }) {
 ReviewList.propTypes = {
   currentViewItemId: PropTypes.number.isRequired,
 };
+
+// more reviews button, should dissapear once all reviews are loaded.

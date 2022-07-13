@@ -101,6 +101,3 @@ ReviewCard.propTypes = {
 
 // add conditional to check if email address is assocated with verified purchase.
 // add 'verified purchase' infront of reviewer name.
-
-// remove show button when character limit is under 250.
-
