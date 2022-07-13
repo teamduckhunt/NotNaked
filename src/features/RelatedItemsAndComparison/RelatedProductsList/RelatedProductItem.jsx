@@ -17,13 +17,13 @@ import ComparisonModal from '../ComparisonModal/ComparisonModal.jsx';
 import styles from './RelatedProductItem.module.css';
 
 export default function RelatedProductItem({ productId }) {
-  const [openModal, setOpenModal] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
   const { data, error, isLoading } = useProductInformationByIdQuery(productId);
 
   const image = 'https://picsum.photos/200';
 
-  const handleOnClick = () => {
-    setOpenModal(true);
+  const handleModalToggle = () => {
+    setToggleModal(!toggleModal);
   };
 
   if (error) {
@@ -36,15 +36,13 @@ export default function RelatedProductItem({ productId }) {
 
   return (
     <>
-      {openModal
-      && createPortal(<div className={styles.backdrop} onClick={() => setOpenModal(false)} />, document.getElementById('backdrop'))}
-      {openModal && createPortal(<ComparisonModal onClick={setOpenModal} />, document.getElementById('modal'))}
+      {toggleModal && createPortal(<ComparisonModal handleModalToggle={handleModalToggle} />, document.getElementById('modal'))}
       <ListItemCard
         product={data}
         productId={productId}
         productImage={image}
         actionButtonIcon="⭐️"
-        handleOnClick={handleOnClick}
+        handleOnClick={handleModalToggle}
       />
     </>
   );
