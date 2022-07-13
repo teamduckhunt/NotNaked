@@ -1,26 +1,35 @@
+/* eslint-disable no-undef */
 /* eslint-disable import/extensions */
 import React from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import Card from '../../UI/Card.jsx';
+import Button from '../../UI/Button.jsx';
 import styles from './ComparisonModal.module.css';
 
-export default function ComparisonModal({ onClick }) {
-  const tempModalStyles = {
-    backgroundColor: 'pink',
-    margin: '0 auto',
-    width: '250px',
-  };
-
+export default function ComparisonModal({ handleModalToggle}) {
   return (
-    <Card className={styles.modal} styles={tempModalStyles}>
-      <h3>Comparison Modal Here based on condition</h3>
-      <button type="button" onClick={() => onClick(false)}>
-        X
-      </button>
-    </Card>
+    <>
+      {createPortal(<div className={styles.backdrop} />, document.getElementById('backdrop'))}
+      <Card className={styles.modal}>
+        <span>COMPARING</span>
+        <div>
+          <span>Product #1</span>
+          <span>Product #2</span>
+        </div>
+        <div>
+          <div>Product #1</div>
+          <div>Characteristics</div>
+          <div>Product #2</div>
+        </div>
+        <Button type="button" onClick={() => handleModalToggle()}>
+          X
+        </Button>
+      </Card>
+    </>
   );
 }
 
 ComparisonModal.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  handleModalToggle: PropTypes.func.isRequired,
 };
