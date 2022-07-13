@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-undef */
@@ -8,12 +10,17 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import { useAnswerListQuery } from '../../../../services/questions';
+import {
+  useAnswerListQuery, useAddAnswerMutation,
+  useAddQuestionHelpfulMutation, useReportQuestionMutation,
+} from '../../../../services/questions';
 import AnswerCard from './AnswerCard.jsx';
 import styles from './QuestionCard.module.css';
 
 export default function QuestionCard({ q }) {
   const { data, error, isLoading } = useAnswerListQuery(q.question_id);
+  const [addHelpful] = useAddQuestionHelpfulMutation();
+  const [reportQuestion] = useReportQuestionMutation();
 
   if (error) {
     return <>Oh no, there was an error</>;
@@ -33,7 +40,9 @@ export default function QuestionCard({ q }) {
             </strong>
           </p>
           <p className={styles.helpful}>
-            Helpful?&nbsp; <u>Yes</u> ({q.question_helpfulness})
+            Helpful?&nbsp;&nbsp;
+            <u onClick={() => addHelpful(q.question_id)}>Yes</u>
+            &nbsp;({q.question_helpfulness})
           </p>
           <p className={styles.add}>
             <u>Add Answer</u>
