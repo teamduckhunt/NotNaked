@@ -5,9 +5,9 @@ import QuestionList from './QuestionsList/QuestionsList.jsx';
 
 export default function QuestionsAndAnswers({ currentViewItemId }) {
   return (
-    <p>
+    <div id="QA">
       <QuestionList currentViewItemId={currentViewItemId} />
-    </p>
+    </div>
   );
 }
 
