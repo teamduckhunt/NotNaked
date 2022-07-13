@@ -8,7 +8,7 @@ export default function RelatedItemsAndComparison({ currentViewItemId }) {
   return (
     <>
       <RelatedProductList currentViewItemId={currentViewItemId} />
-      <OutfitList />
+      <OutfitList currentViewItemId={currentViewItemId} />
     </>
   );
 }

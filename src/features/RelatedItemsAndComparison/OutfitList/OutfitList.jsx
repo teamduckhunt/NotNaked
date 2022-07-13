@@ -38,7 +38,7 @@ export default function OutfitList({ currentViewItemId }) {
           <OutfitItemCard
             key={outfitId}
             productId={outfitId}
-            handleDeleteOutfit={() => handleDeleteOutfit(outfitId)}
+            handleDeleteOutfit={handleDeleteOutfit.bind(null, outfitId)}
           />)}
       </ListContainer>
     </>

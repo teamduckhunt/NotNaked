@@ -11,25 +11,22 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import { useProductStylesQuery, useProductInformationByIdQuery} from '../../../../services/products';
+import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../../services/products';
 import ListCard from '../../helpers/ListContainer/ListCard.jsx';
 import ComparisonModal from '../../ComparisonModal/ComparisonModal.jsx';
+import styles from './RelatedItemCard.module.css';
 
 export default function RelatedItemCard({ productId }) {
   const [openModal, setOpenModal] = useState(false);
-  const {
-    data: product,
-    error: productInfoError,
-    isLoading: isProductLoading,
-  } = useProductInformationByIdQuery(productId);
+  const { data, error, isLoading } = useProductInformationByIdQuery(productId);
 
   const image = 'https://picsum.photos/200';
 
-  if (productInfoError) {
+  if (error) {
     return <>Oh no, there was an error</>;
   }
 
-  if (isProductLoading) {
+  if (isLoading) {
     return <>Loading...</>;
   }
   const handleOnClick = () => {
@@ -42,7 +39,7 @@ export default function RelatedItemCard({ productId }) {
       && createPortal(<div className={styles.backdrop} onClick={() => setOpenModal(false)} />, document.getElementById('backdrop'))}
       {openModal && createPortal(<ComparisonModal onClick={setOpenModal} />, document.getElementById('modal'))}
       <ListCard
-        product={product}
+        product={data}
         productId={productId}
         productImage={image}
         actionButtonIcon="⭐️"
