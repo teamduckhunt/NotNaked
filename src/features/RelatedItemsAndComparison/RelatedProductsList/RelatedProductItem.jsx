@@ -11,12 +11,12 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../../services/products';
-import ListItemCard from '../../helpers/ListItemCard/ListItemCard.jsx';
-import ComparisonModal from '../../ComparisonModal/ComparisonModal.jsx';
-import styles from './RelatedItemCard.module.css';
+import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../services/products';
+import ListItemCard from '../helpers/ListItemCard/ListItemCard.jsx';
+import ComparisonModal from '../ComparisonModal/ComparisonModal.jsx';
+import styles from './RelatedProductItem.module.css';
 
-export default function RelatedItemCard({ productId }) {
+export default function RelatedProductItem({ productId }) {
   const [openModal, setOpenModal] = useState(false);
   const { data, error, isLoading } = useProductInformationByIdQuery(productId);
 
@@ -50,6 +50,6 @@ export default function RelatedItemCard({ productId }) {
   );
 }
 
-RelatedItemCard.propTypes = {
+RelatedProductItem.propTypes = {
   productId: PropTypes.number.isRequired,
 };

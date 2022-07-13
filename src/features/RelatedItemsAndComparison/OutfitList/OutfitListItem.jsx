@@ -1,18 +1,12 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-alert */
-/* eslint-disable no-undef */
-// /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
-/* eslint-disable react/jsx-one-expression-per-line */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../../services/products';
-import ListItemCard from '../../helpers/ListItemCard/ListItemCard.jsx';
-import Card from '../../../UI/Card.jsx';
-import styles from './OutfitItemCard.module.css';
+import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../services/products';
+import ListItemCard from '../helpers/ListItemCard/ListItemCard.jsx';
 
-export default function OutfitItemCard({ productId, handleDeleteOutfit }) {
+export default function OutfitListItem({ productId, handleDeleteOutfit }) {
   const { data, error, isLoading } = useProductInformationByIdQuery(productId);
 
   const image = 'https://picsum.photos/200';
@@ -25,7 +19,6 @@ export default function OutfitItemCard({ productId, handleDeleteOutfit }) {
     return <>Loading...</>;
   }
 
-  // TODO: prevent event bubbling when x is clicked to delete from outfit list
   return (
     <ListItemCard
       product={data}
@@ -37,7 +30,7 @@ export default function OutfitItemCard({ productId, handleDeleteOutfit }) {
   );
 }
 
-OutfitItemCard.propTypes = {
+OutfitListItem.propTypes = {
   productId: PropTypes.number.isRequired,
   handleDeleteOutfit: PropTypes.func.isRequired,
 };

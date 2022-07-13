@@ -7,12 +7,15 @@ import styles from './ComparisonModal.module.css';
 
 export default function ComparisonModal({ onClick }) {
   return (
-    <Card className={styles.modal}>
-      <h3>Comparison Modal Here based on condition</h3>
-      <Button type="button" onClick={() => onClick(false)}>
-        X
-      </Button>
-    </Card>
+    <>
+      <div className={styles.backdrop} onClick={() => setOpenModal(false)} />, document.getElementById('backdrop')}/>
+      <Card className={styles.modal}>
+        <h3>Comparison Modal Here based on condition</h3>
+        <Button type="button" onClick={() => onClick(false)}>
+          X
+        </Button>
+      </Card>
+    </>
   );
 }
 
