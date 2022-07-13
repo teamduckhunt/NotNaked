@@ -1,4 +1,5 @@
 import React from 'react';
+import { useProductStylesQuery } from '../../../services/products.js';
 // import '../Overview.module.css'; //
 
 export default function ImageGallery() {

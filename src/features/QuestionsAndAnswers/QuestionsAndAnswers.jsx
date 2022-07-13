@@ -2,12 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import QuestionList from './QuestionsList/QuestionsList.jsx';
+import styles from './QuestionsAndAnswers.module.css';
 
 export default function QuestionsAndAnswers({ currentViewItemId }) {
   return (
-    <p>
+    <div className={styles.qa} id="QA">
+      <h5 className={styles.notbold}>
+        QUESTIONS & ANSWERS
+      </h5>
       <QuestionList currentViewItemId={currentViewItemId} />
-    </p>
+    </div>
   );
 }
 

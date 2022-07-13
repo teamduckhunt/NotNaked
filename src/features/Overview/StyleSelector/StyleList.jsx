@@ -3,15 +3,32 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
-import StyleCard from './StyleCard';
+import StyleCard from './StyleCard.jsx';
 import { useProductStylesQuery } from '../../../services/products.js';
 
-function StyleList({ styles, updateStyles }) {
-  return (
-    <div>
-      <StyleCard styles={styles} updateStyles={updateStyles} />
-    </div>
-  );
+function StyleList({ currentViewItemId }) { // { styles, updateStyles }
+  const { data, error, isLoading } = useProductStylesQuery(currentViewItemId);
+
+  if (error) {
+    console.log(error);
+    return <div>There is an error!</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (data) {
+    console.log(data);
+    return (
+      <div>
+        {data.results.map((style) => (
+          <StyleCard style={style} />
+        ))}
+        {/* styles={styles} updateStyles={updateStyles} */}
+      </div>
+    );
+  }
 }
 
 // disabled prop types for whole file
