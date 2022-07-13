@@ -18,6 +18,9 @@ export default function AnswerCard({ a }) {
   const [addHelpful] = useAddAnswerHelpfulMutation();
   const [reportAnswer] = useReportAnswerMutation();
 
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const date = new Date(a.date).toLocaleDateString([], dateOptions);
+
   return (
     <>
       <div id="answer">
@@ -28,7 +31,7 @@ export default function AnswerCard({ a }) {
       </div>
       <div className={styles.info} id="info">
         <p>
-          by {a.answerer_name}
+          by {a.answerer_name}, {date}
         </p>
         <p className={styles.details}>
           Helpful?&nbsp;&nbsp;
