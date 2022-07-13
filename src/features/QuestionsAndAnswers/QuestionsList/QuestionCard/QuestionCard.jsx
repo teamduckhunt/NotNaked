@@ -25,18 +25,22 @@ export default function QuestionCard({ q }) {
 
   if (data) {
     return (
-      <div id="question">
-        <p>
-          <strong>
-            Q: {q.question_body}
-          </strong>
-        </p>
-        <p>Helpful? Yes ({q.question_helpfulness})</p>
-        <p>Add Answer</p>
-        <ol>
-          {data.results.map((a) => <AnswerCard key={a.answer_id} a={a} />)}
-        </ol>
-      </div>
+      <>
+        <div className={styles.question} id="question">
+          <p>
+            <strong>
+              Q: {q.question_body}
+            </strong>
+          </p>
+          <p className={styles.helpful}>
+            Helpful?&nbsp; <u>Yes</u> ({q.question_helpfulness})
+          </p>
+          <p className={styles.add}>
+            <u>Add Answer</u>
+          </p>
+        </div>
+        {data.results.map((a) => <AnswerCard key={a.answer_id} a={a} />)}
+      </>
     );
   }
 }
