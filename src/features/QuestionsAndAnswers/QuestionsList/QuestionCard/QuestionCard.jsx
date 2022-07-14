@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
@@ -7,7 +8,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-one-expression-per-line */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import {
@@ -16,11 +17,15 @@ import {
 } from '../../../../services/questions';
 import AnswerCard from './AnswerCard.jsx';
 import styles from './QuestionCard.module.css';
+import Button from '../../../UI/Button.jsx';
 
 export default function QuestionCard({ q }) {
   const { data, error, isLoading } = useAnswerListQuery(q.question_id);
   const [addHelpful] = useAddQuestionHelpfulMutation();
   const [reportQuestion] = useReportQuestionMutation();
+
+  const [numberOfAnswers, setNumberOfAnswers] = useState(2);
+  const [disableMoreAnswersButton, setDisableMoreAnswersButton] = useState(false);
 
   if (error) {
     return <>Oh no, there was an error</>;
@@ -31,6 +36,7 @@ export default function QuestionCard({ q }) {
   }
 
   if (data) {
+    const answers = data.results;
     return (
       <>
         <div className={styles.question} id="question">
@@ -50,9 +56,32 @@ export default function QuestionCard({ q }) {
         </div>
         <div id="answer">
           <p>
-            <strong>A: </strong>
-            {data.results.map((a) => <AnswerCard key={a.answer_id} a={a} />)}
+            {answers.length === 0
+            && <strong>This question has no answers :(</strong>}
+            {answers.length > 0
+            && <strong>A: </strong>}
+            {answers.slice(0, numberOfAnswers).map((a) => <AnswerCard key={a.answer_id} a={a} />)}
           </p>
+          {numberOfAnswers < answers.length
+        && (
+          <Button
+            onClick={() => {
+              setNumberOfAnswers(numberOfAnswers + 2);
+            }}
+          >
+            LOAD MORE ANSWERS
+          </Button>
+        )}
+          {(numberOfAnswers > answers.length && answers.length >= 2)
+        && (
+          <Button
+            onClick={() => {
+              setNumberOfAnswers(2);
+            }}
+          >
+            COLLAPSE ANSWERS
+          </Button>
+        )}
         </div>
       </>
     );
