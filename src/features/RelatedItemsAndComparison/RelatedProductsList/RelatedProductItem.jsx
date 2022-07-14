@@ -36,7 +36,6 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
     return <>Loading...</>;
   }
 
-  
   return (
     <>
       {toggleModal && (

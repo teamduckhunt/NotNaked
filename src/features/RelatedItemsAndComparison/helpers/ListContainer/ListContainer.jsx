@@ -2,11 +2,22 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 // import PropTypes from 'prop-types';
+import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import styles from './ListContainer.module.css';
 
 // TODO: this wrapper should also provide carousel functionality
 export default function ListContainer({ children }) {
-  return <div className={styles.listContainer}>{children}</div>;
+  return (
+    <div className={styles.listContainer}>
+      <div className={styles.track}>{children}</div>
+      <button type="button" className={`${styles.btn} ${styles.prev}`}>
+        <AiFillCaretLeft />
+      </button>
+      <button type="button" className={`${styles.btn} ${styles.next}`}>
+        <AiFillCaretRight />
+      </button>
+    </div>
+  );
 }
 
 // ListContainer.propTypes = {
