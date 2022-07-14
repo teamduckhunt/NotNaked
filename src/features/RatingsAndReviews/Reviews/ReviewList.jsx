@@ -28,7 +28,7 @@ export default function ReviewList({ currentViewItemId }) {
   const handleModalToggle = () => {
     setToggleModal(!toggleModal);
   };
-  console.log('this data', productData);
+  console.log('this data', data);
 
   return (
     <>
@@ -58,7 +58,12 @@ export default function ReviewList({ currentViewItemId }) {
       >
         More Reviews
       </Button>
-      {toggleModal && <AddReviewModal handleModalToggle={handleModalToggle} />}
+      {toggleModal && (
+        <AddReviewModal
+          handleModalToggle={handleModalToggle}
+          productName={productData.name}
+        />
+      )}
       <Button onClick={() => {
         setToggleModal(!toggleModal);
       }}
