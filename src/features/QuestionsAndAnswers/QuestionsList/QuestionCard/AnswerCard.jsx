@@ -24,6 +24,9 @@ export default function AnswerCard({ a }) {
   return (
     <>
       {a.body}
+      <br></br>
+      {a.photos.length > 0
+        && a.photos.map((photo) => <img src={photo} alt={a.answerer_name} />)}
       <div className={styles.info} id="info">
         <p>
           by {a.answerer_name.toLowerCase() === 'seller' && <strong>{a.answerer_name}</strong>}
