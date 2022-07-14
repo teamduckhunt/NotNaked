@@ -34,7 +34,7 @@ export default StarRating;
 
 
 
-
+// USE REACT ICONS
 
 
 

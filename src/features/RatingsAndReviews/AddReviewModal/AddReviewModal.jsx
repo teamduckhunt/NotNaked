@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable import/extensions */
 /* eslint-disable jsx-quotes */
 /* eslint-disable no-else-return */
 /* eslint-disable no-unused-vars */
@@ -11,6 +13,7 @@ import Modal from '../../UI/Modal.jsx';
 import { useAddAReviewMutation } from '../../../services/reviews.js';
 import styles from './AddReviewModal.module.css';
 import StarRating from './StarRating.jsx';
+import CharacteristicsTable from './CharacteristicsTable.jsx';
 
 export default class AddReviewModal extends React.Component {
   constructor(props) {
@@ -44,7 +47,9 @@ export default class AddReviewModal extends React.Component {
 
   render() {
     const { handleModalToggle, productName } = this.props;
-    const { recommend } = this.state;
+    const {
+      body, date, photos, rating, recommend, reviewer_name, summary,
+    } = this.state;
 
     return (
       <Modal>
@@ -84,6 +89,7 @@ export default class AddReviewModal extends React.Component {
               No
             </label>
           </div>
+          <CharacteristicsTable />
           <Button type="submit">
             Submit
           </Button>
