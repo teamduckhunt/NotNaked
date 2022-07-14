@@ -33,6 +33,8 @@ export default class AddReviewModal extends React.Component {
     };
     this.handleRecommendOptionChange = this.handleRecommendOptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBodyChange = this.handleBodyChange.bind(this);
+    this.handleSummaryChange = this.handleSummaryChange.bind(this);
   }
 
   handleSubmit(e) {
@@ -43,6 +45,14 @@ export default class AddReviewModal extends React.Component {
   handleRecommendOptionChange(e) {
     const recommendOption = e.currentTarget.value === 'true';
     this.setState({ recommend: recommendOption });
+  }
+
+  handleSummaryChange(e) {
+    this.setState({ summary: e.target.value });
+  }
+
+  handleBodyChange(e) {
+    this.setState({ body: e.target.value });
   }
 
   render() {
@@ -90,6 +100,13 @@ export default class AddReviewModal extends React.Component {
             </label>
           </div>
           <CharacteristicsTable />
+          <div>
+            <input type='text' value={summary} onChange={(e) => this.handleSummaryChange(e)} />
+          </div>
+          <div>
+            <input type='text' value={body} onChange={(e) => this.handleBodyChange(e)} />
+            Add a counter
+          </div>
           <Button type="submit">
             Submit
           </Button>

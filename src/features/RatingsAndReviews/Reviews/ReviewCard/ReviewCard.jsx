@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../UI/Button.jsx';
 import { useGetAllReviewsByProductIdQuery, useAddHelpfulCountMutation, useReportReviewMutation } from '../../../../services/reviews.js';
+import styles from './ReviewCard.module.css';
 
 export default function ReviewCard({ review }) {
   // const dispatch = useDispatch();
@@ -53,7 +54,7 @@ export default function ReviewCard({ review }) {
         {`${review.reviewer_name}, ${new Date(review.date).toLocaleDateString([], dateOptions)}`}
       </div>
       <div>
-        <p>{review.summary}</p>
+        <p className={styles.boldText}>{review.summary}</p>
         <div>
           {determineBodyLength()}
         </div>
