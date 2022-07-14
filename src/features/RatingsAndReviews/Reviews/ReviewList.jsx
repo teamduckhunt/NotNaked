@@ -6,12 +6,16 @@ import PropTypes from 'prop-types';
 import ReviewCard from './ReviewCard/ReviewCard.jsx';
 import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
+import AddReviewModal from '../AddReviewModal/AddReviewModal.jsx';
+import { useProductInformationByIdQuery } from '../../../services/products.js';
 
 export default function ReviewList({ currentViewItemId }) {
   const { data, error, isLoading } = useGetAllReviewsByProductIdQuery(currentViewItemId);
+  const { data: productData, isLoading: productLoading } = useProductInformationByIdQuery(currentViewItemId);
 
   const [numberOfReviews, setNumberOfReviews] = useState(2);
   const [disableMoreReviewsButton, setDisableMoreReviewsButton] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
 
   // check if there are no more reviews
   const reviewListLengthCheck = () => {
@@ -20,12 +24,18 @@ export default function ReviewList({ currentViewItemId }) {
     }
   };
 
+  // toggle modal popup
+  const handleModalToggle = () => {
+    setToggleModal(!toggleModal);
+  };
+  console.log('this data', productData);
+
   return (
-    <div>
+    <>
       <div>
         {error ? (
           <>Oh no, there was an error!!</>
-        ) : isLoading ? (
+        ) : isLoading || productLoading ? (
           <>Loading ...</>
         ) : data ? (
           <>
@@ -48,10 +58,14 @@ export default function ReviewList({ currentViewItemId }) {
       >
         More Reviews
       </Button>
-      <Button>
+      {toggleModal && <AddReviewModal handleModalToggle={handleModalToggle} />}
+      <Button onClick={() => {
+        setToggleModal(!toggleModal);
+      }}
+      >
         Add a Review
       </Button>
-    </div>
+    </>
   );
 }
 
@@ -60,3 +74,4 @@ ReviewList.propTypes = {
 };
 
 // more reviews button, should dissapear once all reviews are loaded.
+// if there are less than 2 reviews, the more reviews button should not render
