@@ -39,7 +39,6 @@ export default function ReviewCard({ review }) {
       </div>
     );
   };
-  console.log(review);
   return (
     <>
       {/* ***** Duck rating here */}

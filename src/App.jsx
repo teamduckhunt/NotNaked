@@ -9,9 +9,9 @@ import {
   useParams,
 } from 'react-router-dom';
 import Overview from './features/Overview/Overview.jsx';
-// import RatingsAndReviews from './features/RatingsAndReviews/RatingsAndReviews.jsx';
-// import QuestionsAndAnswers from './features/QuestionsAndAnswers/QuestionsAndAnswers.jsx';
-// import RelatedItemsAndComparison from './features/RelatedItemsAndComparison/RelatedItemsAndComparison.jsx';
+import RatingsAndReviews from './features/RatingsAndReviews/RatingsAndReviews.jsx';
+import QuestionsAndAnswers from './features/QuestionsAndAnswers/QuestionsAndAnswers.jsx';
+import RelatedItemsAndComparison from './features/RelatedItemsAndComparison/RelatedItemsAndComparison.jsx';
 import styles from './App.module.css';
 
 function ProductDetailPage() {
@@ -32,7 +32,7 @@ export default function App() {
         <Route path="/" exact>
           <Redirect to="/product/40344" />
         </Route>
-        <Route path="/product/:productId" exact>
+        <Route path="/product/:productId">
           <ProductDetailPage />
         </Route>
       </Switch>

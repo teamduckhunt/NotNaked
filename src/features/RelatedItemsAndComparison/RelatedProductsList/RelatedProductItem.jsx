@@ -17,12 +17,12 @@ import ComparisonModal from '../ComparisonModal/ComparisonModal.jsx';
 import { useGetReviewMetadataQuery } from '../../../services/reviews';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating';
 
-export default function RelatedProductItem({ productId }) {
+export default function RelatedProductItem({ productId, currentViewItemId }) {
   const [toggleModal, setToggleModal] = useState(false);
   const { data, error, isLoading } = useProductInformationByIdQuery(productId);
-  const {data: metaData, isLoading: metaLoading} = useGetReviewMetadataQuery(productId);
+  const { data: metaData, isLoading: metaLoading } = useGetReviewMetadataQuery(productId);
   const { data: styles, isLoading: stylesLoading } = useProductStylesQuery(productId);
-  const image = styles?.results[0].photos[0].thumbnail_url || 'https://picsum.photos/200';
+  const image = styles ? styles.results[0].photos[0].thumbnail_url : 'https://picsum.photos/200';
 
   const handleModalToggle = () => {
     setToggleModal(!toggleModal);
@@ -36,18 +36,22 @@ export default function RelatedProductItem({ productId }) {
     return <>Loading...</>;
   }
 
-  console.log(metaData);
-  const averageRating = getAverageRating(metaData);
-
+  
   return (
     <>
-      {toggleModal && <ComparisonModal handleModalToggle={handleModalToggle} />}
+      {toggleModal && (
+        <ComparisonModal
+          handleModalToggle={handleModalToggle}
+          currentViewItemId={currentViewItemId}
+          relatedItemId={productId}
+        />
+      )}
       <ListItemCard
         product={data}
-        averageRating={averageRating}
+        averageRating={getAverageRating(metaData)}
         productId={productId}
         productImage={image}
-        actionButtonIcon="⭐️"
+        actionButtonIcon='⭐️'
         handleOnClick={handleModalToggle}
       />
     </>
@@ -56,4 +60,5 @@ export default function RelatedProductItem({ productId }) {
 
 RelatedProductItem.propTypes = {
   productId: PropTypes.number.isRequired,
+  currentViewItemId: PropTypes.number.isRequired,
 };

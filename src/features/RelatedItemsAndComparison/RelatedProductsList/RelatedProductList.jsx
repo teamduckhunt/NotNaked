@@ -21,7 +21,13 @@ export default function RelatedProductList({ currentViewItemId }) {
       <>
         <p>My Related Products</p>
         <ListContainer>
-          {data.map((productId) => <RelatedProductItem key={productId} productId={productId} />)}
+          {data.map((productId) => (
+            <RelatedProductItem
+              key={productId}
+              productId={productId}
+              currentViewItemId={currentViewItemId}
+            />
+          ))}
         </ListContainer>
       </>
     );
