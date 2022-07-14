@@ -37,6 +37,7 @@ export default function QuestionsList({ currentViewItemId }) {
       <div className={styles.list} id="list">
         {questions.slice(0, numberOfQuestions)
           .map((q) => <QuestionCard key={q.question_id} q={q} />)}
+        <br></br>
         {!disableMoreQuestionsButton
         && (
           <Button
