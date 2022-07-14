@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-quotes */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -80,7 +81,11 @@ function CharacteristicsTable() {
       </table>
 
     </div>
-  )
+  );
 }
 
 export default CharacteristicsTable;
+
+
+// characteristics	object
+// Object of keys representing characteristic_id and values representing the review value for that characteristic. { "14": 5, "15": 5 //...}

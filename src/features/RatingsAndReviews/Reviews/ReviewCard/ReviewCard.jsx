@@ -21,8 +21,8 @@ export default function ReviewCard({ review }) {
   const image = 'https://picsum.photos/200';
 
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-
   const { bodyContent } = review.body.length;
+
   const determineBodyLength = () => {
     if (showBody <= 250) {
       return (
@@ -45,7 +45,7 @@ export default function ReviewCard({ review }) {
       </div>
     );
   };
-  // console.log(review);
+
   return (
     <>
       {/* ***** Duck rating here */}

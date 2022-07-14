@@ -20,16 +20,18 @@ export default class AddReviewModal extends React.Component {
     super(props);
 
     this.state = {
+      rating: 0,
+      summary: '',
       body: '',
+      recommend: false,
+      name: '',
+      email: '',
+      photos: [],
+      characteristics: {},
       date: '',
       helpfulness: 0,
-      photos: [],
-      rating: 0,
-      recommend: false,
       response: null,
       // review_id ??
-      reviewer_name: '',
-      summary: '',
     };
     this.handleRecommendOptionChange = this.handleRecommendOptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
