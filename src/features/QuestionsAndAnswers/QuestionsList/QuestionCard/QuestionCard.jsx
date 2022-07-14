@@ -18,6 +18,7 @@ import {
 import AnswerCard from './AnswerCard.jsx';
 import styles from './QuestionCard.module.css';
 import Button from '../../../UI/Button.jsx';
+import AddAnswer from '../../QAModals/AddAnswer.jsx';
 
 export default function QuestionCard({ q }) {
   const { data, error, isLoading } = useAnswerListQuery(q.question_id);
@@ -26,6 +27,11 @@ export default function QuestionCard({ q }) {
 
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
   const [disableMoreAnswersButton, setDisableMoreAnswersButton] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
+
+  const handleModalToggle = () => {
+    setToggleModal(!toggleModal);
+  };
 
   if (error) {
     return <>Oh no, there was an error</>;
@@ -39,6 +45,12 @@ export default function QuestionCard({ q }) {
     const answers = data.results;
     return (
       <>
+        {toggleModal && (
+          <AddAnswer
+            handleModalToggle={handleModalToggle}
+            questionId={q.question_id}
+          />
+        )}
         <div className={styles.question} id="question">
           <p>
             <strong>
@@ -51,7 +63,7 @@ export default function QuestionCard({ q }) {
             &nbsp;({q.question_helpfulness})
           </p>
           <p className={styles.add}>
-            <u>Add Answer</u>
+            <u onClick={() => handleModalToggle()}>Add Answer</u>
           </p>
         </div>
         <div id="answer">
