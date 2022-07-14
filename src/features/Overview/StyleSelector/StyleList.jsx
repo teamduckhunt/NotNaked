@@ -1,51 +1,65 @@
 /* eslint-disable import/extensions */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import { setCurrentStyle } from './styleSlice.js';
 import StyleCard from './StyleCard.jsx';
 import { useProductStylesQuery } from '../../../services/products.js';
+import styles from './StyleSelector.module.css';
+import { API_KEY } from '../../../config/config.js';
 
-function StyleList({ currentViewItemId }) { // { styles, updateStyles }
-  const { data, error, isLoading } = useProductStylesQuery(currentViewItemId);
+export default function StyleList({ currentViewItemId }) { // { styles, updateStyles }
+  // const { data, error, isLoading } = useProductStylesQuery(currentViewItemId);
+  const [style, setStyle] = useState({});
+  const [curStyle, setcurStyle] = useState({});
+  const selectedStyle = useSelector((state) => state.productStyles.selectedStyle);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    axios(
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentViewItemId}/styles`,
+      { headers: { Authorization: `${API_KEY}` } },
+    )
+      .then((res) => {
+        // console.log(res.data.results[0]);
+        setStyle(res.data);
+        setcurStyle(res.data.results[0]);
+        dispatch(setCurrentStyle(res.data));
+      })
+      .catch((err) => console.error(err.message));
+  }, []);
 
-  if (error) {
-    console.log(error);
-    return <div>There is an error!</div>;
-  }
+  // if (error) {
+  //   console.log(error);
+  //   return <div>There is an error!</div>;
+  // }
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+  // console.log('styles data: ', data);
 
-  if (data) {
-    console.log(data);
-    return (
+  // const styleWasClicked = function (event, style) {
+  //   currentStyle = style;
+  // };
+
+  return (
+    <div>
       <div>
-        {data.results.map((style) => (
-          <StyleCard style={style} />
-        ))}
-        {/* styles={styles} updateStyles={updateStyles} */}
+        STYLE:
+        {selectedStyle.name}
       </div>
-    );
-  }
+      {/* {style.results && style.results.map((sty) => {
+        <StyleCard key={sty} style={sty} handleStyleChange={setCurrentStyle} />;
+      })} */}
+      {style.results && style.results.map((sty) => {
+        <StyleCard key={sty} style={sty} />;
+      })}
+      {/* <div className={styles.styleButtons} /> */}
+    </div>
+  );
 }
 
 // disabled prop types for whole file
 // prop types just throw an error if wrong data is passed into the prop. literally just defining a type for the prop
-
-// subscribing
-const StyleListContainer = connect(
-  // takes in state, outputs a copy with only one slice of what we need (styles)
-  (state) => ({
-    styles: state.productStyles,
-  }),
-  (dispatch) => ({
-    updateStyles: (styles) => (
-      dispatch({ type: 'setStyles', payload: styles })
-    ),
-  }),
-)(StyleList); // connect returns a function which we have to call with the component
-
-export default StyleListContainer;
-// no longer need to export component, the container takes its place

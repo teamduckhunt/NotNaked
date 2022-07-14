@@ -19,7 +19,7 @@ export default function ProductInfo({ currentViewItemId }) {
   }
 
   if (product) {
-    console.log(product);
+    console.log('product data: ', product);
     return (
       <div>
         <p>Reviews</p>
