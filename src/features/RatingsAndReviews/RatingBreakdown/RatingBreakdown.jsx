@@ -56,7 +56,6 @@ export default function RatingBreakdown({ productId, reviewCount }) {
 
   if (data || reviewData) {
     const avgRating = getAverageRating(data);
-    // console.log('reviewData', reviewData);
     const numOfReviews = reviewData.results.length;
     const recommendedPercentage = () => {
       const totalReviews = reviewData.results.length;
@@ -70,7 +69,11 @@ export default function RatingBreakdown({ productId, reviewCount }) {
       ).filter((item) => item !== undefined);
       return ((totalRecommended.length / totalReviews) * 100).toFixed();
     };
-    console.log('metadata', data);
+    const fiveStarReviewPercentage = (data.ratings[5] / reviewCount) * 100;
+    const fourStarReviewsPercentage = (data.ratings[4] / reviewCount) * 100;
+    const threeStarReviewsPercentage = (data.ratings[3] / reviewCount) * 100;
+    const twoStarReviewsPercentage = (data.ratings[2] / reviewCount) * 100;
+    const oneStarReviewsPercentage = (data.ratings[1] / reviewCount) * 100;
 
     return (
       <div>
@@ -93,7 +96,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
           >
             5 Star
           </Button>
-          <RatingBarFeature productId={productId} />
+          <RatingBarFeature fillerPercentage={fiveStarReviewPercentage} />
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -102,6 +105,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
           >
             4 Star
           </Button>
+          <RatingBarFeature fillerPercentage={fourStarReviewsPercentage} />
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -110,6 +114,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
           >
             3 Star
           </Button>
+          <RatingBarFeature fillerPercentage={threeStarReviewsPercentage} />
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -118,6 +123,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
           >
             2 Star
           </Button>
+          <RatingBarFeature fillerPercentage={twoStarReviewsPercentage} />
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -126,6 +132,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
           >
             1 Star
           </Button>
+          <RatingBarFeature fillerPercentage={oneStarReviewsPercentage} />
         </div>
         <div>
           {resetButton
