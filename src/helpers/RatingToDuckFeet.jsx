@@ -7,7 +7,6 @@ import EmptyDuck from '../../assets/duckFeet-rating/empty.svg';
 import styles from './RatingToDuckFeet.module.css';
 
 export default function RatingToDuckFeet({ rating }) {
-  console.log(rating);
   const FULL = <img className={styles.feet} src={FullDuck} alt="full duck" />;
   const THIRD = <img className={styles.feet} src={ThirdFull} alt="full duck" />;
   const HALF = <img className={styles.feet} src={HalfFull} alt="full duck" />;

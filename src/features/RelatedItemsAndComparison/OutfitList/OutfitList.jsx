@@ -11,17 +11,20 @@ import OutfitListItem from './OutfitListItem.jsx';
 import styles from './OutfitList.module.css';
 
 export default function OutfitList({ currentViewItemId }) {
+  const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(true);
+  const userOutfitList = useAppSelector((state) => state.outfitList.outfitList);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     // if currentviewItemId is in the list already, button should not be visible
     // else button should be visible
+    if (userOutfitList.indexOf(currentViewItemId) === -1) {
+      setIsCurrentItemAdded(false);
+    }
   });
-  const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(false);
-  const userOutfitList = useAppSelector((state) => state.outfitList.outfitList);
-  const dispatch = useAppDispatch();
-
   const handleAddOutfit = (e) => {
-    setIsCurrentItemAdded(true);
-    dispatch(addOutfit(currentViewItemId));
+    //check here to make sure that there is no duplicate in the userOutfitList
+      setIsCurrentItemAdded(true);
+      dispatch(addOutfit(currentViewItemId));
   };
 
   const handleDeleteOutfit = (productId) => {
@@ -31,6 +34,7 @@ export default function OutfitList({ currentViewItemId }) {
     dispatch(deleteOutfit(productId));
   };
 
+  console.log(userOutfitList && userOutfitList);
   return (
     <div>
       <h3>Outfit List</h3>
