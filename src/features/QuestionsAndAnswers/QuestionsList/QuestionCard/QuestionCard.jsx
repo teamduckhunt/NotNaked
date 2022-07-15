@@ -19,7 +19,7 @@ import { useProductInformationByIdQuery } from '../../../../services/products';
 import AnswerCard from './AnswerCard.jsx';
 import styles from './QuestionCard.module.css';
 import Button from '../../../UI/Button.jsx';
-import AddAnswer from '../../QAModals/AddQA.jsx';
+import AddQA from '../../QAModals/AddQA.jsx';
 
 export default function QuestionCard({ q, p }) {
   const { data, error, isLoading } = useAnswerListQuery(q.question_id);
@@ -48,9 +48,9 @@ export default function QuestionCard({ q, p }) {
     return (
       <>
         {toggleModal && (
-          <AddAnswer
+          <AddQA
             handleModalToggle={handleModalToggle}
-            questionId={q.question_id}
+            ID={q.question_id}
             questionBody={q.question_body}
             product={product.name}
           />

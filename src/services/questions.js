@@ -17,11 +17,16 @@ export const questionsApi = createApi({
       providesTags: ['Questions'],
     }),
     addQuestion: builder.mutation({
-      query: ({ productId }) => ({
+      query: ({
+        ID, body, name, email,
+      }) => ({
         url: '/questions',
         method: 'POST',
         body: {
-          productId,
+          body,
+          name,
+          email,
+          product_id: ID,
         },
       }),
       invalidatesTags: ['Questions'],
@@ -46,9 +51,9 @@ export const questionsApi = createApi({
     }),
     addAnswer: builder.mutation({
       query: ({
-        questionId, body, name, email,
+        ID, body, name, email,
       }) => ({
-        url: `/questions/${questionId}/answers`,
+        url: `/questions/${ID}/answers`,
         method: 'POST',
         body: {
           body,
