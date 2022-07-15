@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { useProductStylesQuery } from '../../../services/products.js';
 import styles from './ImageGallery.module.css';
-// import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 
 export default function ImageGallery({ currentViewItemId }) {
   const { data, error, isLoading } = useProductStylesQuery(currentViewItemId);
@@ -37,13 +37,13 @@ export default function ImageGallery({ currentViewItemId }) {
     return (
       <div className={styles.picDiv}>
         <div>
-          <button className={styles.leftArrow} onClick={prevSlide} type="button">{'<'}</button>
-          <button className={styles.rightArrow} onClick={nextSlide} type="button">{'>'}</button>
+          <FaChevronLeft className={styles.leftArrow} onClick={prevSlide} />
           {currentImage.map((photo, index) => (
             <div key={index}>
               {index === current && <img src={photo.thumbnail_url} />}
             </div>
           ))}
+          <FaChevronRight className={styles.rightArrow} onClick={nextSlide} />
         </div>
       </div>
     );

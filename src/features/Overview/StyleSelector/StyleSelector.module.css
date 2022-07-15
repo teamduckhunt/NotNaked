@@ -4,6 +4,7 @@
   border-radius: 50%;
 }
 
-/* .styleButtons {
-
-} */
+.styleButtonList {
+  grid: span 4;
+  display: flex;
+}
