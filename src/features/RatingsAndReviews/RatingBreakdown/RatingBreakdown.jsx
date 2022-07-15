@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 import React, { useState } from 'react';
@@ -7,10 +8,11 @@ import { useGetReviewMetadataQuery, useGetAllReviewsByProductIdQuery } from '../
 import Button from '../../UI/Button.jsx';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating.js';
 import { setFilterByStar } from './ratingBreakdownSlice.js';
+import RatingBarFeature from './RatingBarFeature/RatingBarFeature.jsx';
 
-export default function ReviewList({ productId }) {
+export default function RatingBreakdown({ productId, reviewCount }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
-  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery(productId);
+  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({ productId, reviewCount });
   const dispatch = useDispatch();
 
   const [starFilter, setStarFilter] = useState({
@@ -44,11 +46,6 @@ export default function ReviewList({ productId }) {
   // check if any star in starFilter is true.
   const resetButton = (Object.values(starFilter).includes(true));
 
-  // The percentage of reviews that ‘recommend’ the product will be displayed below the breakdown.
-  // take the total number of reviews.
-  // tally how many reviews recommedn this product
-  // return a result of recommended / total * 100
-
   if (error) {
     return <>Oh no, there was an error loading rating breakdown</>;
   }
@@ -59,6 +56,7 @@ export default function ReviewList({ productId }) {
 
   if (data || reviewData) {
     const avgRating = getAverageRating(data);
+    // console.log('reviewData', reviewData);
     const numOfReviews = reviewData.results.length;
     const recommendedPercentage = () => {
       const totalReviews = reviewData.results.length;
@@ -72,6 +70,7 @@ export default function ReviewList({ productId }) {
       ).filter((item) => item !== undefined);
       return ((totalRecommended.length / totalReviews) * 100).toFixed();
     };
+    console.log('metadata', data);
 
     return (
       <div>
@@ -94,6 +93,7 @@ export default function ReviewList({ productId }) {
           >
             5 Star
           </Button>
+          <RatingBarFeature productId={productId} />
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -149,10 +149,13 @@ export default function ReviewList({ productId }) {
   }
 }
 
-ReviewList.propTypes = {
+RatingBreakdown.propTypes = {
   productId: PropTypes.number.isRequired,
+  reviewCount: PropTypes.number.isRequired,
 };
 
 // Strategy Notes :
 
 // add a bar count feature to each star button.
+
+// add message for the filters that have been currently applied.

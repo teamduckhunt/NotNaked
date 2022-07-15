@@ -1,0 +1,15 @@
+.rating_bar {
+  position: relative;
+  height: 20px;
+  width: 350px;
+  border-radius: 50px;
+  border: 1px solid #495057;
+
+}
+
+.filler{
+  background: #f1f3f5;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+}
