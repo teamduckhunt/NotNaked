@@ -19,8 +19,8 @@ function ProductDetailPage() {
   return (
     <div id="app" className={styles.app}>
       <Overview currentViewItemId={+productId} />
-      <QuestionsAndAnswers currentViewItemId={+productId} />
       <RelatedItemsAndComparison currentViewItemId={+productId} />
+      <QuestionsAndAnswers currentViewItemId={+productId} />
       <RatingsAndReviews currentViewItemId={+productId} />
     </div>
   );
