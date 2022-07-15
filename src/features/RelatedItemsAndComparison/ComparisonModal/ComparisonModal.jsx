@@ -52,9 +52,11 @@ export default function ComparisonModal({ handleModalToggle, currentViewItemId, 
           />
         ))}
       </div>
-      <Button type='button' onClick={() => handleModalToggle()}>
-        X
-      </Button>
+      <div className={styles.btn_ctn}>
+        <Button type="button" className={styles.btn} onClick={() => handleModalToggle()}>
+          Close
+        </Button>
+      </div>
     </Modal>
   );
 }

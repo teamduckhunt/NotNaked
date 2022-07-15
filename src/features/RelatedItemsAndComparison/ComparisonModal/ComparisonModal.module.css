@@ -1,9 +1,10 @@
 .modal {
-  padding: 12px;
+  padding: 24px;
 }
 .modalTitle {
   color: rgba(0,0,0,0.5);
   font-size:12px;
+  margin: 10px;
 }
 
 .products {
@@ -14,4 +15,10 @@
 
 .col {
   font-weight: bold;
+}
+
+.btn_ctn {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }
