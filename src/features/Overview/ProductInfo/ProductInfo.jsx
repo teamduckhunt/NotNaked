@@ -23,7 +23,6 @@ export default function ProductInfo({ currentViewItemId }) {
         <p>Reviews</p>
         <p>{product.category}</p>
         <h2>{product.name}</h2>
-        <p>Price</p>
       </div>
     );
   }
