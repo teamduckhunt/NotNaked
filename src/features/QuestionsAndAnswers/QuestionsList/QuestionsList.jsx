@@ -31,8 +31,11 @@ export default function QuestionsList({ currentViewItemId }) {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const questionLength = () => {
-    if (data && (numberOfQuestions >= data.results.length || data.results.length <= 2)) {
+    const temp = data?.results.filter((item) => item.question_body.includes(select)).length;
+    if (numberOfQuestions >= temp || temp <= 2) {
       setDisableMoreQuestionsButton(true);
+    } else {
+      setDisableMoreQuestionsButton(false);
     }
   };
 
