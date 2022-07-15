@@ -3,6 +3,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../services/products';
 import ListItemCard from '../helpers/ListItemCard/ListItemCard.jsx';
 import { useGetReviewMetadataQuery } from '../../../services/reviews';
@@ -28,9 +29,10 @@ export default function OutfitListItem({ productId, handleDeleteOutfit }) {
       productId={productId}
       averageRating={getAverageRating(metaData)}
       productImage={image}
-      actionButtonIcon="❌"
       handleOnClick={handleDeleteOutfit}
-    />
+    >
+      <AiFillCloseCircle />
+    </ListItemCard>
   );
 }
 

@@ -11,6 +11,7 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
+import { AiFillStar } from 'react-icons/ai';
 import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../services/products';
 import ListItemCard from '../helpers/ListItemCard/ListItemCard.jsx';
 import ComparisonModal from '../ComparisonModal/ComparisonModal.jsx';
@@ -22,7 +23,7 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
   const { data, error, isLoading } = useProductInformationByIdQuery(productId);
   const { data: metaData, isLoading: metaLoading } = useGetReviewMetadataQuery(productId);
   const { data: styles, isLoading: stylesLoading } = useProductStylesQuery(productId);
-  const image = styles ? styles.results[0].photos[0].thumbnail_url : 'https://picsum.photos/200';
+  const image = styles && (styles.results[0].photos[0].thumbnail_url || 'https://picsum.photos/200');
 
   const handleModalToggle = () => {
     setToggleModal(!toggleModal);
@@ -50,9 +51,10 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
         averageRating={getAverageRating(metaData)}
         productId={productId}
         productImage={image}
-        actionButtonIcon='⭐️'
         handleOnClick={handleModalToggle}
-      />
+      >
+        <AiFillStar />
+      </ListItemCard>
     </>
   );
 }

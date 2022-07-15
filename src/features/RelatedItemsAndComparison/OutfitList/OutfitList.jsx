@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { IoIosAddCircleOutline } from 'react-icons/io';
 import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { addOutfit, deleteOutfit } from './outfitListSlice.jsx';
@@ -18,7 +19,7 @@ export default function OutfitList({ currentViewItemId }) {
   const userOutfitList = useAppSelector((state) => state.outfitList.outfitList);
   const dispatch = useAppDispatch();
 
-  const handleAddOutfit = () => {
+  const handleAddOutfit = (e) => {
     setIsCurrentItemAdded(true);
     dispatch(addOutfit(currentViewItemId));
   };
@@ -35,10 +36,12 @@ export default function OutfitList({ currentViewItemId }) {
       <p>My Outfit List!!!</p>
       <ListContainer>
         {!isCurrentItemAdded && (
-          <Button onClick={() => handleAddOutfit()}>Add to List</Button>
+          <div className={styles.button_ctn} >
+            <IoIosAddCircleOutline value="action" className={styles.button} onClick={(e) => handleAddOutfit(e)} />
+          </div>
         )}
-        {userOutfitList
-          && userOutfitList.map((outfitId) => (
+        {userOutfitList &&
+          userOutfitList.map((outfitId) => (
             <OutfitListItem
               key={outfitId}
               productId={outfitId}

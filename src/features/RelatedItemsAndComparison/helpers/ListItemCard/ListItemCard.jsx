@@ -12,29 +12,36 @@ export default function ListItemCard({
   product,
   productId,
   productImage,
-  actionButtonIcon,
   handleOnClick,
   averageRating,
+  children,
 }) {
+  const handleProductClick = (e) => {
+    e.preventDefault();
+    if (e.currentTarget.id === 'product') {
+      handleOnClick();
+      e.stopPropagation();
+    }
+  };
+
   return (
     <div className={styles.product_card_ctn}>
-      <Card className={styles.product_card}>
-        <header className={styles.product_card_header}>
-          {/* <Link to={`/product/${productId}`}>
-            <img className={styles.product_img} src={productImage} alt={product.name} />
-          </Link> */}
-          <button
-            type="button"
-            className={styles.product_action_button}
-            onClick={() => handleOnClick()}
-          >
-            {actionButtonIcon}
-          </button>
-        </header>
+      <Card className={styles.product_card} style={{ backgroundImage: `url(${productImage})` }}>
+        <Link to={`/product/${productId}`}>
+          <header className={styles.product_card_header}>
+            <button
+              type="button"
+              id="product"
+              className={styles.product_action_button}
+              onClick={handleProductClick}
+            >
+              {children}
+            </button>
+          </header>
+        </Link>
         <footer className={styles.product_card_body}>
           <p>{product.category}</p>
           <p>{product.name}</p>
-          {/* TODO: default price needs to change with sales and also styles */}
           <p>${product.default_price}</p>
           <p>{averageRating.toFixed(2)}</p>
         </footer>
