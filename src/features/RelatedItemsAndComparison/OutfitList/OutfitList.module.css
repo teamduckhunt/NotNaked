@@ -1,0 +1,22 @@
+
+
+.button_ctn {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 228px;
+  height: 300px;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 0.5rem;
+}
+
+.button {
+  color:#d6336c;
+  width: 100px;
+  height: 100px;
+}
+
+.button:hover,.button:active {
+  cursor: pointer;
+}

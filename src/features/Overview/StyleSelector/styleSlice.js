@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+// just makes all reducers
 import { createSlice } from '@reduxjs/toolkit';
 import { useProductStylesQuery } from '../../../services/products.js';
 
