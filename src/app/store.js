@@ -18,11 +18,8 @@ const store = configureStore({
     [questionsApi.reducerPath]: questionsApi.reducer,
     questionsAndAnswers: questionsAndAnswersReducer,
     productStyles: productStylesReducer,
-<<<<<<< HEAD
     // productImages: productImagesReducer,
-=======
     ratingBreakdown: ratingBreakdownReducer,
->>>>>>> fff02246529d5044f472d90644cc3a20245ccf7a
     // creates these key value pairs in the state of the redux store
 
   },
