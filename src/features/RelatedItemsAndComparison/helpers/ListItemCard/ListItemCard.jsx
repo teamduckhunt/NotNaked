@@ -42,10 +42,10 @@ export default function ListItemCard({
           </header>
         </Link>
         <footer className={styles.product_card_body}>
-          <p>{product.category}</p>
-          <p>{product.name}</p>
-          <p>${product.default_price}</p>
-          <p>{averageRating.toFixed(2)}</p>
+          <p className={styles.category}>{product.category}</p>
+          <p className={styles.name}>{product.name}</p>
+          <p className={styles.price}>${product.default_price}</p>
+          {/* <p>{averageRating.toFixed(2)}</p> */}
           <RatingToDuckFeet rating={averageRating} />
         </footer>
       </Card>
