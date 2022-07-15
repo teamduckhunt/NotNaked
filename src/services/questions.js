@@ -7,7 +7,6 @@ export const questionsApi = createApi({
     baseUrl: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa',
     prepareHeaders(headers) {
       headers.set('Authorization', `${API_KEY}`);
-      // headers.set('Content-Type', 'application/json; charset=UTF-8');
       return headers;
     },
   }),
@@ -18,10 +17,12 @@ export const questionsApi = createApi({
       providesTags: ['Questions'],
     }),
     addQuestion: builder.mutation({
-      query: (productId, questionInfo) => ({
+      query: ({ productId }) => ({
         url: '/questions',
         method: 'POST',
-        body: questionInfo,
+        body: {
+          productId,
+        },
       }),
       invalidatesTags: ['Questions'],
     }),
@@ -44,10 +45,16 @@ export const questionsApi = createApi({
       providesTags: ['Answers'],
     }),
     addAnswer: builder.mutation({
-      query: (questionId, answerInfo) => ({
+      query: ({
+        questionId, body, name, email,
+      }) => ({
         url: `/questions/${questionId}/answers`,
         method: 'POST',
-        data: answerInfo,
+        body: {
+          body,
+          name,
+          email,
+        },
       }),
       invalidatesTags: ['Answers'],
     }),

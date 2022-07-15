@@ -15,13 +15,15 @@ import {
   useAnswerListQuery, useAddAnswerMutation,
   useAddQuestionHelpfulMutation, useReportQuestionMutation,
 } from '../../../../services/questions';
+import { useProductInformationByIdQuery } from '../../../../services/products';
 import AnswerCard from './AnswerCard.jsx';
 import styles from './QuestionCard.module.css';
 import Button from '../../../UI/Button.jsx';
 import AddAnswer from '../../QAModals/AddAnswer.jsx';
 
-export default function QuestionCard({ q }) {
+export default function QuestionCard({ q, p }) {
   const { data, error, isLoading } = useAnswerListQuery(q.question_id);
+  const { data: product } = useProductInformationByIdQuery(p);
   const [addHelpful] = useAddQuestionHelpfulMutation();
   const [reportQuestion] = useReportQuestionMutation();
 
@@ -49,6 +51,8 @@ export default function QuestionCard({ q }) {
           <AddAnswer
             handleModalToggle={handleModalToggle}
             questionId={q.question_id}
+            questionBody={q.question_body}
+            product={product.name}
           />
         )}
         <div className={styles.question} id="question">
