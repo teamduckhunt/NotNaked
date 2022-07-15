@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { useProductStylesQuery } from '../../../services/products.js';
 
 const initialState = {
   selectedStyle: {},
@@ -9,7 +10,7 @@ export const productStyleSlice = createSlice({
   initialState,
   reducers: {
     setCurrentStyle: (state, action) => {
-      state = action.payload;
+      state.selectedStyle = action.payload;
     },
   },
 });

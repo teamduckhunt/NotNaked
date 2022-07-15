@@ -17,6 +17,7 @@ const store = configureStore({
     [questionsApi.reducerPath]: questionsApi.reducer,
     questionsAndAnswers: questionsAndAnswersReducer,
     productStyles: productStylesReducer,
+    // productImages: productImagesReducer,
     // creates these key value pairs in the state of the redux store
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware()
