@@ -9,6 +9,7 @@ import Button from '../../UI/Button.jsx';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating.js';
 import { setFilterByStar } from './ratingBreakdownSlice.js';
 import RatingBarFeature from './RatingBarFeature/RatingBarFeature.jsx';
+import RatingToDuckFeet from '../../../helpers/RatingToDuckFeet.jsx';
 
 export default function RatingBreakdown({ productId, reviewCount }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
@@ -81,7 +82,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
         <div>
           {Math.round(avgRating * 10) / 10}
           <div>
-            ⭐️
+            <RatingToDuckFeet rating={avgRating} />
           </div>
           {numOfReviews}
           {' '}
@@ -167,7 +168,5 @@ RatingBreakdown.propTypes = {
 };
 
 // Strategy Notes :
-
-// add a bar count feature to each star button.
 
 // add message for the filters that have been currently applied.
