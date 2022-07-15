@@ -19,7 +19,7 @@ import { useProductInformationByIdQuery } from '../../../../services/products';
 import AnswerCard from './AnswerCard.jsx';
 import styles from './QuestionCard.module.css';
 import Button from '../../../UI/Button.jsx';
-import AddAnswer from '../../QAModals/AddAnswer.jsx';
+import AddAnswer from '../../QAModals/AddQA.jsx';
 
 export default function QuestionCard({ q, p }) {
   const { data, error, isLoading } = useAnswerListQuery(q.question_id);
@@ -107,4 +107,5 @@ export default function QuestionCard({ q, p }) {
 QuestionCard.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   q: PropTypes.object.isRequired,
+  p: PropTypes.number.isRequired,
 };
