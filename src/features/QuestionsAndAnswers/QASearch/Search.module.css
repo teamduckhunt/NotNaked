@@ -1,16 +1,17 @@
 .form {
+  display: flex;
   border: solid black;
   width: 650px;
   height: 50px;
+  align-items: center;
+  justify-content: center;
 }
 
 .input {
-  position: relative;
   background-color: transparent;
   border-color: transparent;
   outline: none;
   width: 580px;
-  bottom: 16px;
   font-size: large;
   padding-left: 10px;
 }
@@ -20,5 +21,5 @@
   border-color: transparent;
   width: 3rem;
   height: 3rem;
-  border-radius: 50%;
+  border-radius: 40%;
 }
