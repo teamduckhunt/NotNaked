@@ -15,33 +15,26 @@ export default function OutfitList({ currentViewItemId }) {
   const userOutfitList = useAppSelector((state) => state.outfitList.outfitList);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    // if currentviewItemId is in the list already, button should not be visible
-    // else button should be visible
     if (userOutfitList.indexOf(currentViewItemId) === -1) {
       setIsCurrentItemAdded(false);
     }
   });
-  const handleAddOutfit = (e) => {
-    //check here to make sure that there is no duplicate in the userOutfitList
-      setIsCurrentItemAdded(true);
-      dispatch(addOutfit(currentViewItemId));
+  const handleAddOutfit = () => {
+    setIsCurrentItemAdded(true);
+    dispatch(addOutfit(currentViewItemId));
   };
 
   const handleDeleteOutfit = (productId) => {
-    if (productId === currentViewItemId) {
-      setIsCurrentItemAdded(false);
-    }
-    dispatch(deleteOutfit(productId));
+    dispatch(deleteOutfit(userOutfitList.indexOf(productId)));
   };
 
-  console.log(userOutfitList && userOutfitList);
   return (
     <div>
       <h3>Outfit List</h3>
       <ListContainer>
         {!isCurrentItemAdded && (
           <div className={styles.button_ctn} >
-            <IoIosAddCircleOutline value="action" className={styles.button} onClick={(e) => handleAddOutfit(e)} />
+            <IoIosAddCircleOutline value="action" className={styles.button} onClick={() => handleAddOutfit()} />
           </div>
         )}
         {userOutfitList

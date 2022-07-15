@@ -13,7 +13,6 @@ export default function StyleCard({ style }) {
         type="button"
         onClick={() => {
           dispatch(setCurrentStyle(style));
-          console.log(curStyle);
         }}
       >
         <img
