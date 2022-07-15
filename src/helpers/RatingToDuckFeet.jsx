@@ -8,8 +8,8 @@ import EmptyDuck from '../../assets/duckFeet-rating/empty.svg';
 import styles from './RatingToDuckFeet.module.css';
 
 export default function RatingToDuckFeet({ rating }) {
-  const number = +rating.toFixed(0);
-  const floatNum = Math.round((number - rating) * 4);
+  const number = Math.trunc(rating);
+  const floatNum = Math.round((rating - number) * 4);
   const rest = 5 - Math.ceil(rating);
   console.log(number - rating);
 
@@ -45,7 +45,7 @@ export default function RatingToDuckFeet({ rating }) {
     <div className={styles.rating_ctn}>
       {Array(number).fill(FULL)}
       {float}
-      {number - rating === 0 && Array(rest).fill(EMPTY)}
+      {rating - number !== 0 && Array(rest).fill(EMPTY)}
     </div>
   );
 }
