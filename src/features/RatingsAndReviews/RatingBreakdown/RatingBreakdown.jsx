@@ -153,8 +153,6 @@ ReviewList.propTypes = {
   productId: PropTypes.number.isRequired,
 };
 
-// Strategy
+// Strategy Notes :
 
 // add a bar count feature to each star button.
-
-// add div, w/ percentage of reviews that recommend product.

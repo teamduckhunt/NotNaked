@@ -24,5 +24,3 @@ export const RatingBreakdownSlice = createSlice({
 
 export const { setFilterByStar } = RatingBreakdownSlice.actions;
 export default RatingBreakdownSlice.reducer;
-
-// create a new method to reset filterByStar to just an empty array.
