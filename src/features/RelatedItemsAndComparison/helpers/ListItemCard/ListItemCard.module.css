@@ -13,7 +13,8 @@
   height: 300px;
   display: flex;
   flex-direction: column;
-
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .product_card > * {
   flex: 1;
