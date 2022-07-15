@@ -1,22 +1,19 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  questions: [],
-  answers: [],
+  search: '',
 };
 
 export const questionsAndAnswersSlice = createSlice({
   name: 'questionsAndAnswers',
   initialState,
   reducers: {
-    addQuestion: (state, action) => {
-      state.questions.push(action.payload);
-    },
-    addAnswers: (state, action) => {
-      state.answers.push(action.payload);
+    setSearch: (state, action) => {
+      state.search = action.payload;
     },
   },
 });
 
-export const { addQuestionAndAnswers } = questionsAndAnswersSlice.actions;
+export const { setSearch } = questionsAndAnswersSlice.actions;
 export default questionsAndAnswersSlice.reducer;

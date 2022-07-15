@@ -1,6 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import QuestionCard from './QuestionCard/QuestionCard.jsx';
 import { useAllQuestionsQuery } from '../../../services/questions';
@@ -12,6 +13,12 @@ import AddQA from '../QAModals/AddQA.jsx';
 export default function QuestionsList({ currentViewItemId }) {
   const { data, error, isLoading } = useAllQuestionsQuery(currentViewItemId);
   const { data: product } = useProductInformationByIdQuery(currentViewItemId);
+
+  let select = useSelector((state) => state.questionsAndAnswers.search).toLowerCase();
+
+  if (select.length < 3) {
+    select = '';
+  }
 
   const [numberOfQuestions, setNumberOfQuestions] = useState(2);
   const [disableMoreQuestionsButton, setDisableMoreQuestionsButton] = useState(false);
@@ -42,7 +49,7 @@ export default function QuestionsList({ currentViewItemId }) {
   }
 
   if (data) {
-    const questions = data.results;
+    const questions = data.results.filter((item) => item.question_body.includes(select));
     return (
       <div className={styles.list} id="list">
         {toggleModal && (
