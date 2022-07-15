@@ -9,9 +9,9 @@ import {
   useParams,
 } from 'react-router-dom';
 import Overview from './features/Overview/Overview.jsx';
-// import RatingsAndReviews from './features/RatingsAndReviews/RatingsAndReviews.jsx';
-// import QuestionsAndAnswers from './features/QuestionsAndAnswers/QuestionsAndAnswers.jsx';
-// import RelatedItemsAndComparison from './features/RelatedItemsAndComparison/RelatedItemsAndComparison.jsx';
+import RatingsAndReviews from './features/RatingsAndReviews/RatingsAndReviews.jsx';
+import QuestionsAndAnswers from './features/QuestionsAndAnswers/QuestionsAndAnswers.jsx';
+import RelatedItemsAndComparison from './features/RelatedItemsAndComparison/RelatedItemsAndComparison.jsx';
 import styles from './App.module.css';
 
 function ProductDetailPage() {
@@ -19,9 +19,9 @@ function ProductDetailPage() {
   return (
     <div id="app" className={styles.app}>
       <Overview currentViewItemId={productId} />
-      {/* <QuestionsAndAnswers currentViewItemId={productId} /> */}
-      {/* <RelatedItemsAndComparison currentViewItemId={productId} /> */}
-      {/* <RatingsAndReviews currentViewItemId={40344} /> */}
+      <QuestionsAndAnswers currentViewItemId={productId} />
+      <RelatedItemsAndComparison currentViewItemId={productId} />
+      <RatingsAndReviews currentViewItemId={40344} />
     </div>
   );
 }
