@@ -46,6 +46,7 @@ export default function ListItemCard({
           <p>{product.name}</p>
           <p>${product.default_price}</p>
           <p>{averageRating.toFixed(2)}</p>
+          <RatingToDuckFeet rating={averageRating} />
         </footer>
       </Card>
     </div>

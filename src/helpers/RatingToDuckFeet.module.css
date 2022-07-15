@@ -1,4 +1,14 @@
 .feet {
-  width: 0.64rem;
-  height: 0.64rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+
+}
+
+.rating_ctn {
+  display: inline-flex;
+  gap: 0.1rem;
+  background: #ffdeeb;
+  overflow: hidden;
+  border-radius: 12px;
 }
