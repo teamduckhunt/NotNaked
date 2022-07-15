@@ -9,7 +9,9 @@ import styles from './ListContainer.module.css';
 export default function ListContainer({ children }) {
   return (
     <div className={styles.listContainer}>
-      <div className={styles.track}>{children}</div>
+      <div className={styles.trackContainer}>
+        <div className={styles.track}>{children}</div>
+      </div>
       <button type="button" className={`${styles.btn} ${styles.prev}`}>
         <AiFillCaretLeft />
       </button>

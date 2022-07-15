@@ -12,29 +12,28 @@ export default function ListItemCard({
   product,
   productId,
   productImage,
-  actionButtonIcon,
   handleOnClick,
   averageRating,
+  children,
 }) {
   return (
     <div className={styles.product_card_ctn}>
       <Card className={styles.product_card}>
         <header className={styles.product_card_header}>
-          {/* <Link to={`/product/${productId}`}>
+          <Link to={`/product/${productId}`}>
             <img className={styles.product_img} src={productImage} alt={product.name} />
-          </Link> */}
+          </Link>
           <button
             type="button"
             className={styles.product_action_button}
             onClick={() => handleOnClick()}
           >
-            {actionButtonIcon}
+            {children}
           </button>
         </header>
         <footer className={styles.product_card_body}>
           <p>{product.category}</p>
           <p>{product.name}</p>
-          {/* TODO: default price needs to change with sales and also styles */}
           <p>${product.default_price}</p>
           <p>{averageRating.toFixed(2)}</p>
         </footer>

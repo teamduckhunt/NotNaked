@@ -11,6 +11,7 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
+import { AiFillStar } from 'react-icons/ai';
 import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../services/products';
 import ListItemCard from '../helpers/ListItemCard/ListItemCard.jsx';
 import ComparisonModal from '../ComparisonModal/ComparisonModal.jsx';
@@ -50,9 +51,10 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
         averageRating={getAverageRating(metaData)}
         productId={productId}
         productImage={image}
-        actionButtonIcon='⭐️'
         handleOnClick={handleModalToggle}
-      />
+      >
+        <AiFillStar />
+      </ListItemCard>
     </>
   );
 }
