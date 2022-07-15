@@ -32,8 +32,8 @@ export default function OutfitList({ currentViewItemId }) {
   };
 
   return (
-    <>
-      <p>My Outfit List!!!</p>
+    <div>
+      <h3>Outfit List</h3>
       <ListContainer>
         {!isCurrentItemAdded && (
           <div className={styles.button_ctn} >
@@ -49,7 +49,7 @@ export default function OutfitList({ currentViewItemId }) {
             />
           ))}
       </ListContainer>
-    </>
+    </div>
   );
 }
 
