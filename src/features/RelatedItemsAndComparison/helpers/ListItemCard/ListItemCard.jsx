@@ -16,21 +16,29 @@ export default function ListItemCard({
   averageRating,
   children,
 }) {
+  const handleProductClick = (e) => {
+    e.preventDefault();
+    if (e.currentTarget.id === 'product') {
+      handleOnClick();
+      e.stopPropagation();
+    }
+  };
+
   return (
     <div className={styles.product_card_ctn}>
-      <Card className={styles.product_card}>
-        <header className={styles.product_card_header}>
-          <Link to={`/product/${productId}`}>
-            <img className={styles.product_img} src={productImage} alt={product.name} />
-          </Link>
-          <button
-            type="button"
-            className={styles.product_action_button}
-            onClick={() => handleOnClick()}
-          >
-            {children}
-          </button>
-        </header>
+      <Card className={styles.product_card} style={{ backgroundImage: `url(${productImage})` }}>
+        <Link to={`/product/${productId}`}>
+          <header className={styles.product_card_header}>
+            <button
+              type="button"
+              id="product"
+              className={styles.product_action_button}
+              onClick={handleProductClick}
+            >
+              {children}
+            </button>
+          </header>
+        </Link>
         <footer className={styles.product_card_body}>
           <p>{product.category}</p>
           <p>{product.name}</p>

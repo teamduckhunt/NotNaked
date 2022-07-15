@@ -12,6 +12,7 @@ export default function Card(props) {
     <div
       className={`${styles.card} ${props.className}`}
       onClick={props.onClick}
+      style={props.style}
     >
       {props.children}
     </div>
