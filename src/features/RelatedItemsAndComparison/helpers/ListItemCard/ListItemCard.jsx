@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable import/extensions */
@@ -6,6 +7,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from '../../../UI/Card.jsx';
+import RatingToDuckFeet from '../../../../helpers/RatingToDuckFeet.jsx';
 import styles from './ListItemCard.module.css';
 
 export default function ListItemCard({
@@ -44,6 +46,7 @@ export default function ListItemCard({
           <p>{product.name}</p>
           <p>${product.default_price}</p>
           <p>{averageRating.toFixed(2)}</p>
+          <RatingToDuckFeet rating={averageRating} />
         </footer>
       </Card>
     </div>
