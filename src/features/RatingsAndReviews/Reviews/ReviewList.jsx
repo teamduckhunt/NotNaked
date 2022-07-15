@@ -14,9 +14,6 @@ export default function ReviewList({ currentViewItemId }) {
   const [numberOfReviews, setNumberOfReviews] = useState(2);
   const [disableMoreReviewsButton, setDisableMoreReviewsButton] = useState(false);
   const curStarSelected = useSelector((state) => state.ratingBreakdown.filterByStar);
-  // console.log('star ', curStarSelected);
-  // console.log('data', data);
-
 
   if (error) {
     return <>Oh no, there was an error!</>;
@@ -42,9 +39,6 @@ export default function ReviewList({ currentViewItemId }) {
     });
 
     const checkForStarFilter = (curStarSelected.length === 0) ? data.results : filteredReviewSet.filter(item => item !== undefined);
-
-    // iterate over the data reviews, find all review ratings that match curStarSelected and
-    // return an array of those reviews to be rendered.
 
     console.log('check', checkForStarFilter);
 

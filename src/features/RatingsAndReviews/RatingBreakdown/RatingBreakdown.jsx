@@ -41,8 +41,13 @@ export default function ReviewList({ productId }) {
     }
   };
 
-  // check if any item in starFilter is true, if so render the button.
+  // check if any star in starFilter is true.
   const resetButton = (Object.values(starFilter).includes(true));
+
+  // The percentage of reviews that ‘recommend’ the product will be displayed below the breakdown.
+  // take the total number of reviews.
+  // tally how many reviews recommedn this product
+  // return a result of recommended / total * 100
 
   if (error) {
     return <>Oh no, there was an error loading rating breakdown</>;
@@ -53,10 +58,21 @@ export default function ReviewList({ productId }) {
   }
 
   if (data || reviewData) {
-    // console.log('data', data);
-    // console.log('reviewData', reviewData);
     const avgRating = getAverageRating(data);
     const numOfReviews = reviewData.results.length;
+    const recommendedPercentage = () => {
+      const totalReviews = reviewData.results.length;
+      const totalRecommended = (
+        reviewData.results.map((review) => {
+          if (review.recommend === true) {
+            return review;
+          }
+          return undefined;
+        })
+      ).filter((item) => item !== undefined);
+      return ((totalRecommended.length / totalReviews) * 100).toFixed();
+    };
+
     return (
       <div>
 
@@ -114,13 +130,18 @@ export default function ReviewList({ productId }) {
         <div>
           {resetButton
             && (
-            <Button onClick={() => {
-              dispatch(setFilterByStar('reset'));
-            }}
-            >
-              Remove All Filters
-            </Button>
+              <Button onClick={() => {
+                dispatch(setFilterByStar('reset'));
+              }}
+              >
+                Remove All Filters
+              </Button>
             )}
+        </div>
+        <div>
+          {recommendedPercentage()}
+          {' '}
+          % of customers recommend this product.
         </div>
 
       </div>
@@ -134,18 +155,6 @@ ReviewList.propTypes = {
 
 // Strategy
 
-// product rating from helpers/getAverageRating DONE
-// iterate over the results of current product, grab the ratings and push to a separate array.
-// so maybe map that return an array, pass that array of ratings to getAverageRating. (return to one decimal point) DONE
-
-// number of reviews based on product id DONE
-
-// create div block, with 5 Star Buttons, need to add some toggle on : off event listener
-// when toggled on, the review list should re-render to only the indicated star.
-
-// add a bar count feature to each button.
-
-// conditional if any star buttons are clicked on, then message at bottom should populate.
-// Message should have button, to reset all toggled on buttons.
+// add a bar count feature to each star button.
 
 // add div, w/ percentage of reviews that recommend product.
