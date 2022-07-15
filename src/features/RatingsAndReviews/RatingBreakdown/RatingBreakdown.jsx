@@ -97,6 +97,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
             5 Star
           </Button>
           <RatingBarFeature fillerPercentage={fiveStarReviewPercentage} />
+          {`(${data.ratings[5]})`}
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -106,6 +107,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
             4 Star
           </Button>
           <RatingBarFeature fillerPercentage={fourStarReviewsPercentage} />
+          {`(${data.ratings[4]})`}
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -115,6 +117,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
             3 Star
           </Button>
           <RatingBarFeature fillerPercentage={threeStarReviewsPercentage} />
+          {`(${data.ratings[3]})`}
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -124,6 +127,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
             2 Star
           </Button>
           <RatingBarFeature fillerPercentage={twoStarReviewsPercentage} />
+          {`(${data.ratings[2]})`}
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -133,6 +137,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
             1 Star
           </Button>
           <RatingBarFeature fillerPercentage={oneStarReviewsPercentage} />
+          {`(${data.ratings[1]})`}
         </div>
         <div>
           {resetButton
