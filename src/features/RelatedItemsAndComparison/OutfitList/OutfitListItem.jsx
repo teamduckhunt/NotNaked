@@ -13,7 +13,7 @@ export default function OutfitListItem({ productId, handleDeleteOutfit }) {
   const { data, error, isLoading } = useProductInformationByIdQuery(productId);
   const { data: metaData, isLoading: metaLoading } = useGetReviewMetadataQuery(productId);
   const { data: styles, isLoading: stylesLoading } = useProductStylesQuery(productId);
-  const image = styles ? styles.results[0].photos[0].thumbnail_url : 'https://picsum.photos/200';
+  const image = styles && (styles.results[0].photos[0].thumbnail_url || 'https://picsum.photos/200');
 
   if (error) {
     return <>Oh no, there was an error</>;

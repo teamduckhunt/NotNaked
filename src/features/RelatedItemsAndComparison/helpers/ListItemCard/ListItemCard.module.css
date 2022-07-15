@@ -45,8 +45,8 @@
   background: rgba(0,0,0,0.5);
   border: none;
   border-radius: 50%;
-  top: 0px;
-  right: 6px;
+  top: 6px;
+  right: -6px;
   display: flex;
   justify-content: center;
   align-items: center;

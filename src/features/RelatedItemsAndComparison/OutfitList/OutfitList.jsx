@@ -32,16 +32,16 @@ export default function OutfitList({ currentViewItemId }) {
   };
 
   return (
-    <>
-      <p>My Outfit List!!!</p>
+    <div>
+      <h3>Outfit List</h3>
       <ListContainer>
         {!isCurrentItemAdded && (
           <div className={styles.button_ctn} >
             <IoIosAddCircleOutline value="action" className={styles.button} onClick={(e) => handleAddOutfit(e)} />
           </div>
         )}
-        {userOutfitList &&
-          userOutfitList.map((outfitId) => (
+        {userOutfitList
+          && userOutfitList.map((outfitId) => (
             <OutfitListItem
               key={outfitId}
               productId={outfitId}
@@ -49,7 +49,7 @@ export default function OutfitList({ currentViewItemId }) {
             />
           ))}
       </ListContainer>
-    </>
+    </div>
   );
 }
 
