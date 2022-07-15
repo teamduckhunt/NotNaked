@@ -11,7 +11,7 @@ export default function RatingToDuckFeet({ rating }) {
   const number = Math.trunc(rating);
   const floatNum = Math.round((rating - number) * 4);
   const rest = 5 - Math.ceil(rating);
-  console.log(number - rating);
+  console.log(rating - number);
 
   const FULL = <img className={styles.feet} src={FullDuck} alt="full duck" />;
   const THIRD = <img className={styles.feet} src={ThirdFull} alt="full duck" />;
@@ -43,9 +43,9 @@ export default function RatingToDuckFeet({ rating }) {
 
   return (
     <div className={styles.rating_ctn}>
-      {Array(number).fill(FULL)}
-      {float}
-      {rating - number !== 0 && Array(rest).fill(EMPTY)}
+      {number && Array(number).fill(FULL)}
+      {float && float}
+      {rating && number && rating - number !== 0 && Array(rest).fill(EMPTY)}
     </div>
   );
 }

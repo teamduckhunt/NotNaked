@@ -43,6 +43,7 @@ export default function OutfitList({ currentViewItemId }) {
         {userOutfitList
           && userOutfitList.map((outfitId) => (
             <OutfitListItem
+              id={outfitId}
               key={outfitId}
               productId={outfitId}
               handleDeleteOutfit={() => handleDeleteOutfit(outfitId)}
