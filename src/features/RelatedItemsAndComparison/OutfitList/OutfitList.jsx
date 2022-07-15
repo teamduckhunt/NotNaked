@@ -14,11 +14,12 @@ export default function OutfitList({ currentViewItemId }) {
   const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(true);
   const userOutfitList = useAppSelector((state) => state.outfitList.outfitList);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     if (userOutfitList.indexOf(currentViewItemId) === -1) {
       setIsCurrentItemAdded(false);
     }
-  });
+  }, [currentViewItemId, userOutfitList]);
   const handleAddOutfit = () => {
     setIsCurrentItemAdded(true);
     dispatch(addOutfit(currentViewItemId));
