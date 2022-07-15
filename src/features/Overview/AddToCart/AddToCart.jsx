@@ -23,6 +23,7 @@ export default function AddToCart() {
           </select>
         </label>
         <button>Add To Cart</button>
+        <button>Favorite</button>
       </form>
     </div>
   );

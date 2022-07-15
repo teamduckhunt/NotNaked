@@ -1,11 +1,13 @@
 .productinfo {
   border: 2px solid black;
   position: relative;
-  margin-left: 100px
+  margin-left: 30px;
+  height: 500px
 }
 
 .imagegallery {
-  position: relative
+  position: relative;
+  height: 500px
 }
 
 .productdetails {
