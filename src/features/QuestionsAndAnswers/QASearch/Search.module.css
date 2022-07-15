@@ -5,16 +5,20 @@
 }
 
 .input {
+  position: relative;
   background-color: transparent;
   border-color: transparent;
   outline: none;
   width: 580px;
-  height: 45px;
+  bottom: 16px;
   font-size: large;
   padding-left: 10px;
 }
 
-.button {
+.feet {
   background-color: transparent;
   border-color: transparent;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
 }

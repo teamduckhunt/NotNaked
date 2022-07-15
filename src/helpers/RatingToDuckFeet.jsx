@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import PropTypes from 'prop-types';
 import FullDuck from '../../assets/duckFeet-rating/full.svg';
@@ -11,7 +12,6 @@ export default function RatingToDuckFeet({ rating }) {
   const number = Math.trunc(rating);
   const floatNum = Math.round((rating - number) * 4);
   const rest = 5 - Math.ceil(rating);
-  console.log(rating - number);
 
   const FULL = <img className={styles.feet} src={FullDuck} alt="full duck" />;
   const THIRD = <img className={styles.feet} src={ThirdFull} alt="full duck" />;
