@@ -10,7 +10,6 @@ export default function ProductDetails({ currentViewItemId }) {
   } = useProductInformationByIdQuery(currentViewItemId);
 
   if (error) {
-    console.log(error);
     return <div>There is an error!</div>;
   }
 

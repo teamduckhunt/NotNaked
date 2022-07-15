@@ -32,7 +32,7 @@ export default function App() {
         <Route path="/" exact>
           <Redirect to="/product/40344" />
         </Route>
-        <Route path="/product/:productId" exact>
+        <Route path="/product/:productId">
           <ProductDetailPage />
         </Route>
       </Switch>

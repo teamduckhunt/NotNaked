@@ -4,15 +4,15 @@
 import React from 'react';
 import styles from './Button.module.css';
 
-export default function Button(props) {
+export default function Button({ type, className, onClick, disabled, children }) {
   return (
     <button
-      type={props.type}
-      className={`${styles.button} ${props.className}`}
-      onClick={props.onClick}
-      disabled={props.disabled}
+      type={type}
+      className={`${styles.button} ${className}`}
+      onClick={onClick}
+      disabled={disabled}
     >
-      {props.children}
+      {children}
     </button>
   );
 }
