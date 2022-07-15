@@ -21,6 +21,7 @@ export const reviewsApi = createApi({
       query: (productId) => `/meta?product_id=${productId}`,
     }),
     addAReview: builder.mutation({
+      // create object for both queries, then destructure.
       query: (productId, formInput) => ({
         url: '',
         method: 'POST',

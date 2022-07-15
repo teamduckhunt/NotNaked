@@ -12,9 +12,9 @@ export default function RatingsAndReviews({ currentViewItemId }) {
       <div>
         <ReviewList currentViewItemId={currentViewItemId} />
       </div>
-      {/* <SortItems />
-      <RatingBreakdown />
-      <ProductBreakdown /> */}
+      {/* <SortItems /> */}
+      <RatingBreakdown productId={currentViewItemId} />
+      {/* <ProductBreakdown /> */}
     </>
   );
 }
