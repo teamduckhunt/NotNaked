@@ -14,8 +14,8 @@ export default function ReviewList({ currentViewItemId }) {
   const [numberOfReviews, setNumberOfReviews] = useState(2);
   const [disableMoreReviewsButton, setDisableMoreReviewsButton] = useState(false);
   const curStarSelected = useSelector((state) => state.ratingBreakdown.filterByStar);
-  console.log('star ', curStarSelected);
-  console.log('data', data);
+  // console.log('star ', curStarSelected);
+  // console.log('data', data);
 
 
   if (error) {

@@ -2,10 +2,10 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { useGetReviewMetadataQuery, useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating.js';
-import { useDispatch } from 'react-redux';
 import { setFilterByStar } from './ratingBreakdownSlice.js';
 
 export default function ReviewList({ productId }) {
@@ -22,7 +22,6 @@ export default function ReviewList({ productId }) {
   });
 
   const handleStarFilter = (e) => {
-    console.log('event', e.target.innerText);
     if (e.target.innerText === '5 Star') {
       starFilter.fiveStar === false ? setStarFilter({ ...starFilter, fiveStar: true }) : setStarFilter({ ...starFilter, fiveStar: false });
     }
@@ -41,6 +40,9 @@ export default function ReviewList({ productId }) {
       starFilter.oneStar === false ? setStarFilter({ ...starFilter, oneStar: true }) : setStarFilter({ ...starFilter, oneStar: false });
     }
   };
+
+  // check if any item in starFilter is true, if so render the button.
+  const resetButton = (Object.values(starFilter).includes(true));
 
   if (error) {
     return <>Oh no, there was an error loading rating breakdown</>;
@@ -109,6 +111,17 @@ export default function ReviewList({ productId }) {
             1 Star
           </Button>
         </div>
+        <div>
+          {resetButton
+            && (
+            <Button onClick={() => {
+              dispatch(setFilterByStar('reset'));
+            }}
+            >
+              Remove All Filters
+            </Button>
+            )}
+        </div>
 
       </div>
     );
@@ -130,9 +143,9 @@ ReviewList.propTypes = {
 // create div block, with 5 Star Buttons, need to add some toggle on : off event listener
 // when toggled on, the review list should re-render to only the indicated star.
 
-  // add a bar count feature to each button.
+// add a bar count feature to each button.
 
 // conditional if any star buttons are clicked on, then message at bottom should populate.
-  // Message should have button, to reset all toggled on buttons.
+// Message should have button, to reset all toggled on buttons.
 
 // add div, w/ percentage of reviews that recommend product.

@@ -10,7 +10,9 @@ export const RatingBreakdownSlice = createSlice({
   initialState,
   reducers: {
     setFilterByStar: (state, action) => {
-      if (!state.filterByStar.includes(action.payload)) {
+      if (action.payload === 'reset') {
+        state.filterByStar = [];
+      } else if ((!state.filterByStar.includes(action.payload))) {
         state.filterByStar.push(action.payload);
       } else {
         const location = state.filterByStar.indexOf(action.payload);
