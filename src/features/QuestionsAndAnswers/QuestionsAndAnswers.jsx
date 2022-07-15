@@ -10,7 +10,7 @@ export default function QuestionsAndAnswers({ currentViewItemId }) {
       <h5 className={styles.notbold}>
         QUESTIONS & ANSWERS
       </h5>
-      <QuestionList currentViewItemId={currentViewItemId} />
+      <QuestionList key={currentViewItemId} currentViewItemId={currentViewItemId} />
     </div>
   );
 }

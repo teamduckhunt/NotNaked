@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
@@ -23,15 +24,15 @@ export default function AnswerCard({ a }) {
 
   return (
     <>
-      <div id="answer">
-        <p>
-          <strong>A: </strong>
-          {a.body}
-        </p>
-      </div>
+      {a.body}
+      <br></br>
+      {a.photos.length > 0
+        && a.photos.map((photo) => <img src={photo} alt={a.answerer_name} />)}
       <div className={styles.info} id="info">
         <p>
-          by {a.answerer_name}, {date}
+          by {a.answerer_name.toLowerCase() === 'seller' && <strong>{a.answerer_name}</strong>}
+          {a.answerer_name.toLowerCase() !== 'seller' && `${a.answerer_name}`},
+          &nbsp;&nbsp;{date}
         </p>
         <p className={styles.details}>
           Helpful?&nbsp;&nbsp;
