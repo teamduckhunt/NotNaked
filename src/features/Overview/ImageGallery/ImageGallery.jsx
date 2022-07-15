@@ -20,6 +20,9 @@ export default function ImageGallery({ currentViewItemId }) {
 
   if (data) {
     console.log('curstyle ', curStyle);
+    const currentImage = curStyle.photos
+      ? curStyle.photos
+      : data.results[0].photos;
     const length = curStyle.photos ? curStyle.photos.length : undefined;
 
     const nextSlide = () => {
@@ -36,7 +39,7 @@ export default function ImageGallery({ currentViewItemId }) {
         <div>
           <button className={styles.leftArrow} onClick={prevSlide} type="button">{'<'}</button>
           <button className={styles.rightArrow} onClick={nextSlide} type="button">{'>'}</button>
-          {curStyle.photos && curStyle.photos.map((photo, index) => (
+          {currentImage.map((photo, index) => (
             <div key={index}>
               {index === current && <img src={photo.thumbnail_url} />}
             </div>

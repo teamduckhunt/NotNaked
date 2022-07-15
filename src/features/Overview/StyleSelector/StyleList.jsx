@@ -25,14 +25,14 @@ export default function StyleList({ currentViewItemId }) {
   // console.log('styles data: ', data);
 
   if (styles) {
-    console.log('price ', curStyle.original_price);
-    console.log('style ', curStyle);
+    // console.log('price ', curStyle.original_price);
+    // console.log('style ', curStyle);
     return (
       <div>
         <div>
           $
           {' '}
-          {curStyle.sale_price ? curStyle.sale_price : curStyle.original_price}
+          {curStyle.original_price ? curStyle.original_price : styles.results[0].original_price}
         </div>
         <div>
           STYLE:
@@ -44,6 +44,22 @@ export default function StyleList({ currentViewItemId }) {
   }
   return <>Loading...</>;
 }
+
+// if (curStyle.original_price) {
+//   const originalPrice = curStyle.original_price;
+// } else {
+//   const originalPrice2 = styles.results[0].original_price;
+// }
+// if (curStyle.sale_price) {
+//   const saleExistsOriginalPrice = <p><s>{curStyle.original_price}</s></p>;
+//   const salePrice = curStyle.sale_price;
+// }
+// {saleExistsOriginalPrice || ''}
+// {originalPrice2 || originalPrice}
+// {salePrice || ''}
+
+// {curStyle.original_price ? curStyle.original_price : styles.results[0].original_price}
+// {curStyle.sale_price ? curStyle.sale_price : curStyle.original_price}
 
 // disabled prop types for whole file
 // prop types just throw an error if wrong data is passed into the prop. literally just defining a type for the prop
