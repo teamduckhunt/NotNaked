@@ -18,11 +18,12 @@ export default function RelatedProductList({ currentViewItemId }) {
   }
 
   if (data) {
+    const filteredData = data.reduce((keys, id) => ({ ...keys, [id]: true }), {});
     return (
       <div className={styles.relatedContainer}>
         <h3>My Related Products</h3>
         <ListContainer>
-          {data.map((productId) => (
+          {Object.keys(filteredData).map((productId) => (
             <RelatedProductItem
               key={productId}
               productId={productId}
