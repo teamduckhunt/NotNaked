@@ -15,17 +15,17 @@ const initialState = {
   end: 4,
 };
 
-const reducer = (state, action) => {
+const reducer = ({ start, end }, action) => {
   switch (action.type) {
     case 'next':
       return {
-        start: state.start + 4,
-        end: state.end + 4,
+        start: start + 4,
+        end: end + 4,
       };
     case 'prev':
       return {
-        start: state.start + 4,
-        end: state.end + 4,
+        start: start > 0 ? start - 4 : start,
+        end: end > 4 ? end - 4 : end,
       };
     default:
       throw new Error('Invalid request for carousel');
