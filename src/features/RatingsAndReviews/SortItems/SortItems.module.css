@@ -1,0 +1,29 @@
+
+.sortContainer {
+  margin: auto;
+  width: 200px;
+  padding: 0, 5px;
+  background: lightblue;
+
+}
+
+
+
+
+/* DROPDOWN
+================================== */
+
+.dd-wrapper {
+  display: flex;
+  min-height: 38px;
+  flex-wrap: wrap;
+}
+
+.dd-header {
+  /* @include styling(); */
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+  padding: 0 20px;
+}

@@ -14,7 +14,7 @@ export const reviewsApi = createApi({
   tagTypes: ['Reviews'],
   endpoints: (builder) => ({
     getAllReviewsByProductId: builder.query({
-      query: (productId /* sort = 'relevant' */) => `?product_id=${productId}`,
+      query: ({ productId, sort }) => `?product_id=${productId}&sort=${sort}`,
       providesTags: ['Reviews'],
     }),
     getReviewMetadata: builder.query({

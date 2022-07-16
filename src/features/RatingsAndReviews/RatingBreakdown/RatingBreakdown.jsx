@@ -7,10 +7,11 @@ import { useGetReviewMetadataQuery, useGetAllReviewsByProductIdQuery } from '../
 import Button from '../../UI/Button.jsx';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating.js';
 import { setFilterByStar } from './ratingBreakdownSlice.js';
+import SortItems from '../SortItems/SortItems.jsx';
 
 export default function ReviewList({ productId }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
-  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery(productId);
+  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({productId, SortItems[sortSelection]});
   const dispatch = useDispatch();
 
   const [starFilter, setStarFilter] = useState({
