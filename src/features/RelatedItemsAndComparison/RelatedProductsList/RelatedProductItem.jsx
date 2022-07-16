@@ -37,6 +37,8 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
     return <>Loading...</>;
   }
 
+  console.log();
+
   return (
     <>
       {toggleModal && (
@@ -51,6 +53,7 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
         averageRating={getAverageRating(metaData)}
         productId={productId}
         productImage={image}
+        productSalesPrice={styles.results[0].sale_price}
         handleOnClick={handleModalToggle}
       >
         <AiFillStar />

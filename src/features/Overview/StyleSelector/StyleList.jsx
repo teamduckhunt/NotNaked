@@ -8,7 +8,7 @@ import { setCurrentStyle } from './styleSlice.js';
 import StyleCard from './StyleCard.jsx';
 import { useProductStylesQuery } from '../../../services/products.js';
 import classes from './StyleSelector.module.css';
-import SalePrice from '../../RelatedItemsAndComparison/helpers/SalePrice/SalePrice.jsx';
+import SalePrice from '../../../helpers/SalePrice/SalePrice.jsx';
 
 export default function StyleList({ currentViewItemId }) {
   const { data: styles, error, isLoading } = useProductStylesQuery(currentViewItemId);

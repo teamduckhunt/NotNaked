@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Card from '../../../UI/Card.jsx';
 import RatingToDuckFeet from '../../../../helpers/RatingToDuckFeet.jsx';
 import styles from './ListItemCard.module.css';
+import SalePrice from '../../../../helpers/SalePrice/SalePrice.jsx';
 
 export default function ListItemCard({
   product,
@@ -17,6 +18,7 @@ export default function ListItemCard({
   handleOnClick,
   averageRating,
   children,
+  productSalesPrice,
 }) {
   const handleProductClick = (e) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ export default function ListItemCard({
       e.stopPropagation();
     }
   };
+  const price = <SalePrice originalPrice={product.default_price} salePrice={productSalesPrice} />;
 
   return (
     <div key={productId} className={styles.product_card_ctn}>
@@ -44,7 +47,7 @@ export default function ListItemCard({
         <footer className={styles.product_card_body}>
           <p className={styles.category}>{product.category}</p>
           <p className={styles.name}>{product.name}</p>
-          <p className={styles.price}>${product.default_price}</p>
+          <p className={styles.price}>{price}</p>
           {/* <p>{averageRating.toFixed(2)}</p> */}
           <RatingToDuckFeet rating={averageRating} />
         </footer>
