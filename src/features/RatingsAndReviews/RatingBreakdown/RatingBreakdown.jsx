@@ -10,37 +10,54 @@ import getAverageRating from '../../../helpers/getAverageRating/getAverageRating
 import { setFilterByStar } from './ratingBreakdownSlice.js';
 import RatingBarFeature from './RatingBarFeature/RatingBarFeature.jsx';
 import RatingToDuckFeet from '../../../helpers/RatingToDuckFeet.jsx';
+import styles from './RatingBreakdown.module.css';
 
 export default function RatingBreakdown({ productId, reviewCount }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
   const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({ productId, reviewCount });
   const dispatch = useDispatch();
 
-  const [starFilter, setStarFilter] = useState({
+  const initialState = {
     fiveStar: false,
     fourStar: false,
     threeStar: false,
     twoStar: false,
     oneStar: false,
-  });
+  };
+
+  const [starFilter, setStarFilter] = useState(initialState);
+
+  const initialFilterState = [];
+
+  const [activeFilters, setActiveFilters] = useState(initialFilterState);
+
+  const removeActiveFilter = (rating) => {
+    const activeFiltersCopy = activeFilters.slice();
+    const filterLoc = activeFiltersCopy.indexOf(rating);
+    activeFiltersCopy.splice(filterLoc, 1);
+    setActiveFilters(activeFiltersCopy);
+  };
 
   const handleStarFilter = (e) => {
     if (e.target.innerText === '5 Star') {
-      starFilter.fiveStar === false ? setStarFilter({ ...starFilter, fiveStar: true }) : setStarFilter({ ...starFilter, fiveStar: false });
+      !starFilter.fiveStar ? setActiveFilters([...activeFilters, '5 Star']) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, fiveStar: !starFilter.fiveStar });
     }
     if (e.target.innerText === '4 Star') {
-      starFilter.fourStar === false ? setStarFilter({ ...starFilter, fourStar: true })
-        : setStarFilter({ ...starFilter, fourStar: false });
+      !starFilter.fourStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, fourStar: !starFilter.fourStar });
     }
     if (e.target.innerText === '3 Star') {
-      starFilter.threeStar === false ? setStarFilter({ ...starFilter, threeStar: true })
-        : setStarFilter({ ...starFilter, threeStar: false });
+      !starFilter.threeStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, threeStar: !starFilter.threeStar });
     }
     if (e.target.innerText === '2 Star') {
-      starFilter.twoStar === false ? setStarFilter({ ...starFilter, twoStar: true }) : setStarFilter({ ...starFilter, twoStar: false });
+      !starFilter.twoStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, twoStar: !starFilter.twoStar });
     }
     if (e.target.innerText === '1 Star') {
-      starFilter.oneStar === false ? setStarFilter({ ...starFilter, oneStar: true }) : setStarFilter({ ...starFilter, oneStar: false });
+      !starFilter.oneStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, oneStar: !starFilter.oneStar });
     }
   };
 
@@ -77,8 +94,7 @@ export default function RatingBreakdown({ productId, reviewCount }) {
     const oneStarReviewsPercentage = (data.ratings[1] / reviewCount) * 100;
 
     return (
-      <div>
-
+      <div className={styles.rating_border}>
         <div>
           {Math.round(avgRating * 10) / 10}
           <div>
@@ -143,12 +159,17 @@ export default function RatingBreakdown({ productId, reviewCount }) {
         <div>
           {resetButton
             && (
-              <Button onClick={() => {
-                dispatch(setFilterByStar('reset'));
-              }}
-              >
-                Remove All Filters
-              </Button>
+              <>
+                <Button onClick={() => {
+                  dispatch(setFilterByStar('reset'));
+                  setStarFilter(initialState);
+                  setActiveFilters(initialFilterState);
+                }}
+                >
+                  Remove All Filters
+                </Button>
+                {activeFilters.map((filter) => <div>{filter}</div>)}
+              </>
             )}
         </div>
         <div>
