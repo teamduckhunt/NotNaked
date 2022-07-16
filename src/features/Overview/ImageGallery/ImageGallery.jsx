@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
@@ -19,7 +20,6 @@ export default function ImageGallery({ currentViewItemId }) {
   }
 
   if (data) {
-    console.log('curstyle ', curStyle);
     const currentImage = curStyle.photos
       ? curStyle.photos
       : data.results[0].photos;
@@ -32,17 +32,29 @@ export default function ImageGallery({ currentViewItemId }) {
     const prevSlide = () => {
       setCurrent(current === 0 ? length - 1 : current - 1);
     };
-    console.log('data ', data);
 
     return (
-      <div className={styles.picDiv}>
+      <div className={styles.picDivIncludingArrows}>
         <div>
           <FaChevronLeft className={styles.leftArrow} onClick={prevSlide} />
+        </div>
+        <div className={styles.miniCarousel}>
+          {currentImage.map((photo, index) => {
+            if (index >= (current - 1) && index <= (current + 1)) {
+              return (
+                <div>
+                  <img src={photo.thumbnail_url} className={styles.miniCarouselPic} alt="" />
+                </div>
+              );
+            }
+          })}
+        </div>
+        <div className={styles.actualPic}>
           {currentImage.map((photo, index) => (
-            <div key={index}>
-              {index === current && <img src={photo.thumbnail_url} />}
-            </div>
+            index === current && <img src={photo.url} className={styles.actualPicInside} alt="" />
           ))}
+        </div>
+        <div>
           <FaChevronRight className={styles.rightArrow} onClick={nextSlide} />
         </div>
       </div>

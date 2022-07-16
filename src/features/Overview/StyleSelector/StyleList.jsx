@@ -34,14 +34,15 @@ export default function StyleList({ currentViewItemId }) {
 
     return (
       <div>
-        <div>
+        <div className={classes.priceDiv}>
           <SalePrice originalPrice={price} salePrice={salesPrice} />
         </div>
-        <div>
+        <div className={classes.styleName}>
           STYLE:
-          {curStyle.name ? curStyle.name : styles.results[0].name}
+          {' '}
+          {curStyle.name ? curStyle.name.toUpperCase() : styles.results[0].name.toUpperCase()}
         </div>
-        <div className={styles.styleButtonList}>
+        <div className={classes.styleButtonList}>
           {styles.results.map((style) => <StyleCard key={style.style_id} style={style} />)}
         </div>
       </div>

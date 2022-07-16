@@ -10,6 +10,7 @@ export default function StyleCard({ style }) {
   return (
     <div>
       <button
+        className={styles.styleButton}
         type="button"
         onClick={() => {
           dispatch(setCurrentStyle(style));
@@ -25,15 +26,3 @@ export default function StyleCard({ style }) {
     </div>
   );
 }
-
-{ /* <div>
-<button
-  type="button"
-  onClick={() => {
-    dispatch(setCurrentStyle(style));
-    console.log(curStyle);
-  }}
->
-  <img src={style.photos[0].thumbnail_url} alt={style.name} className={styles.stylePic} />
-</button>
-</div> */ }

@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  background-color: #ffdeeb;
+}
+
+.logo {
+  width: 50px;
+}
+
+.name {
+  width: 70px;
+}
+
+.search {
+  /* border-radius: 10%; */
+  margin-left: 950px;
+  margin-top: 25px;
+  opacity: 0.5;
+  height: 20px;
+  float: right;
+}
+
+.announcement {
+  padding-left: 250px;
+  background-color: #e4e4e4;
+  color: #e97298;
+}
