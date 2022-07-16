@@ -6,34 +6,36 @@ import { useAppDispatch, useAppSelector } from "../../../app/redux-hooks";
 import ListContainer from "../helpers/ListContainer/ListContainer.jsx";
 import { addOutfit, deleteOutfit } from "./outfitListSlice.jsx";
 // import ListContainer from '../../UI/Card.jsx';
-import Button from "../../UI/Button.jsx";
+
 import OutfitListItem from "./OutfitListItem.jsx";
 import styles from "./OutfitList.module.css";
 
-const initialState = {
+export const outfitState = {
   start: 0,
   end: 4,
 };
 
-const reducer = ({ start, end }, action) => {
+export const outfitReducer = ({ start, end }, action) => {
   switch (action.type) {
-    case 'next':
+    case 'NEXT':
       return {
         start: start + 4,
         end: end + 4,
       };
-    case 'prev':
+    case 'PREV':
       return {
         start: start > 0 ? start - 4 : start,
         end: end > 4 ? end - 4 : end,
       };
+    case 'RESET':
+      return outfitState;
     default:
       throw new Error('Invalid request for carousel');
   }
 };
 export default function OutfitList({ currentViewItemId }) {
   const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(true);
-  const [localState, dispatchLocalState] = useReducer(reducer, initialState);
+  const [localState, dispatchLocalState] = useReducer(outfitReducer, outfitState);
   const { start, end } = localState;
   const userOutfitList = useAppSelector((state) => state.outfitList.outfitList);
   const dispatch = useAppDispatch();
@@ -53,10 +55,10 @@ export default function OutfitList({ currentViewItemId }) {
   };
 
   const handleCarouselControl = (control) => {
-    if (control === 'prev' && start !== 0 && start > 0) {
+    if (control === 'PREV' && start !== 0 && start > 0) {
       dispatchLocalState({ type: control });
     }
-    if (control === 'next' && end !== userOutfitList.length && end < userOutfitList.length) {
+    if (control === 'NEXT' && end !== userOutfitList.length && end < userOutfitList.length) {
       dispatchLocalState({ type: control });
     }
   };
@@ -65,6 +67,7 @@ export default function OutfitList({ currentViewItemId }) {
     <div>
       <h3>Outfit List</h3>
       <ListContainer
+        key={start}
         start={start}
         end={end}
         length={userOutfitList.length}

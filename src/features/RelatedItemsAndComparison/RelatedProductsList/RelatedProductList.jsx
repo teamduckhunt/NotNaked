@@ -1,16 +1,16 @@
 /* eslint-disable import/extensions */
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RelatedProductItem from './RelatedProductItem.jsx';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { useRelatedProductsIdQuery } from '../../../services/products';
 
-const initialState = {
+export const relatedState = {
   start: 0,
   end: 4,
 };
 
-const reducer = ({ start, end }, action) => {
+export const relatedReducer = ({ start, end }, action) => {
   switch (action.type) {
     case 'next':
       return {
@@ -22,15 +22,16 @@ const reducer = ({ start, end }, action) => {
         start: start > 0 ? start - 4 : start,
         end: end > 4 ? end - 4 : end,
       };
+    case 'RESET':
+      return relatedState;
     default:
       throw new Error('Invalid request for carousel');
   }
 };
 export default function RelatedProductList({ currentViewItemId }) {
   const { data, error, isLoading } = useRelatedProductsIdQuery(currentViewItemId);
-  const [localState, dispatchLocalState] = useReducer(reducer, initialState);
+  const [localState, dispatchLocalState] = useReducer(relatedReducer, relatedState);
   const { start, end } = localState;
-
   if (error) {
     return <>Oh no, there was an error</>;
   }
