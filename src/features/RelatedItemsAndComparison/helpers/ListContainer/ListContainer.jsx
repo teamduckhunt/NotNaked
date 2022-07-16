@@ -20,7 +20,7 @@ export default function ListContainer({ children, handleCarouselControl, start, 
           <AiFillCaretLeft />
         </button>
       )}
-      {end !== length && end < length && (
+      {(length - end > 0) && (
         <button
           type="button"
           onClick={() => handleCarouselControl('next')}
