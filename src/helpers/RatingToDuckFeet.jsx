@@ -43,7 +43,7 @@ export default function RatingToDuckFeet({ rating }) {
     <div className={styles.rating_ctn}>
       {number && Array(number).fill(FULL)}
       {float && float}
-      {rating && number && rating - number !== 0 && Array(rest).fill(EMPTY)}
+      {rating && number && rest && rating - number !== 0 && Array(rest).fill(EMPTY)}
     </div>
   );
 }

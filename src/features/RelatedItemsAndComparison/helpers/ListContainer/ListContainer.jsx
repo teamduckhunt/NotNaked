@@ -20,7 +20,7 @@ export default function ListContainer({ children, handleCarouselControl, start, 
           <AiFillCaretLeft />
         </button>
       )}
-      {console.log(length, end)}
+
       {(length - end > 0) && (
         <button
           type="button"
