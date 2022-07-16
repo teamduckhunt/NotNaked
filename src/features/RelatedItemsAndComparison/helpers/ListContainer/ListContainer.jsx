@@ -20,6 +20,7 @@ export default function ListContainer({ children, handleCarouselControl, start, 
           <AiFillCaretLeft />
         </button>
       )}
+      {console.log(length, end)}
       {(length - end > 0) && (
         <button
           type="button"
@@ -34,5 +35,5 @@ export default function ListContainer({ children, handleCarouselControl, start, 
 }
 
 // ListContainer.propTypes = {
-//   children: PropTypes.shape.isRequired,
+//   children: PropTypes.shape.isRequired,g
 // };

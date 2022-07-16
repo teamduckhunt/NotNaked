@@ -50,7 +50,13 @@ export default function RelatedProductList({ currentViewItemId }) {
   };
 
   if (data) {
-    const filteredData = data.reduce((keys, id) => ({ ...keys, [id]: true }), {});
+    const filteredData = Object.keys(data.reduce((keys, id) => {
+      if (id === currentViewItemId) {
+        return keys;
+      }
+      return { ...keys, [id]: true };
+    }, {}));
+
     return (
       <div>
         <h3>My Related Products</h3>
@@ -59,10 +65,10 @@ export default function RelatedProductList({ currentViewItemId }) {
           <ListContainer
             start={start}
             end={end}
-            length={data.length}
+            length={filteredData.length}
             handleCarouselControl={handleCarouselControl}
           >
-            {Object.keys(filteredData)
+            {filteredData
               .slice(start, end)
               .map((productId) => (
                 <RelatedProductItem
