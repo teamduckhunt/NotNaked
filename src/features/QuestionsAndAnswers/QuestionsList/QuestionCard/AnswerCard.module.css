@@ -1,5 +1,13 @@
 .info {
   display: flex;
+  width: 630px;
+  margin-left: 2%;
+  border-bottom: 3.5px solid white;
+  padding-bottom: 1%;
+}
+
+.body {
+  display: flex;
   margin-left: 2%;
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -23,11 +24,15 @@ export default function AnswerCard({ a }) {
   const date = new Date(a.date).toLocaleDateString([], dateOptions);
 
   return (
-    <>
-      {a.body}
-      <br></br>
+    <div>
+      <br />
+      <p className={styles.body}>
+        {a.body}
+      </p>
+      <br />
       {a.photos.length > 0
-        && a.photos.map((photo) => <img src={photo} alt={a.answerer_name} />)}
+        && a.photos.map(photo => <img className={styles.body} src={photo} alt={a.answerer_name} />)}
+      <br />
       <div className={styles.info} id="info">
         <p>
           by {a.answerer_name.toLowerCase() === 'seller' && <strong>{a.answerer_name}</strong>}
@@ -42,7 +47,7 @@ export default function AnswerCard({ a }) {
           <u onClick={() => reportAnswer(a.answer_id)}>Report</u>
         </p>
       </div>
-    </>
+    </div>
   );
 }
 

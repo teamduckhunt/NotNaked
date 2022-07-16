@@ -55,6 +55,7 @@ export default function QuestionCard({ q, p }) {
             product={product.name}
           />
         )}
+        <br />
         <div className={styles.question} id="question">
           <p>
             <strong>
@@ -70,14 +71,14 @@ export default function QuestionCard({ q, p }) {
             <u onClick={() => handleModalToggle()}>Add Answer</u>
           </p>
         </div>
+        <br />
         <div id="answer">
-          <p>
-            {answers.length === 0
-            && <strong>This question has no answers :(</strong>}
-            {answers.length > 0
-            && <strong>A: </strong>}
-            {answers.slice(0, numberOfAnswers).map((a) => <AnswerCard key={a.answer_id} a={a} />)}
-          </p>
+          {answers.length === 0
+          && <strong>This question has no answers :(</strong>}
+          {answers.length > 0
+          && <strong><u>Answers</u></strong>}
+          {answers.slice(0, numberOfAnswers).map((a) => <AnswerCard key={a.answer_id} a={a} />)}
+          <br />
           {numberOfAnswers < answers.length
         && (
           <Button
