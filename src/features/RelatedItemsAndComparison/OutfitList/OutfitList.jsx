@@ -1,17 +1,40 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { IoIosAddCircleOutline } from 'react-icons/io';
-import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
-import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
-import { addOutfit, deleteOutfit } from './outfitListSlice.jsx';
+import React, { useState, useEffect, useReducer } from "react";
+import PropTypes from "prop-types";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { useAppDispatch, useAppSelector } from "../../../app/redux-hooks";
+import ListContainer from "../helpers/ListContainer/ListContainer.jsx";
+import { addOutfit, deleteOutfit } from "./outfitListSlice.jsx";
 // import ListContainer from '../../UI/Card.jsx';
-import Button from '../../UI/Button.jsx';
-import OutfitListItem from './OutfitListItem.jsx';
-import styles from './OutfitList.module.css';
+import Button from "../../UI/Button.jsx";
+import OutfitListItem from "./OutfitListItem.jsx";
+import styles from "./OutfitList.module.css";
 
+const initialState = {
+  start: 0,
+  end: 4,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'next':
+      return {
+        start: state.start + 4,
+        end: state.end + 4,
+      };
+    case 'prev':
+      return {
+        start: state.start + 4,
+        end: state.end + 4,
+      };
+    default:
+      throw new Error('Invalid request for carousel');
+  }
+};
 export default function OutfitList({ currentViewItemId }) {
   const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(true);
+  const [localState, dispatchLocalState] = useReducer(reducer, initialState);
+  const { start, end } = localState;
   const userOutfitList = useAppSelector((state) => state.outfitList.outfitList);
   const dispatch = useAppDispatch();
 
@@ -29,24 +52,44 @@ export default function OutfitList({ currentViewItemId }) {
     dispatch(deleteOutfit(userOutfitList.indexOf(productId)));
   };
 
+  const handleCarouselControl = (control) => {
+    if (control === 'prev' && start !== 0 && start > 0) {
+      dispatchLocalState({ type: control });
+    }
+    if (control === 'next' && end !== userOutfitList.length && end < userOutfitList.length) {
+      dispatchLocalState({ type: control });
+    }
+  };
+
   return (
     <div>
       <h3>Outfit List</h3>
-      <ListContainer>
+      <ListContainer
+        start={start}
+        end={end}
+        length={userOutfitList.length}
+        handleCarouselControl={handleCarouselControl}
+      >
         {!isCurrentItemAdded && (
-          <div className={styles.button_ctn} >
-            <IoIosAddCircleOutline value="action" className={styles.button} onClick={() => handleAddOutfit()} />
+          <div className={styles.button_ctn}>
+            <IoIosAddCircleOutline
+              value="action"
+              className={styles.button}
+              onClick={() => handleAddOutfit()}
+            />
           </div>
         )}
-        {userOutfitList
-          && userOutfitList.map((outfitId) => (
-            <OutfitListItem
-              id={outfitId}
-              key={outfitId}
-              productId={outfitId}
-              handleDeleteOutfit={() => handleDeleteOutfit(outfitId)}
-            />
-          ))}
+        {userOutfitList.length > 0 &&
+          userOutfitList
+            .slice(start, end)
+            .map((outfitId) => (
+              <OutfitListItem
+                id={outfitId}
+                key={outfitId}
+                productId={outfitId}
+                handleDeleteOutfit={() => handleDeleteOutfit(outfitId)}
+              />
+            ))}
       </ListContainer>
     </div>
   );

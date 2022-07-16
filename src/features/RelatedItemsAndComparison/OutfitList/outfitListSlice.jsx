@@ -9,7 +9,7 @@ export const outfitListSlice = createSlice({
   initialState,
   reducers: {
     addOutfit: (state, { payload }) => {
-      state.outfitList.push(payload);
+      state.outfitList.unshift(payload);
     },
     deleteOutfit: (state, { payload }) => {
       state.outfitList.splice(payload, 1);
