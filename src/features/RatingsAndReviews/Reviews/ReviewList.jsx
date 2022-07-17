@@ -8,11 +8,9 @@ import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
 import { useSelector } from 'react-redux';
 
-export default function ReviewList({ productId }) {
+export default function ReviewList({ productId, reviewCount }) {
   const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
-  console.log(curSortSelected);
-  console.log(productId);
-  const { data, error, isLoading } = useGetAllReviewsByProductIdQuery({ productId, curSortSelected });
+  const { data, error, isLoading } = useGetAllReviewsByProductIdQuery({ productId, curSortSelected, reviewCount });
 
   const [numberOfReviews, setNumberOfReviews] = useState(2);
   const [disableMoreReviewsButton, setDisableMoreReviewsButton] = useState(false);
@@ -44,7 +42,6 @@ export default function ReviewList({ productId }) {
     });
 
     const checkForStarFilter = (curStarSelected.length === 0) ? data.results : filteredReviewSet.filter(item => item !== undefined);
-
 
     return (
       <div>

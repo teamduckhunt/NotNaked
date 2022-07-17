@@ -35,7 +35,7 @@ export default function ComparisonModal({ handleModalToggle, currentViewItemId, 
   }), {});
 
   return (
-    <Modal>
+    <Modal className={styles.modal}>
       <h4 className={styles.modalTitle}>COMPARING</h4>
       <div className={styles.products}>
         <div className={styles.col}>Current Product</div>
