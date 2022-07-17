@@ -30,6 +30,7 @@ export default function QuestionCard({ q, p }) {
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
   const [disableMoreAnswersButton, setDisableMoreAnswersButton] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
+  const [disableYes, setDisableYes] = useState(false);
 
   const handleModalToggle = () => {
     setToggleModal(!toggleModal);
@@ -55,6 +56,7 @@ export default function QuestionCard({ q, p }) {
             product={product.name}
           />
         )}
+        <br />
         <div className={styles.question} id="question">
           <p>
             <strong>
@@ -63,21 +65,33 @@ export default function QuestionCard({ q, p }) {
           </p>
           <p className={styles.helpful}>
             Helpful?&nbsp;&nbsp;
-            <u onClick={() => addHelpful(q.question_id)}>Yes</u>
-            &nbsp;({q.question_helpfulness})
+            <button
+              className={styles.yes}
+              onClick={() => {
+                addHelpful(q.question_id);
+                setDisableYes(true);
+              }}
+              disabled={disableYes}
+              type="button"
+            >
+              <u>
+                Yes
+              </u>
+            </button>
+            ({q.question_helpfulness})
           </p>
           <p className={styles.add}>
             <u onClick={() => handleModalToggle()}>Add Answer</u>
           </p>
         </div>
+        <br />
         <div id="answer">
-          <p>
-            {answers.length === 0
-            && <strong>This question has no answers :(</strong>}
-            {answers.length > 0
-            && <strong>A: </strong>}
-            {answers.slice(0, numberOfAnswers).map((a) => <AnswerCard key={a.answer_id} a={a} />)}
-          </p>
+          {answers.length === 0
+          && <strong>This question has no answers :(</strong>}
+          {answers.length > 0
+          && <strong><u>Answers</u></strong>}
+          {answers.slice(0, numberOfAnswers).map((a) => <AnswerCard key={a.answer_id} a={a} />)}
+          <br />
           {numberOfAnswers < answers.length
         && (
           <Button

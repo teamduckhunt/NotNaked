@@ -55,7 +55,7 @@ export default function ReviewCard({ review }) {
       </div>
       <div>
         {review.photos.map((photo) => (
-          <img src={photo} key={photo.id} alt={review.reviwer_name} height={100} />
+          <img src={photo.url} key={photo.id} alt={review.reviwer_name} height={100} />
         ))}
       </div>
 

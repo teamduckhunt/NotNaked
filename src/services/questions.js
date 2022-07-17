@@ -13,7 +13,7 @@ export const questionsApi = createApi({
   tagTypes: ['Questions', 'Answers'],
   endpoints: (builder) => ({
     allQuestions: builder.query({
-      query: (productId) => `/questions?product_id=${productId}`,
+      query: (productId) => `/questions?product_id=${productId}&count=50`,
       providesTags: ['Questions'],
     }),
     addQuestion: builder.mutation({
@@ -46,7 +46,7 @@ export const questionsApi = createApi({
       invalidatesTags: ['Questions'],
     }),
     answerList: builder.query({
-      query: (questionId, page = 1, count = 5) => `/questions/${questionId}/answers?page=${page}&count=${count}`,
+      query: (questionId) => `/questions/${questionId}/answers`,
       providesTags: ['Answers'],
     }),
     addAnswer: builder.mutation({

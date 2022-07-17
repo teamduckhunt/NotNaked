@@ -9,7 +9,6 @@ import { useGetReviewMetadataQuery } from '../../services/reviews.js';
 
 export default function RatingsAndReviews({ currentViewItemId }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(currentViewItemId);
-  // const [total, setTotal] = useState(0);
 
   if (error) {
     return <>Oh no, there was an error loading rating breakdown</>;
@@ -28,13 +27,12 @@ export default function RatingsAndReviews({ currentViewItemId }) {
       });
       return total;
     };
-    // reviewCount();
     return (
       <>
         <div>
           <ReviewList productId={currentViewItemId} reviewCount={reviewCount()} />
         </div>
-        {/* <SortItems /> */}
+        <SortItems productId={currentViewItemId} reviewCount={reviewCount()} />
         <RatingBreakdown productId={currentViewItemId} reviewCount={reviewCount()} />
         {/* <ProductBreakdown /> */}
       </>
