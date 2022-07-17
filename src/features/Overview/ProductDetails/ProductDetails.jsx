@@ -3,6 +3,7 @@ import React from 'react';
 // import { GrCheckmark } from 'react-icons/ai';
 import { useProductInformationByIdQuery } from '../../../services/products.js';
 import styles from './ProductDetails.module.css';
+import pinkcheck from '../pics/pinkcheck.png';
 
 export default function ProductDetails({ currentViewItemId }) {
   const {
@@ -33,7 +34,7 @@ export default function ProductDetails({ currentViewItemId }) {
         <div className={styles.features}>
           {product.features.map((aFeature) => (
             <div>
-              ✔️
+              <img src={pinkcheck} className={styles.checkMark} alt="" />
               {aFeature.feature}
               :
               {' '}

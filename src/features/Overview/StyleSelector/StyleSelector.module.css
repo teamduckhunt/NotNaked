@@ -11,6 +11,17 @@
   padding: 2px;
 }
 
+.checkDot {
+  position: absolute;
+  width: 15px;
+  top: 0px;
+  right: 12px;
+}
+
+.styleAndCheckmarkHolder {
+  position: relative;
+}
+
 .styleButtonList {
   display: grid;
   /* grid-template-columns: repeat(4, 1fr); */

@@ -9,7 +9,7 @@
 
 .productinfo {
   position: relative;
-  margin-left: 20px;
+  margin-left: 725px;
   height: 450px;
   width: 400px;
 }
@@ -19,10 +19,10 @@
 }
 
 .imagegallery {
-  /* border: solid black; */
-  position: relative;
+  border: solid black;
+  position: absolute;
   height: 450px;
-  width: 700px;
+  width: 1050px;
   /* padding-left: 5px; */
 }
 

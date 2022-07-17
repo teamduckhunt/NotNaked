@@ -9,6 +9,7 @@ import StyleCard from './StyleCard.jsx';
 import { useProductStylesQuery } from '../../../services/products.js';
 import classes from './StyleSelector.module.css';
 import SalePrice from '../../RelatedItemsAndComparison/helpers/SalePrice/SalePrice.jsx';
+import styleCheck from '../pics/stylecheck.png';
 
 export default function StyleList({ currentViewItemId }) {
   const { data: styles, error, isLoading } = useProductStylesQuery(currentViewItemId);
@@ -43,7 +44,18 @@ export default function StyleList({ currentViewItemId }) {
           {curStyle.name ? curStyle.name.toUpperCase() : styles.results[0].name.toUpperCase()}
         </div>
         <div className={classes.styleButtonList}>
-          {styles.results.map((style) => <StyleCard key={style.style_id} style={style} />)}
+          {styles.results.map((style) => {
+            console.log(style);
+            if (curStyle.style_id === style.style_id) {
+              return (
+                <div className={classes.styleAndCheckmarkHolder}>
+                  <StyleCard key={style.style_id} style={style} />
+                  <img src={styleCheck} className={classes.checkDot} alt="" />
+                </div>
+              );
+            }
+            return <StyleCard key={style.style_id} style={style} />;
+          })}
         </div>
       </div>
     );
