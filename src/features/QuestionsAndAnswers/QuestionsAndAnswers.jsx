@@ -13,6 +13,7 @@ export default function QuestionsAndAnswers({ currentViewItemId }) {
       <h5 className={styles.notbold}>
         QUESTIONS & ANSWERS
       </h5>
+      <br />
       <Search />
       <QuestionList key={currentViewItemId} currentViewItemId={currentViewItemId} />
     </div>
