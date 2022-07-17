@@ -32,7 +32,7 @@ export default function RatingsAndReviews({ currentViewItemId }) {
         <div>
           <ReviewList productId={currentViewItemId} reviewCount={reviewCount()} />
         </div>
-        <SortItems productId={currentViewItemId} />
+        <SortItems productId={currentViewItemId} reviewCount={reviewCount()} />
         <RatingBreakdown productId={currentViewItemId} reviewCount={reviewCount()} />
         {/* <ProductBreakdown /> */}
       </>

@@ -15,7 +15,7 @@ import styles from './RatingBreakdown.module.css';
 export default function RatingBreakdown({ productId, reviewCount }) {
   const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
-  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({ productId, curSortSelected, reviewCount });
+  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
   const dispatch = useDispatch();
 
   const initialState = {

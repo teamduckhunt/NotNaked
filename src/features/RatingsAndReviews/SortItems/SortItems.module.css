@@ -3,27 +3,22 @@
   margin: auto;
   width: 200px;
   padding: 0, 5px;
-  background: lightblue;
+  border: 1px solid #495057;
 
 }
-
-
-
 
 /* DROPDOWN
 ================================== */
 
-.dd-wrapper {
+.dd_wrapper {
+  border-color: transparent;
+
   display: flex;
   min-height: 38px;
   flex-wrap: wrap;
+  text-decoration: underline;
 }
 
-.dd-header {
-  /* @include styling(); */
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  width: 100%;
-  padding: 0 20px;
+.dd_option{
+  text-decoration: underline;
 }

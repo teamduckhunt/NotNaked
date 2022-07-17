@@ -1,63 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
-// import Dropdown from './Dropdown.jsx';
-import { setSortSelection } from './sortItemsSlice.js';
+import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews';
+import { setSortSelection } from './sortItemsSlice';
 import styles from './SortItems.module.css';
 
-export default function SortItems({ productId }) {
-  // const sortReviewList = useGetAllReviewsByProductIdQuery;
+export default function SortItems({ productId, reviewCount }) {
   const dispatch = useDispatch();
-  const [skip, setSkip] = useState(true);
 
   function handleChange(event) {
     const sortSelection = event.target.value;
-    // console.log('here');
     dispatch(setSortSelection(sortSelection));
-    // sortReviewList({ productId, sortSelection });
   }
   const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
-  useGetAllReviewsByProductIdQuery({ productId, curSortSelected });
-
-  // create component for the form, call the use query in the form.
+  useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
 
   return (
     <div className={styles.sortContainer}>
       # reviews, sort by
-      <select onChange={handleChange}>
-        <option value="relevant" onSelect={() => { setSkip((prev) => !prev); }}>relevant</option>
-        <option value="helpful" onSelect={() => { setSkip((prev) => !prev); }}>helpful</option>
-        <option value="newest" onSelect={() => { setSkip((prev) => !prev); }}>newest</option>
+      <select className={styles.dd_wrapper} onChange={handleChange}>
+        <option value="relevant">relevant</option>
+        <option value="helpful">helpful</option>
+        <option value="newest">newest</option>
       </select>
     </div>
 
   );
 }
-// value={sortSelection}
-
-//   const sortList = [
-//     {
-//       id: 1,
-//       value: 'newest',
-//     }, {
-//       id: 2,
-//       value: 'helpful',
-//     }, {
-//       id: 3,
-//       value: 'relevant',
-//     },
-//   ];
-
-//   const sortList1 = ['newest', 'helpful', 'relevant'];
-
-//   return (
-//     <div className={styles.container}>
-//       # reviews, sort by
-//       <Dropdown title="WHY" items={sortList} />
-//     </div>
-//   );
-// }
 
 SortItems.propTypes = {
   productId: PropTypes.number.isRequired,
