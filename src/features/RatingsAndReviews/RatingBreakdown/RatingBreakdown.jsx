@@ -3,7 +3,7 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetReviewMetadataQuery, useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating.js';
@@ -13,8 +13,9 @@ import RatingToDuckFeet from '../../../helpers/RatingToDuckFeet.jsx';
 import styles from './RatingBreakdown.module.css';
 
 export default function RatingBreakdown({ productId, reviewCount }) {
+  const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
-  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({ productId, reviewCount });
+  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
   const dispatch = useDispatch();
 
   const initialState = {
