@@ -13,7 +13,7 @@ export const questionsApi = createApi({
   tagTypes: ['Questions', 'Answers'],
   endpoints: (builder) => ({
     allQuestions: builder.query({
-      query: (productId) => `/questions?product_id=${productId}`,
+      query: (productId) => `/questions?product_id=${productId}&count=50`,
       providesTags: ['Questions'],
     }),
     addQuestion: builder.mutation({
