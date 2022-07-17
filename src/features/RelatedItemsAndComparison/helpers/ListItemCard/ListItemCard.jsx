@@ -27,7 +27,7 @@ export default function ListItemCard({
   };
 
   return (
-    <div className={styles.product_card_ctn}>
+    <div key={productId} className={styles.product_card_ctn}>
       <Card className={styles.product_card} style={{ backgroundImage: `url(${productImage})` }}>
         <Link to={`/product/${productId}`}>
           <header className={styles.product_card_header}>

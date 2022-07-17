@@ -40,7 +40,7 @@ export default function ReviewList({ currentViewItemId }) {
 
     const checkForStarFilter = (curStarSelected.length === 0) ? data.results : filteredReviewSet.filter(item => item !== undefined);
 
-    console.log('check', checkForStarFilter);
+    // console.log('check', checkForStarFilter);
 
     return (
       <div>

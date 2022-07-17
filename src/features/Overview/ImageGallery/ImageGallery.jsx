@@ -10,7 +10,6 @@ export default function ImageGallery({ currentViewItemId }) {
   const [current, setCurrent] = useState(0);
 
   if (error) {
-    console.log(error);
     return <div>There is an error!</div>;
   }
 
@@ -19,7 +18,6 @@ export default function ImageGallery({ currentViewItemId }) {
   }
 
   if (data) {
-    console.log('curstyle ', curStyle);
     const currentImage = curStyle.photos
       ? curStyle.photos
       : data.results[0].photos;
@@ -32,8 +30,6 @@ export default function ImageGallery({ currentViewItemId }) {
     const prevSlide = () => {
       setCurrent(current === 0 ? length - 1 : current - 1);
     };
-    console.log('data ', data);
-
     return (
       <div className={styles.picDiv}>
         <div>
