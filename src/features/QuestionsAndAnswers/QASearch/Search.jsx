@@ -7,7 +7,6 @@ import FullDuck from '../../../../assets/duckFeet-rating/full.svg';
 import { setSearch } from '../questionsAndAnswersSlice.jsx';
 
 export default function Search() {
-  // const [search, setSearch] = useState('');
   const dispatch = useDispatch();
   const select = useSelector((state) => state.questionsAndAnswers.search);
 

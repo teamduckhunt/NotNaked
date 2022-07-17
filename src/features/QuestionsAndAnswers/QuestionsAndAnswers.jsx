@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -11,6 +13,7 @@ export default function QuestionsAndAnswers({ currentViewItemId }) {
       <h5 className={styles.notbold}>
         QUESTIONS & ANSWERS
       </h5>
+      <br />
       <Search />
       <QuestionList key={currentViewItemId} currentViewItemId={currentViewItemId} />
     </div>

@@ -46,7 +46,7 @@ export const questionsApi = createApi({
       invalidatesTags: ['Questions'],
     }),
     answerList: builder.query({
-      query: (questionId, page = 1, count = 5) => `/questions/${questionId}/answers?page=${page}&count=${count}`,
+      query: (questionId) => `/questions/${questionId}/answers`,
       providesTags: ['Answers'],
     }),
     addAnswer: builder.mutation({
