@@ -8,12 +8,11 @@ export const outfitListSlice = createSlice({
   name: 'outfitList',
   initialState,
   reducers: {
-    addOutfit: (state, action) => {
-      state.outfitList.push(action.payload);
+    addOutfit: (state, { payload }) => {
+      state.outfitList.unshift(payload);
     },
-    deleteOutfit: (state, action) => {
-      const deleteItemIndex = state.outfitList.indexOf((outfitId) => outfitId === action.payload);
-      state.outfitList.splice(deleteItemIndex, 1);
+    deleteOutfit: (state, { payload }) => {
+      state.outfitList.splice(payload, 1);
     },
   },
 });

@@ -8,6 +8,7 @@ import { setCurrentStyle } from './styleSlice.js';
 import StyleCard from './StyleCard.jsx';
 import { useProductStylesQuery } from '../../../services/products.js';
 import classes from './StyleSelector.module.css';
+import SalePrice from '../../RelatedItemsAndComparison/helpers/SalePrice/SalePrice.jsx';
 
 export default function StyleList({ currentViewItemId }) {
   const { data: styles, error, isLoading } = useProductStylesQuery(currentViewItemId);
@@ -16,7 +17,7 @@ export default function StyleList({ currentViewItemId }) {
   const curStyle = useSelector((state) => state.productStyles.selectedStyle);
 
   if (error) {
-    console.log(error);
+    // console.log(error);
     return <div>There is an error!</div>;
   }
 
@@ -28,18 +29,21 @@ export default function StyleList({ currentViewItemId }) {
   if (styles) {
     // console.log('price ', curStyle.original_price);
     // console.log('style ', curStyle);
+    const price = curStyle.original_price ? curStyle.original_price : styles.results[0].original_price;
+    const salesPrice = curStyle.sale_price === undefined ? styles.results[0].sale_price : curStyle.sale_price;
+
     return (
       <div>
         <div>
-          $
-          {' '}
-          {curStyle.original_price ? curStyle.original_price : styles.results[0].original_price}
+          <SalePrice originalPrice={price} salePrice={salesPrice} />
         </div>
         <div>
           STYLE:
           {curStyle.name ? curStyle.name : styles.results[0].name}
         </div>
-        {styles.results.map((style) => <StyleCard key={style.style_id} style={style} />)}
+        <div className={styles.styleButtonList}>
+          {styles.results.map((style) => <StyleCard key={style.style_id} style={style} />)}
+        </div>
       </div>
     );
   }
