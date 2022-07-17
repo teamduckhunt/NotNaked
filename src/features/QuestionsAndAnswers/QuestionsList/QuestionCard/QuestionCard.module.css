@@ -11,3 +11,8 @@
   border-left: thick double white;
   padding-left: 1%;
 }
+
+.yes {
+  background-color: transparent;
+  border-color: transparent;
+}

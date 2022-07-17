@@ -30,6 +30,7 @@ export default function QuestionCard({ q, p }) {
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
   const [disableMoreAnswersButton, setDisableMoreAnswersButton] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
+  const [disableYes, setDisableYes] = useState(false);
 
   const handleModalToggle = () => {
     setToggleModal(!toggleModal);
@@ -64,7 +65,19 @@ export default function QuestionCard({ q, p }) {
           </p>
           <p className={styles.helpful}>
             Helpful?&nbsp;&nbsp;
-            <u onClick={() => addHelpful(q.question_id)}>Yes</u>
+            <button
+              className={styles.yes}
+              onClick={() => {
+                addHelpful(q.question_id);
+                setDisableYes(true);
+              }}
+              disabled={disableYes}
+              type="button"
+            >
+              <u>
+                Yes
+              </u>
+            </button>
             &nbsp;({q.question_helpfulness})
           </p>
           <p className={styles.add}>

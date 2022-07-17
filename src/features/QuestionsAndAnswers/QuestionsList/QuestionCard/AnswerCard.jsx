@@ -9,7 +9,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-one-expression-per-line */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './AnswerCard.module.css';
 import {
@@ -20,6 +20,7 @@ export default function AnswerCard({ a }) {
   const [addHelpful] = useAddAnswerHelpfulMutation();
   const [reportAnswer] = useReportAnswerMutation();
 
+  const [disableYes, setDisableYes] = useState(false);
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
   const date = new Date(a.date).toLocaleDateString([], dateOptions);
 
@@ -41,7 +42,17 @@ export default function AnswerCard({ a }) {
         </p>
         <p className={styles.details}>
           Helpful?&nbsp;&nbsp;
-          <u onClick={() => addHelpful(a.answer_id)}>Yes</u> ({a.helpfulness})
+          <button
+            className={styles.yes}
+            onClick={() => {
+              addHelpful(a.answer_id);
+              setDisableYes(true);
+            }}
+            type="button"
+            disabled={disableYes}
+          >
+            <u>Yes</u> ({a.helpfulness})
+          </button>
         </p>
         <p className={styles.details}>
           <u onClick={() => reportAnswer(a.answer_id)}>Report</u>

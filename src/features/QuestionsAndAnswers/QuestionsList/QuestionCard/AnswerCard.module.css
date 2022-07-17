@@ -16,3 +16,8 @@
   padding-left: 1%;
   margin-left: 1%;
 }
+
+.yes {
+  background-color: transparent;
+  border-color: transparent;
+}

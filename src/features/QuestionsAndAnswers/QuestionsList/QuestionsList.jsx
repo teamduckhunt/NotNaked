@@ -62,6 +62,13 @@ export default function QuestionsList({ currentViewItemId }) {
             product={product.name}
           />
         )}
+        {questions.length === 0 &&
+          <>
+            <br />
+            <strong>NO QUESTIONS FOUND :(</strong>
+            <br />
+          </>
+        }
         {questions.slice(0, numberOfQuestions)
           .map((q) => <QuestionCard key={q.question_id} q={q} p={currentViewItemId} />)}
         <br></br>
