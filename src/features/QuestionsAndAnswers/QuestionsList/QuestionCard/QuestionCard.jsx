@@ -78,7 +78,7 @@ export default function QuestionCard({ q, p }) {
                 Yes
               </u>
             </button>
-            &nbsp;({q.question_helpfulness})
+            ({q.question_helpfulness})
           </p>
           <p className={styles.add}>
             <u onClick={() => handleModalToggle()}>Add Answer</u>

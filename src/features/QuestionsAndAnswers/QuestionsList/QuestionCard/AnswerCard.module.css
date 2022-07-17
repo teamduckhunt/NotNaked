@@ -11,13 +11,24 @@
   margin-left: 2%;
 }
 
+.photo {
+  margin-left: 2%;
+  margin-bottom: 1%;
+  width: 150px;
+  height: 100px;
+  border: solid black;
+}
+
 .details {
   border-left: thick double white;
-  padding-left: 1%;
+  display:flex;
+  padding-left: 2%;
   margin-left: 1%;
 }
 
 .yes {
+  line-height: 2px;
   background-color: transparent;
   border-color: transparent;
+  font-size: medium;
 }

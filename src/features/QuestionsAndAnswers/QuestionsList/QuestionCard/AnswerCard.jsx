@@ -32,7 +32,7 @@ export default function AnswerCard({ a }) {
       </p>
       <br />
       {a.photos.length > 0
-        && a.photos.map(photo => <img className={styles.body} src={photo} alt={a.answerer_name} />)}
+        && a.photos.map(p => <img className={styles.photo} src={p.url} alt={a.answerer_name} />)}
       <br />
       <div className={styles.info} id="info">
         <p>
