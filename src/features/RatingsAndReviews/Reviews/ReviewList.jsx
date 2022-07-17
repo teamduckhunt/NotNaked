@@ -8,12 +8,16 @@ import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
 import { useSelector } from 'react-redux';
 
-export default function ReviewList({ currentViewItemId }) {
-  const { data, error, isLoading } = useGetAllReviewsByProductIdQuery(currentViewItemId);
+export default function ReviewList({ productId }) {
+  const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
+  console.log(curSortSelected);
+  console.log(productId);
+  const { data, error, isLoading } = useGetAllReviewsByProductIdQuery({ productId, curSortSelected} );
 
   const [numberOfReviews, setNumberOfReviews] = useState(2);
   const [disableMoreReviewsButton, setDisableMoreReviewsButton] = useState(false);
   const curStarSelected = useSelector((state) => state.ratingBreakdown.filterByStar);
+
 
   if (error) {
     return <>Oh no, there was an error!</>;
@@ -24,6 +28,7 @@ export default function ReviewList({ currentViewItemId }) {
   }
 
   if (data) {
+    console.log('review data', data);
 
     // check if there are no more reviews
     const reviewListLengthCheck = () => {
@@ -40,7 +45,6 @@ export default function ReviewList({ currentViewItemId }) {
 
     const checkForStarFilter = (curStarSelected.length === 0) ? data.results : filteredReviewSet.filter(item => item !== undefined);
 
-    console.log('check', checkForStarFilter);
 
     return (
       <div>
@@ -50,7 +54,7 @@ export default function ReviewList({ currentViewItemId }) {
             <ReviewCard
               key={review.review_id}
               review={review}
-              currentViewItemId={currentViewItemId}
+              productId={productId}
             />
           ))}
         </div>
@@ -71,5 +75,5 @@ export default function ReviewList({ currentViewItemId }) {
 }
 
 ReviewList.propTypes = {
-  currentViewItemId: PropTypes.number.isRequired,
+  productId: PropTypes.number.isRequired,
 };

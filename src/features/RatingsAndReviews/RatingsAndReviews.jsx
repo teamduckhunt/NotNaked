@@ -10,7 +10,7 @@ export default function RatingsAndReviews({ currentViewItemId }) {
   return (
     <>
       <div>
-        <ReviewList currentViewItemId={currentViewItemId} />
+        <ReviewList productId={currentViewItemId} />
       </div>
       <SortItems productId={currentViewItemId} />
       <RatingBreakdown productId={currentViewItemId} />

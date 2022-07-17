@@ -2,16 +2,16 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetReviewMetadataQuery, useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating.js';
 import { setFilterByStar } from './ratingBreakdownSlice.js';
-import SortItems from '../SortItems/SortItems.jsx';
 
 export default function ReviewList({ productId }) {
+  const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
-  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({productId, SortItems[sortSelection]});
+  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({ productId, curSortSelected });
   const dispatch = useDispatch();
 
   const [starFilter, setStarFilter] = useState({

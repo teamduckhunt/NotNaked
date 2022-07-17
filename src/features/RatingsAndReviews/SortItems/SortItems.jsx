@@ -1,33 +1,42 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
-import Dropdown from './Dropdown.jsx';
+// import Dropdown from './Dropdown.jsx';
+import { setSortSelection } from './sortItemsSlice.js';
 import styles from './SortItems.module.css';
 
 export default function SortItems({ productId }) {
-  const sortReviewList = useGetAllReviewsByProductIdQuery;
-
-  const initialState = ('relevant');
-
-  const [sortSelection, setSortSelection] = useState(initialState);
+  // const sortReviewList = useGetAllReviewsByProductIdQuery;
+  const dispatch = useDispatch();
+  const [skip, setSkip] = useState(true);
 
   function handleChange(event) {
-    setSortSelection([event.target.value]);
-    sortReviewList({ productId, sortSelection });
+    const sortSelection = event.target.value;
+    // console.log('here');
+    dispatch(setSortSelection(sortSelection));
+    // sortReviewList({ productId, sortSelection });
   }
+  const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
+  useGetAllReviewsByProductIdQuery({ productId, curSortSelected }, { skip });
+
+
+
+  // create component for the form, call the use query in the form.
 
   return (
     <div className={styles.sortContainer}>
       # reviews, sort by
-      <select value={sortSelection} onChange={handleChange}>
-        <option value="relevant">relevant</option>
-        <option value="helpful">helpful</option>
-        <option value="newest">newest</option>
+      <select onChange={handleChange}>
+        <option value="relevant" onSelect={() => { setSkip((prev) => !prev); }}>relevant</option>
+        <option value="helpful" onSelect={() => { setSkip((prev) => !prev); }}>helpful</option>
+        <option value="newest" onSelect={() => { setSkip((prev) => !prev); }}>newest</option>
       </select>
     </div>
 
   );
 }
+// value={sortSelection}
 
 //   const sortList = [
 //     {
