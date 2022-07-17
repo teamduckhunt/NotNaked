@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Filler from './Filler.jsx';
+import Filler from './Filler';
 import styles from '../RatingBreakdown.module.css';
 
 export default function RatingBarFeature({ fillerPercentage }) {
