@@ -18,7 +18,7 @@ export default function StyleList({ currentViewItemId }) {
   const curStyle = useSelector((state) => state.productStyles.selectedStyle);
 
   if (error) {
-    console.log(error);
+    // console.log(error);
     return <div>There is an error!</div>;
   }
 

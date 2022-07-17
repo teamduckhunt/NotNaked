@@ -1,0 +1,24 @@
+
+.sortContainer {
+  margin: auto;
+  width: 200px;
+  padding: 0, 5px;
+  border: 1px solid #495057;
+
+}
+
+/* DROPDOWN
+================================== */
+
+.dd_wrapper {
+  border-color: transparent;
+
+  display: flex;
+  min-height: 38px;
+  flex-wrap: wrap;
+  text-decoration: underline;
+}
+
+.dd_option{
+  text-decoration: underline;
+}

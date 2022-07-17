@@ -1,53 +1,69 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetReviewMetadataQuery, useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating.js';
 import { setFilterByStar } from './ratingBreakdownSlice.js';
+import RatingBarFeature from './RatingBarFeature/RatingBarFeature.jsx';
+import RatingToDuckFeet from '../../../helpers/RatingToDuckFeet.jsx';
+import styles from './RatingBreakdown.module.css';
 
-export default function ReviewList({ productId }) {
+export default function RatingBreakdown({ productId, reviewCount }) {
+  const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
-  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery(productId);
+  const { data: reviewData, isLoading: reviewLoading } = useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
   const dispatch = useDispatch();
 
-  const [starFilter, setStarFilter] = useState({
+  const initialState = {
     fiveStar: false,
     fourStar: false,
     threeStar: false,
     twoStar: false,
     oneStar: false,
-  });
+  };
+
+  const [starFilter, setStarFilter] = useState(initialState);
+
+  const initialFilterState = [];
+
+  const [activeFilters, setActiveFilters] = useState(initialFilterState);
+
+  const removeActiveFilter = (rating) => {
+    const activeFiltersCopy = activeFilters.slice();
+    const filterLoc = activeFiltersCopy.indexOf(rating);
+    activeFiltersCopy.splice(filterLoc, 1);
+    setActiveFilters(activeFiltersCopy);
+  };
 
   const handleStarFilter = (e) => {
     if (e.target.innerText === '5 Star') {
-      starFilter.fiveStar === false ? setStarFilter({ ...starFilter, fiveStar: true }) : setStarFilter({ ...starFilter, fiveStar: false });
+      !starFilter.fiveStar ? setActiveFilters([...activeFilters, '5 Star']) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, fiveStar: !starFilter.fiveStar });
     }
     if (e.target.innerText === '4 Star') {
-      starFilter.fourStar === false ? setStarFilter({ ...starFilter, fourStar: true })
-        : setStarFilter({ ...starFilter, fourStar: false });
+      !starFilter.fourStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, fourStar: !starFilter.fourStar });
     }
     if (e.target.innerText === '3 Star') {
-      starFilter.threeStar === false ? setStarFilter({ ...starFilter, threeStar: true })
-        : setStarFilter({ ...starFilter, threeStar: false });
+      !starFilter.threeStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, threeStar: !starFilter.threeStar });
     }
     if (e.target.innerText === '2 Star') {
-      starFilter.twoStar === false ? setStarFilter({ ...starFilter, twoStar: true }) : setStarFilter({ ...starFilter, twoStar: false });
+      !starFilter.twoStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, twoStar: !starFilter.twoStar });
     }
     if (e.target.innerText === '1 Star') {
-      starFilter.oneStar === false ? setStarFilter({ ...starFilter, oneStar: true }) : setStarFilter({ ...starFilter, oneStar: false });
+      !starFilter.oneStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
+      setStarFilter({ ...starFilter, oneStar: !starFilter.oneStar });
     }
   };
 
   // check if any star in starFilter is true.
   const resetButton = (Object.values(starFilter).includes(true));
-
-  // The percentage of reviews that ‘recommend’ the product will be displayed below the breakdown.
-  // take the total number of reviews.
-  // tally how many reviews recommedn this product
-  // return a result of recommended / total * 100
 
   if (error) {
     return <>Oh no, there was an error loading rating breakdown</>;
@@ -72,14 +88,18 @@ export default function ReviewList({ productId }) {
       ).filter((item) => item !== undefined);
       return ((totalRecommended.length / totalReviews) * 100).toFixed();
     };
+    const fiveStarReviewPercentage = (data.ratings[5] / reviewCount) * 100;
+    const fourStarReviewsPercentage = (data.ratings[4] / reviewCount) * 100;
+    const threeStarReviewsPercentage = (data.ratings[3] / reviewCount) * 100;
+    const twoStarReviewsPercentage = (data.ratings[2] / reviewCount) * 100;
+    const oneStarReviewsPercentage = (data.ratings[1] / reviewCount) * 100;
 
     return (
-      <div>
-
+      <div className={styles.rating_border}>
         <div>
           {Math.round(avgRating * 10) / 10}
           <div>
-            ⭐️
+            <RatingToDuckFeet rating={avgRating} />
           </div>
           {numOfReviews}
           {' '}
@@ -94,6 +114,8 @@ export default function ReviewList({ productId }) {
           >
             5 Star
           </Button>
+          <RatingBarFeature fillerPercentage={fiveStarReviewPercentage} />
+          {`(${data.ratings[5]})`}
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -102,6 +124,8 @@ export default function ReviewList({ productId }) {
           >
             4 Star
           </Button>
+          <RatingBarFeature fillerPercentage={fourStarReviewsPercentage} />
+          {`(${data.ratings[4]})`}
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -110,6 +134,8 @@ export default function ReviewList({ productId }) {
           >
             3 Star
           </Button>
+          <RatingBarFeature fillerPercentage={threeStarReviewsPercentage} />
+          {`(${data.ratings[3]})`}
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -118,6 +144,8 @@ export default function ReviewList({ productId }) {
           >
             2 Star
           </Button>
+          <RatingBarFeature fillerPercentage={twoStarReviewsPercentage} />
+          {`(${data.ratings[2]})`}
           <Button
             onClick={(e) => {
               handleStarFilter(e);
@@ -126,16 +154,23 @@ export default function ReviewList({ productId }) {
           >
             1 Star
           </Button>
+          <RatingBarFeature fillerPercentage={oneStarReviewsPercentage} />
+          {`(${data.ratings[1]})`}
         </div>
         <div>
           {resetButton
             && (
-              <Button onClick={() => {
-                dispatch(setFilterByStar('reset'));
-              }}
-              >
-                Remove All Filters
-              </Button>
+              <>
+                <Button onClick={() => {
+                  dispatch(setFilterByStar('reset'));
+                  setStarFilter(initialState);
+                  setActiveFilters(initialFilterState);
+                }}
+                >
+                  Remove All Filters
+                </Button>
+                {activeFilters.map((filter) => <div>{filter}</div>)}
+              </>
             )}
         </div>
         <div>
@@ -149,10 +184,11 @@ export default function ReviewList({ productId }) {
   }
 }
 
-ReviewList.propTypes = {
+RatingBreakdown.propTypes = {
   productId: PropTypes.number.isRequired,
+  reviewCount: PropTypes.number.isRequired,
 };
 
 // Strategy Notes :
 
-// add a bar count feature to each star button.
+// add message for the filters that have been currently applied.

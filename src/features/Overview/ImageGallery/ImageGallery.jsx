@@ -12,7 +12,6 @@ export default function ImageGallery({ currentViewItemId }) {
   const [current, setCurrent] = useState(0);
 
   if (error) {
-    console.log(error);
     return <div>There is an error!</div>;
   }
 

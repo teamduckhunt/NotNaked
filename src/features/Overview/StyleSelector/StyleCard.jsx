@@ -15,7 +15,6 @@ export default function StyleCard({ style }) {
         type="button"
         onClick={() => {
           dispatch(setCurrentStyle(style));
-          // setCurrent(0);
         }}
       >
         <img

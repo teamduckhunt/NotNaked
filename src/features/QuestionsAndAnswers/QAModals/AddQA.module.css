@@ -1,0 +1,30 @@
+.modal {
+  position: fixed;
+  top: 25%;
+  left: 30%;
+}
+
+.title {
+ font-size: xx-large;
+}
+
+.subtitle {
+  font-size: large;
+  padding-bottom: 3%;
+}
+
+.warning {
+  font-size: small;
+}
+
+.button {
+  position: relative;
+  left: 30%;
+  font-size: medium;
+}
+
+.close {
+  display: flex;
+  float: right;
+  font-size: large;
+}

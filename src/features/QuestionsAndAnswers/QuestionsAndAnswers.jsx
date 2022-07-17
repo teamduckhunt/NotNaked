@@ -1,7 +1,10 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import QuestionList from './QuestionsList/QuestionsList.jsx';
+import Search from './QASearch/Search.jsx';
 import styles from './QuestionsAndAnswers.module.css';
 
 export default function QuestionsAndAnswers({ currentViewItemId }) {
@@ -10,6 +13,8 @@ export default function QuestionsAndAnswers({ currentViewItemId }) {
       <h5 className={styles.notbold}>
         QUESTIONS & ANSWERS
       </h5>
+      <br />
+      <Search />
       <QuestionList key={currentViewItemId} currentViewItemId={currentViewItemId} />
     </div>
   );
