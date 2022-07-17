@@ -12,7 +12,7 @@ export default function ReviewList({ productId }) {
   const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
   console.log(curSortSelected);
   console.log(productId);
-  const { data, error, isLoading } = useGetAllReviewsByProductIdQuery({ productId, curSortSelected} );
+  const { data, error, isLoading } = useGetAllReviewsByProductIdQuery({ productId, curSortSelected });
 
   const [numberOfReviews, setNumberOfReviews] = useState(2);
   const [disableMoreReviewsButton, setDisableMoreReviewsButton] = useState(false);

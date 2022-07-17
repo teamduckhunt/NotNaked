@@ -18,9 +18,7 @@ export default function SortItems({ productId }) {
     // sortReviewList({ productId, sortSelection });
   }
   const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
-  useGetAllReviewsByProductIdQuery({ productId, curSortSelected }, { skip });
-
-
+  useGetAllReviewsByProductIdQuery({ productId, curSortSelected });
 
   // create component for the form, call the use query in the form.
 
