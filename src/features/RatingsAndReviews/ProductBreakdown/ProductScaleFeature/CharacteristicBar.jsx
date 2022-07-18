@@ -6,7 +6,7 @@ export default function CharacterBar({ description, descLocation }) {
   return (
     <div>
       <div className={styles.characteristic_bar} />
-      <p className={styles.description_text} style={{ 'justify-content': `${descLocation}` }}>
+      <p className={styles.description_text} style={{ justifyContent: `${descLocation}` }}>
         {description}
       </p>
     </div>
@@ -14,6 +14,6 @@ export default function CharacterBar({ description, descLocation }) {
 }
 
 CharacterBar.propTypes = {
-  description: PropTypes.string.isRequired,
-  descLocation: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  descLocation: PropTypes.string,
 };
