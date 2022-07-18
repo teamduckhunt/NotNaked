@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import Card from '../../../UI/Card.jsx';
 import RatingToDuckFeet from '../../../../helpers/RatingToDuckFeet.jsx';
 import styles from './ListItemCard.module.css';
-import SalePrice from '../../../../helpers/SalePrice/SalePrice.jsx';
+import SalePrice from '../SalePrice/SalePrice.jsx';
 import IronMan from '../../../../../assets/iron-man.svg';
 
 export default function ListItemCard({
