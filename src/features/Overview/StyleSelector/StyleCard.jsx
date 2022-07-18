@@ -6,7 +6,6 @@ import styles from './StyleSelector.module.css';
 
 export default function StyleCard({ style }) {
   const dispatch = useDispatch();
-  // const [current, setCurrent] = useState();
   const curStyle = useSelector((state) => state.productStyles.currentStyle);
   return (
     <div>
