@@ -84,9 +84,9 @@ export default function ReviewCard({ review }) {
   );
 }
 
-ReviewCard.propTypes = {
-  review: PropTypes.shape.isRequired,
-};
+// ReviewCard.propTypes = {
+//   review: PropTypes.shape.isRequired,
+// };
 
 // NOTES :
 

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { useProductStylesQuery } from '../../../services/products.js';
 import styles from './ImageGallery.module.css';
@@ -36,9 +36,9 @@ export default function ImageGallery({ currentViewItemId }) {
     let picExpanded = false;
 
     const toggleClass = () => {
-      console.log('expand was clicked!!!!!!!!!!!!!');
+      // console.log('expand was clicked!!!!!!!!!!!!!');
       picExpanded = !picExpanded;
-      console.log(picExpanded);
+      // console.log(picExpanded);
     };
 
     const bigPicClass = picExpanded ? styles.expanded : styles.normal;

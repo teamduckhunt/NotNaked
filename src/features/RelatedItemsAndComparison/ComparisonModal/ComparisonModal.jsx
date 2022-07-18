@@ -24,12 +24,13 @@ export default function ComparisonModal({ handleModalToggle, currentViewItemId, 
     return <div>Loading...</div>;
   }
 
-  const featuresReducer = (data) => data.reduce((obj, feat) => ({
+  const currentFeatures = currentViewItemData.features.reduce((obj, feat) => ({
     ...obj, [feat.feature]: feat.value,
   }), {});
 
-  const currentFeatures = featuresReducer(currentViewItemData);
-  const relatedFeatures = featuresReducer(relatedItemData);
+  const relatedFeatures = relatedItemData.features.reduce((obj, feat) => ({
+    ...obj, [feat.feature]: feat.value,
+  }), {});
 
   return (
     <Modal className={styles.modal}>
