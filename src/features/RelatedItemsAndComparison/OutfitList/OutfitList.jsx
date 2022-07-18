@@ -75,6 +75,7 @@ export default function OutfitList({ currentViewItemId }) {
           <div className={styles.button_ctn}>
             <IoIosAddCircleOutline
               value="action"
+              data-testid="addOutfit"
               className={styles.button}
               onClick={() => handleAddOutfit()}
             />
