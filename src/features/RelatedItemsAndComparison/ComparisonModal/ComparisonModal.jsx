@@ -14,12 +14,10 @@ export default function ComparisonModal({ handleModalToggle, currentViewItemId, 
   const {
     data: currentViewItemData,
     isLoading: isCurrentLoading,
-    error: currentError,
   } = useProductInformationByIdQuery(currentViewItemId);
   const {
     data: relatedItemData,
     isLoading: isRelatedLoading,
-    error: relatedError,
   } = useProductInformationByIdQuery(relatedItemId);
 
   if (isCurrentLoading && isRelatedLoading) {

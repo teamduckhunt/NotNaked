@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import Card from '../../../UI/Card.jsx';
 import RatingToDuckFeet from '../../../../helpers/RatingToDuckFeet.jsx';
 import styles from './ListItemCard.module.css';
+import SalePrice from '../SalePrice/SalePrice.jsx';
+import IronMan from '../../../../../assets/iron-man.svg';
 
 export default function ListItemCard({
   product,
@@ -17,6 +19,7 @@ export default function ListItemCard({
   handleOnClick,
   averageRating,
   children,
+  productSalesPrice,
 }) {
   const handleProductClick = (e) => {
     e.preventDefault();
@@ -25,10 +28,14 @@ export default function ListItemCard({
       e.stopPropagation();
     }
   };
-
+  const price = <SalePrice originalPrice={product.default_price} salePrice={productSalesPrice} />;
+  const InfinityStone = <img className={styles.ironMan} src={IronMan} alt="Iron Man" />;
   return (
     <div key={productId} className={styles.product_card_ctn}>
-      <Card className={styles.product_card} style={{ backgroundImage: `url(${productImage})` }}>
+      <Card
+        className={styles.product_card}
+        style={{ backgroundImage: `url(${productImage})` }}
+      >
         <Link to={`/product/${productId}`}>
           <header className={styles.product_card_header}>
             <button
@@ -44,9 +51,16 @@ export default function ListItemCard({
         <footer className={styles.product_card_body}>
           <p className={styles.category}>{product.category}</p>
           <p className={styles.name}>{product.name}</p>
-          <p className={styles.price}>${product.default_price}</p>
-          {/* <p>{averageRating.toFixed(2)}</p> */}
-          <RatingToDuckFeet rating={averageRating} />
+          <p className={styles.price}>{price}</p>
+          {/* Iron Man by Adhi Satrio from NounProject.com */}
+          {Number.isNaN(averageRating) ? (
+            <div className={styles.ironContainer}>
+              {Array(5).fill(InfinityStone)}
+            </div>
+          ) : (
+            <RatingToDuckFeet rating={averageRating} />
+          )}
+
         </footer>
       </Card>
     </div>

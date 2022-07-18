@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RelatedProductList from './RelatedProductsList/RelatedProductList.jsx';
 import OutfitList from './OutfitList/OutfitList.jsx';
@@ -8,7 +8,7 @@ export default function RelatedItemsAndComparison({ currentViewItemId }) {
   return (
     <>
       <RelatedProductList currentViewItemId={currentViewItemId} />
-      <OutfitList key={currentViewItemId} currentViewItemId={currentViewItemId} />
+      <OutfitList currentViewItemId={currentViewItemId} />
     </>
   );
 }

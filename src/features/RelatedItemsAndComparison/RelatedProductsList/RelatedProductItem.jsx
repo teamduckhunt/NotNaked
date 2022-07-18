@@ -17,6 +17,8 @@ import ListItemCard from '../helpers/ListItemCard/ListItemCard.jsx';
 import ComparisonModal from '../ComparisonModal/ComparisonModal.jsx';
 import { useGetReviewMetadataQuery } from '../../../services/reviews';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating';
+import IronMan from '../../../../assets/iron-man.svg';
+import classes from '../helpers/ListItemCard/ListItemCard.module.css';
 
 export default function RelatedProductItem({ productId, currentViewItemId }) {
   const [toggleModal, setToggleModal] = useState(false);
@@ -36,7 +38,8 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
   if (isLoading || stylesLoading || metaLoading) {
     return <>Loading...</>;
   }
-
+  const averageRating = getAverageRating(metaData);
+  const InfinityStone = <img className={classes.ironMan2} src={IronMan} alt="Iron Man" />;
   return (
     <>
       {toggleModal && (
@@ -48,12 +51,13 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
       )}
       <ListItemCard
         product={data}
-        averageRating={getAverageRating(metaData)}
+        averageRating={averageRating}
         productId={productId}
         productImage={image}
+        productSalesPrice={styles.results[0].sale_price}
         handleOnClick={handleModalToggle}
       >
-        <AiFillStar />
+       {Number.isNaN(averageRating) ? InfinityStone : <AiFillStar />}
       </ListItemCard>
     </>
   );
