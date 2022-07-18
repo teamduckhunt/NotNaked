@@ -1,23 +1,23 @@
 /* eslint-disable import/extensions */
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RelatedProductItem from './RelatedProductItem.jsx';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { useRelatedProductsIdQuery } from '../../../services/products';
 
-const initialState = {
+export const relatedState = {
   start: 0,
   end: 4,
 };
 
-const reducer = ({ start, end }, action) => {
+export const relatedReducer = ({ start, end }, action) => {
   switch (action.type) {
-    case 'next':
+    case 'NEXT':
       return {
         start: start + 4,
         end: end + 4,
       };
-    case 'prev':
+    case 'PREV':
       return {
         start: start > 0 ? start - 4 : start,
         end: end > 4 ? end - 4 : end,
@@ -28,7 +28,7 @@ const reducer = ({ start, end }, action) => {
 };
 export default function RelatedProductList({ currentViewItemId }) {
   const { data, error, isLoading } = useRelatedProductsIdQuery(currentViewItemId);
-  const [localState, dispatchLocalState] = useReducer(reducer, initialState);
+  const [localState, dispatchLocalState] = useReducer(relatedReducer, relatedState);
   const { start, end } = localState;
 
   if (error) {
@@ -40,16 +40,22 @@ export default function RelatedProductList({ currentViewItemId }) {
   }
 
   const handleCarouselControl = (control) => {
-    if (control === 'prev' && start !== 0 && start > 0) {
+    if (control === 'PREV' && start !== 0 && start > 0) {
       dispatchLocalState({ type: control });
     }
-    if (control === 'next' && end !== data.length && end < data.length) {
+    if (control === 'NEXT' && end !== data.length && end < data.length) {
       dispatchLocalState({ type: control });
     }
   };
 
   if (data) {
-    const filteredData = data.reduce((keys, id) => ({ ...keys, [id]: true }), {});
+    const filteredData = Object.keys(data.reduce((keys, id) => {
+      if (id === currentViewItemId) {
+        return keys;
+      }
+      return { ...keys, [id]: true };
+    }, {}));
+
     return (
       <div>
         <h3>My Related Products</h3>
@@ -58,10 +64,10 @@ export default function RelatedProductList({ currentViewItemId }) {
           <ListContainer
             start={start}
             end={end}
-            length={data.length}
+            length={filteredData.length}
             handleCarouselControl={handleCarouselControl}
           >
-            {Object.keys(filteredData)
+            {filteredData
               .slice(start, end)
               .map((productId) => (
                 <RelatedProductItem

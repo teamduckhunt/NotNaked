@@ -1,28 +1,28 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect, useReducer } from "react";
-import PropTypes from "prop-types";
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { useAppDispatch, useAppSelector } from "../../../app/redux-hooks";
-import ListContainer from "../helpers/ListContainer/ListContainer.jsx";
-import { addOutfit, deleteOutfit } from "./outfitListSlice.jsx";
+import React, { useState, useEffect, useReducer } from 'react';
+import PropTypes from 'prop-types';
+import { IoIosAddCircleOutline } from 'react-icons/io';
+import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
+import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
+import { addOutfit, deleteOutfit } from './outfitListSlice.jsx';
 // import ListContainer from '../../UI/Card.jsx';
-import Button from "../../UI/Button.jsx";
-import OutfitListItem from "./OutfitListItem.jsx";
-import styles from "./OutfitList.module.css";
 
-const initialState = {
+import OutfitListItem from './OutfitListItem.jsx';
+import styles from './OutfitList.module.css';
+
+export const outfitState = {
   start: 0,
   end: 4,
 };
 
-const reducer = ({ start, end }, action) => {
+export const outfitReducer = ({ start, end }, action) => {
   switch (action.type) {
-    case 'next':
+    case 'NEXT':
       return {
         start: start + 4,
         end: end + 4,
       };
-    case 'prev':
+    case 'PREV':
       return {
         start: start > 0 ? start - 4 : start,
         end: end > 4 ? end - 4 : end,
@@ -33,7 +33,7 @@ const reducer = ({ start, end }, action) => {
 };
 export default function OutfitList({ currentViewItemId }) {
   const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(true);
-  const [localState, dispatchLocalState] = useReducer(reducer, initialState);
+  const [localState, dispatchLocalState] = useReducer(outfitReducer, outfitState);
   const { start, end } = localState;
   const userOutfitList = useAppSelector((state) => state.outfitList.outfitList);
   const dispatch = useAppDispatch();
@@ -43,6 +43,7 @@ export default function OutfitList({ currentViewItemId }) {
       setIsCurrentItemAdded(false);
     }
   }, [currentViewItemId, userOutfitList]);
+
   const handleAddOutfit = () => {
     setIsCurrentItemAdded(true);
     dispatch(addOutfit(currentViewItemId));
@@ -53,10 +54,10 @@ export default function OutfitList({ currentViewItemId }) {
   };
 
   const handleCarouselControl = (control) => {
-    if (control === 'prev' && start !== 0 && start > 0) {
+    if (control === 'PREV' && start !== 0 && start > 0) {
       dispatchLocalState({ type: control });
     }
-    if (control === 'next' && end !== userOutfitList.length && end < userOutfitList.length) {
+    if (control === 'NEXT' && end !== userOutfitList.length && end < userOutfitList.length) {
       dispatchLocalState({ type: control });
     }
   };
@@ -74,6 +75,7 @@ export default function OutfitList({ currentViewItemId }) {
           <div className={styles.button_ctn}>
             <IoIosAddCircleOutline
               value="action"
+              data-testid="addOutfit"
               className={styles.button}
               onClick={() => handleAddOutfit()}
             />
