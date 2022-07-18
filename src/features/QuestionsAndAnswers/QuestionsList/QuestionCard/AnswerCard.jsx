@@ -32,7 +32,8 @@ export default function AnswerCard({ a }) {
       </p>
       <br />
       {a.photos.length > 0
-        && a.photos.map(p => <img className={styles.photo} src={p.url} alt={a.answerer_name} />)}
+        // eslint-disable-next-line max-len
+        && a.photos.map(p => <img key={p.id} className={styles.photo} src={p.url} alt={a.answerer_name} />)}
       <br />
       <div className={styles.info} id="info">
         <p>
