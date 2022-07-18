@@ -1,10 +1,39 @@
-.styleButton, .stylePic {
-  height: 35px;
-  width: 35px;
+.stylePic {
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
+  border: 2px solid #e97298;
+}
+
+.styleButton {
+  background: none;
+  border: none;
+  padding: 2px;
+}
+
+.checkDot {
+  position: absolute;
+  width: 15px;
+  top: 0px;
+  right: 12px;
+}
+
+.styleAndCheckmarkHolder {
+  position: relative;
 }
 
 .styleButtonList {
-  grid: span 4;
-  display: flex;
+  display: grid;
+  grid-template-columns: 70px 70px 70px 70px;
+  padding: 5px
+}
+
+.priceDiv {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.styleName {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

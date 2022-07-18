@@ -8,6 +8,7 @@ import {
   Redirect,
   useParams,
 } from 'react-router-dom';
+import Header from './features/Header/Header.jsx';
 import Overview from './features/Overview/Overview.jsx';
 import RatingsAndReviews from './features/RatingsAndReviews/RatingsAndReviews.jsx';
 import QuestionsAndAnswers from './features/QuestionsAndAnswers/QuestionsAndAnswers.jsx';
@@ -18,6 +19,7 @@ function ProductDetailPage() {
   const { productId } = useParams();
   return (
     <div id="app" className={styles.app}>
+      <Header />
       <Overview currentViewItemId={+productId} />
       <RelatedItemsAndComparison currentViewItemId={+productId} />
       <QuestionsAndAnswers currentViewItemId={+productId} />
