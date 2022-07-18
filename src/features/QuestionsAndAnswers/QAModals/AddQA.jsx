@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { useAddAnswerMutation, useAddQuestionMutation } from '../../../services/questions';
 import Button from '../../UI/Button.jsx';
 import Modal from '../../UI/Modal.jsx';
+import styles from './AddQA.module.css';
 
 export default function AddQA({
   ID, handleModalToggle, questionBody = undefined, product,
@@ -16,12 +17,15 @@ export default function AddQA({
   const [email, setEmail] = useState('');
 
   return (
-    <Modal>
+    <Modal className={styles.modal}>
+      <Button className={styles.close} type="button" onClick={() => handleModalToggle()}>
+        X
+      </Button>
       {questionBody !== undefined
-      && <h3>Submit Your Answer</h3>}
+      && <h3 className={styles.title}>Submit Your Answer</h3>}
       {questionBody !== undefined
       && (
-      <h4>
+      <h4 className={styles.subtitle}>
         {product}
         &nbsp;
         :&nbsp;&nbsp;
@@ -29,10 +33,10 @@ export default function AddQA({
       </h4>
       )}
       {questionBody === undefined
-      && <h3>Ask Your Question</h3>}
+      && <h3 className={styles.title}>Ask Your Question</h3>}
       {questionBody === undefined
       && (
-      <h4>
+      <h4 className={styles.subtitle}>
         About the product&nbsp;
         {product}
       </h4>
@@ -56,27 +60,28 @@ export default function AddQA({
         type="submit"
       >
         <field>Username: </field>
-        <input onChange={(e) => setName(e.target.value)} placeholder="Example: jack543!" required />
-        <p><small>For privacy reasons, do not use your full name or email address</small></p>
+        <input onChange={(e) => setName(e.target.value)} placeholder="Example: jack543!" maxLength="60" required />
+        <p className={styles.warning}>
+          <small>For privacy reasons, do not use your full name or email address</small>
+        </p>
         <br />
         <field>Email: </field>
-        <input onChange={(e) => setEmail(e.target.value)} placeholder="Example: jack@email.com" required />
-        <p><small>For authentication reasons, you will not be emailed</small></p>
+        <input onChange={(e) => setEmail(e.target.value)} placeholder="Example: jack@email.com" maxLength="60" required />
+        <p className={styles.warning}>
+          <small>For authentication reasons, you will not be emailed</small>
+        </p>
         <br />
         {questionBody !== undefined
       && <field>Answer</field>}
         {questionBody === undefined
       && <field>Question</field>}
         <br />
-        <textarea onChange={(e) => setBody(e.target.value)} rows="5" cols="60" placeholder="Type Here" required />
+        <textarea onChange={(e) => setBody(e.target.value)} rows="5" cols="60" placeholder="Type Here" maxLength="1000" required />
         <br />
-        <Button>
+        <Button className={styles.button}>
           Submit
         </Button>
       </form>
-      <Button type="button" onClick={() => handleModalToggle()}>
-        X
-      </Button>
     </Modal>
   );
 }

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useProductInformationByIdQuery } from '../../../services/products.js';
+import styles from './ProductDetails.module.css';
+import pinkcheck from '../pics/pinkcheck.png';
 
 export default function ProductDetails({ currentViewItemId }) {
   const {
@@ -18,11 +20,27 @@ export default function ProductDetails({ currentViewItemId }) {
   }
 
   if (product) {
+    console.log('features: ', product.features);
     return (
-      <div>
-        <b>{product.slogan}</b>
-        <p>{product.description}</p>
-        {/* <p>{product.features}</p> */}
+      <div className={styles.details}>
+        <div className={styles.description}>
+          <b className={styles.slogan}>{product.slogan}</b>
+          <p className={styles.innerDescription}>{product.description}</p>
+        </div>
+        <div>
+          <style className={styles.line} />
+        </div>
+        <div className={styles.features}>
+          {product.features.map((aFeature) => (
+            <div>
+              <img src={pinkcheck} className={styles.checkMark} alt="" />
+              {aFeature.feature}
+              :
+              {' '}
+              {aFeature.value}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

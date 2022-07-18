@@ -12,14 +12,14 @@ import styles from './Overview.module.css';
 
 export default function Overview({ currentViewItemId }) {
   return (
-    <div>
+    <div className={styles.overview}>
       <div className={styles.overviewHeaders}>
         <div className={styles.imagegallery}>
           <ImageGallery currentViewItemId={currentViewItemId} />
         </div>
         <div className={styles.productinfo}>
           <ProductInfo currentViewItemId={currentViewItemId} />
-          <StyleList currentViewItemId={currentViewItemId} />
+          <StyleList currentViewItemId={currentViewItemId} className={styles.styleList} />
           <AddToCart currentViewItemId={currentViewItemId} />
         </div>
       </div>

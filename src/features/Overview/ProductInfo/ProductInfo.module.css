@@ -1,0 +1,15 @@
+.reviews {
+  padding-top: 25px;
+  padding-bottom: 5px;
+}
+
+.category {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 40px;
+}

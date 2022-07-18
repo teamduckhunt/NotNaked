@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import PropTypes from 'prop-types';
 import FullDuck from '../../assets/duckFeet-rating/full.svg';
@@ -6,6 +7,7 @@ import HalfFull from '../../assets/duckFeet-rating/half.svg';
 import QuarterFull from '../../assets/duckFeet-rating/quarter.svg';
 import EmptyDuck from '../../assets/duckFeet-rating/empty.svg';
 import styles from './RatingToDuckFeet.module.css';
+
 export default function RatingToDuckFeet({ rating }) {
   const number = Math.trunc(rating);
   const floatNum = Math.round((rating - number) * 4);
