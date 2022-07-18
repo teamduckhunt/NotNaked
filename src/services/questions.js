@@ -13,14 +13,21 @@ export const questionsApi = createApi({
   tagTypes: ['Questions', 'Answers'],
   endpoints: (builder) => ({
     allQuestions: builder.query({
-      query: (productId) => `/questions?product_id=${productId}`,
+      query: (productId) => `/questions?product_id=${productId}&count=50`,
       providesTags: ['Questions'],
     }),
     addQuestion: builder.mutation({
-      query: (productId, questionInfo) => ({
+      query: ({
+        ID, body, name, email,
+      }) => ({
         url: '/questions',
         method: 'POST',
-        body: questionInfo,
+        body: {
+          body,
+          name,
+          email,
+          product_id: ID,
+        },
       }),
       invalidatesTags: ['Questions'],
     }),
@@ -39,14 +46,20 @@ export const questionsApi = createApi({
       invalidatesTags: ['Questions'],
     }),
     answerList: builder.query({
-      query: (questionId, page = 1, count = 5) => `/questions/${questionId}/answers?page=${page}&count=${count}`,
+      query: (questionId) => `/questions/${questionId}/answers`,
       providesTags: ['Answers'],
     }),
     addAnswer: builder.mutation({
-      query: (questionId, answerInfo) => ({
-        url: `/${questionId}/answers`,
+      query: ({
+        ID, body, name, email,
+      }) => ({
+        url: `/questions/${ID}/answers`,
         method: 'POST',
-        body: answerInfo,
+        body: {
+          body,
+          name,
+          email,
+        },
       }),
       invalidatesTags: ['Answers'],
     }),

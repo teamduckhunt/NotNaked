@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable import/extensions */
@@ -6,37 +7,62 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from '../../../UI/Card.jsx';
+import RatingToDuckFeet from '../../../../helpers/RatingToDuckFeet.jsx';
 import styles from './ListItemCard.module.css';
+import SalePrice from '../SalePrice/SalePrice.jsx';
+import IronMan from '../../../../../assets/iron-man.svg';
 
 export default function ListItemCard({
   product,
   productId,
   productImage,
-  actionButtonIcon,
   handleOnClick,
   averageRating,
+  children,
+  productSalesPrice,
 }) {
+  const handleProductClick = (e) => {
+    e.preventDefault();
+    if (e.currentTarget.id === 'product') {
+      handleOnClick();
+      e.stopPropagation();
+    }
+  };
+  const price = <SalePrice originalPrice={product.default_price} salePrice={productSalesPrice} />;
+  const InfinityStone = <img className={styles.ironMan} src={IronMan} alt="Iron Man" />;
   return (
-    <Card className={styles.product_card}>
-      <header className={styles.product_card_header}>
+    <div key={productId} className={styles.product_card_ctn}>
+      <Card
+        className={styles.product_card}
+        style={{ backgroundImage: `url(${productImage})` }}
+      >
         <Link to={`/product/${productId}`}>
-          <img className={styles.product_img} src={productImage} alt={product.name} />
+          <header className={styles.product_card_header}>
+            <button
+              type="button"
+              id="product"
+              className={styles.product_action_button}
+              onClick={handleProductClick}
+            >
+              {children}
+            </button>
+          </header>
         </Link>
-        <button
-          type="button"
-          className={styles.product_action_button}
-          onClick={() => handleOnClick()}
-        >
-          {actionButtonIcon}
-        </button>
-      </header>
-      <footer className={styles.product_card_body}>
-        <p>{product.category}</p>
-        <p>{product.name}</p>
-        {/* TODO: default price needs to change with sales and also styles */}
-        <p>${product.default_price}</p>
-        <p>{averageRating.toFixed(2)}</p>
-      </footer>
-    </Card>
+        <footer className={styles.product_card_body}>
+          <p className={styles.category}>{product.category}</p>
+          <p className={styles.name}>{product.name}</p>
+          <p className={styles.price}>{price}</p>
+          {/* Iron Man by Adhi Satrio from NounProject.com */}
+          {Number.isNaN(averageRating) ? (
+            <div className={styles.ironContainer}>
+              {Array(5).fill(InfinityStone)}
+            </div>
+          ) : (
+            <RatingToDuckFeet rating={averageRating} />
+          )}
+
+        </footer>
+      </Card>
+    </div>
   );
 }

@@ -11,3 +11,10 @@
   border-left: thick double white;
   padding-left: 1%;
 }
+
+.yes {
+  line-height: 2px;
+  background-color: transparent;
+  border-color: transparent;
+  font-size: medium;
+}

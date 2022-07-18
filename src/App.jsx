@@ -8,6 +8,7 @@ import {
   Redirect,
   useParams,
 } from 'react-router-dom';
+import Header from './features/Header/Header.jsx';
 import Overview from './features/Overview/Overview.jsx';
 import RatingsAndReviews from './features/RatingsAndReviews/RatingsAndReviews.jsx';
 import QuestionsAndAnswers from './features/QuestionsAndAnswers/QuestionsAndAnswers.jsx';
@@ -18,9 +19,10 @@ function ProductDetailPage() {
   const { productId } = useParams();
   return (
     <div id="app" className={styles.app}>
+      <Header />
       <Overview currentViewItemId={+productId} />
+      <RelatedItemsAndComparison key={productId} currentViewItemId={+productId} />
       <QuestionsAndAnswers currentViewItemId={+productId} />
-      <RelatedItemsAndComparison currentViewItemId={+productId} />
       <RatingsAndReviews currentViewItemId={+productId} />
     </div>
   );
@@ -32,7 +34,7 @@ export default function App() {
         <Route path="/" exact>
           <Redirect to="/product/40344" />
         </Route>
-        <Route path="/product/:productId" exact>
+        <Route path="/product/:productId">
           <ProductDetailPage />
         </Route>
       </Switch>

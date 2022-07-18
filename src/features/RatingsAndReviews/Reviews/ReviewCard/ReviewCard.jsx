@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '../../../UI/Button.jsx';
-import { useGetAllReviewsByProductIdQuery, useAddHelpfulCountMutation, useReportReviewMutation } from '../../../../services/reviews.js';
+import { useAddHelpfulCountMutation, useReportReviewMutation } from '../../../../services/reviews.js';
 import styles from './ReviewCard.module.css';
 
 export default function ReviewCard({ review }) {
@@ -61,7 +61,7 @@ export default function ReviewCard({ review }) {
       </div>
       <div>
         {review.photos.map((photo) => (
-          <img src={photo} alt={review.reviwer_name} height={100} />
+          <img src={photo.url} key={photo.id} alt={review.reviwer_name} height={100} />
         ))}
       </div>
 
@@ -91,7 +91,7 @@ export default function ReviewCard({ review }) {
 }
 
 ReviewCard.propTypes = {
-  review: PropTypes.shape.isRequired,
+  review: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
 };
 
 // NOTES :

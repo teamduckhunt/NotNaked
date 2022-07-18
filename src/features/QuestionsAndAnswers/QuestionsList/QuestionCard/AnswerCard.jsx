@@ -1,3 +1,5 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
@@ -7,7 +9,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-one-expression-per-line */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './AnswerCard.module.css';
 import {
@@ -18,30 +20,46 @@ export default function AnswerCard({ a }) {
   const [addHelpful] = useAddAnswerHelpfulMutation();
   const [reportAnswer] = useReportAnswerMutation();
 
+  const [disableYes, setDisableYes] = useState(false);
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
   const date = new Date(a.date).toLocaleDateString([], dateOptions);
 
   return (
-    <>
-      <div id="answer">
-        <p>
-          <strong>A: </strong>
-          {a.body}
-        </p>
-      </div>
+    <div>
+      <br />
+      <p className={styles.body}>
+        {a.body}
+      </p>
+      <br />
+      {a.photos.length > 0
+        // eslint-disable-next-line max-len
+        && a.photos.map(p => <img key={p.id} className={styles.photo} src={p.url} alt={a.answerer_name} />)}
+      <br />
       <div className={styles.info} id="info">
         <p>
-          by {a.answerer_name}, {date}
+          by {a.answerer_name.toLowerCase() === 'seller' && <strong>{a.answerer_name}</strong>}
+          {a.answerer_name.toLowerCase() !== 'seller' && `${a.answerer_name}`},
+          &nbsp;&nbsp;{date}
         </p>
         <p className={styles.details}>
           Helpful?&nbsp;&nbsp;
-          <u onClick={() => addHelpful(a.answer_id)}>Yes</u> ({a.helpfulness})
+          <button
+            className={styles.yes}
+            onClick={() => {
+              addHelpful(a.answer_id);
+              setDisableYes(true);
+            }}
+            type="button"
+            disabled={disableYes}
+          >
+            <u>Yes</u> ({a.helpfulness})
+          </button>
         </p>
         <p className={styles.details}>
           <u onClick={() => reportAnswer(a.answer_id)}>Report</u>
         </p>
       </div>
-    </>
+    </div>
   );
 }
 

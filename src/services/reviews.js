@@ -14,13 +14,14 @@ export const reviewsApi = createApi({
   tagTypes: ['Reviews'],
   endpoints: (builder) => ({
     getAllReviewsByProductId: builder.query({
-      query: (productId /* sort = 'relevant' */) => `?product_id=${productId}`,
+      query: ({ reviewCount, productId, curSortSelected }) => `?count=${reviewCount}&product_id=${productId}&sort=${curSortSelected}`,
       providesTags: ['Reviews'],
     }),
     getReviewMetadata: builder.query({
       query: (productId) => `/meta?product_id=${productId}`,
     }),
     addAReview: builder.mutation({
+      // create object for both queries, then destructure.
       query: (productId, formInput) => ({
         url: '',
         method: 'POST',

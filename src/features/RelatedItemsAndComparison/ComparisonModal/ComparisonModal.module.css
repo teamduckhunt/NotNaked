@@ -1,0 +1,26 @@
+.modal {
+  padding: 12px;
+}
+.modalTitle {
+  color: rgba(0,0,0,0.5);
+  font-size:12px;
+  margin: 10px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  padding: 8px;
+  text-decoration: underline;
+}
+
+.col {
+  font-weight: bold;
+}
+
+.btn_ctn {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

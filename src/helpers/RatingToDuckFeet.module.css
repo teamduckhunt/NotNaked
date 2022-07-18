@@ -1,0 +1,15 @@
+.feet {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+
+}
+
+.rating_ctn {
+  padding: 0.1rem;
+  display: inline-flex;
+  gap: 0.1rem;
+  background: #ffdeeb;
+  overflow: hidden;
+  border-radius: 12px;
+}

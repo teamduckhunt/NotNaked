@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App.jsx';
 import store from './app/store';
+import './index.css';
 
 const backdrop = document.createElement('div');
 backdrop.setAttribute('id', 'backdrop');
