@@ -26,7 +26,6 @@ export default function ReviewList({ productId, reviewCount }) {
   }
 
   if (data) {
-    console.log('review data', data);
 
     // check if there are no more reviews
     const reviewListLengthCheck = () => {
