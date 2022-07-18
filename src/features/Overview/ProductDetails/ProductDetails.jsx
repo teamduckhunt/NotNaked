@@ -20,7 +20,6 @@ export default function ProductDetails({ currentViewItemId }) {
   }
 
   if (product) {
-    console.log('features: ', product.features);
     return (
       <div className={styles.details}>
         <div className={styles.description}>
