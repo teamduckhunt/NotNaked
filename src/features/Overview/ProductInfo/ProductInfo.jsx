@@ -23,8 +23,6 @@ export default function ProductInfo({ currentViewItemId }) {
   }
 
   if (product) {
-    console.log('metadata ', metaData);
-    console.log(currentViewItemId);
     const averageRating = metaData ? getAverageRating(metaData) : '';
     return (
       <div>
