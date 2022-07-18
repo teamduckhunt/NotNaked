@@ -55,6 +55,7 @@ export default function OutfitList({ currentViewItemId }) {
   };
 
   const handleCarouselControl = (control) => {
+    console.log(control);
     if (control === 'PREV' && start !== 0 && start > 0) {
       dispatchLocalState({ type: control });
     }
@@ -67,7 +68,6 @@ export default function OutfitList({ currentViewItemId }) {
     <div>
       <h3>Outfit List</h3>
       <ListContainer
-        key={start}
         start={start}
         end={end}
         length={userOutfitList.length}

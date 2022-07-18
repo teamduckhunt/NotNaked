@@ -14,7 +14,7 @@ export default function ListContainer({ children, handleCarouselControl, start, 
       {start !== 0 && (
         <button
           type="button"
-          onClick={() => handleCarouselControl('prev')}
+          onClick={() => handleCarouselControl('PREV')}
           className={`${styles.btn} ${styles.prev}`}
         >
           <AiFillCaretLeft />
@@ -24,7 +24,7 @@ export default function ListContainer({ children, handleCarouselControl, start, 
       {(length - end > 0) && (
         <button
           type="button"
-          onClick={() => handleCarouselControl('next')}
+          onClick={() => handleCarouselControl('NEXT')}
           className={`${styles.btn} ${styles.next}`}
         >
           <AiFillCaretRight />

@@ -12,12 +12,12 @@ export const relatedState = {
 
 export const relatedReducer = ({ start, end }, action) => {
   switch (action.type) {
-    case 'next':
+    case 'NEXT':
       return {
         start: start + 4,
         end: end + 4,
       };
-    case 'prev':
+    case 'PREV':
       return {
         start: start > 0 ? start - 4 : start,
         end: end > 4 ? end - 4 : end,
@@ -32,6 +32,7 @@ export default function RelatedProductList({ currentViewItemId }) {
   const { data, error, isLoading } = useRelatedProductsIdQuery(currentViewItemId);
   const [localState, dispatchLocalState] = useReducer(relatedReducer, relatedState);
   const { start, end } = localState;
+
   if (error) {
     return <>Oh no, there was an error</>;
   }
@@ -41,10 +42,10 @@ export default function RelatedProductList({ currentViewItemId }) {
   }
 
   const handleCarouselControl = (control) => {
-    if (control === 'prev' && start !== 0 && start > 0) {
+    if (control === 'PREV' && start !== 0 && start > 0) {
       dispatchLocalState({ type: control });
     }
-    if (control === 'next' && end !== data.length && end < data.length) {
+    if (control === 'NEXT' && end !== data.length && end < data.length) {
       dispatchLocalState({ type: control });
     }
   };

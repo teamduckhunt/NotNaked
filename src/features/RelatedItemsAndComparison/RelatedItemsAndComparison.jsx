@@ -11,7 +11,7 @@ export default function RelatedItemsAndComparison({ currentViewItemId }) {
   return (
     <>
       <RelatedProductList currentViewItemId={currentViewItemId} />
-      <OutfitList key={currentViewItemId} currentViewItemId={currentViewItemId} />
+      <OutfitList currentViewItemId={currentViewItemId} />
     </>
   );
 }
