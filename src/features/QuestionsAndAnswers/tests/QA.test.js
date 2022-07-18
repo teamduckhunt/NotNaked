@@ -15,6 +15,7 @@ import { render, screen } from '@testing-library/react';
 import store from '../../../app/store';
 import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
 import QuestionsAndAnswers from '../QuestionsAndAnswers.jsx';
+import QuestionsList from '../QuestionsList/QuestionsList.jsx';
 import testUseAppSeletor from '../../../app/test-app.selector';
 
 jest.mock('../../../app/redux-hooks');
@@ -35,8 +36,6 @@ describe('Testing QuestionsList', () => {
         <QuestionsAndAnswers currentViewItemId={40344} />
       </Provider>,
     );
-
-    // await screen.getByText('Loading...');
 
     const question = await screen.getByText('QUESTIONS & ANSWERS');
     expect(question).toBeInTheDocument();
