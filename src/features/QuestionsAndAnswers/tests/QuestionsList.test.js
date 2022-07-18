@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-undef */
@@ -12,7 +14,7 @@ import { Provider } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 import store from '../../../app/store';
 import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
-import QuestionsList from '../QuestionsList/QuestionsList.jsx';
+import QuestionsAndAnswers from '../QuestionsAndAnswers.jsx';
 import testUseAppSeletor from '../../../app/test-app.selector';
 
 jest.mock('../../../app/redux-hooks');
@@ -30,26 +32,13 @@ describe('Testing QuestionsList', () => {
   test('Question List Renders', async () => {
     render(
       <Provider store={store}>
-        <QuestionsList currentViewItemId={40344} />
+        <QuestionsAndAnswers currentViewItemId={40344} />
       </Provider>,
     );
 
-    screen.getByText('Loading...');
+    // await screen.getByText('Loading...');
 
-    await screen.getByTestId('QA');
-
-    const question = screen.getByText('Q: does this body have to have a question mark?');
+    const question = await screen.getByText('QUESTIONS & ANSWERS');
     expect(question).toBeInTheDocument();
-  });
-
-  test('Answer List Renders', () => {
-    render(
-      <Provider store={store}>
-        <QuestionsList currentViewItemId={40344} />
-      </Provider>,
-    );
-
-    const answers = screen.getByText("A: who doesn't like a cute cat");
-    expect(answers).toBeInTheDocument();
   });
 });
