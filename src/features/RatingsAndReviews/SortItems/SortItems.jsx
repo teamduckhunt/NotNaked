@@ -12,8 +12,8 @@ export default function SortItems({ productId, reviewCount }) {
     const sortSelection = event.target.value;
     dispatch(setSortSelection(sortSelection));
   }
-  const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
-  useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
+  // const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
+  // useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
 
   return (
     <div className={styles.sortContainer}>
@@ -30,6 +30,7 @@ export default function SortItems({ productId, reviewCount }) {
 
 SortItems.propTypes = {
   productId: PropTypes.number.isRequired,
+  reviewCount: PropTypes.number.isRequired,
 };
 
 // NOTES :

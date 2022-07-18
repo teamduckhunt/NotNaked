@@ -45,7 +45,7 @@ export default function StyleList({ currentViewItemId }) {
         </div>
         <div className={classes.styleButtonList}>
           {styles.results.map((style) => {
-            console.log(style);
+            // console.log(style);
             if (curStyle.style_id === style.style_id) {
               return (
                 <div className={classes.styleAndCheckmarkHolder}>

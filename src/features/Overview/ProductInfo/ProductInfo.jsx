@@ -23,13 +23,13 @@ export default function ProductInfo({ currentViewItemId }) {
   }
 
   if (product) {
-    console.log('metadata ', metaData);
-    console.log(currentViewItemId);
-    const averageRating = getAverageRating(metaData);
+    // console.log('metadata ', metaData);
+    // console.log(currentViewItemId);
+    // const averageRating = getAverageRating(metaData);
     return (
       <div>
         <div>
-          <RatingToDuckFeet className={styles.reviews} rating={averageRating} />
+          <RatingToDuckFeet className={styles.reviews} />
 
         </div>
         <p className={styles.category}>{(product.category).toUpperCase()}</p>
