@@ -5,7 +5,13 @@ import React from 'react';
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import styles from './ListContainer.module.css';
 
-export default function ListContainer({ children, handleCarouselControl, start, end, length }) {
+export default function ListContainer({
+  children,
+  handleCarouselControl,
+  start,
+  end,
+  length,
+}) {
   return (
     <div className={styles.listContainer}>
       <div className={styles.trackContainer}>
@@ -21,7 +27,7 @@ export default function ListContainer({ children, handleCarouselControl, start, 
         </button>
       )}
 
-      {(length - end > 0) && (
+      {length - end > 0 && (
         <button
           type="button"
           onClick={() => handleCarouselControl('NEXT')}

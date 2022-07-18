@@ -52,7 +52,6 @@ export default function ListItemCard({
           <p className={styles.category}>{product.category}</p>
           <p className={styles.name}>{product.name}</p>
           <p className={styles.price}>{price}</p>
-          {/* <p>{averageRating.toFixed(2)}</p> */}
           {/* Iron Man by Adhi Satrio from NounProject.com */}
           {Number.isNaN(averageRating) ? (
             <div className={styles.ironContainer}>

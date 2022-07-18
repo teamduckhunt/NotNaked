@@ -5,9 +5,6 @@ import RelatedProductList from './RelatedProductsList/RelatedProductList.jsx';
 import OutfitList from './OutfitList/OutfitList.jsx';
 
 export default function RelatedItemsAndComparison({ currentViewItemId }) {
-  useEffect(() => {
-
-  },[]);
   return (
     <>
       <RelatedProductList currentViewItemId={currentViewItemId} />

@@ -1,14 +1,14 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect, useReducer } from "react";
-import PropTypes from "prop-types";
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { useAppDispatch, useAppSelector } from "../../../app/redux-hooks";
-import ListContainer from "../helpers/ListContainer/ListContainer.jsx";
-import { addOutfit, deleteOutfit } from "./outfitListSlice.jsx";
+import React, { useState, useEffect, useReducer } from 'react';
+import PropTypes from 'prop-types';
+import { IoIosAddCircleOutline } from 'react-icons/io';
+import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
+import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
+import { addOutfit, deleteOutfit } from './outfitListSlice.jsx';
 // import ListContainer from '../../UI/Card.jsx';
 
-import OutfitListItem from "./OutfitListItem.jsx";
-import styles from "./OutfitList.module.css";
+import OutfitListItem from './OutfitListItem.jsx';
+import styles from './OutfitList.module.css';
 
 export const outfitState = {
   start: 0,
@@ -27,8 +27,6 @@ export const outfitReducer = ({ start, end }, action) => {
         start: start > 0 ? start - 4 : start,
         end: end > 4 ? end - 4 : end,
       };
-    case 'RESET':
-      return outfitState;
     default:
       throw new Error('Invalid request for carousel');
   }
@@ -45,6 +43,7 @@ export default function OutfitList({ currentViewItemId }) {
       setIsCurrentItemAdded(false);
     }
   }, [currentViewItemId, userOutfitList]);
+
   const handleAddOutfit = () => {
     setIsCurrentItemAdded(true);
     dispatch(addOutfit(currentViewItemId));
@@ -55,7 +54,6 @@ export default function OutfitList({ currentViewItemId }) {
   };
 
   const handleCarouselControl = (control) => {
-    console.log(control);
     if (control === 'PREV' && start !== 0 && start > 0) {
       dispatchLocalState({ type: control });
     }
