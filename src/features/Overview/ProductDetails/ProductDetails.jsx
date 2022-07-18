@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-// import { GrCheckmark } from 'react-icons/ai';
 import { useProductInformationByIdQuery } from '../../../services/products.js';
 import styles from './ProductDetails.module.css';
 import pinkcheck from '../pics/pinkcheck.png';

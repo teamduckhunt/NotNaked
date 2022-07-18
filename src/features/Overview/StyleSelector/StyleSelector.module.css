@@ -24,7 +24,6 @@
 
 .styleButtonList {
   display: grid;
-  /* grid-template-columns: repeat(4, 1fr); */
   grid-template-columns: 70px 70px 70px 70px;
   padding: 5px
 }
