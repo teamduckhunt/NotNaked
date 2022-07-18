@@ -5,25 +5,15 @@
   margin: 10px;
   padding: 5px;
 }
-.scale_bar {
-  position: relative;
-  height: 20px;
-  width: 200px;
-  border-radius: 50px;
-  border: 1px solid #495057;
-  background: #495057;
-}
 
 .description_text {
   display: flex;
-  /* font-size: small; */
   font-size: .7em;
   justify-content: flex-start;
 }
 
 .characteristic_title {
   font-size: 1em;
-
 }
 
 .characteristic_bar_arrow {

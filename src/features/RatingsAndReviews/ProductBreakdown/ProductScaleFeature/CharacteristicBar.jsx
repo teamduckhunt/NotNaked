@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Pointer from './Pointer.jsx';
 import styles from '../ProductBreakdown.module.css';
 
 export default function CharacterBar({ description, descLocation }) {
@@ -15,7 +14,6 @@ export default function CharacterBar({ description, descLocation }) {
 }
 
 CharacterBar.propTypes = {
-  // pointerPosition: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   descLocation: PropTypes.string.isRequired,
 };

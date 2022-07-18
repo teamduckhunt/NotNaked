@@ -1,4 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useGetReviewMetadataQuery } from '../../../services/reviews.js';
@@ -7,7 +6,6 @@ import styles from './ProductBreakdown.module.css';
 
 export default function ProductBreakdown({ productId }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
-  console.log('meta data', data);
 
   if (error) {
     return <>Oh no, there was an error loading the product breakdown.</>;
@@ -45,7 +43,7 @@ export default function ProductBreakdown({ productId }) {
           break;
         case 'Length':
           leftDescription = 'Runs short';
-          rightDescription = 'Run long';
+          rightDescription = 'Runs long';
           break;
         default:
           break;
@@ -59,7 +57,6 @@ export default function ProductBreakdown({ productId }) {
         rightDescription,
       });
     });
-    console.log(newObject);
     return (
       <div className={styles.pb_border}>
         {newObject.map((value) => (
@@ -73,50 +70,3 @@ export default function ProductBreakdown({ productId }) {
 ProductBreakdown.propTypes = {
   productId: PropTypes.number.isRequired,
 };
-
-
-
-// {checkForCharacteristic('Size') && (
-//   <>
-//     Size
-//     <ProductScaleFeature
-//       pointerPosition={Number(type.Size.value)}
-//       characteristicData={newObject.Size}
-//     />
-//   </>
-// )}
-// {checkForCharacteristic('Width') && (
-//   <>
-//     Width
-//     <ProductScaleFeature pointerPosition={Number(type.Width.value)}
-//       characteristicData={newObject.Width} />
-//   </>
-// )}
-// {checkForCharacteristic('Comfort') && (
-//   <>
-//     Comfort
-//     <ProductScaleFeature pointerPosition={Number(type.Comfort.value)}
-//       characteristicData={newObject.Comfort} />
-//   </>
-// )}
-// {checkForCharacteristic('Quality') && (
-//   <>
-//     Quality
-//     <ProductScaleFeature pointerPosition={Number(type.Quality.value)}
-//       characteristicData={newObject.Quality} />
-//   </>
-// )}
-// {checkForCharacteristic('Length') && (
-//   <>
-//     Length
-//     <ProductScaleFeature pointerPosition={Number(type.Length.value)}
-//       characteristicData={newObject.Length} />
-//   </>
-// )}
-// {checkForCharacteristic('Fit') && (
-//   <>
-//     Fit
-//     <ProductScaleFeature pointerPosition={Number(type.Fit.value)}
-//       characteristicData={newObject.Fit} />
-//   </>
-// )}

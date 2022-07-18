@@ -5,7 +5,6 @@ import CharacterBar from './CharacteristicBar.jsx';
 import styles from '../ProductBreakdown.module.css';
 
 export default function ProductScaleFeature({ characteristic }) {
-  console.log(characteristic);
   return (
     <div>
       <p className={styles.characteristic_title}>
@@ -22,12 +21,5 @@ export default function ProductScaleFeature({ characteristic }) {
 }
 
 ProductScaleFeature.propTypes = {
-  // pointerPosition: PropTypes.number.isRequired,
   characteristic: PropTypes.shape.isRequired,
 };
-
-
-// css grid and 3 different grids, for individual bars.
-// each bar is its own div.
-// <CharacterBar>
-//   separate component for each bar to render.
