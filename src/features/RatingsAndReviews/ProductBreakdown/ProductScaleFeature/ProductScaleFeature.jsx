@@ -14,12 +14,12 @@ export default function ProductScaleFeature({ characteristic }) {
         <CharacterBar description={characteristic.leftDescription} descLocation="flex-start" />
         <CharacterBar />
         <CharacterBar description={characteristic.rightDescription} descLocation="flex-end" />
-        <Pointer pointerLocation={characteristic.percent} />
+        <Pointer pointerLocation={Number(characteristic.percent)} />
       </div>
     </div>
   );
 }
 
 ProductScaleFeature.propTypes = {
-  characteristic: PropTypes.shape.isRequired,
+  characteristic: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
 };
