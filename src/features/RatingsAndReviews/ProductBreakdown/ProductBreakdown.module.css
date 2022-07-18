@@ -1,0 +1,23 @@
+
+.pb_border{
+  border: 1px solid #495057;
+  width: 50%;
+  margin: 10px;
+  padding: 5px;
+}
+.scale_bar {
+  position: relative;
+  height: 20px;
+  width: 200px;
+  border-radius: 50px;
+  border: 1px solid #495057;
+  background: #495057;
+}
+
+.pointer {
+  background: #ffdeeb;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+  cursor: n-resize;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Filler from './Filler';
+import Filler from './Filler.jsx';
 import styles from '../RatingBreakdown.module.css';
 
 export default function RatingBarFeature({ fillerPercentage }) {
@@ -14,5 +14,3 @@ export default function RatingBarFeature({ fillerPercentage }) {
 RatingBarFeature.propTypes = {
   fillerPercentage: PropTypes.number.isRequired,
 };
-
-// need total review count to average out with each star rating.
