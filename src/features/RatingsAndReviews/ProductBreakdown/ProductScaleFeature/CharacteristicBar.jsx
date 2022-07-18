@@ -3,13 +3,19 @@ import PropTypes from 'prop-types';
 import Pointer from './Pointer.jsx';
 import styles from '../ProductBreakdown.module.css';
 
-export default function CharacterBar() {
+export default function CharacterBar({ description, descLocation }) {
   return (
-    <div className={styles.characteristic_bar} />
+    <div>
+      <div className={styles.characteristic_bar} />
+      <p className={styles.description_text} style={{ 'justify-content': `${descLocation}` }}>
+        {description}
+      </p>
+    </div>
   );
 }
 
 CharacterBar.propTypes = {
   // pointerPosition: PropTypes.number.isRequired,
-  pointerLocation: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  descLocation: PropTypes.string.isRequired,
 };

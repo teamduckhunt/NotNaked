@@ -8,13 +8,15 @@ export default function ProductScaleFeature({ characteristic }) {
   console.log(characteristic);
   return (
     <div>
-      {characteristic.name}
-      <div className={styles.characteristic_bar_spacing}>
+      <p className={styles.characteristic_title}>
+        {characteristic.name}
+      </p>
+      <div className={styles.characteristic_bar_container}>
+        <CharacterBar description={characteristic.leftDescription} descLocation="flex-start" />
         <CharacterBar />
-        <CharacterBar />
-        <CharacterBar />
+        <CharacterBar description={characteristic.rightDescription} descLocation="flex-end" />
+        <Pointer pointerLocation={characteristic.percent} />
       </div>
-      <Pointer pointerLocation={characteristic.percent} />
     </div>
   );
 }

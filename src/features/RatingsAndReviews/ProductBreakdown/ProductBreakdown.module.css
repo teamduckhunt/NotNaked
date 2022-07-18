@@ -14,23 +14,36 @@
   background: #495057;
 }
 
+.description_text {
+  display: flex;
+  /* font-size: small; */
+  font-size: .7em;
+  justify-content: flex-start;
+}
+
+.characteristic_title {
+  font-size: 1em;
+
+}
+
 .characteristic_bar_arrow {
   position: absolute;
   background: transparent;
+  height: 12px;
   left: 0;
   border-radius: inherit;
-  /* transition: width .2s ease-in; */
-  /* cursor: n-resize; */
+  cursor: n-resize;
 }
 
 .characteristic_bar {
   height: 8px;
-  width: 20px;
-  weight: 70px;
-  margin: 2px;
+  width: 70px;
+  margin: 3px;
   background-color: rgb(210, 210, 210);
 }
 
-.characteristic_bar_spacing {
+.characteristic_bar_container {
   display: flex;
+  position: relative;
+  width: fit-content;
 }
