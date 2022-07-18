@@ -5,32 +5,10 @@ import { IoIosAddCircleOutline } from 'react-icons/io';
 import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { addOutfit, deleteOutfit } from './outfitListSlice.jsx';
-// import ListContainer from '../../UI/Card.jsx';
-
+import { outfitReducer, outfitState } from './outfitListReducer';
 import OutfitListItem from './OutfitListItem.jsx';
 import styles from './OutfitList.module.css';
 
-export const outfitState = {
-  start: 0,
-  end: 4,
-};
-
-export const outfitReducer = ({ start, end }, action) => {
-  switch (action.type) {
-    case 'NEXT':
-      return {
-        start: start + 4,
-        end: end + 4,
-      };
-    case 'PREV':
-      return {
-        start: start > 0 ? start - 4 : start,
-        end: end > 4 ? end - 4 : end,
-      };
-    default:
-      throw new Error('Invalid request for carousel');
-  }
-};
 export default function OutfitList({ currentViewItemId }) {
   const [isCurrentItemAdded, setIsCurrentItemAdded] = useState(true);
   const [localState, dispatchLocalState] = useReducer(outfitReducer, outfitState);
@@ -75,7 +53,6 @@ export default function OutfitList({ currentViewItemId }) {
           <div className={styles.button_ctn}>
             <IoIosAddCircleOutline
               value="action"
-              data-testid="addOutfit"
               className={styles.button}
               onClick={() => handleAddOutfit()}
             />
