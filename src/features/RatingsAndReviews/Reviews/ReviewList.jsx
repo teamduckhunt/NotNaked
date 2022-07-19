@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import ReviewCard from './ReviewCard/ReviewCard.jsx';
 import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
+import AddReviewModal from '../AddReviewModal/AddReviewModal.jsx';
+import { useProductInformationByIdQuery } from '../../../services/products.js';
 import { useSelector } from 'react-redux';
 import styles from './ReviewList.module.css';
 
@@ -13,7 +15,7 @@ export default function ReviewList({ productId, reviewCount }) {
   const { data, error, isLoading } = useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
 
   const [numberOfReviews, setNumberOfReviews] = useState(2);
-  const [disableMoreReviewsButton, setDisableMoreReviewsButton] = useState(false);
+  const [showMoreReviewsButton, setShowMoreReviewsButton] = useState(true);
   const curStarSelected = useSelector((state) => state.ratingBreakdown.filterByStar);
 
 
@@ -30,7 +32,7 @@ export default function ReviewList({ productId, reviewCount }) {
     // check if there are no more reviews
     const reviewListLengthCheck = () => {
       if (numberOfReviews >= data.results.length) {
-        setDisableMoreReviewsButton(true);
+        setShowMoreReviewsButton(false);
       }
     };
 
@@ -54,14 +56,15 @@ export default function ReviewList({ productId, reviewCount }) {
             />
           ))}
         </div>
-        <Button onClick={() => {
-          setNumberOfReviews(numberOfReviews + 2);
-          reviewListLengthCheck();
-        }}
-          disabled={disableMoreReviewsButton}
-        >
-          More Reviews
-        </Button>
+        {showMoreReviewsButton &&
+          <Button onClick={() => {
+            setNumberOfReviews(numberOfReviews + 2);
+            reviewListLengthCheck();
+          }}
+          >
+            More Reviews
+          </Button>
+        }
         <Button>
           Add a Review
         </Button>

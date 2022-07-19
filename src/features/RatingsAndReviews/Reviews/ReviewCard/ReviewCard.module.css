@@ -1,0 +1,21 @@
+.boldText {
+  font-weight: bold;
+}
+
+.imageModal {
+  padding: 12px;
+}
+
+.btn_modal {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+
+}
