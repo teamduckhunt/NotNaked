@@ -47,7 +47,7 @@ export default function RatingToDuckFeet({ rating }) {
 
   if (rating && number && rest !== 0 && rating - number !== 0) {
     for (let i = 0; i < rest; i += 1) {
-      renderArr.push(<img key={randomKey(i)} className={styles.feet} src={FullDuck} alt="full duck" />);
+      renderArr.push(<img key={randomKey(i)} className={styles.feet} src={EmptyDuck} alt="full duck" />);
     }
   }
 
