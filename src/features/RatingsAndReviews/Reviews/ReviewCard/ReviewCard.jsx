@@ -19,7 +19,7 @@ export default function ReviewCard({ review }) {
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
   const determineBodyLength = () => {
-    if (showBody <= 250) {
+    if (review.body.length <= 250) {
       return (
         <p>{review.body}</p>
       );
