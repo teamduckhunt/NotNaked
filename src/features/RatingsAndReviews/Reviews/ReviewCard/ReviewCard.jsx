@@ -1,11 +1,12 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '../../../UI/Button.jsx';
 import { useAddHelpfulCountMutation, useReportReviewMutation } from '../../../../services/reviews.js';
 import RatingToDuckFeet from '../../../../helpers/RatingToDuckFeet.jsx';
+import ImageModal from './ImageModal.jsx';
 import styles from './ReviewCard.module.css';
 
 export default function ReviewCard({ review }) {
@@ -14,14 +15,12 @@ export default function ReviewCard({ review }) {
 
   const [showBody, setShowBody] = useState(false);
   const [disableYesButton, setDisableYesButton] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
 
   const [incrementHelpfulCount] = useAddHelpfulCountMutation();
   const [reportReview] = useReportReviewMutation();
 
-  const image = 'https://picsum.photos/200';
-
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-  const { bodyContent } = review.body.length;
 
   const determineBodyLength = () => {
     if (showBody <= 250) {
@@ -50,6 +49,10 @@ export default function ReviewCard({ review }) {
     );
   };
 
+  const handleModalToggle = () => {
+    setToggleModal(!toggleModal);
+  };
+
   return (
     <>
       <div>
@@ -66,7 +69,12 @@ export default function ReviewCard({ review }) {
       </div>
       <div>
         {review.photos.map((photo) => (
-          <img src={photo.url} key={photo.id} alt={review.reviwer_name} height={100} />
+          <div role="button" tabIndex={0} onClick={handleModalToggle}>
+            {toggleModal && (
+            <ImageModal handleModalToggle={handleModalToggle} image={photo.url} />
+            )}
+            <img src={photo.url} key={photo.id} alt={review.reviwer_name} height={100} />
+          </div>
         ))}
       </div>
 
