@@ -1,7 +1,10 @@
 
 .sortContainer {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+
   margin: auto;
-  width: 200px;
   padding: 0, 5px;
   border: 1px solid #495057;
 

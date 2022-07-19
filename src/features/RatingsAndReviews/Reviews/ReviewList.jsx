@@ -47,7 +47,6 @@ export default function ReviewList({ productId, reviewCount }) {
     return (
       <div className={styles.reviewList}>
         <div>
-          <h3>Reviews List</h3>
           {checkForStarFilter.slice(0, numberOfReviews).map((review) => (
             <ReviewCard
               key={review.review_id}

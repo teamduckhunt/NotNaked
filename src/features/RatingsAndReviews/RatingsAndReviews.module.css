@@ -1,0 +1,55 @@
+.rr_container {
+  position: relative;
+  width: 1130px;
+  margin: 50px auto;
+  min-height:  200px;
+}
+
+.rr_main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.rr_header {
+  font-weight: normal;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.rr_components {
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  width: fit-content;
+  position: relative;
+  margin: 0.5rem;
+  background: #ffdeeb;
+}
+
+.rr_breakdowns {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  padding: 2px;
+  position: relative;
+  margin: 0.5rem;
+  background: #ffdeeb;
+}
+
+.rr_sort {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: flex-start;
+  height: fit-content;
+  width: fit-content;
+
+
+}
+
+.rr_reviewList {
+  display: flex;
+  justify-content: flex-end;
+
+}

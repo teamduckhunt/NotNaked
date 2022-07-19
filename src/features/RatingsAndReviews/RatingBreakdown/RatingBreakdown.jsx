@@ -40,23 +40,23 @@ export default function RatingBreakdown({ productId, reviewCount }) {
   };
 
   const handleStarFilter = (e) => {
-    if (e.target.innerText === '5 Star') {
-      !starFilter.fiveStar ? setActiveFilters([...activeFilters, '5 Star']) : removeActiveFilter(e.target.innerText);
+    if (e.target.innerText === '5 Stars') {
+      !starFilter.fiveStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
       setStarFilter({ ...starFilter, fiveStar: !starFilter.fiveStar });
     }
-    if (e.target.innerText === '4 Star') {
+    if (e.target.innerText === '4 Stars') {
       !starFilter.fourStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
       setStarFilter({ ...starFilter, fourStar: !starFilter.fourStar });
     }
-    if (e.target.innerText === '3 Star') {
+    if (e.target.innerText === '3 Stars') {
       !starFilter.threeStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
       setStarFilter({ ...starFilter, threeStar: !starFilter.threeStar });
     }
-    if (e.target.innerText === '2 Star') {
+    if (e.target.innerText === '2 Stars') {
       !starFilter.twoStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
       setStarFilter({ ...starFilter, twoStar: !starFilter.twoStar });
     }
-    if (e.target.innerText === '1 Star') {
+    if (e.target.innerText === '1 Stars') {
       !starFilter.oneStar ? setActiveFilters([...activeFilters, e.target.innerText]) : removeActiveFilter(e.target.innerText);
       setStarFilter({ ...starFilter, oneStar: !starFilter.oneStar });
     }
@@ -96,66 +96,89 @@ export default function RatingBreakdown({ productId, reviewCount }) {
 
     return (
       <div className={styles.rating_border}>
-        <div>
-          {Math.round(avgRating * 10) / 10}
-          <div>
-            <RatingToDuckFeet rating={avgRating} />
+        <div className={styles.rating_subText}>
+          <div className={styles.rating_alignment}>
+            <p className={styles.rating_text}>
+              {Math.round(avgRating * 10) / 10}
+            </p>
+            <p className={styles.duck_feet}>
+              <RatingToDuckFeet rating={avgRating} />
+            </p>
           </div>
           {numOfReviews}
           {' '}
           total reviews
+          <br />
+          {recommendedPercentage()}
+          {' '}
+          % of customers recommend this product.
         </div>
         <div>
-          <Button
-            onClick={(e) => {
-              handleStarFilter(e);
-              dispatch(setFilterByStar(5));
-            }}
-          >
-            5 Star
-          </Button>
-          <RatingBarFeature fillerPercentage={fiveStarReviewPercentage} />
-          {`(${data.ratings[5]})`}
-          <Button
-            onClick={(e) => {
-              handleStarFilter(e);
-              dispatch(setFilterByStar(4));
-            }}
-          >
-            4 Star
-          </Button>
-          <RatingBarFeature fillerPercentage={fourStarReviewsPercentage} />
-          {`(${data.ratings[4]})`}
-          <Button
-            onClick={(e) => {
-              handleStarFilter(e);
-              dispatch(setFilterByStar(3));
-            }}
-          >
-            3 Star
-          </Button>
-          <RatingBarFeature fillerPercentage={threeStarReviewsPercentage} />
-          {`(${data.ratings[3]})`}
-          <Button
-            onClick={(e) => {
-              handleStarFilter(e);
-              dispatch(setFilterByStar(2));
-            }}
-          >
-            2 Star
-          </Button>
-          <RatingBarFeature fillerPercentage={twoStarReviewsPercentage} />
-          {`(${data.ratings[2]})`}
-          <Button
-            onClick={(e) => {
-              handleStarFilter(e);
-              dispatch(setFilterByStar(1));
-            }}
-          >
-            1 Star
-          </Button>
-          <RatingBarFeature fillerPercentage={oneStarReviewsPercentage} />
-          {`(${data.ratings[1]})`}
+          <div className={styles.rating_bar_layout}>
+            <Button
+              className={styles.btn}
+              onClick={(e) => {
+                handleStarFilter(e);
+                dispatch(setFilterByStar(5));
+              }}
+            >
+              5 Stars
+            </Button>
+            <RatingBarFeature fillerPercentage={fiveStarReviewPercentage} />
+            {`(${data.ratings[5]})`}
+          </div>
+          <div className={styles.rating_bar_layout}>
+            <Button
+              className={styles.btn}
+              onClick={(e) => {
+                handleStarFilter(e);
+                dispatch(setFilterByStar(4));
+              }}
+            >
+              4 Stars
+            </Button>
+            <RatingBarFeature fillerPercentage={fourStarReviewsPercentage} />
+            {`(${data.ratings[4]})`}
+          </div>
+          <div className={styles.rating_bar_layout}>
+            <Button
+              className={styles.btn}
+              onClick={(e) => {
+                handleStarFilter(e);
+                dispatch(setFilterByStar(3));
+              }}
+            >
+              3 Stars
+            </Button>
+            <RatingBarFeature fillerPercentage={threeStarReviewsPercentage} />
+            {`(${data.ratings[3]})`}
+          </div>
+          <div className={styles.rating_bar_layout}>
+            <Button
+              className={styles.btn}
+              onClick={(e) => {
+                handleStarFilter(e);
+                dispatch(setFilterByStar(2));
+              }}
+            >
+              2 Stars
+            </Button>
+            <RatingBarFeature fillerPercentage={twoStarReviewsPercentage} />
+            {`(${data.ratings[2]})`}
+          </div>
+          <div className={styles.rating_bar_layout}>
+            <Button
+              className={styles.btn}
+              onClick={(e) => {
+                handleStarFilter(e);
+                dispatch(setFilterByStar(1));
+              }}
+            >
+              1 Stars
+            </Button>
+            <RatingBarFeature fillerPercentage={oneStarReviewsPercentage} />
+            {`(${data.ratings[1]})`}
+          </div>
         </div>
         <div>
           {resetButton
@@ -169,16 +192,16 @@ export default function RatingBreakdown({ productId, reviewCount }) {
                 >
                   Remove All Filters
                 </Button>
-                {activeFilters.map((filter) => <div>{filter}</div>)}
+                <div className={styles.reset_subText}>
+                  {activeFilters.map((filter) => (
+                    <div>
+                      {`${filter}, `}
+                    </div>
+                  ))}
+                </div>
               </>
             )}
         </div>
-        <div>
-          {recommendedPercentage()}
-          {' '}
-          % of customers recommend this product.
-        </div>
-
       </div>
     );
   }

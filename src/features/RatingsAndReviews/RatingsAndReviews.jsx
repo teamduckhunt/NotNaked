@@ -6,6 +6,7 @@ import SortItems from './SortItems/SortItems.jsx';
 import RatingBreakdown from './RatingBreakdown/RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown/ProductBreakdown.jsx';
 import { useGetReviewMetadataQuery } from '../../services/reviews.js';
+import styles from './RatingsAndReviews.module.css';
 
 export default function RatingsAndReviews({ currentViewItemId }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(currentViewItemId);
@@ -28,14 +29,24 @@ export default function RatingsAndReviews({ currentViewItemId }) {
       return total;
     };
     return (
-      <>
-        <div>
-          <ReviewList productId={currentViewItemId} reviewCount={reviewCount()} />
+      <div className={styles.rr_container}>
+        <h5 className={styles.rr_header}>
+          RATINGS & REVIEWS
+        </h5>
+        <div className={styles.rr_main}>
+          <br />
+          <div className={styles.rr_breakdowns}>
+            <RatingBreakdown productId={currentViewItemId} reviewCount={reviewCount()} />
+            <ProductBreakdown productId={currentViewItemId} />
+          </div>
+          <div className={styles.rr_sort}>
+            <SortItems productId={currentViewItemId} reviewCount={reviewCount()} />
+          {/* <div className={styles.rr_reviewList}> */}
+            <ReviewList productId={currentViewItemId} reviewCount={reviewCount()} />
+          {/* </div> */}
+          </div>
         </div>
-        <SortItems productId={currentViewItemId} reviewCount={reviewCount()} />
-        <RatingBreakdown productId={currentViewItemId} reviewCount={reviewCount()} />
-        <ProductBreakdown productId={currentViewItemId} />
-      </>
+      </div>
     );
   }
 }
