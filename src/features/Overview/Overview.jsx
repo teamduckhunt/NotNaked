@@ -13,7 +13,7 @@ import styles from './Overview.module.css';
 
 export default function Overview({ currentViewItemId, reviewSection, scrollToElement }) {
   return (
-    <div className={styles.overview}>
+    <div className={styles.overview} data-testid="overview">
       <div className={styles.overviewHeaders}>
         <div className={styles.imagegallery}>
           <ImageGallery currentViewItemId={currentViewItemId} />

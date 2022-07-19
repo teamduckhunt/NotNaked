@@ -44,7 +44,15 @@ export default function StyleList({ currentViewItemId }) {
           {curStyle.name ? curStyle.name.toUpperCase() : styles.results[0].name.toUpperCase()}
         </div>
         <div className={classes.styleButtonList}>
-          {styles.results.map((style) => {
+          {styles.results.map((style, index) => {
+            if (curStyle.style_id === undefined && index === 0) {
+              return (
+                <div className={classes.styleAndCheckmarkHolder}>
+                  <StyleCard key={style.style_id} style={style} />
+                  <img src={styleCheck} className={classes.checkDot} alt="" />
+                </div>
+              );
+            }
             if (curStyle.style_id === style.style_id) {
               return (
                 <div className={classes.styleAndCheckmarkHolder}>
