@@ -65,7 +65,7 @@ export default function ReviewCard({ review }) {
       </div>
       <div>
         {review.photos.map((photo) => (
-          <div role="button" tabIndex={0} onClick={handleModalToggle}>
+          <div key={photo.id} role="button" tabIndex={0} onClick={handleModalToggle}>
             {toggleModal && (
             <ImageModal handleModalToggle={handleModalToggle} image={photo.url} />
             )}
