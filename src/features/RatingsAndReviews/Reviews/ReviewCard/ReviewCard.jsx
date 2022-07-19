@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '../../../UI/Button.jsx';
 import { useAddHelpfulCountMutation, useReportReviewMutation } from '../../../../services/reviews.js';
@@ -10,9 +9,6 @@ import ImageModal from './ImageModal.jsx';
 import styles from './ReviewCard.module.css';
 
 export default function ReviewCard({ review }) {
-  // const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
-  console.log('review', review);
-
   const [showBody, setShowBody] = useState(false);
   const [disableYesButton, setDisableYesButton] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
@@ -107,7 +103,3 @@ export default function ReviewCard({ review }) {
 ReviewCard.propTypes = {
   review: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
 };
-
-// NOTES :
-
-// May need to use useState for the thumbnail images, will need a modal popup

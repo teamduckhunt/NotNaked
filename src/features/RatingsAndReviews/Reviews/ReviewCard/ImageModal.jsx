@@ -9,7 +9,7 @@ export default function ImageModal({ handleModalToggle, image }) {
     <Modal className={styles.imageModal}>
       <img className={styles.image} src={image} alt="review" />
       <div className={styles.btn_modal}>
-        <Button type="button" className={styles.btn} onClick={() => handleModalToggle()}>
+        <Button type="button" onClick={() => handleModalToggle()}>
           Close
         </Button>
       </div>
