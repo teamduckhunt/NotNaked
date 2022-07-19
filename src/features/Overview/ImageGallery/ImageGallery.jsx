@@ -12,6 +12,7 @@ export default function ImageGallery({ currentViewItemId }) {
   const { data, error, isLoading } = useProductStylesQuery(currentViewItemId);
   const curStyle = useSelector((state) => state.productStyles.selectedStyle);
   const [current, setCurrent] = useState(0);
+  const [picExpanded, setPicExpanded] = useState(false);
 
   if (error) {
     return <div>There is an error!</div>;
@@ -43,10 +44,8 @@ export default function ImageGallery({ currentViewItemId }) {
       index = 0;
     };
 
-    let picExpanded = false;
-
     const toggleClass = () => {
-      picExpanded = !picExpanded;
+      setPicExpanded(!picExpanded);
       // console.log(picExpanded);
     };
 
@@ -54,6 +53,7 @@ export default function ImageGallery({ currentViewItemId }) {
 
     return (
       <div className={bigPicClass}>
+        {console.log(bigPicClass)}
         <button onClick={() => { toggleClass(); }} className={styles.expandButton} type="button">
           <img src={expand} alt="" className={styles.expandPic} />
         </button>

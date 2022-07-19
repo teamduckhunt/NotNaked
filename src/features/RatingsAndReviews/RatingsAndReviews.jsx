@@ -7,7 +7,7 @@ import RatingBreakdown from './RatingBreakdown/RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown/ProductBreakdown.jsx';
 import { useGetReviewMetadataQuery } from '../../services/reviews.js';
 
-export default function RatingsAndReviews({ currentViewItemId }) {
+export default function RatingsAndReviews({ currentViewItemId, reviewSection }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(currentViewItemId);
 
   if (error) {
@@ -28,14 +28,14 @@ export default function RatingsAndReviews({ currentViewItemId }) {
       return total;
     };
     return (
-      <>
+      <div ref={reviewSection}>
         <div>
           <ReviewList productId={currentViewItemId} reviewCount={reviewCount()} />
         </div>
         <SortItems productId={currentViewItemId} reviewCount={reviewCount()} />
         <RatingBreakdown productId={currentViewItemId} reviewCount={reviewCount()} />
         {/* <ProductBreakdown /> */}
-      </>
+      </div>
     );
   }
 }

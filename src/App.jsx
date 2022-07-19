@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,13 +17,23 @@ import styles from './App.module.css';
 
 function ProductDetailPage() {
   const { productId } = useParams();
+  const reviewSection = useRef();
+  // const reviewSection = createRef();
+  const scrollToElement = () => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({
+        top: reviewSection.current.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  };
   return (
     <div id="app" className={styles.app}>
       <Header />
-      <Overview currentViewItemId={+productId} />
+      <Overview currentViewItemId={+productId} reviewSection={reviewSection} scrollToElement={scrollToElement} />
       <RelatedItemsAndComparison currentViewItemId={+productId} />
       <QuestionsAndAnswers currentViewItemId={+productId} />
-      <RatingsAndReviews currentViewItemId={+productId} />
+      <RatingsAndReviews currentViewItemId={+productId} reviewSection={reviewSection} />
     </div>
   );
 }
