@@ -76,6 +76,3 @@ export default function ReviewList({ productId, reviewCount }) {
 ReviewList.propTypes = {
   productId: PropTypes.number.isRequired,
 };
-
-// more reviews button, should dissapear once all reviews are loaded.
-// if there are less than 2 reviews, the more reviews button should not render

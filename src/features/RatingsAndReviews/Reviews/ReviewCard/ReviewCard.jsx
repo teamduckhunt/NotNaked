@@ -1,16 +1,16 @@
-/* eslint-disable react/jsx-first-prop-new-line */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable import/extensions */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '../../../UI/Button.jsx';
 import { useAddHelpfulCountMutation, useReportReviewMutation } from '../../../../services/reviews.js';
+import RatingToDuckFeet from '../../../../helpers/RatingToDuckFeet.jsx';
 import styles from './ReviewCard.module.css';
 
 export default function ReviewCard({ review }) {
-  // const dispatch = useDispatch();
+  // const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
+  console.log('review', review);
 
   const [showBody, setShowBody] = useState(false);
   const [disableYesButton, setDisableYesButton] = useState(false);
@@ -40,7 +40,11 @@ export default function ReviewCard({ review }) {
     const toShow = `${review.body.substring(0, 250)}...`;
     return (
       <div>
-        <p> {toShow} </p>
+        <p>
+          {' '}
+          {toShow}
+          {' '}
+        </p>
         <Button onClick={() => { setShowBody(true); }}>Show More...</Button>
       </div>
     );
@@ -48,8 +52,9 @@ export default function ReviewCard({ review }) {
 
   return (
     <>
-      {/* ***** Duck rating here */}
-      <p>{review.rating}</p>
+      <div>
+        <RatingToDuckFeet rating={review.rating} />
+      </div>
       <div>
         {`${review.reviewer_name}, ${new Date(review.date).toLocaleDateString([], dateOptions)}`}
       </div>
@@ -75,10 +80,11 @@ export default function ReviewCard({ review }) {
       )}
       <div>
         Helpful?
-        <Button onClick={() => {
-          incrementHelpfulCount(review.review_id);
-          setDisableYesButton(true);
-        }}
+        <Button
+          onClick={() => {
+            incrementHelpfulCount(review.review_id);
+            setDisableYesButton(true);
+          }}
           disabled={disableYesButton}
         >
           Yes
@@ -97,8 +103,3 @@ ReviewCard.propTypes = {
 // NOTES :
 
 // May need to use useState for the thumbnail images, will need a modal popup
-
-// add star rating visual
-
-// add conditional to check if email address is assocated with verified purchase.
-// add 'verified purchase' infront of reviewer name.
