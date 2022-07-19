@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable import/extensions */
@@ -7,37 +8,66 @@
  * @jest-environment jsdom
  */
 
-import 'whatwg-fetch';
-import '@testing-library/jest-dom';
 import React from 'react';
-import { Provider } from 'react-redux';
-import { render, screen } from '@testing-library/react';
-import store from '../../../app/store';
-import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
+import '@testing-library/jest-dom';
+import 'whatwg-fetch';
+// import { act } from 'react-dom/test-utils';
+import { reducer, screen, waitForElementToBeRemoved } from '../../../app/test-utils.jsx';
 import QuestionsAndAnswers from '../QuestionsAndAnswers.jsx';
 import QuestionsList from '../QuestionsList/QuestionsList.jsx';
-import testUseAppSeletor from '../../../app/test-app.selector';
 
 jest.mock('../../../app/redux-hooks');
 
-describe('Testing QuestionsList', () => {
-  beforeEach(() => {
-    useAppSelector.mockImplementation(testUseAppSeletor);
-    useAppDispatch.mockImplementation(() => jest.fn);
+describe('Testing Q&A', () => {
+  beforeEach(async () => {
+    reducer(<QuestionsAndAnswers currentViewItemId={40344} />);
+    await waitForElementToBeRemoved(() => screen.queryByText(/Loading/i), { timeout: 3000 });
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test('Question List Renders', async () => {
-    render(
-      <Provider store={store}>
-        <QuestionsAndAnswers currentViewItemId={40344} />
-      </Provider>,
-    );
+  test('Renders QA Header', () => {
+    expect(screen.getByText(/QUESTIONS & ANSWERS/i)).toBeInTheDocument();
+  });
 
-    const question = await screen.getByText('QUESTIONS & ANSWERS');
-    expect(question).toBeInTheDocument();
+  test('Renders QA Search', () => {
+    expect(screen.getByPlaceholderText('HAVE A QUESTION? SEARCH FOR ANSWERS…')).toBeInTheDocument();
+  });
+
+  test('Renders QA List', async () => {
+    expect(screen.getByText(/Q: Do you know the muffin man?/i)).toBeInTheDocument();
+  });
+
+  test('Renders More Questions Button', async () => {
+    expect(screen.getByText(/MORE ANSWERED QUESTIONS/i)).toBeInTheDocument();
+  });
+
+  test('Renders Add A Question Button', async () => {
+    expect(screen.getByText(/ADD A QUESTION/i)).toBeInTheDocument();
   });
 });
+
+// describe('Testing List', () => {
+//   beforeEach(async () => {
+//     reducer(<QuestionsList currentViewItemId={40344} />);
+//     await waitForElementToBeRemoved(() => screen.queryByText(/Loading/i), { timeout: 3000 });
+//   });
+
+//   afterEach(() => {
+//     jest.clearAllMocks();
+//   });
+
+//   test('Renders QA List', async () => {
+//     expect(screen.getByText(/Q: Do you know the muffin man?/i)).toBeInTheDocument();
+//   });
+
+//   test('Renders More Questions Button', async () => {
+//     expect(screen.getByText('MORE ANSWERED QUESTIONS')).toBeInTheDocument();
+//   });
+
+//   test('Renders Add A Question Button', async () => {
+//     expect(screen.getByText('ADD A QUESTION')).toBeInTheDocument();
+//   });
+// });
