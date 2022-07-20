@@ -51,7 +51,7 @@ export default function ListItemCard({
         <footer className={styles.product_card_body}>
           <p data-testid="category" className={styles.category}>{product.category}</p>
           <p data-testid="name" className={styles.name}>{product.name}</p>
-          <p data-testid="price" className={styles.price}>{price}</p>
+          <div data-testid="price" className={styles.price}>{price}</div>
           {/* Iron Man by Adhi Satrio from NounProject.com */}
           {Number.isNaN(averageRating) ? (
             <div data-testid="ironman" className={styles.ironContainer}>

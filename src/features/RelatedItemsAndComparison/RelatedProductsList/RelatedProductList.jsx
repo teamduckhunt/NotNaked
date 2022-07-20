@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import RelatedProductItem from './RelatedProductItem.jsx';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
@@ -11,6 +11,9 @@ export default function RelatedProductList({ currentViewItemId }) {
   const { data, error, isLoading } = useRelatedProductsIdQuery(currentViewItemId);
   const [localState, dispatchLocalState] = useReducer(relatedReducer, relatedState);
   const { start, end } = localState;
+  useEffect(() => {
+    dispatchLocalState({ type: 'RESET' });
+  }, [currentViewItemId]);
 
   if (error) {
     return <>Oh no, there was an error</>;

@@ -20,6 +20,7 @@ export default function OutfitList({ currentViewItemId }) {
     if (userOutfitList.indexOf(currentViewItemId) === -1) {
       setIsCurrentItemAdded(false);
     }
+    dispatchLocalState({ type: 'RESET' });
   }, [currentViewItemId, userOutfitList]);
 
   const handleAddOutfit = () => {
