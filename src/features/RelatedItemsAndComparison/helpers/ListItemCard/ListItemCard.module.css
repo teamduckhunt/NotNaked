@@ -111,3 +111,18 @@
 .ironMan2 :hover{
   cursor: pointer;
 }
+
+.no_product {
+  display: flex;
+  font-weight: 500;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 228px;
+  height: 300px;
+  flex-shrink: 0;
+  padding-right: 15px;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  margin-right: 50px;
+}

@@ -19,6 +19,7 @@ import { useGetReviewMetadataQuery } from '../../../services/reviews';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating';
 import IronMan from '../../../../assets/iron-man.svg';
 import classes from '../helpers/ListItemCard/ListItemCard.module.css';
+import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
 
 export default function RelatedProductItem({ productId, currentViewItemId }) {
   const [toggleModal, setToggleModal] = useState(false);
@@ -32,11 +33,11 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
   };
 
   if (error) {
-    return <>Oh no, there was an error</>;
+    return <div className={classes.no_product}>Oh no, there was an error</div>;
   }
 
   if (isLoading || stylesLoading || metaLoading) {
-    return <>Loading...</>;
+    return <div className={classes.no_product}><LoadingSpinner /></div>;
   }
   const averageRating = getAverageRating(metaData);
   const InfinityStone = <img className={classes.ironMan2} src={IronMan} alt="Iron Man" />;
