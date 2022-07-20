@@ -106,9 +106,15 @@ export default class AddReviewModal extends React.Component {
             <input type='text' value={summary} maxLength="60" onChange={(e) => this.handleSummaryChange(e)} />
           </div>
           <div>
-            <input type='text' value={body} onChange={(e) => this.handleBodyChange(e)} />
+            <input type='text' value={body} minLength="50" maxLength="1000" onChange={(e) => this.handleBodyChange(e)} />
             Add a counter
           </div>
+          <div>
+            Add an image
+          </div>
+          <input />
+          <input />
+
           <Button type="submit">
             Submit
           </Button>
