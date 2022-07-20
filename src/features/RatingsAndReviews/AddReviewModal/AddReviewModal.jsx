@@ -103,7 +103,7 @@ export default class AddReviewModal extends React.Component {
           </div>
           <CharacteristicsTable />
           <div>
-            <input type='text' value={summary} onChange={(e) => this.handleSummaryChange(e)} />
+            <input type='text' value={summary} maxLength="60" onChange={(e) => this.handleSummaryChange(e)} />
           </div>
           <div>
             <input type='text' value={body} onChange={(e) => this.handleBodyChange(e)} />
