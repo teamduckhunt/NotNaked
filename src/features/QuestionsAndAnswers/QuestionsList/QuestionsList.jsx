@@ -54,24 +54,26 @@ export default function QuestionsList({ currentViewItemId }) {
   if (data) {
     const questions = data.results.filter((item) => item.question_body.includes(select));
     return (
-      <div className={styles.list} id="list">
-        {toggleModal && (
-          <AddQA
-            handleModalToggle={handleModalToggle}
-            ID={currentViewItemId}
-            product={product.name}
-          />
-        )}
-        {questions.length === 0 &&
-          <>
-            <br />
-            <strong>NO QUESTIONS FOUND :(</strong>
-            <br />
-          </>
-        }
-        {questions.slice(0, numberOfQuestions)
-          .map((q) => <QuestionCard key={q.question_id} q={q} p={currentViewItemId} />)}
-        <br></br>
+      <>
+        <div className={styles.list} id="list">
+          {toggleModal && (
+            <AddQA
+              handleModalToggle={handleModalToggle}
+              ID={currentViewItemId}
+              product={product.name}
+              />
+              )}
+          {questions.length === 0 &&
+            <>
+              <br />
+              <strong>NO QUESTIONS FOUND :(</strong>
+              <br />
+            </>
+          }
+          {questions.slice(0, numberOfQuestions)
+            .map((q) => <QuestionCard key={q.question_id} q={q} p={currentViewItemId} />)}
+          <br></br>
+        </div>
         {!disableMoreQuestionsButton
         && (
           <Button
@@ -86,7 +88,7 @@ export default function QuestionsList({ currentViewItemId }) {
           ADD A QUESTION&nbsp;
           <strong>+</strong>
         </Button>
-      </div>
+      </>
     );
   }
 }

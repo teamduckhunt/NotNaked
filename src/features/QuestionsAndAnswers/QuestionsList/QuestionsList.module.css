@@ -1,3 +1,6 @@
 .list {
   font-size: medium;
+  max-height: 700px;
+  max-width: 655px;
+  overflow-y: auto;
 }
