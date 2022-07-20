@@ -21,9 +21,6 @@ export default function ListItemCard({
   children,
   productSalesPrice,
 }) {
-  console.log(product);
-  console.log(productImage);
-  console.log(productSalesPrice);
   const handleProductClick = (e) => {
     e.preventDefault();
     if (e.currentTarget.id === 'product') {
