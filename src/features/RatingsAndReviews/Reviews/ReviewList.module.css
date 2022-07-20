@@ -6,7 +6,10 @@
 .reviewList {
   max-height: 800px;
   max-width: 775px;
+  overflow-x: hidden;
   overflow-y: auto;
+  word-wrap: break-word;
+
 }
 
 .reviewList_btn {
