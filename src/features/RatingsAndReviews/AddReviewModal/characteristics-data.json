@@ -1,0 +1,49 @@
+[
+  {
+    "characteristic": "Size",
+    "one": "A size too small",
+    "two": "1/2 a size too small",
+    "three": "Perfect",
+    "four": "1/2 a size too big",
+    "five": "A size too wide"
+  },
+  {
+    "characteristic": "Width",
+    "one": "Too narrow",
+    "two": "Slightly narrow",
+    "three": "Perfect",
+    "four": "Slightly wide",
+    "five": "Too wide"
+  },
+  {
+    "one": "Uncomfortable",
+    "two": "Slightly uncomfortable",
+    "three": "Ok",
+    "four": "Comfortable",
+    "five": "Perfect"
+  },
+  {
+    "characteristic": "Quality",
+    "one": "Poor",
+    "two": "Below average",
+    "three": "What I expected",
+    "four": "Pretty great",
+    "five": "Perfect"
+  },
+  {
+    "characteristic": "Length",
+    "one": "Runs Short",
+    "two": "Runs slightly short",
+    "three": "Perfect",
+    "four": "Runs slightly long",
+    "five": "Runs long"
+  },
+  {
+    "characteristic": "Fit",
+    "one": "Runs tight",
+    "two": "Runs slightly tight",
+    "three": "Perfect",
+    "four": "Runs slightly long",
+    "five": "Runs long"
+  }
+]

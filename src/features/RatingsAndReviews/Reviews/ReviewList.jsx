@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import ReviewCard from './ReviewCard/ReviewCard.jsx';
 import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
+import AddReviewModal from '../AddReviewModal/AddReviewModal.jsx';
+import { useProductInformationByIdQuery } from '../../../services/products.js';
 import { useSelector } from 'react-redux';
 import styles from './ReviewList.module.css';
 
@@ -13,7 +15,7 @@ export default function ReviewList({ productId, reviewCount }) {
   const { data, error, isLoading } = useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
 
   const [numberOfReviews, setNumberOfReviews] = useState(2);
-  const [disableMoreReviewsButton, setDisableMoreReviewsButton] = useState(false);
+  const [showMoreReviewsButton, setShowMoreReviewsButton] = useState(true);
   const curStarSelected = useSelector((state) => state.ratingBreakdown.filterByStar);
 
 
@@ -26,12 +28,11 @@ export default function ReviewList({ productId, reviewCount }) {
   }
 
   if (data) {
-    console.log('review data', data);
 
     // check if there are no more reviews
     const reviewListLengthCheck = () => {
       if (numberOfReviews >= data.results.length) {
-        setDisableMoreReviewsButton(true);
+        setShowMoreReviewsButton(false);
       }
     };
 
@@ -44,9 +45,8 @@ export default function ReviewList({ productId, reviewCount }) {
     const checkForStarFilter = (curStarSelected.length === 0) ? data.results : filteredReviewSet.filter(item => item !== undefined);
 
     return (
-      <div className={styles.reviewList}>
-        <div>
-          <h3>Reviews List</h3>
+      <div className={styles.reviewList_border}>
+        <div className={styles.reviewList}>
           {checkForStarFilter.slice(0, numberOfReviews).map((review) => (
             <ReviewCard
               key={review.review_id}
@@ -55,15 +55,17 @@ export default function ReviewList({ productId, reviewCount }) {
             />
           ))}
         </div>
-        <Button onClick={() => {
-          setNumberOfReviews(numberOfReviews + 2);
-          reviewListLengthCheck();
-        }}
-          disabled={disableMoreReviewsButton}
-        >
-          More Reviews
-        </Button>
-        <Button>
+        {showMoreReviewsButton &&
+          <Button onClick={() => {
+            setNumberOfReviews(numberOfReviews + 2);
+            reviewListLengthCheck();
+          }}
+          className={styles.reviewList_btn}
+          >
+            More Reviews
+          </Button>
+        }
+        <Button className={styles.reviewList_btn}>
           Add a Review
         </Button>
       </div>

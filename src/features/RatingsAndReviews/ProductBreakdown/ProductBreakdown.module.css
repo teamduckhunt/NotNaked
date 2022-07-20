@@ -1,0 +1,40 @@
+
+.pb_border{
+  /* border: 1px solid #495057; */
+  margin: 10px;
+  padding: 5px;
+}
+
+.description_text {
+  display: flex;
+  font-size: .7em;
+  justify-content: flex-start;
+}
+
+.characteristic_title {
+  font-size: 1em;
+  margin: .3em 0;
+}
+
+.characteristic_bar_arrow {
+  position: absolute;
+  background: transparent;
+  height: 12px;
+  left: 0;
+  border-radius: inherit;
+  cursor: n-resize;
+}
+
+.characteristic_bar {
+  height: 8px;
+  width: 95px;
+  margin: 3px;
+  background-color: rgb(210, 210, 210);
+}
+
+.characteristic_bar_container {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  max-width: 300px;
+}

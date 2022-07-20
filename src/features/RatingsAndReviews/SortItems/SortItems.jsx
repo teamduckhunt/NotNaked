@@ -12,12 +12,12 @@ export default function SortItems({ productId, reviewCount }) {
     const sortSelection = event.target.value;
     dispatch(setSortSelection(sortSelection));
   }
-  const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
-  useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
+  // const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
+  // useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
 
   return (
     <div className={styles.sortContainer}>
-      # reviews, sort by
+      {` ${reviewCount} reviews, sort by `}
       <select className={styles.dd_wrapper} onChange={handleChange}>
         <option value="relevant">relevant</option>
         <option value="helpful">helpful</option>
@@ -30,6 +30,7 @@ export default function SortItems({ productId, reviewCount }) {
 
 SortItems.propTypes = {
   productId: PropTypes.number.isRequired,
+  reviewCount: PropTypes.number.isRequired,
 };
 
 // NOTES :

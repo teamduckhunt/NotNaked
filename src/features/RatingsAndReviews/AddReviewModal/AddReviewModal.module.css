@@ -1,0 +1,34 @@
+.add_review_box {
+  background-color: bisque;
+}
+
+.w_6 {
+  width: 1.5em;
+}
+
+.h_6 {
+  height: 1.5em;
+}
+
+.flex {
+  display: flex;
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.on {
+  color: pink;
+}
+
+.off {
+  color: grey;
+}

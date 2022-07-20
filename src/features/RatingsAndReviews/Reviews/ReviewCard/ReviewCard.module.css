@@ -1,0 +1,138 @@
+.reviewCard {
+  margin: 2%;
+  margin-bottom: 5%;
+  border-bottom: 1px solid #495057;
+}
+
+.rc_container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+.rc_text {
+  font-weight: bold;
+  margin-bottom: 1%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rc_duckRating {
+  align-items: flex-start;
+
+}
+
+.rc_name_date {
+  align-items: flex-end;
+  font-size: small;
+}
+
+/* Review Body Section
+======================== */
+
+.rc_body {
+  margin-left: 2%;
+  margin-bottom: 2%;
+  font-size: small;
+  flex-wrap: wrap;
+}
+
+.rc_photo_container {
+  display: flex;
+  overflow-x: auto;
+}
+
+.rc_photo {
+  margin-left: 2%;
+  margin-bottom: 1%;
+  /* max-width: 150px;
+  max-height: 100px; */
+  /* border: solid black; */
+}
+
+.img {
+  margin-left: 2%;
+  margin-bottom: 1%;
+  max-width: 150px;
+  max-height: 100px;
+  /* object-fit: contain; */
+  border: solid black;
+
+}
+
+/* Recommend Section
+======================== */
+.rc_recommend {
+  margin-bottom: 2%;
+  font-size: small;
+
+}
+
+.checkMark {
+  margin-right: 1%;
+}
+
+/* Response Section
+======================== */
+
+.rc_response {
+  background-color: #f1f3f5;
+  margin: 1%;
+  font-weight: bold;
+}
+
+.rc_response_body {
+  font-weight: lighter;
+  font-size: small;
+}
+
+/* Helpfulness Section
+======================== */
+
+.rc_helpfulness {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5%;
+  font-size: small;
+}
+
+.rc_yes_btn {
+  margin-left: 1%;
+  margin-right: .5em;
+  font-size: small;
+  font-weight: 500;
+  text-decoration: underline 1px;
+}
+
+.rc_report_btn {
+  font-size: small;
+  font-weight: 500;
+  text-decoration: underline 1px;
+  margin-left: 15%;
+}
+
+.rc_report_block {
+  margin-left: 1%;
+  border-left: 1px solid #495057;
+
+}
+
+/* Image Modal
+======================== */
+
+.imageModal {
+  padding: 12px;
+}
+
+.btn_modal {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+}

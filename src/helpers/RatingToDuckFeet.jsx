@@ -9,43 +9,51 @@ import EmptyDuck from '../../assets/duckFeet-rating/empty.svg';
 import styles from './RatingToDuckFeet.module.css';
 
 export default function RatingToDuckFeet({ rating }) {
+  const randomKey = (index = 1) => Math.floor(Math.random() * 1000 * (index + 1));
+
   const number = Math.trunc(rating);
   const floatNum = Math.round((rating - number) * 4);
-  const rest = 5 - Math.ceil(rating);
+  const rest = number !== 5 ? 5 - number - 1 : 0;
 
-  const FULL = <img className={styles.feet} src={FullDuck} alt="full duck" />;
-  const THIRD = <img className={styles.feet} src={ThirdFull} alt="full duck" />;
-  const HALF = <img className={styles.feet} src={HalfFull} alt="full duck" />;
-  const QUARTER = <img className={styles.feet} src={QuarterFull} alt="full duck" />;
-  const EMPTY = <img className={styles.feet} src={EmptyDuck} alt="full duck" />;
+  const findDuck = () => {
+    switch (floatNum) {
+      case 0:
+        return EmptyDuck;
+      case 1:
+        return QuarterFull;
+      case 2:
+        return HalfFull;
+      case 3:
+        return ThirdFull;
+      case 4:
+        return FullDuck;
+      default:
+        return null;
+    }
+  };
 
-  let float;
+  const renderArr = [];
 
-  switch (floatNum) {
-    case 0:
-      float = EMPTY;
-      break;
-    case 1:
-      float = QUARTER;
-      break;
-    case 2:
-      float = HALF;
-      break;
-    case 3:
-      float = THIRD;
-      break;
-    case 4:
-      float = FULL;
-      break;
-    default:
-      float = '';
+  if (number) {
+    for (let i = 0; i < number; i += 1) {
+      renderArr.push(<img key={randomKey(i)} className={styles.feet} src={FullDuck} alt="full duck" />);
+    }
+  }
+  const float = findDuck();
+
+  if (floatNum >= 0 && number !== 5) {
+    renderArr.push(<img key={randomKey()} className={styles.feet} src={float} alt="float duck" />);
+  }
+
+  if (rest > 0) {
+    for (let i = 0; i < rest; i += 1) {
+      renderArr.push(<img key={randomKey(i)} className={styles.feet} src={EmptyDuck} alt="empty duck" />);
+    }
   }
 
   return (
     <div className={styles.rating_ctn}>
-      {number && Array(number).fill(FULL)}
-      {float && float}
-      {rating && number && rating - number !== 0 && Array(rest).fill(EMPTY)}
+      {renderArr.map((ele) => ele)}
     </div>
   );
 }

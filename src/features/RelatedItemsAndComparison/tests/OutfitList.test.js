@@ -1,28 +1,21 @@
+/* eslint-disable import/extensions */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-undef */
 /**
  * @jest-environment jsdom
  */
-
-import 'whatwg-fetch';
-import '@testing-library/jest-dom';
 import React from 'react';
+import '@testing-library/jest-dom';
+import 'whatwg-fetch';
 import { act } from 'react-dom/test-utils';
-import { Provider } from 'react-redux';
-import { render, screen } from '@testing-library/react';
-import store from '../../../app/store';
-import { useAppDispatch, useAppSelector } from '../../../app/redux-hooks';
+import { reducer, screen } from '../../../app/test-utils.jsx';
 import OutfitList from '../OutfitList/OutfitList.jsx';
-import testUseAppSeletor from '../../../app/test-app.selector';
-
-jest.mock('../../../app/redux-hooks');
-
-// import renderWithProviders from '../../../utils/test.utils';
 
 describe('Testing OutfitList', () => {
+  let addToListBtn;
   beforeEach(() => {
-    useAppSelector.mockImplementation(testUseAppSeletor);
-    useAppDispatch.mockImplementation(() => jest.fn);
+    reducer(<OutfitList currentViewItemId={40344} />);
+    addToListBtn = screen.getByTestId('addOutfit');
   });
 
   afterEach(() => {
@@ -30,25 +23,10 @@ describe('Testing OutfitList', () => {
   });
 
   test('add button is visible when current detailed product is not in the list', () => {
-    // renderWithProviders(<Provider store={store}><OutfitList /></Provider>);
-    render(
-      <Provider store={store}>
-        <OutfitList currentViewItemId={40344} />
-      </Provider>,
-    );
-    // returns an element or an error
-    const addToListBtn = screen.getByText('Add to List');
     expect(addToListBtn).toBeInTheDocument();
   });
 
   test('add button is not visible when current detailed product is in the list', () => {
-    render(
-      <Provider store={store}>
-        <OutfitList currentViewItemId={40344} />
-      </Provider>,
-    );
-    const addToListBtn = screen.getByText('Add to List');
-
     act(() => {
       addToListBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
@@ -56,14 +34,3 @@ describe('Testing OutfitList', () => {
     expect(addToListBtn).not.toBeInTheDocument();
   });
 });
-
- // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
- // https://www.npmjs.com/package/jest-css-modules-transform
- // https://www.npmjs.com/package/babel-jest
- // https://redux.js.org/usage/writing-tests
- // https://medium.com/@johnmcdowell0801/testing-rtk-query-with-jest-cdfa5aaf3dc1
- // https://www.npmjs.com/package/whatwg-fetch
- // https://github.com/reduxjs/redux-toolkit/issues/2084
- // https://github.com/vercel/next.js/issues/8145
- // https://www.npmjs.com/package/jest-environment-jsdom
- // https://www.npmjs.com/package/whatwg-fetch
