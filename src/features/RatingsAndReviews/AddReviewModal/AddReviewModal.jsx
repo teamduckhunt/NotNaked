@@ -37,6 +37,8 @@ export default class AddReviewModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleSummaryChange = this.handleSummaryChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
   }
 
   handleSubmit(e) {
@@ -57,10 +59,18 @@ export default class AddReviewModal extends React.Component {
     this.setState({ body: e.target.value });
   }
 
+  handleNameChange(e) {
+    this.setState({ body: e.target.value });
+  }
+
+  handleEmailChange(e) {
+    this.setState({ body: e.target.value });
+  }
+
   render() {
     const { handleModalToggle, productName } = this.props;
     const {
-      body, date, photos, rating, recommend, reviewer_name, summary,
+      body, date, photos, rating, recommend, reviewer_name, summary, name, email,
     } = this.state;
 
     return (
@@ -103,17 +113,29 @@ export default class AddReviewModal extends React.Component {
           </div>
           <CharacteristicsTable />
           <div>
-            <input type='text' value={summary} maxLength="60" onChange={(e) => this.handleSummaryChange(e)} />
+            {/* <input type='text' value={summary} maxLength="60" onChange={(e) => this.handleSummaryChange(e)} /> */}
+            <textarea value={summary} maxLength='60' cols='60' rows='2' onChange={(e) => this.handleSummaryChange(e)}></textarea>
           </div>
           <div>
-            <input type='text' value={body} minLength="50" maxLength="1000" onChange={(e) => this.handleBodyChange(e)} />
-            Add a counter
+            {/* <input type='text' value={body} minLength="50" maxLength="1000" onChange={(e) => this.handleBodyChange(e)} />
+            Add a counter */}
+            <textarea value={body} minLength='50' maxLength='1000' cols='60' rows='5' onChange={(e) => this.handleBodyChange(e)}></textarea>
+            <div className={styles.charReq}>
+              {body.length < 50 && (
+                <span className={styles.charLeft}>
+                  Minimum required characters left:
+                  {0 + body.length}
+                  {' '}
+                  / 50
+                </span>
+              )}
+            </div>
           </div>
           <div>
-            Add an image
+            Add an image "Coming Soon"
           </div>
-          <input />
-          <input />
+          <input type='text' value={name} placeholder="What is your nickname" onChange={(e) => this.handleNameChange(e)} />
+          <input type='text' value={email} placeholder="Email" onChange={(e) => this.handleEmailChange(e)} />
 
           <Button type="submit">
             Submit
