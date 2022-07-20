@@ -34,6 +34,7 @@
   margin-left: 2%;
   margin-bottom: 2%;
   font-size: small;
+  flex-wrap: wrap;
 }
 
 .rc_photo_container {

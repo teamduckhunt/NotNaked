@@ -5,7 +5,8 @@
 }
 
 .reviewList {
-  margin-bottom: 5%;
+  max-height: 800px;
+  overflow-y: scroll;
 }
 
 .reviewList_btn {
