@@ -8,36 +8,20 @@ import { useProductStylesQuery } from '../../../services/products.js';
 import styles from './ImageGallery.module.css';
 import expand from '../pics/expand.png';
 
-export const imageState = {
-  start: 0,
-  end: 4,
-};
-
-export const imageReducer = ({ start, end }, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return {
-        start: start + 1,
-        end: end + 1,
-      };
-    case 'DECREMENT':
-      return {
-        start: start - 1,
-        end: end - 1,
-      };
-    default:
-      throw new Error('Invalid request for carousel');
-  }
-};
-
+// export const imageState = {
+//   start: 0,
+//   end: 4,
+// };
 
 export default function ImageGallery({ currentViewItemId }) {
   const { data, error, isLoading } = useProductStylesQuery(currentViewItemId);
   const curStyle = useSelector((state) => state.productStyles.selectedStyle);
   const [current, setCurrent] = useState(0);
   const [picExpanded, setPicExpanded] = useState(false);
-  const [state, dispatch] = useReducer(imageReducer, imageState);
-  const { start, end } = state;
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(4);
+
+  // const { start, end } = state;
 
   if (error) {
     return <div>There is an error!</div>;
@@ -83,15 +67,26 @@ export default function ImageGallery({ currentViewItemId }) {
 
     const bigPicClass = picExpanded ? styles.expanded : styles.normal;
 
+    const sliceFunction = (start, end) => {
+      if (start < 0 && end > 0) {
+        return currentImage.slice(start).concat(currentImage.slice(0, end));
+      }
+      if (start < 0 && end < 0) {
+        setEnd(length - 1);
+        setStart(length - 6);
+      }
+      return currentImage.slice(start, end);
+    };
+
     return (
-      <div className={bigPicClass} data-testid="imagegallery">
-        {console.log(bigPicClass)}
+      <div className={bigPicClass}>
+        {console.log('bigPicClass: ', bigPicClass)}
         <button onClick={() => { toggleClass(); }} className={styles.expandButton} type="button">
           <img src={expand} alt="" className={styles.expandPic} />
         </button>
         <div className={styles.miniCarousel}>
-          <FaChevronUp onClick={prevSlideMini} />
-          {currentImage.slice(start, end).map((photo, index) => {
+          <FaChevronUp onClick={prevSlideMini} className={styles.upArrow} />
+          {sliceFunction(start, end).map((photo, index) => {
             if (current === index) {
               return (
                 <div>
@@ -106,7 +101,7 @@ export default function ImageGallery({ currentViewItemId }) {
               );
             }
           })}
-          <FaChevronDown onClick={nextSlideMini} />
+          <FaChevronDown onClick={nextSlideMini} className={styles.downArrow} />
         </div>
         <div>
           <FaChevronLeft className={styles.leftArrow} onClick={prevSlide} />

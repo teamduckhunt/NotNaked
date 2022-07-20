@@ -59,22 +59,7 @@ describe('Testing Overview', () => {
 
     await screen.getByTestId('addtocart');
 
-    const category = screen.getByText('add to bag');
-    expect(category).toBeInTheDocument();
-  });
-
-  test('ImageGallery Renders', async () => {
-    render(
-      <Provider store={store}>
-        <ImageGallery currentViewItemId={40344} />
-      </Provider>,
-    );
-
-    screen.getByText('Loading...');
-
-    await screen.getByTestId('addtocart');
-
-    const category = screen.getByText('add to bag');
-    expect(category).toBeInTheDocument();
+    const addtobag = screen.getByText('add to bag');
+    expect(addtobag).toBeInTheDocument();
   });
 });

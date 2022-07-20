@@ -1,5 +1,7 @@
 .overview {
+  margin-top: 10px;
   padding-bottom: 10px;
+  align-items: center;
 }
 
 .overviewHeaders {
@@ -9,10 +11,10 @@
 
 .productinfo {
   position: relative;
-  margin-left: 725px;
+  margin-left: 775px;
   height: 450px;
   width: 400px;
-  padding-top: 25px;
+  padding-top: 20px;
 }
 
 .styleList {
@@ -23,9 +25,10 @@
   /* border: solid black; */
   position: absolute;
   height: 450px;
-  width: 1050px;
-  /* z-index: 10; */
+  width: 700px;
+  z-index: 10;
 }
+
 
 .productdetails {
   padding-top: 10px;
