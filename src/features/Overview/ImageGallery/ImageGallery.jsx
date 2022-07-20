@@ -88,7 +88,7 @@ export default function ImageGallery({ currentViewItemId }) {
           {sliceFunction(start, end).map((photo, index) => {
             if (current === index) {
               return (
-                <div>
+                <div key={index}>
                   <img src={currentImage[current].thumbnail_url} className={styles.miniCarouselPic} alt="" />
                   <div className={styles.currentPhotoMarker} />
                 </div>
@@ -96,7 +96,7 @@ export default function ImageGallery({ currentViewItemId }) {
             }
             if (index < 5) {
               return (
-                <img src={photo.thumbnail_url} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" />
+                <img src={photo.thumbnail_url} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
               );
             }
           })}
@@ -107,7 +107,7 @@ export default function ImageGallery({ currentViewItemId }) {
         </div>
         <div className={styles.actualPic}>
           {currentImage.map((photo, index) => (
-            index === current && <img src={photo.url} className={styles.actualPicInside} onClick={() => { miniPicWasClicked(index); }} alt="" />
+            index === current && <img src={photo.url} className={styles.actualPicInside} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
           ))}
         </div>
         <div>

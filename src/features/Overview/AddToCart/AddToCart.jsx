@@ -41,8 +41,8 @@ export default function AddToCart({ currentViewItemId }) {
       <div data-testid="addtocart">
         <form onSubmit={this}>
           <label>
-            <select className={styles.size} onChange={(event) => { sizeSelected(event); }}>
-              <option selected="selected">SELECT SIZE</option>
+            <select className={styles.size} defaultValue="SELECT SIZE" onChange={(event) => { sizeSelected(event); }}>
+              <option>SELECT SIZE</option>
               {curStyle.skus && Object.keys(curStyle.skus).map((item, index) => {
                 if (curStyle.skus[item].quantity > 0) {
                   return <option value={curStyle.skus[item].size} key={index}>{curStyle.skus[item].size}</option>;
