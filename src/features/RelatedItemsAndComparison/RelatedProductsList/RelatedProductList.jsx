@@ -13,7 +13,7 @@ export default function RelatedProductList({ currentViewItemId }) {
   const { start, end } = localState;
   useEffect(() => {
     dispatchLocalState({ type: 'RESET' });
-  }, []);
+  }, [currentViewItemId]);
 
   if (error) {
     return <>Oh no, there was an error</>;

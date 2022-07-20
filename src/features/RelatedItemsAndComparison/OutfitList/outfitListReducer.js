@@ -16,7 +16,10 @@ export const outfitReducer = ({ start, end }, action) => {
         end: end > 4 ? end - 4 : end,
       };
     case 'RESET':
-      return outfitState;
+      return {
+        start: 0,
+        end: 4,
+      };
     default:
       throw new Error('Invalid request for carousel');
   }

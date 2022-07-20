@@ -54,7 +54,7 @@ describe('Testing ListItemCard to render correct data from props', () => {
       productId={40353}
       productImage={`https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Reality_Stone_VFX.png/revision/latest?cb=20190427012609`}
       handleOnClick={() => {}}
-      averageRating={NaN}
+      averageRating="NaN"
       productSalesPrice={null}
     />);
 
