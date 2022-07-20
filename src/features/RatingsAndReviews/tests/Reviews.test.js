@@ -10,52 +10,44 @@ import 'whatwg-fetch';
 // import { act } from 'react-dom/test-utils';
 import { reducer, screen, waitForElementToBeRemoved } from '../../../app/test-utils.jsx';
 import RatingsAndReviews from '../RatingsAndReviews.jsx';
-import ReviewList from '../Reviews/ReviewList.jsx';
+// import ReviewList from '../Reviews/ReviewList.jsx';
 
-describe('Testing Q&A', () => {
-  beforeEach(() => {
+jest.mock('../../../app/redux-hooks');
+
+describe('Testing R&R', () => {
+  beforeEach(async () => {
     reducer(<RatingsAndReviews currentViewItemId={40344} />);
+    await waitForElementToBeRemoved(() => screen.queryByText(/Loading/i), { timeout: 3000 });
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test('Renders QA Header', () => {
-    expect(screen.getByText('QUESTIONS & ANSWERS')).toBeInTheDocument();
-  });
-
-  test('Renders QA Search', () => {
-    expect(screen.getByPlaceholderText('HAVE A QUESTION? SEARCH FOR ANSWERS…')).toBeInTheDocument();
+  test('Renders RR Header', () => {
+    expect(screen.getByText('RATINGS & REVIEWS')).toBeInTheDocument();
   });
 });
 
-// describe('Testing OutfitList', () => {
-//   let addToListBtn;
-//   beforeEach(() => {
+// describe('Testing Review List component', () => {
+//   beforeEach(async () => {
 //     reducer(<ReviewList currentViewItemId={40344} />);
-//     addToListBtn = screen.getByTestId('addReview');
+//     await waitForElementToBeRemoved(() => screen.queryByText(/Loading/i), { timeout: 3000 });
 //   });
 
 //   afterEach(() => {
 //     jest.clearAllMocks();
 //   });
 
-//   test('add button is visible when current detailed product is not in the list', () => {
-//     expect(addToListBtn).toBeInTheDocument();
+//   test('Review List renders only two reviews to start', () => {
+//     expect(screen.getByPlaceholderText('')).toBeInTheDocument();
 //   });
 
-//   test('add button is not visible when current detailed product is in the list', () => {
-//     act(() => {
-//       addToListBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-//     });
+//   test('When there are more than 2 reviews, the \'More Reviews\' button should render.', () => {
+//     expect(screen.getByPlaceholderText('')).toBeInTheDocument();
+//   });
 
-//     expect(addToListBtn).not.toBeInTheDocument();
-//     // .toBeVisible() ?
+//   test('Add a Question button should render.', () => {
+//     expect(screen.getByPlaceholderText('')).toBeInTheDocument();
 //   });
 // });
-
-
- // Create a mock store (Separate file)
- // Create a mock query file
- // this test file that referes to those two.
