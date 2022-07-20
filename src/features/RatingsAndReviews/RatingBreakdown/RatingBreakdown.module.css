@@ -1,8 +1,42 @@
+
+/* General
+=============================*/
+
+.rating_border{
+  /* border: 1px solid #495057; */
+  margin: 10px;
+  padding: 5px;
+}
+
+.rating_subText {
+  font-size: small;
+}
+.reset_subText {
+  font-size: small;
+  display: flex;
+
+}
+
+.btn {
+  margin-right: 2%;
+  padding: 2%;
+  text-decoration: underline white;
+}
+
+/* Rating Bar near Filter buttons
+=============================*/
+
+.rating_bar_layout {
+  display: flex;
+  align-items: center;
+  font-size: small;
+  margin: 5% 0;
+}
+
 .rating_bar {
   position: relative;
-  height: 20px;
+  height: 10px;
   width: 200px;
-  border-radius: 50px;
   border: 1px solid #495057;
   background: #495057;
 
@@ -15,9 +49,23 @@
   transition: width .2s ease-in;
 }
 
-.rating_border{
-  border: 1px solid #495057;
-  width: 50%;
-  margin: 10px;
-  padding: 5px;
+/* Rating Text (Top)
+========================*/
+
+.rating_text {
+  font-size: 61px;
+  font-family: sans-serif;
+  font-weight: 900;
+  padding-right: .2em;
 }
+
+.rating_alignment {
+  display: flex;
+  align-items: flex-start;
+  margin: 2%;
+}
+
+.duck_feet {
+  padding-top: .3em;
+}
+

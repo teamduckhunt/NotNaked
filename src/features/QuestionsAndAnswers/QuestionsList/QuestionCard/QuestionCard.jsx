@@ -102,7 +102,7 @@ export default function QuestionCard({ q, p }) {
             LOAD MORE ANSWERS
           </Button>
         )}
-          {(numberOfAnswers > answers.length && answers.length >= 2)
+          {(numberOfAnswers >= answers.length && answers.length >= 2)
         && (
           <Button
             onClick={() => {
