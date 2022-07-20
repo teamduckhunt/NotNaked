@@ -1,5 +1,14 @@
-.reviewList {
-  border: 1px solid #495057;
-  margin: 10px;
+.reviewList_border {
+  margin-top: 10px;
   padding: 0, 5px;
+}
+
+.reviewList {
+  max-height: 800px;
+  max-width: 775px;
+  overflow-y: auto;
+}
+
+.reviewList_btn {
+  margin-right: 3%;
 }
