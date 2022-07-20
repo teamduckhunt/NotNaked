@@ -47,7 +47,7 @@ export default function StyleList({ currentViewItemId }) {
           {styles.results.map((style, index) => {
             if (curStyle.style_id === undefined && index === 0) {
               return (
-                <div className={classes.styleAndCheckmarkHolder}>
+                <div className={classes.styleAndCheckmarkHolder} key={0}>
                   <StyleCard key={style.style_id} style={style} />
                   <img src={styleCheck} className={classes.checkDot} alt="" />
                 </div>
