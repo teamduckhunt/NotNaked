@@ -39,22 +39,25 @@
 
 .rc_photo_container {
   display: flex;
+  overflow-x: auto;
 }
 
 .rc_photo {
   margin-left: 2%;
   margin-bottom: 1%;
-  max-width: 150px;
-  max-height: 100px;
-  border: solid black;
+  /* max-width: 150px;
+  max-height: 100px; */
+  /* border: solid black; */
 }
 
 .img {
   margin-left: 2%;
   margin-bottom: 1%;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 150px;
+  max-height: 100px;
+  /* object-fit: contain; */
   border: solid black;
+
 }
 
 /* Recommend Section

@@ -41,9 +41,7 @@ export default function RatingsAndReviews({ currentViewItemId }) {
           </div>
           <div className={styles.rr_sort_reviews}>
             <SortItems productId={currentViewItemId} reviewCount={reviewCount()} />
-          {/* <div className={styles.rr_reviewList}> */}
             <ReviewList productId={currentViewItemId} reviewCount={reviewCount()} />
-          {/* </div> */}
           </div>
         </div>
       </div>

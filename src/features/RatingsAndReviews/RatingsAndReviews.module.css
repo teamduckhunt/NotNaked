@@ -9,7 +9,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content:flex-start;
-  /* display: inline-block; */
   margin-top: 1rem;
 }
 
@@ -18,15 +17,6 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
-
-/* .rr_components {
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  width: fit-content;
-  position: relative;
-  margin: 0.5rem;
-  background: #ffdeeb;
-} */
 
 .rr_breakdowns {
   display: flex;
@@ -46,9 +36,3 @@
 
 
 }
-
-/* .rr_reviewList {
-  display: flex;
-  justify-content: flex-end;
-
-} */

@@ -70,11 +70,11 @@ export default function ReviewCard({ review }) {
       </div>
       <div className={styles.rc_photo_container}>
         {review.photos.length > 0 && review.photos.map((photo) => (
-          <div key={photo.id} className={styles.rc_photo} role="button" tabIndex={0} /* onClick={handleModalToggle} */>
+          <div key={photo.id} className={styles.rc_photo} role="button" tabIndex={0} onClick={handleModalToggle}>
             {toggleModal && (
               <ImageModal handleModalToggle={handleModalToggle} image={photo.url} />
             )}
-            <img src={photo.url} key={photo.id} className={styles.img} alt={review.reviwer_name} onClick={handleModalToggle} />
+            <img src={photo.url} key={photo.id} className={styles.img} alt={review.reviwer_name} />
           </div>
         ))}
       </div>
