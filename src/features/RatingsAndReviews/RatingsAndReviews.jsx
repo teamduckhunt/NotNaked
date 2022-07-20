@@ -8,7 +8,7 @@ import ProductBreakdown from './ProductBreakdown/ProductBreakdown.jsx';
 import { useGetReviewMetadataQuery } from '../../services/reviews.js';
 import styles from './RatingsAndReviews.module.css';
 
-export default function RatingsAndReviews({ currentViewItemId }) {
+export default function RatingsAndReviews({ currentViewItemId, reviewSection }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(currentViewItemId);
 
   if (error) {
@@ -29,7 +29,7 @@ export default function RatingsAndReviews({ currentViewItemId }) {
       return total;
     };
     return (
-      <div className={styles.rr_container}>
+      <div className={styles.rr_container} ref={reviewSection}>
         <h5 className={styles.rr_header}>
           RATINGS & REVIEWS
         </h5>

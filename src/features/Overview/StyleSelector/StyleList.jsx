@@ -44,7 +44,15 @@ export default function StyleList({ currentViewItemId }) {
           {curStyle.name ? curStyle.name.toUpperCase() : styles.results[0].name.toUpperCase()}
         </div>
         <div className={classes.styleButtonList}>
-          {styles.results.map((style) => {
+          {styles.results.map((style, index) => {
+            if (curStyle.style_id === undefined && index === 0) {
+              return (
+                <div className={classes.styleAndCheckmarkHolder}>
+                  <StyleCard key={style.style_id} style={style} />
+                  <img src={styleCheck} className={classes.checkDot} alt="" />
+                </div>
+              );
+            }
             if (curStyle.style_id === style.style_id) {
               return (
                 <div className={classes.styleAndCheckmarkHolder}>
@@ -61,22 +69,3 @@ export default function StyleList({ currentViewItemId }) {
   }
   return <>Loading...</>;
 }
-
-// if (curStyle.original_price) {
-//   const originalPrice = curStyle.original_price;
-// } else {
-//   const originalPrice2 = styles.results[0].original_price;
-// }
-// if (curStyle.sale_price) {
-//   const saleExistsOriginalPrice = <p><s>{curStyle.original_price}</s></p>;
-//   const salePrice = curStyle.sale_price;
-// }
-// {saleExistsOriginalPrice || ''}
-// {originalPrice2 || originalPrice}
-// {salePrice || ''}
-
-// {curStyle.original_price ? curStyle.original_price : styles.results[0].original_price}
-// {curStyle.sale_price ? curStyle.sale_price : curStyle.original_price}
-
-// disabled prop types for whole file
-// prop types just throw an error if wrong data is passed into the prop. literally just defining a type for the prop
