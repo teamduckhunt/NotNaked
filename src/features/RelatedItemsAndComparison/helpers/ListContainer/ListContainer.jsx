@@ -19,6 +19,7 @@ export default function ListContainer({
       </div>
       {start !== 0 && (
         <button
+          data-testid="prev"
           type="button"
           onClick={() => handleCarouselControl('PREV')}
           className={`${styles.btn} ${styles.prev}`}
@@ -29,6 +30,7 @@ export default function ListContainer({
 
       {length - end > 0 && (
         <button
+          data-testid="next"
           type="button"
           onClick={() => handleCarouselControl('NEXT')}
           className={`${styles.btn} ${styles.next}`}

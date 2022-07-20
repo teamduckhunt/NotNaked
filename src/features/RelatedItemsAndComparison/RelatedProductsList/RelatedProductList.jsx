@@ -5,6 +5,7 @@ import RelatedProductItem from './RelatedProductItem.jsx';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { useRelatedProductsIdQuery } from '../../../services/products';
 import { relatedReducer, relatedState } from './relatedProductReducer';
+import styles from '../OutfitList/OutfitList.module.css';
 
 export default function RelatedProductList({ currentViewItemId }) {
   const { data, error, isLoading } = useRelatedProductsIdQuery(currentViewItemId);
@@ -37,8 +38,8 @@ export default function RelatedProductList({ currentViewItemId }) {
     }, {}));
 
     return (
-      <div>
-        <h3>My Related Products</h3>
+      <div className={styles.list_container}>
+        <h3 className={styles.list_title}>Related Products</h3>
         {data.length === 0 && <p>There are no related Products...</p>}
         {data.length > 0 && (
           <ListContainer
@@ -53,7 +54,7 @@ export default function RelatedProductList({ currentViewItemId }) {
                 <RelatedProductItem
                   id={productId}
                   key={productId}
-                  productId={productId}
+                  productId={+productId}
                   currentViewItemId={currentViewItemId}
                 />
               ))}
