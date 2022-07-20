@@ -23,30 +23,54 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
                 <span class="strong">41.17% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>7/17</span>
+=======
+                <span class="strong">5.88% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/17</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
                 <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>10/15</span>
+=======
+                <span class="strong">0% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/15</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
                 <span class="strong">16.66% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>1/6</span>
+=======
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/6</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
                 <span class="strong">41.17% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>7/17</span>
+=======
+                <span class="strong">5.88% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/17</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         
             
@@ -170,6 +194,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -177,6 +202,15 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+=======
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -262,6 +296,7 @@ import Button from '../../UI/Button.jsx';
 import Modal from '../../UI/Modal.jsx';
 import styles from './AddQA.module.css';
 &nbsp;
+<<<<<<< HEAD
 export default function AddQA({
   ID, handleModalToggle, questionBody = undefined, product,
 }) {
@@ -272,15 +307,34 @@ export default function AddQA({
   const [email, setEmail] = useState('');
 &nbsp;
   return (
+=======
+export default function <span class="fstat-no" title="function not covered" >AddQA(</span>{
+  ID, handleModalToggle, questionBody = <span class="branch-0 cbranch-no" title="branch not covered" >undefined,</span> product,
+}) {
+  const [addAnswer] = <span class="cstat-no" title="statement not covered" >useAddAnswerMutation();</span>
+  const [addQuestion] = <span class="cstat-no" title="statement not covered" >useAddQuestionMutation();</span>
+  const [body, setBody] = <span class="cstat-no" title="statement not covered" >useState('');</span>
+  const [name, setName] = <span class="cstat-no" title="statement not covered" >useState('');</span>
+  const [email, setEmail] = <span class="cstat-no" title="statement not covered" >useState('');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return (</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
     &lt;Modal className={styles.modal}&gt;
       &lt;Button className={styles.close} type="button" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleModalToggle()}</span>&gt;
         X
       &lt;/Button&gt;
       {questionBody !== undefined
+<<<<<<< HEAD
       &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;h3 className={styles.title}&gt;Submit Your Answer&lt;/h3&gt;}</span>
       {questionBody !== undefined
       &amp;&amp; (
 <span class="branch-1 cbranch-no" title="branch not covered" >      &lt;h4 className={styles.subtitle}&gt;</span>
+=======
+      &amp;&amp; &lt;h3 className={styles.title}&gt;Submit Your Answer&lt;/h3&gt;}
+      {questionBody !== undefined
+      &amp;&amp; (
+      &lt;h4 className={styles.subtitle}&gt;
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
         {product}
         &amp;nbsp;
         :&amp;nbsp;&amp;nbsp;
@@ -327,7 +381,11 @@ export default function AddQA({
         &lt;/p&gt;
         &lt;br /&gt;
         {questionBody !== undefined
+<<<<<<< HEAD
       &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;field&gt;Answer&lt;/field&gt;}</span>
+=======
+      &amp;&amp; &lt;field&gt;Answer&lt;/field&gt;}
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
         {questionBody === undefined
       &amp;&amp; &lt;field&gt;Question&lt;/field&gt;}
         &lt;br /&gt;
@@ -355,7 +413,11 @@ AddQA.propTypes = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+<<<<<<< HEAD
                 at Tue Jul 19 2022 20:43:00 GMT-0700 (Pacific Daylight Time)
+=======
+                at Tue Jul 19 2022 21:28:40 GMT-0700 (Pacific Daylight Time)
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         <script src="../../../prettify.js"></script>
         <script>

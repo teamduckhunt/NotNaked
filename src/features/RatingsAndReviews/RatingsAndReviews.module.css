@@ -1,0 +1,38 @@
+.rr_container {
+  position: relative;
+  width: 1130px;
+  margin: 50px auto;
+  min-height:  200px;
+}
+
+.rr_main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  margin-top: 1rem;
+}
+
+.rr_header {
+  font-weight: normal;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.rr_breakdowns {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  padding: 2px;
+  position: relative;
+  margin-right: 0.5rem;
+}
+
+.rr_sort_reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* position: absolute; */
+
+
+
+}

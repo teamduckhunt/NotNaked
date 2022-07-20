@@ -17,7 +17,7 @@ export default function SortItems({ productId, reviewCount }) {
 
   return (
     <div className={styles.sortContainer}>
-      # reviews, sort by
+      {` ${reviewCount} reviews, sort by `}
       <select className={styles.dd_wrapper} onChange={handleChange}>
         <option value="relevant">relevant</option>
         <option value="helpful">helpful</option>

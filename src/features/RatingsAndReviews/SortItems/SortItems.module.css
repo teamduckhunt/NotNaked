@@ -1,9 +1,10 @@
 
 .sortContainer {
-  margin: auto;
-  width: 200px;
+  display: flex;
+  align-items: center;
   padding: 0, 5px;
-  border: 1px solid #495057;
+  font-size: medium;
+  font-weight: 500;
 
 }
 
@@ -12,11 +13,12 @@
 
 .dd_wrapper {
   border-color: transparent;
-
   display: flex;
   min-height: 38px;
   flex-wrap: wrap;
-  text-decoration: underline;
+  text-decoration: underline 5px;
+  font-size: medium;
+  font-weight: 500;
 }
 
 .dd_option{

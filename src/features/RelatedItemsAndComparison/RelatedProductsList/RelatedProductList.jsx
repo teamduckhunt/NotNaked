@@ -1,31 +1,12 @@
 /* eslint-disable import/extensions */
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import RelatedProductItem from './RelatedProductItem.jsx';
 import ListContainer from '../helpers/ListContainer/ListContainer.jsx';
 import { useRelatedProductsIdQuery } from '../../../services/products';
+import { relatedReducer, relatedState } from './relatedProductReducer';
+import styles from '../OutfitList/OutfitList.module.css';
 
-export const relatedState = {
-  start: 0,
-  end: 4,
-};
-
-export const relatedReducer = ({ start, end }, action) => {
-  switch (action.type) {
-    case 'NEXT':
-      return {
-        start: start + 4,
-        end: end + 4,
-      };
-    case 'PREV':
-      return {
-        start: start > 0 ? start - 4 : start,
-        end: end > 4 ? end - 4 : end,
-      };
-    default:
-      throw new Error('Invalid request for carousel');
-  }
-};
 export default function RelatedProductList({ currentViewItemId }) {
   const { data, error, isLoading } = useRelatedProductsIdQuery(currentViewItemId);
   const [localState, dispatchLocalState] = useReducer(relatedReducer, relatedState);
@@ -57,8 +38,8 @@ export default function RelatedProductList({ currentViewItemId }) {
     }, {}));
 
     return (
-      <div>
-        <h3>My Related Products</h3>
+      <div className={styles.list_container}>
+        <h3 className={styles.list_title}>Related Products</h3>
         {data.length === 0 && <p>There are no related Products...</p>}
         {data.length > 0 && (
           <ListContainer
@@ -73,7 +54,7 @@ export default function RelatedProductList({ currentViewItemId }) {
                 <RelatedProductItem
                   id={productId}
                   key={productId}
-                  productId={productId}
+                  productId={+productId}
                   currentViewItemId={currentViewItemId}
                 />
               ))}

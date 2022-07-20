@@ -13,7 +13,7 @@ export default function RatingToDuckFeet({ rating }) {
 
   const number = Math.trunc(rating);
   const floatNum = Math.round((rating - number) * 4);
-  const rest = 5 - Math.ceil(rating);
+  const rest = number !== 5 ? 5 - number - 1 : 0;
 
   const findDuck = () => {
     switch (floatNum) {
@@ -41,13 +41,13 @@ export default function RatingToDuckFeet({ rating }) {
   }
   const float = findDuck();
 
-  if (float) {
-    renderArr.push(<img key={randomKey()} className={styles.feet} src={float} alt="full duck" />);
+  if (floatNum >= 0 && number !== 5) {
+    renderArr.push(<img key={randomKey()} className={styles.feet} src={float} alt="float duck" />);
   }
 
-  if (rating && number && rest !== 0 && rating - number !== 0) {
+  if (rest > 0) {
     for (let i = 0; i < rest; i += 1) {
-      renderArr.push(<img key={randomKey(i)} className={styles.feet} src={FullDuck} alt="full duck" />);
+      renderArr.push(<img key={randomKey(i)} className={styles.feet} src={EmptyDuck} alt="empty duck" />);
     }
   }
 
