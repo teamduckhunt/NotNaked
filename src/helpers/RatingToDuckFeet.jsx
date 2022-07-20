@@ -42,12 +42,12 @@ export default function RatingToDuckFeet({ rating }) {
   const float = findDuck();
 
   if (float) {
-    renderArr.push(<img key={randomKey()} className={styles.feet} src={float} alt="full duck" />);
+    renderArr.push(<img key={randomKey()} className={styles.feet} src={float} alt="float duck" />);
   }
 
   if (rating && number && rest !== 0 && rating - number !== 0) {
     for (let i = 0; i < rest; i += 1) {
-      renderArr.push(<img key={randomKey(i)} className={styles.feet} src={EmptyDuck} alt="full duck" />);
+      renderArr.push(<img key={randomKey(i)} className={styles.feet} src={EmptyDuck} alt="empty duck" />);
     }
   }
 

@@ -41,8 +41,8 @@ export default function OutfitList({ currentViewItemId }) {
   };
 
   return (
-    <div>
-      <h3>Outfit List</h3>
+    <div className={styles.list_container}>
+      <h3 className={styles.list_title}>My Outfit</h3>
       <ListContainer
         start={start}
         end={end}
@@ -52,6 +52,7 @@ export default function OutfitList({ currentViewItemId }) {
         {!isCurrentItemAdded && (
           <div className={styles.button_ctn}>
             <IoIosAddCircleOutline
+              data-testid="addOutfit"
               value="action"
               className={styles.button}
               onClick={() => handleAddOutfit()}

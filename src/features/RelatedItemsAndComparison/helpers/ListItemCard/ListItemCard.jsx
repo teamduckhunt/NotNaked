@@ -21,6 +21,9 @@ export default function ListItemCard({
   children,
   productSalesPrice,
 }) {
+  console.log(product);
+  console.log(productImage);
+  console.log(productSalesPrice);
   const handleProductClick = (e) => {
     e.preventDefault();
     if (e.currentTarget.id === 'product') {
@@ -49,12 +52,12 @@ export default function ListItemCard({
           </header>
         </Link>
         <footer className={styles.product_card_body}>
-          <p className={styles.category}>{product.category}</p>
-          <p className={styles.name}>{product.name}</p>
-          <p className={styles.price}>{price}</p>
+          <p data-testid="category" className={styles.category}>{product.category}</p>
+          <p data-testid="name" className={styles.name}>{product.name}</p>
+          <p data-testid="price" className={styles.price}>{price}</p>
           {/* Iron Man by Adhi Satrio from NounProject.com */}
           {Number.isNaN(averageRating) ? (
-            <div className={styles.ironContainer}>
+            <div data-testid="ironman" className={styles.ironContainer}>
               {Array(5).fill(InfinityStone)}
             </div>
           ) : (
