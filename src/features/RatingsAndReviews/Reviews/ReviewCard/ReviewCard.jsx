@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
@@ -6,6 +7,7 @@ import Button from '../../../UI/Button.jsx';
 import { useAddHelpfulCountMutation, useReportReviewMutation } from '../../../../services/reviews.js';
 import RatingToDuckFeet from '../../../../helpers/RatingToDuckFeet.jsx';
 import ImageModal from './ImageModal.jsx';
+import checkMark from '../../../../../assets/checkMark.png';
 import styles from './ReviewCard.module.css';
 
 export default function ReviewCard({ review }) {
@@ -50,53 +52,68 @@ export default function ReviewCard({ review }) {
   };
 
   return (
-    <>
-      <div>
-        <RatingToDuckFeet rating={review.rating} />
-      </div>
-      <div>
-        {`${review.reviewer_name}, ${new Date(review.date).toLocaleDateString([], dateOptions)}`}
-      </div>
-      <div>
-        <p className={styles.boldText}>{review.summary}</p>
-        <div>
-          {determineBodyLength()}
+    <div className={styles.reviewCard}>
+      <div className={styles.rc_container}>
+        <div className={styles.rc_duckRating}>
+          <RatingToDuckFeet rating={review.rating} />
+        </div>
+        <div className={styles.rc_name_date}>
+          {`${review.reviewer_name}, ${new Date(review.date).toLocaleDateString([], dateOptions)}`}
         </div>
       </div>
       <div>
-        {review.photos.map((photo) => (
-          <div key={photo.id} role="button" tabIndex={0} onClick={handleModalToggle}>
+        <p className={styles.rc_text}>{review.summary}</p>
+        <div className={styles.rc_body}>
+          {determineBodyLength()}
+        </div>
+      </div>
+      <div className={styles.rc_photo_container}>
+        {review.photos.length > 0 && review.photos.map((photo) => (
+          <div key={photo.id} className={styles.rc_photo} role="button" tabIndex={0} /* onClick={handleModalToggle} */>
             {toggleModal && (
-            <ImageModal handleModalToggle={handleModalToggle} image={photo.url} />
+              <ImageModal handleModalToggle={handleModalToggle} image={photo.url} />
             )}
-            <img src={photo.url} key={photo.id} alt={review.reviwer_name} height={100} />
+            <img src={photo.url} key={photo.id} className={styles.img} alt={review.reviwer_name} onClick={handleModalToggle} />
           </div>
         ))}
       </div>
 
       {/* conditional check for if prop is recommended */}
-      {review.recommend && <div> ✅ I Recommend this Product</div>}
-      {review.response !== null && (
-        <div>
-          Response:
-          <p>{review.response}</p>
+      {review.recommend && (
+        <div className={styles.rc_recommend}>
+          <img className={styles.checkMark} src={checkMark} alt="check mark" />
+          I Recommend this Product
         </div>
       )}
-      <div>
+      {review.response !== null && (
+        <div className={styles.rc_response}>
+          Response:
+          <p className={styles.rc_response_body}>{review.response}</p>
+        </div>
+      )}
+      <div className={styles.rc_helpfulness}>
         Helpful?
         <Button
           onClick={() => {
             incrementHelpfulCount(review.review_id);
             setDisableYesButton(true);
           }}
+          className={styles.rc_yes_btn}
           disabled={disableYesButton}
         >
           Yes
         </Button>
         {`(${review.helpfulness})`}
-        <Button onClick={() => reportReview(review.review_id)}>Report</Button>
+        <div className={styles.rc_report_block}>
+          <Button
+            onClick={() => reportReview(review.review_id)}
+            className={styles.rc_report_btn}
+          >
+            Report
+          </Button>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 

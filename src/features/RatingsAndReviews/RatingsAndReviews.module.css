@@ -18,14 +18,14 @@
   align-items: flex-start;
 }
 
-.rr_components {
+/* .rr_components {
   border-radius: var(--border-radius);
   padding: 2rem;
   width: fit-content;
   position: relative;
   margin: 0.5rem;
   background: #ffdeeb;
-}
+} */
 
 .rr_breakdowns {
   display: flex;
@@ -34,10 +34,9 @@
   padding: 2px;
   position: relative;
   margin: 0.5rem;
-  background: #ffdeeb;
 }
 
-.rr_sort {
+.rr_sort_reviews {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -47,8 +46,8 @@
 
 }
 
-.rr_reviewList {
+/* .rr_reviewList {
   display: flex;
   justify-content: flex-end;
 
-}
+} */

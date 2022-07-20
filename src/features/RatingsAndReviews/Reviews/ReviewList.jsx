@@ -45,8 +45,8 @@ export default function ReviewList({ productId, reviewCount }) {
     const checkForStarFilter = (curStarSelected.length === 0) ? data.results : filteredReviewSet.filter(item => item !== undefined);
 
     return (
-      <div className={styles.reviewList}>
-        <div>
+      <div className={styles.reviewList_border}>
+        <div className={styles.reviewList}>
           {checkForStarFilter.slice(0, numberOfReviews).map((review) => (
             <ReviewCard
               key={review.review_id}
@@ -60,11 +60,12 @@ export default function ReviewList({ productId, reviewCount }) {
             setNumberOfReviews(numberOfReviews + 2);
             reviewListLengthCheck();
           }}
+          className={styles.reviewList_btn}
           >
             More Reviews
           </Button>
         }
-        <Button>
+        <Button className={styles.reviewList_btn}>
           Add a Review
         </Button>
       </div>

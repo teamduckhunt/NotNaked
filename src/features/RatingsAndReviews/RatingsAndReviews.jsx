@@ -39,7 +39,7 @@ export default function RatingsAndReviews({ currentViewItemId }) {
             <RatingBreakdown productId={currentViewItemId} reviewCount={reviewCount()} />
             <ProductBreakdown productId={currentViewItemId} />
           </div>
-          <div className={styles.rr_sort}>
+          <div className={styles.rr_sort_reviews}>
             <SortItems productId={currentViewItemId} reviewCount={reviewCount()} />
           {/* <div className={styles.rr_reviewList}> */}
             <ReviewList productId={currentViewItemId} reviewCount={reviewCount()} />
