@@ -6,6 +6,7 @@
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   margin-right: 50px;
+  letter-spacing: 1px;
 }
 
 .product_card {
@@ -66,7 +67,8 @@
   flex: 0 0 80px;
   /* flex-basis: 100px;
   flex-grow: 0; */
-  background-color: #fff;
+  color: #fff;
+  background-color: rgba(0,0,0,0.7);
   padding: 10px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -75,7 +77,7 @@
 .category {
   font-size: 0.512rem;
   font-weight: 700;
-  color: rgba(0,0,0,0.5)
+  color: #fff;
 }
 .name {
   font-size: 0.8rem;
