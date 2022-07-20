@@ -80,7 +80,6 @@ export default function ImageGallery({ currentViewItemId }) {
 
     return (
       <div className={bigPicClass}>
-        {console.log('bigPicClass: ', bigPicClass)}
         <button onClick={() => { toggleClass(); }} className={styles.expandButton} type="button">
           <img src={expand} alt="" className={styles.expandPic} />
         </button>

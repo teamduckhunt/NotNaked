@@ -15,7 +15,6 @@ export default function AddToCart({ currentViewItemId }) {
   const curStyle = useSelector((state) => state.productStyles.selectedStyle);
   // const curStyle = getState(selectedStyle);
   const [size, setSize] = useState(0);
-  console.log(curStyle);
 
   // skus:
   //  1394769: {quantity: 8, size: 'XS'}
@@ -34,21 +33,17 @@ export default function AddToCart({ currentViewItemId }) {
   }
 
   const sizeSelected = (event) => {
-    console.log('njdvnfonviofenv', event.target.value);
     setSize(event.target.value);
   };
 
   if (data) {
-    console.log('style!!!!!!!!!!', curStyle);
     return (
       <div data-testid="addtocart">
         <form onSubmit={this}>
           <label>
             <select className={styles.size} onChange={(event) => { sizeSelected(event); }}>
               <option selected="selected">SELECT SIZE</option>
-              {console.log('skus', curStyle.skus)}
               {curStyle.skus && Object.keys(curStyle.skus).map((item, index) => {
-                console.log('item', curStyle.skus[item].size);
                 if (curStyle.skus[item].quantity > 0) {
                   return <option value={curStyle.skus[item].size} key={index}>{curStyle.skus[item].size}</option>;
                 }
