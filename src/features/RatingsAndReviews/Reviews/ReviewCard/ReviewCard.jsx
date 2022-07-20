@@ -46,6 +46,7 @@ export default function ReviewCard({ review }) {
       </div>
     );
   };
+  // console.log('reviewrating', review.rating);
 
   const handleModalToggle = () => {
     setToggleModal(!toggleModal);
@@ -55,7 +56,7 @@ export default function ReviewCard({ review }) {
     <div className={styles.reviewCard}>
       <div className={styles.rc_container}>
         <div className={styles.rc_duckRating}>
-          <RatingToDuckFeet rating={review.rating} />
+          <RatingToDuckFeet rating={Number(review.rating)} />
         </div>
         <div className={styles.rc_name_date}>
           {`${review.reviewer_name}, ${new Date(review.date).toLocaleDateString([], dateOptions)}`}
