@@ -17,7 +17,11 @@ export default function ReviewList({ productId, reviewCount }) {
   const [numberOfReviews, setNumberOfReviews] = useState(2);
   const [showMoreReviewsButton, setShowMoreReviewsButton] = useState(true);
   const curStarSelected = useSelector((state) => state.ratingBreakdown.filterByStar);
+  const [toggleModal, setToggleModal] = useState(false);
 
+  const handleModalToggle = () => {
+    setToggleModal(!toggleModal);
+  };
 
   if (error) {
     return <>Oh no, there was an error!</>;
@@ -65,9 +69,12 @@ export default function ReviewList({ productId, reviewCount }) {
             More Reviews
           </Button>
         }
-        <Button className={styles.reviewList_btn}>
+        <Button className={styles.reviewList_btn} onClick={handleModalToggle}>
           Add a Review
         </Button>
+        {toggleModal && (
+          <AddReviewModal handleModalToggle={handleModalToggle} />
+        )}
       </div>
     );
   }
