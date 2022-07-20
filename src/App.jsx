@@ -21,7 +21,7 @@ function ProductDetailPage() {
     <div id="app" className={styles.app}>
       <Header />
       <Overview currentViewItemId={+productId} />
-      <RelatedItemsAndComparison key={productId} currentViewItemId={+productId} />
+      <RelatedItemsAndComparison currentViewItemId={+productId} />
       <QuestionsAndAnswers currentViewItemId={+productId} />
       <RatingsAndReviews currentViewItemId={+productId} />
     </div>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">72.72% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">72.72% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -151,23 +151,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,15 +219,15 @@ import {
   useAddAnswerHelpfulMutation, useReportAnswerMutation,
 } from '../../../../services/questions';
 &nbsp;
-export default function <span class="fstat-no" title="function not covered" >AnswerCard(</span>{ a }) {
-  const [addHelpful] = <span class="cstat-no" title="statement not covered" >useAddAnswerHelpfulMutation();</span>
-  const [reportAnswer] = <span class="cstat-no" title="statement not covered" >useReportAnswerMutation();</span>
+export default function AnswerCard({ a }) {
+  const [addHelpful] = useAddAnswerHelpfulMutation();
+  const [reportAnswer] = useReportAnswerMutation();
 &nbsp;
-  const [disableYes, setDisableYes] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-  const dateOptions = <span class="cstat-no" title="statement not covered" >{ year: 'numeric', month: 'long', day: 'numeric' };</span>
-  const date = <span class="cstat-no" title="statement not covered" >new Date(a.date).toLocaleDateString([], dateOptions);</span>
+  const [disableYes, setDisableYes] = useState(false);
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const date = new Date(a.date).toLocaleDateString([], dateOptions);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div&gt;
       &lt;br /&gt;
       &lt;p className={styles.body}&gt;
@@ -236,11 +236,11 @@ export default function <span class="fstat-no" title="function not covered" >Ans
       &lt;br /&gt;
       {a.photos.length &gt; 0
         // eslint-disable-next-line max-len
-        &amp;&amp; a.photos.map(<span class="fstat-no" title="function not covered" >p </span>=&gt; <span class="cstat-no" title="statement not covered" >&lt;img key={p.id} className={styles.photo} src={p.url} alt={a.answerer_name} /&gt;)</span>}
+        &amp;&amp; a.photos.map(p =&gt; &lt;img key={p.id} className={styles.photo} src={p.url} alt={a.answerer_name} /&gt;)}
       &lt;br /&gt;
       &lt;div className={styles.info} id="info"&gt;
         &lt;p&gt;
-          by {a.answerer_name.toLowerCase() === 'seller' &amp;&amp; &lt;strong&gt;{a.answerer_name}&lt;/strong&gt;}
+          by {a.answerer_name.toLowerCase() === 'seller' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;strong&gt;{a.answerer_name}&lt;/strong&gt;}</span>
           {a.answerer_name.toLowerCase() !== 'seller' &amp;&amp; `${a.answerer_name}`},
           &amp;nbsp;&amp;nbsp;{date}
         &lt;/p&gt;
@@ -277,7 +277,7 @@ AnswerCard.propTypes = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Jul 19 2022 21:28:40 GMT-0700 (Pacific Daylight Time)
+                at Tue Jul 19 2022 23:41:31 GMT-0700 (Pacific Daylight Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

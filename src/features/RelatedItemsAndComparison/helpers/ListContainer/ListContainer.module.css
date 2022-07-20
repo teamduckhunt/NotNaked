@@ -21,13 +21,16 @@
   height: 60px;
   border-radius:50%;
   border: 1px solid #aaa;
+  background-color: #ffdeeb;
   cursor: pointer;
 }
 
 .prev {
   left: -30px;
+  color: #000
 }
 
 .next {
   right: -30px;
+  color: #000
 }
