@@ -132,7 +132,7 @@ export default class AddReviewModal extends React.Component {
             </div>
           </div>
           <div>
-            Add an image "Coming Soon"
+            {'Add an image, \'Coming Soon\''}
           </div>
           <input type='text' value={name} placeholder="What is your nickname" onChange={(e) => this.handleNameChange(e)} />
           <input type='text' value={email} placeholder="Email" onChange={(e) => this.handleEmailChange(e)} />
