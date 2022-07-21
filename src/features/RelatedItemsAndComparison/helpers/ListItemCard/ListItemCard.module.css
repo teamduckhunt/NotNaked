@@ -3,7 +3,7 @@
   height: 300px;
   flex-shrink: 0;
   padding-right: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc;;
   border-radius: 0.5rem;
   margin-right: 50px;
   letter-spacing: 1px;
@@ -82,11 +82,11 @@
 .name {
   font-size: 0.8rem;
   font-weight: 700;
-  padding: 8px 0px;
+  padding: 10px 0px;
 }
 .price {
   font-size:0.64rem;
-  padding-bottom: 6px;
+  padding-bottom: 10px;
   font-weight: 400;
 }
 
@@ -115,11 +115,7 @@
 }
 
 .no_product {
-  display: flex;
   font-weight: 500;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 228px;
   height: 300px;
   flex-shrink: 0;
@@ -127,4 +123,22 @@
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   margin-right: 50px;
+}
+.noImage {
+  display: inline-block;
+  color: white;
+  padding: 8px;
+  background-color: rgba(214, 51, 108, 0.6);
+}
+
+.no_prouduct, .noImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slogan {
+  font-size: 0.64rem;
+  padding: 4px;
 }
