@@ -3,29 +3,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import characteristicData from "./characteristics-data.json";
-// import useGetReviewMetadataQuery from '../../../services/reviews.js';
 import styles from './AddReviewModal.module.css';
 
-function CharacteristicsTable({ productId, tableId }) {
-  // const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
+function CharacteristicsTable({ tableId }) {
   const [characteristicDescription, setCharacteristicDescription] = useState(characteristicData);
   console.log(tableId);
 
-  // if (error) {
-  //   return <>Oh no, there was an error loading the characteristic table</>;
-  // }
-
-  // if (isLoading) {
-  //   return <>Loading...</>;
-  // }
-
-  // if (data) {
-  //   console.log(data);
   return (
     <div>
       <table>
         <thead>
-          <tr>
+          <tr className={styles.ct_tableHead}>
             <th>
               1
             </th>
@@ -45,7 +33,7 @@ function CharacteristicsTable({ productId, tableId }) {
         </thead>
         <tbody>
           {characteristicDescription.map((description) => (
-            <tr key={description.id}>
+            <tr key={description.id} className={styles.ct_tableRows}>
               <td>
                 {description.one}
                 <input
@@ -103,18 +91,19 @@ function CharacteristicsTable({ productId, tableId }) {
 
     </div>
   );
-  // }
 }
 
 export default CharacteristicsTable;
 
 CharacteristicsTable.propTypes = {
-  productId: PropTypes.number.isRequired,
   tableId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
 };
 
 
-// characteristics	object
+// Need to add the tableId to each radiobutton.
+// then pass a key value pair of id : rating, back to characteristics state.
+
+// characteristics object
 // Object of keys representing characteristic_id and values representing the review value for that characteristic. { "14": 5, "15": 5 //...}
 
 // Need to grab the meta data to create the characteristic table.

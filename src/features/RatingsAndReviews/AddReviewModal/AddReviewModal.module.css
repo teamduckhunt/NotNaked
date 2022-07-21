@@ -55,3 +55,15 @@
   cursor: pointer;
   padding: 0.2rem;
 }
+
+/* Characteristic table
+============================= */
+
+.ct_tableHead{
+  display: table-header-group;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr,
+}
+
+.ct_tableRows {
+  font-size: x-small;
+}

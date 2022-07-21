@@ -79,7 +79,6 @@ export default function ReviewList({ productId, reviewCount }) {
           <AddReviewModal
           handleModalToggle={handleModalToggle}
           productName={productData.name}
-          productId={productId}
           characteristicId={metaData.characteristics} />
         )}
       </div>

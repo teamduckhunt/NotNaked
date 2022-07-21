@@ -69,7 +69,7 @@ export default class AddReviewModal extends React.Component {
 
   render() {
     const {
-      handleModalToggle, productName, productId, characteristicId,
+      handleModalToggle, productName, characteristicId,
     } = this.props;
     const {
       body, date, photos, rating, recommend, reviewer_name, summary, name, email,
@@ -110,7 +110,7 @@ export default class AddReviewModal extends React.Component {
               No
             </label>
           </div>
-          <CharacteristicsTable productId={productId} tableId={characteristicId} />
+          <CharacteristicsTable tableId={characteristicId} />
           <div>
             <textarea
               value={summary}
@@ -175,6 +175,12 @@ export default class AddReviewModal extends React.Component {
 AddReviewModal.propTypes = {
   handleModalToggle: PropTypes.func.isRequired,
   productName: PropTypes.string.isRequired,
-  productId: PropTypes.number.isRequired,
   characteristicId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
 };
+
+// Notes :
+// Add the error message on submit, if missing fields.
+// Add * to fields that are required.
+// Finish Characteristic Table
+// Finish Rating
+// CSS Page
