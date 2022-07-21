@@ -50,34 +50,34 @@ describe('Testing Q&A', () => {
   });
 });
 
-describe('Testing Modal', () => {
-  beforeEach(async () => {
-    reducer(
-      <AddQA ID={40344} handleModalToggle={() => {}} product="Test" />,
-    );
-  });
+// describe('Testing Modal', () => {
+//   beforeEach(async () => {
+//     reducer(
+//       <AddQA ID={40344} handleModalToggle={() => {}} product="Test" />,
+//     );
+//   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+//   afterEach(() => {
+//     jest.clearAllMocks();
+//   });
 
-  test('Renders Title', () => {
-    expect(screen.getByText(/Ask Your Question/i)).toBeInTheDocument();
-  });
+//   test('Renders Title', () => {
+//     expect(screen.getByText(/Ask Your Question/i)).toBeInTheDocument();
+//   });
 
-  test('Renders Subtitle', () => {
-    expect(screen.getByText(/About the product/i)).toBeInTheDocument();
-  });
+//   test('Renders Subtitle', () => {
+//     expect(screen.getByText(/About the product/i)).toBeInTheDocument();
+//   });
 
-  test('Renders Username Input', () => {
-    expect(screen.getByText(/Username:/i)).toBeInTheDocument();
-  });
+//   test('Renders Username Input', () => {
+//     expect(screen.getByText(/Username:/i)).toBeInTheDocument();
+//   });
 
-  test('Renders Email Input', () => {
-    expect(screen.getByText(/Email:/i)).toBeInTheDocument();
-  });
+//   test('Renders Email Input', () => {
+//     expect(screen.getByText(/Email:/i)).toBeInTheDocument();
+//   });
 
-  test('Renders Submit Button', () => {
-    expect(screen.getByText(/Submit/i)).toBeInTheDocument();
-  });
-});
+//   test('Renders Submit Button', () => {
+//     expect(screen.getByText(/Submit/i)).toBeInTheDocument();
+//   });
+// });
