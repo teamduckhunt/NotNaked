@@ -7,6 +7,7 @@ import { useRelatedProductsIdQuery } from '../../../services/products';
 import { relatedReducer, relatedState } from './relatedProductReducer';
 import styles from '../OutfitList/OutfitList.module.css';
 import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
+import ErrorMessage from '../../UI/ErrorMessage.jsx';
 
 export default function RelatedProductList({ currentViewItemId }) {
   const { data, error, isLoading } = useRelatedProductsIdQuery(currentViewItemId);
@@ -41,7 +42,7 @@ export default function RelatedProductList({ currentViewItemId }) {
         length={(filteredData && filteredData.length) || 0}
         handleCarouselControl={handleCarouselControl}
       >
-        {error && <div className={styles.no_product}>Oh no, there was an error</div>}
+        {error && <div className={styles.no_product}><ErrorMessage /></div>}
         {isLoading && <div className={styles.no_product}><LoadingSpinner /></div>}
         {data !== undefined && data.length === 0
         && <p className={styles.no_product}>There are no related products...</p>}

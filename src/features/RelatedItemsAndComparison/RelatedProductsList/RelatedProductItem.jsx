@@ -39,7 +39,7 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
   if (isLoading || stylesLoading || metaLoading) {
     return <div className={classes.no_product}><LoadingSpinner /></div>;
   }
-  const averageRating = getAverageRating(metaData);
+  const averageRating = metaData ? getAverageRating(metaData) : 0;
   const InfinityStone = <img className={classes.ironMan2} src={IronMan} alt="Iron Man" />;
   return (
     <>
