@@ -81,11 +81,13 @@ export default function AddQA({
           <br />
           <textarea onChange={(e) => setBody(e.target.value)} rows="5" cols="60" className={styles.textArea} placeholder="Type Here" maxLength="1000" required />
           <br />
+          {questionBody !== undefined
+          && <input id="input" type="file" name="img" accept="image/*" multiple />}
+          <Button className={styles.button}>
+            Submit
+          </Button>
         </form>
       </div>
-      <Button className={styles.button}>
-        Submit
-      </Button>
     </Modal>
   );
 }

@@ -9,6 +9,8 @@ import { useProductInformationByIdQuery } from '../../../services/products';
 import styles from './QuestionsList.module.css';
 import Button from '../../UI/Button.jsx';
 import AddQA from '../QAModals/AddQA.jsx';
+import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
+import ErrorMessage from '../../UI/ErrorMessage.jsx';
 
 export default function QuestionsList({ currentViewItemId }) {
   const { data, error, isLoading } = useAllQuestionsQuery(currentViewItemId);
@@ -44,11 +46,11 @@ export default function QuestionsList({ currentViewItemId }) {
   }, [numberOfQuestions, questionLength]);
 
   if (error) {
-    return <>Oh no, there was an error</>;
+    return <div className={styles.no_product}><ErrorMessage /></div>
   }
 
   if (isLoading) {
-    return <>Loading...</>;
+    return <div className={styles.no_product}><LoadingSpinner /></div>
   }
 
   if (data) {
