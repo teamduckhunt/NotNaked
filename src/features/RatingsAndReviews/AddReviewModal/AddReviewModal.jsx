@@ -60,11 +60,11 @@ export default class AddReviewModal extends React.Component {
   }
 
   handleNameChange(e) {
-    this.setState({ body: e.target.value });
+    this.setState({ name: e.target.value });
   }
 
   handleEmailChange(e) {
-    this.setState({ body: e.target.value });
+    this.setState({ email: e.target.value });
   }
 
   render() {
@@ -75,17 +75,14 @@ export default class AddReviewModal extends React.Component {
 
     return (
       <Modal>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className={styles.add_review_box}>
           <h1>Write Your Review</h1>
           <h3>
-            About the
-            {' '}
-            {productName}
+            {`About the ${productName}`}
           </h3>
-          <div className={styles.add_review_box}>
-            {/* <StarRating /> */}
+          <div>
+            <StarRating />
           </div>
-
           <div>
             Do you recommend this product ?
             <label>
@@ -113,20 +110,33 @@ export default class AddReviewModal extends React.Component {
           </div>
           <CharacteristicsTable />
           <div>
-            {/* <input type='text' value={summary} maxLength="60" onChange={(e) => this.handleSummaryChange(e)} /> */}
-            <textarea value={summary} maxLength='60' cols='60' rows='2' onChange={(e) => this.handleSummaryChange(e)}></textarea>
+            <textarea
+              value={summary}
+              placeholder="Review Title"
+              maxLength='60'
+              cols='60'
+              rows='2'
+              onChange={(e) => this.handleSummaryChange(e)}>
+            </textarea>
           </div>
           <div>
-            {/* <input type='text' value={body} minLength="50" maxLength="1000" onChange={(e) => this.handleBodyChange(e)} />
-            Add a counter */}
-            <textarea value={body} minLength='50' maxLength='1000' cols='60' rows='5' onChange={(e) => this.handleBodyChange(e)}></textarea>
+            <textarea
+              value={body}
+              placeholder='Why do you like the product?'
+              minLength='50'
+              maxLength='1000'
+              cols='60'
+              rows='5'
+              onChange={(e) => this.handleBodyChange(e)}>
+            </textarea>
             <div className={styles.charReq}>
               {body.length < 50 && (
                 <span className={styles.charLeft}>
-                  Minimum required characters left:
-                  {0 + body.length}
-                  {' '}
+                  {`
+                    Minimum required characters left:
+                  ${0 + body.length}
                   / 50
+                  `}
                 </span>
               )}
             </div>
@@ -134,15 +144,24 @@ export default class AddReviewModal extends React.Component {
           <div>
             {'Add an image, \'Coming Soon\''}
           </div>
-          <input type='text' value={name} placeholder="What is your nickname" onChange={(e) => this.handleNameChange(e)} />
-          <input type='text' value={email} placeholder="Email" onChange={(e) => this.handleEmailChange(e)} />
-
+          <input
+            type='text'
+            value={name}
+            placeholder="What is your nickname"
+            onChange={(e) => this.handleNameChange(e)}
+          />
+          <input
+            type='text'
+            value={email}
+            placeholder="Email"
+            onChange={(e) => this.handleEmailChange(e)}
+          />
           <Button type="submit">
             Submit
           </Button>
         </form>
         <Button type="button" onClick={() => handleModalToggle()}>
-          X
+          Close
         </Button>
       </Modal>
     );
