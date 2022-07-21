@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-shadow */
 import React, { useState } from 'react';
 import { useSelector, getState } from 'react-redux';
@@ -12,9 +13,12 @@ import pinterest from '../pics/pinterest.png';
 
 export default function AddToCart({ currentViewItemId }) {
   const { data, error, isLoading } = useProductStylesQuery(currentViewItemId);
-  const curStyle = useSelector((state) => state.productStyles.selectedStyle);
+  let curStyle = useSelector((state) => state.productStyles.selectedStyle);
   // const curStyle = getState(selectedStyle);
-  const [size, setSize] = useState(0);
+  const [size, setSize] = useState(null);
+  const [addedToBagDiv, setAddedToBagDiv] = useState(null);
+  const [sizeWasSelected, setSizeWasSelected] = useState(false);
+  const [defaultQuant, setDefaultQuant] = useState('-');
 
   // skus:
   //  1394769: {quantity: 8, size: 'XS'}
@@ -33,12 +37,31 @@ export default function AddToCart({ currentViewItemId }) {
   }
 
   const sizeSelected = (event) => {
+    setDefaultQuant(1);
+    setSizeWasSelected(true);
     setSize(event.target.value);
   };
 
+  const addedToBag = () => {
+    if (sizeWasSelected) {
+      setAddedToBagDiv(<div className={styles.addedToCart}>Item was added to cart!</div>);
+    } else {
+      setAddedToBagDiv(<div className={styles.pleaseSelectSize}>Please select a size.</div>);
+    }
+    setTimeout(() => { setAddedToBagDiv(null); }, 3000);
+  };
+
   if (data) {
+    // setSize(data.results[0].skus[1394769].size);
+    if (curStyle.style_id === undefined) {
+      curStyle = data.results[0];
+    }
+
+    let quantList;
+
     return (
       <div data-testid="addtocart">
+        <div>{addedToBagDiv}</div>
         <form onSubmit={this}>
           <label>
             <select className={styles.size} defaultValue="SELECT SIZE" onChange={(event) => { sizeSelected(event); }}>
@@ -52,17 +75,20 @@ export default function AddToCart({ currentViewItemId }) {
           </label>
           <label>
             <select className={styles.quantity}>
-              <option defaultValue="-">-</option>
+              <option defaultValue="">{defaultQuant}</option>
               {size ? Object.keys(curStyle.skus).map((item) => {
+                console.log(1, size);
+                console.log(2, curStyle.skus[item].size);
                 if (curStyle.skus[item].size === size) {
                   const amount = curStyle.skus[item].quantity;
                   const quant = amount > 15 ? [...Array(15).keys()] : [...Array(amount).keys()];
-                  quant.map((item, index) => <option value={item + 1} key={index}>{item + 1}</option>);
+                  quantList = quant.map((item, index) => <option value={item + 1} key={index}>{item + 1}</option>);
                 }
               }) : null}
+              {quantList}
             </select>
           </label>
-          <button type="button" className={styles.addToBag}>ADD TO BAG</button>
+          <button type="button" className={styles.addToBag} onClick={() => { addedToBag(); }}>ADD TO BAG</button>
           <button type="button" className={styles.star}>
             <AiOutlineStar />
           </button>
