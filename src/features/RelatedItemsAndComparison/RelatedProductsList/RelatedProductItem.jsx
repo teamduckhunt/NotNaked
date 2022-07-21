@@ -27,7 +27,7 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
   const { data: metaData, isLoading: metaLoading } = useGetReviewMetadataQuery(productId);
   const { data: styles, isLoading: stylesLoading } = useProductStylesQuery(productId);
   const image = styles && (styles.results[0].photos[0].thumbnail_url || 'https://picsum.photos/200');
-
+  const imageAvailable = image === 'https://picsum.photos/200';
   const handleModalToggle = () => {
     setToggleModal(!toggleModal);
   };
@@ -55,6 +55,7 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
         averageRating={averageRating}
         productId={productId}
         productImage={image}
+        imageAvailable={imageAvailable}
         productSalesPrice={styles.results[0].sale_price}
         handleOnClick={handleModalToggle}
       >
