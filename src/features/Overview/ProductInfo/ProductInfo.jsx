@@ -30,7 +30,7 @@ export default function ProductInfo({ currentViewItemId, reviewSection, scrollTo
     return (
       <div>
         <div>
-          <RatingToDuckFeet className={styles.reviews} rating={averageRating} />
+          <RatingToDuckFeet className={styles.reviews} rating={+averageRating} />
           <button className={styles.scrollToReviewsButton} type="button" onClick={() => { scrollToElement(); }}>Read all reviews</button>
         </div>
         <p className={styles.category}>{(product.category).toUpperCase()}</p>

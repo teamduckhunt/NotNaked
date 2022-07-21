@@ -57,3 +57,15 @@
   padding-left: 60px;
   padding-top: 10px;
 }
+
+.addedToCart {
+  background-color: #ffdeeb;
+  width: 200px;
+  padding-left: 19px;
+}
+
+.pleaseSelectSize {
+  background-color: #e4e4e4;
+  width: 200px;
+  padding-left: 40px;
+}
