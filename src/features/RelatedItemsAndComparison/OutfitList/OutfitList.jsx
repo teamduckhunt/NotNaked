@@ -19,6 +19,8 @@ export default function OutfitList({ currentViewItemId }) {
   useEffect(() => {
     if (userOutfitList.indexOf(currentViewItemId) === -1) {
       setIsCurrentItemAdded(false);
+    } else {
+      setIsCurrentItemAdded(true);
     }
     dispatchLocalState({ type: 'RESET' });
   }, [currentViewItemId, userOutfitList]);

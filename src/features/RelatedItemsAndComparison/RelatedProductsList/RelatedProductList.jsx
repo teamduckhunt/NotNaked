@@ -46,7 +46,7 @@ export default function RelatedProductList({ currentViewItemId }) {
         {isLoading && <div className={styles.no_product}><LoadingSpinner /></div>}
         {data !== undefined && data.length === 0
         && <p className={styles.no_product}>There are no related products...</p>}
-        {data !== undefined && data.length > 0
+        {(!error && data !== undefined && data.length > 0)
         && filteredData
           .slice(start, end)
           .map((productId) => (
