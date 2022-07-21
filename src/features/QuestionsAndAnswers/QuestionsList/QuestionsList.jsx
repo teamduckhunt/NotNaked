@@ -73,12 +73,13 @@ export default function QuestionsList({ currentViewItemId }) {
             </>
           }
           {questions.slice(0, numberOfQuestions)
-            .map((q) => <QuestionCard key={q.question_id} q={q} p={currentViewItemId} />)}
+            .map((question) => <QuestionCard key={question.question_id} question={question} productID={currentViewItemId} />)}
           <br></br>
         </div>
         {!disableMoreQuestionsButton
         && (
           <Button
+            className={styles.moreButton}
             onClick={() => {
               setNumberOfQuestions(numberOfQuestions + 2);
             }}
@@ -86,7 +87,10 @@ export default function QuestionsList({ currentViewItemId }) {
             MORE ANSWERED QUESTIONS
           </Button>
         )}
-        <Button onClick={() => handleModalToggle()}>
+        <Button
+          className={styles.addButton}
+          onClick={() => handleModalToggle()}
+        >
           ADD A QUESTION&nbsp;
           <strong>+</strong>
         </Button>
