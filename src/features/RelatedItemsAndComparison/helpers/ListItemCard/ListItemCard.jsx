@@ -39,8 +39,6 @@ export default function ListItemCard({
   const InfinityStone = (
     <img className={styles.ironMan} src={IronMan} alt="Iron Man" />
   );
-
-  console.log(product);
   return (
     <div key={productId} className={styles.product_card_ctn}>
       <Card

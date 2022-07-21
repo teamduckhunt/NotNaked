@@ -131,7 +131,7 @@
   background-color: rgba(214, 51, 108, 0.6);
 }
 
-.no_prouduct, .noImage {
+.no_product, .noImage {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -139,6 +139,7 @@
 }
 
 .slogan {
+  font-style: italic;
   font-size: 0.64rem;
   padding: 4px;
 }
