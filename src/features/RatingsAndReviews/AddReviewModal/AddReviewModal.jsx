@@ -86,7 +86,6 @@ export default class AddReviewModal extends React.Component {
     const {
       body, date, photos, rating, recommend, reviewer_name, summary, name, email,
     } = this.state;
-    console.log(characteristicId);
 
     return (
       <Modal>
@@ -124,7 +123,7 @@ export default class AddReviewModal extends React.Component {
             </label>
           </div>
           <CharacteristicsTable
-            tableId={characteristicId}
+            characteristicId={characteristicId}
             handleCharacteristicChange={this.handleCharacteristicChange}
           />
           <div>

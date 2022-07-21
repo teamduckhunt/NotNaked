@@ -1,13 +1,60 @@
+/* eslint-disable react/jsx-indent */
 /* eslint-disable max-len */
 /* eslint-disable jsx-quotes */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import characteristicData from "./characteristics-data.json";
+import CharacteristicTableRow from './CharacteristicTableRow.jsx';
 import styles from './AddReviewModal.module.css';
 
-function CharacteristicsTable({ tableId, handleCharacteristicChange }) {
-  // const [characteristicDescription, setCharacteristicDescription] = useState(characteristicData);
-  console.log(tableId);
+function CharacteristicsTable({ characteristicId, handleCharacteristicChange }) {
+  const newObject = Object.keys(characteristicId).map((type) => {
+    let leftDescription = '';
+    let middleDescription = '';
+    let rightDescription = '';
+
+    switch (type) {
+      case 'Fit':
+        leftDescription = 'Runs tight';
+        middleDescription = 'Perfect';
+        rightDescription = 'Runs long';
+        break;
+      case 'Width':
+        leftDescription = 'Too narrow';
+        middleDescription = 'Perfect';
+        rightDescription = 'Too wide';
+        break;
+      case 'Comfort':
+        leftDescription = 'Uncomfortable';
+        middleDescription = 'Ok';
+        rightDescription = 'Perfect';
+        break;
+      case 'Size':
+        leftDescription = 'Too Small';
+        middleDescription = 'Perfect';
+        rightDescription = 'Too Large';
+        break;
+      case 'Quality':
+        leftDescription = 'Poor';
+        middleDescription = 'What I expected';
+        rightDescription = 'Perfect';
+        break;
+      case 'Length':
+        leftDescription = 'Runs short';
+        middleDescription = 'Perfect';
+        rightDescription = 'Runs long';
+        break;
+      default:
+        break;
+    }
+
+    return ({
+      name: type,
+      id: characteristicId[type].id,
+      leftDescription,
+      middleDescription,
+      rightDescription,
+    });
+  });
 
   return (
     <div>
@@ -32,63 +79,15 @@ function CharacteristicsTable({ tableId, handleCharacteristicChange }) {
           </tr>
         </thead>
         <tbody>
-          {characteristicData.map((description) => (
-            <tr key={description.id} className={styles.ct_tableRows}>
-              <td className={styles.ct_columns}>
-                {description.one}
-                <input
-                  type='radio'
-                  name={description.characteristic}
-                  value='1'
-                  // checked={recommend === true}
-                  onChange={handleCharacteristicChange}
-                />
-              </td>
-              <td className={styles.ct_columns}>
-                {description.two}
-                <input
-                  type='radio'
-                  name={description.characteristic}
-                  value='2'
-                  // checked={recommend === true}
-                  onChange={handleCharacteristicChange}
-                />
-              </td>
-              <td className={styles.ct_columns}>
-                {description.three}
-                <input
-                  type='radio'
-                  name={description.characteristic}
-                  value='3'
-                  // checked={recommend === true}
-                  onChange={handleCharacteristicChange}
-                />
-              </td>
-              <td className={styles.ct_columns}>
-                {description.four}
-                <input
-                  type='radio'
-                  name={description.characteristic}
-                  value='4'
-                  // checked={recommend === true}
-                  onChange={handleCharacteristicChange}
-                />
-              </td>
-              <td className={styles.ct_columns}>
-                {description.five}
-                <input
-                  type='radio'
-                  name={description.characteristic}
-                  value='5'
-                  // checked={recommend === true}
-                  onChange={handleCharacteristicChange}
-                />
-              </td>
-            </tr>
+          {newObject.map((characteristicData) => (
+            <CharacteristicTableRow
+              characteristicData={characteristicData}
+              key={characteristicData.id}
+              handleCharacteristicChange={handleCharacteristicChange}
+            />
           ))}
         </tbody>
       </table>
-
     </div>
   );
 }
@@ -96,27 +95,6 @@ function CharacteristicsTable({ tableId, handleCharacteristicChange }) {
 export default CharacteristicsTable;
 
 CharacteristicsTable.propTypes = {
-  tableId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
+  characteristicId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
   handleCharacteristicChange: PropTypes.func.isRequired,
 };
-
-// Note :
-// Need to add the tableId to each radiobutton.
-// then pass a key value pair of id : rating, back to characteristics state.
-
-// characteristics object
-// Object of keys representing characteristic_id and values representing the review value for that characteristic. { "14": 5, "15": 5 //...}
-
-// Need to grab the meta data to create the characteristic table.
-// Each radio button
-
-// sizeId : set to the metaData.characteristics.Size.id
-
-// Sizeid : rating # (1-5)
-
-// Productid as a key and rating as a value.
-
-
-// name={characteristic_id}
-// onClick={handleCLick}
-// value is the number ?
