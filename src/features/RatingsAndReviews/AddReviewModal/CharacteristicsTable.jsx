@@ -39,7 +39,7 @@ function CharacteristicsTable({ tableId, handleCharacteristicChange }) {
                 <input
                   type='radio'
                   name={description.characteristic}
-                  value='true'
+                  value='1'
                   // checked={recommend === true}
                   onChange={handleCharacteristicChange}
                 />
@@ -49,7 +49,7 @@ function CharacteristicsTable({ tableId, handleCharacteristicChange }) {
                 <input
                   type='radio'
                   name={description.characteristic}
-                  value='true'
+                  value='2'
                   // checked={recommend === true}
                   onChange={handleCharacteristicChange}
                 />
@@ -59,7 +59,7 @@ function CharacteristicsTable({ tableId, handleCharacteristicChange }) {
                 <input
                   type='radio'
                   name={description.characteristic}
-                  value='true'
+                  value='3'
                   // checked={recommend === true}
                   onChange={handleCharacteristicChange}
                 />
@@ -69,7 +69,7 @@ function CharacteristicsTable({ tableId, handleCharacteristicChange }) {
                 <input
                   type='radio'
                   name={description.characteristic}
-                  value='true'
+                  value='4'
                   // checked={recommend === true}
                   onChange={handleCharacteristicChange}
                 />
@@ -79,7 +79,7 @@ function CharacteristicsTable({ tableId, handleCharacteristicChange }) {
                 <input
                   type='radio'
                   name={description.characteristic}
-                  value='true'
+                  value='5'
                   // checked={recommend === true}
                   onChange={handleCharacteristicChange}
                 />
@@ -120,9 +120,3 @@ CharacteristicsTable.propTypes = {
 // name={characteristic_id}
 // onClick={handleCLick}
 // value is the number ?
-
-// Use flexbox for designing characteristic table.
-// outter - display: flex-direction-row
-// then each column set to display: flex-direction-column
-
-

@@ -36,6 +36,7 @@ export default class AddReviewModal extends React.Component {
     this.handleSummaryChange = this.handleSummaryChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleCharacteristicChange = this.handleCharacteristicChange.bind(this);
   }
 
   handleSubmit(e) {
@@ -51,7 +52,15 @@ export default class AddReviewModal extends React.Component {
   }
 
   handleCharacteristicChange(e) {
-    // const
+    // this.setState({characteristics: {... }})
+    const { name, value } = e.target;
+    const { characteristics } = this.state;
+    console.log('name:', name, 'value:', value);
+    if (name) {
+      this.setState((prevState) => (
+        { characteristic: { ...prevState.characteristic, [name]: Number(value) } }
+      ));
+    }
   }
 
   handleSummaryChange(e) {
@@ -69,7 +78,6 @@ export default class AddReviewModal extends React.Component {
   handleEmailChange(e) {
     this.setState({ email: e.target.value });
   }
-
 
   render() {
     const {
@@ -115,7 +123,10 @@ export default class AddReviewModal extends React.Component {
               No
             </label>
           </div>
-          <CharacteristicsTable tableId={characteristicId} />
+          <CharacteristicsTable
+            tableId={characteristicId}
+            handleCharacteristicChange={this.handleCharacteristicChange}
+          />
           <div>
             <textarea
               value={summary}
