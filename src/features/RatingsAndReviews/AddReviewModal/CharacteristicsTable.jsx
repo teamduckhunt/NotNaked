@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 import styles from './AddReviewModal.module.css';
 import data from "./characteristics-data.json";
 
-function CharacteristicsTable() {
+function CharacteristicsTable({ characteristicType }) {
   const [characteristicDescription, setCharacteristicDescription] = useState(data);
-  const descriptionName = ['size', 'width', 'comfort', 'quality', 'length', 'fit'];
   return (
     <div>
       <table>
@@ -37,7 +36,7 @@ function CharacteristicsTable() {
                 {description.one}
                 <input
                   type='radio'
-                  name='one' /* {descriptionName[i]} */
+                  name={description.characteristic}
                   value='true'
                 // checked={recommend === true}
                 // onChange={this.handleRecommendOptionChange}
@@ -46,7 +45,7 @@ function CharacteristicsTable() {
               <td>{description.two}</td>
               <input
                 type='radio'
-                name='two'
+                name={description.characteristic}
                 value='true'
               // checked={recommend === true}
               // onChange={this.handleRecommendOptionChange}
@@ -54,7 +53,7 @@ function CharacteristicsTable() {
               <td>{description.three}</td>
               <input
                 type='radio'
-                name='one'
+                name={description.characteristic}
                 value='true'
               // checked={recommend === true}
               // onChange={this.handleRecommendOptionChange}
@@ -62,7 +61,7 @@ function CharacteristicsTable() {
               <td>{description.four}</td>
               <input
                 type='radio'
-                name='one'
+                name={description.characteristic}
                 value='true'
               // checked={recommend === true}
               // onChange={this.handleRecommendOptionChange}
@@ -70,7 +69,7 @@ function CharacteristicsTable() {
               <td>{description.five}</td>
               <input
                 type='radio'
-                name='one'
+                name={description.characteristic}
                 value='true'
               // checked={recommend === true}
               // onChange={this.handleRecommendOptionChange}
@@ -86,6 +85,19 @@ function CharacteristicsTable() {
 
 export default CharacteristicsTable;
 
+CharacteristicsTable.propTypes = {
+  characteristicType: PropTypes.string.isRequired,
+};
+
 
 // characteristics	object
 // Object of keys representing characteristic_id and values representing the review value for that characteristic. { "14": 5, "15": 5 //...}
+
+// Need to grab the meta data to create the characteristic table.
+// Each radio button
+
+// sizeId : set to the metaData.characteristics.Size.id
+
+// Sizeid : rating # (1-5)
+
+// Productid as a key and rating as a value.
