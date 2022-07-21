@@ -68,7 +68,9 @@ export default class AddReviewModal extends React.Component {
   }
 
   render() {
-    const { handleModalToggle, productName } = this.props;
+    const {
+      handleModalToggle, productName, productId, characteristicId,
+    } = this.props;
     const {
       body, date, photos, rating, recommend, reviewer_name, summary, name, email,
     } = this.state;
@@ -108,7 +110,7 @@ export default class AddReviewModal extends React.Component {
               No
             </label>
           </div>
-          <CharacteristicsTable />
+          <CharacteristicsTable productId={productId} tableId={characteristicId} />
           <div>
             <textarea
               value={summary}
@@ -116,7 +118,8 @@ export default class AddReviewModal extends React.Component {
               maxLength='60'
               cols='60'
               rows='2'
-              onChange={(e) => this.handleSummaryChange(e)}>
+              onChange={(e) => this.handleSummaryChange(e)}
+            >
             </textarea>
           </div>
           <div>
@@ -127,7 +130,8 @@ export default class AddReviewModal extends React.Component {
               maxLength='1000'
               cols='60'
               rows='5'
-              onChange={(e) => this.handleBodyChange(e)}>
+              onChange={(e) => this.handleBodyChange(e)}
+            >
             </textarea>
             <div className={styles.charReq}>
               {body.length < 50 && (
@@ -171,4 +175,6 @@ export default class AddReviewModal extends React.Component {
 AddReviewModal.propTypes = {
   handleModalToggle: PropTypes.func.isRequired,
   productName: PropTypes.string.isRequired,
+  productId: PropTypes.number.isRequired,
+  characteristicId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
 };

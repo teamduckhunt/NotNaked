@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReviewCard from './ReviewCard/ReviewCard.jsx';
-import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
+import { useGetAllReviewsByProductIdQuery, useGetReviewMetadataQuery } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
 import AddReviewModal from '../AddReviewModal/AddReviewModal.jsx';
 import { useProductInformationByIdQuery } from '../../../services/products.js';
@@ -13,6 +13,8 @@ import styles from './ReviewList.module.css';
 export default function ReviewList({ productId, reviewCount }) {
   const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
   const { data, error, isLoading } = useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
+  const {data: productData, isLoading: productLoading} = useProductInformationByIdQuery(productId);
+  const { data: metaData, isLoading: metaLoading } = useGetReviewMetadataQuery(productId);
 
   const [numberOfReviews, setNumberOfReviews] = useState(2);
   const [showMoreReviewsButton, setShowMoreReviewsButton] = useState(true);
@@ -27,11 +29,11 @@ export default function ReviewList({ productId, reviewCount }) {
     return <>Oh no, there was an error!</>;
   }
 
-  if (isLoading) {
+  if (isLoading || productLoading || metaLoading) {
     return <>Loading...</>;
   }
 
-  if (data) {
+  if (data || productData || metaData) {
 
     // check if there are no more reviews
     const reviewListLengthCheck = () => {
@@ -47,6 +49,7 @@ export default function ReviewList({ productId, reviewCount }) {
     });
 
     const checkForStarFilter = (curStarSelected.length === 0) ? data.results : filteredReviewSet.filter(item => item !== undefined);
+
 
     return (
       <div className={styles.reviewList_border}>
@@ -73,7 +76,11 @@ export default function ReviewList({ productId, reviewCount }) {
           Add a Review
         </Button>
         {toggleModal && (
-          <AddReviewModal handleModalToggle={handleModalToggle} />
+          <AddReviewModal
+          handleModalToggle={handleModalToggle}
+          productName={productData.name}
+          productId={productId}
+          characteristicId={metaData.characteristics} />
         )}
       </div>
     );

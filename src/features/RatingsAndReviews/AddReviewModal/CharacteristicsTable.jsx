@@ -2,11 +2,25 @@
 /* eslint-disable jsx-quotes */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import characteristicData from "./characteristics-data.json";
+// import useGetReviewMetadataQuery from '../../../services/reviews.js';
 import styles from './AddReviewModal.module.css';
-import data from "./characteristics-data.json";
 
-function CharacteristicsTable({ characteristicType }) {
-  const [characteristicDescription, setCharacteristicDescription] = useState(data);
+function CharacteristicsTable({ productId, tableId }) {
+  // const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
+  const [characteristicDescription, setCharacteristicDescription] = useState(characteristicData);
+  console.log(tableId);
+
+  // if (error) {
+  //   return <>Oh no, there was an error loading the characteristic table</>;
+  // }
+
+  // if (isLoading) {
+  //   return <>Loading...</>;
+  // }
+
+  // if (data) {
+  //   console.log(data);
   return (
     <div>
       <table>
@@ -31,7 +45,7 @@ function CharacteristicsTable({ characteristicType }) {
         </thead>
         <tbody>
           {characteristicDescription.map((description) => (
-            <tr>
+            <tr key={description.id}>
               <td>
                 {description.one}
                 <input
@@ -43,37 +57,45 @@ function CharacteristicsTable({ characteristicType }) {
                 />
               </td>
               <td>{description.two}</td>
-              <input
-                type='radio'
-                name={description.characteristic}
-                value='true'
-              // checked={recommend === true}
-              // onChange={this.handleRecommendOptionChange}
-              />
+              <td>
+                <input
+                  type='radio'
+                  name={description.characteristic}
+                  value='true'
+                // checked={recommend === true}
+                // onChange={this.handleRecommendOptionChange}
+                />
+              </td>
               <td>{description.three}</td>
-              <input
-                type='radio'
-                name={description.characteristic}
-                value='true'
-              // checked={recommend === true}
-              // onChange={this.handleRecommendOptionChange}
-              />
+              <td>
+                <input
+                  type='radio'
+                  name={description.characteristic}
+                  value='true'
+                // checked={recommend === true}
+                // onChange={this.handleRecommendOptionChange}
+                />
+              </td>
               <td>{description.four}</td>
-              <input
-                type='radio'
-                name={description.characteristic}
-                value='true'
-              // checked={recommend === true}
-              // onChange={this.handleRecommendOptionChange}
-              />
+              <td>
+                <input
+                  type='radio'
+                  name={description.characteristic}
+                  value='true'
+                // checked={recommend === true}
+                // onChange={this.handleRecommendOptionChange}
+                />
+              </td>
               <td>{description.five}</td>
-              <input
-                type='radio'
-                name={description.characteristic}
-                value='true'
-              // checked={recommend === true}
-              // onChange={this.handleRecommendOptionChange}
-              />
+              <td>
+                <input
+                  type='radio'
+                  name={description.characteristic}
+                  value='true'
+                // checked={recommend === true}
+                // onChange={this.handleRecommendOptionChange}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
@@ -81,12 +103,14 @@ function CharacteristicsTable({ characteristicType }) {
 
     </div>
   );
+  // }
 }
 
 export default CharacteristicsTable;
 
 CharacteristicsTable.propTypes = {
-  characteristicType: PropTypes.string.isRequired,
+  productId: PropTypes.number.isRequired,
+  tableId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
 };
 
 

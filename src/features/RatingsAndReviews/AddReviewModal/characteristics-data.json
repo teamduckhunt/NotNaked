@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "characteristic": "Size",
     "one": "A size too small",
     "two": "1/2 a size too small",
@@ -8,6 +9,7 @@
     "five": "A size too wide"
   },
   {
+    "id": 2,
     "characteristic": "Width",
     "one": "Too narrow",
     "two": "Slightly narrow",
@@ -16,6 +18,7 @@
     "five": "Too wide"
   },
   {
+    "id": 3,
     "characteristic": "Comfort",
     "one": "Uncomfortable",
     "two": "Slightly uncomfortable",
@@ -24,6 +27,7 @@
     "five": "Perfect"
   },
   {
+    "id": 4,
     "characteristic": "Quality",
     "one": "Poor",
     "two": "Below average",
@@ -32,6 +36,7 @@
     "five": "Perfect"
   },
   {
+    "id": 5,
     "characteristic": "Length",
     "one": "Runs Short",
     "two": "Runs slightly short",
@@ -40,6 +45,7 @@
     "five": "Runs long"
   },
   {
+    "id": 6,
     "characteristic": "Fit",
     "one": "Runs tight",
     "two": "Runs slightly tight",
