@@ -6,23 +6,23 @@ export default function SalePrice({ originalPrice, salePrice }) {
     if (salePrice) {
       return (
         <div className={styles.priceContainer}>
-          <p className={styles.strikeThrough}>
+          <div className={styles.strikeThrough}>
             $
             <s>{originalPrice}</s>
-          </p>
-          <p>
+          </div>
+          <div>
             $
             {salePrice}
-          </p>
+          </div>
         </div>
       );
     }
     return (
       <div>
-        <p>
+        <div>
           $
           {originalPrice}
-        </p>
+        </div>
       </div>
     );
   }

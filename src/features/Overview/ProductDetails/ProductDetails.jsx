@@ -30,8 +30,8 @@ export default function ProductDetails({ currentViewItemId }) {
           <style className={styles.line} />
         </div>
         <div className={styles.features}>
-          {product.features.map((aFeature) => (
-            <div>
+          {product.features.map((aFeature, index) => (
+            <div key={index}>
               <img src={pinkcheck} className={styles.checkMark} alt="" />
               {aFeature.feature}
               :

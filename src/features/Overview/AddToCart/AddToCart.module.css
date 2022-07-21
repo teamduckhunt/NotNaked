@@ -37,3 +37,23 @@
   border: 1px solid black;
   background: none;
 }
+
+.twitter {
+  width: 20px;
+  padding-right: 50px;
+}
+
+.facebook {
+  width: 20px;
+  padding-right: 50px;
+}
+
+.pinterest {
+  width: 20px;
+  padding-right: 50px;
+}
+
+.share {
+  padding-left: 60px;
+  padding-top: 10px;
+}
