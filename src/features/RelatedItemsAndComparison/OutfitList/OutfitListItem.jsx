@@ -8,6 +8,8 @@ import { useProductStylesQuery, useProductInformationByIdQuery } from '../../../
 import ListItemCard from '../helpers/ListItemCard/ListItemCard.jsx';
 import { useGetReviewMetadataQuery } from '../../../services/reviews';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating';
+import classes from './OutfitList.module.css';
+import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
 
 export default function OutfitListItem({ productId, handleDeleteOutfit }) {
   const { data, error, isLoading } = useProductInformationByIdQuery(productId);
@@ -16,11 +18,11 @@ export default function OutfitListItem({ productId, handleDeleteOutfit }) {
   const image = styles && (styles.results[0].photos[0].thumbnail_url || 'https://picsum.photos/200');
 
   if (error) {
-    return <>Oh no, there was an error</>;
+    return <div className={classes.no_product}>Oh no, there was an error</div>;
   }
 
   if (isLoading || stylesLoading || metaLoading) {
-    return <>Loading...</>;
+    return <div className={classes.no_product}><LoadingSpinner /></div>;
   }
 
   return (

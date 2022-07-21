@@ -36,9 +36,9 @@ export default function ComparisonModal({ handleModalToggle, currentViewItemId, 
     <Modal className={styles.modal}>
       <h4 className={styles.modalTitle}>COMPARING</h4>
       <div className={styles.products}>
-        <div className={styles.col}>Current Product</div>
+        <div className={styles.col}>{currentViewItemData.name}</div>
         <div className={styles.col}>Feature</div>
-        <div className={styles.col}>Related Product</div>
+        <div className={styles.col}>{relatedItemData.name}</div>
       </div>
       <div>
         {Object.keys({ ...relatedFeatures, ...currentFeatures }).map((feature) => (
