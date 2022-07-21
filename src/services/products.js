@@ -1,12 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_KEY } from '../config/config';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products',
     prepareHeaders(headers) {
-      headers.set('Authorization', `${API_KEY}`);
+      headers.set('Authorization', process.env.API_KEY);
       return headers;
     },
   }),

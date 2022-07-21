@@ -1,3 +1,5 @@
+const { DefinePlugin } = require('webpack');
+
 require('dotenv').config();
 
 const path = require('path');
@@ -57,7 +59,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin(),
-
+    // new EnvironmentPlugin(['NODE_ENV', 'API_KEY']),
+    new DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 };
