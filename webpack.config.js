@@ -1,4 +1,6 @@
-// require("dotenv").config();
+const { DefinePlugin } = require('webpack');
+
+require('dotenv').config();
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -54,11 +56,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'index_bundle.js',
-    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin(),
-
+    // new EnvironmentPlugin(['NODE_ENV', 'API_KEY']),
+    new DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 };

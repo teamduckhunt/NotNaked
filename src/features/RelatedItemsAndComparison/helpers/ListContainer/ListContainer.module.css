@@ -28,10 +28,17 @@
 
 .prev {
   left: -30px;
-  color: #000
+  color: #000;
 }
 
 .next {
   right: -30px;
-  color: #000
+  color: #000;
+}
+
+@media screen and (max-width: 480px) {
+  .listContainer {
+    overflow:scroll;
+    width: 480px;
+  }
 }
