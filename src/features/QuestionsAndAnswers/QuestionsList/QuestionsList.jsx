@@ -9,6 +9,8 @@ import { useProductInformationByIdQuery } from '../../../services/products';
 import styles from './QuestionsList.module.css';
 import Button from '../../UI/Button.jsx';
 import AddQA from '../QAModals/AddQA.jsx';
+import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
+import ErrorMessage from '../../UI/ErrorMessage.jsx';
 
 export default function QuestionsList({ currentViewItemId }) {
   const { data, error, isLoading } = useAllQuestionsQuery(currentViewItemId);
@@ -44,34 +46,36 @@ export default function QuestionsList({ currentViewItemId }) {
   }, [numberOfQuestions, questionLength]);
 
   if (error) {
-    return <>Oh no, there was an error</>;
+    return <div className={styles.no_product}><ErrorMessage /></div>
   }
 
   if (isLoading) {
-    return <>Loading...</>;
+    return <div className={styles.no_product}><LoadingSpinner /></div>
   }
 
   if (data) {
     const questions = data.results.filter((item) => item.question_body.includes(select));
     return (
-      <div className={styles.list} id="list">
-        {toggleModal && (
-          <AddQA
-            handleModalToggle={handleModalToggle}
-            ID={currentViewItemId}
-            product={product.name}
-          />
-        )}
-        {questions.length === 0 &&
-          <>
-            <br />
-            <strong>NO QUESTIONS FOUND :(</strong>
-            <br />
-          </>
-        }
-        {questions.slice(0, numberOfQuestions)
-          .map((q) => <QuestionCard key={q.question_id} q={q} p={currentViewItemId} />)}
-        <br></br>
+      <>
+        <div className={styles.list} id="list">
+          {toggleModal && (
+            <AddQA
+              handleModalToggle={handleModalToggle}
+              ID={currentViewItemId}
+              product={product.name}
+              />
+              )}
+          {questions.length === 0 &&
+            <>
+              <br />
+              <strong>NO QUESTIONS FOUND :(</strong>
+              <br />
+            </>
+          }
+          {questions.slice(0, numberOfQuestions)
+            .map((q) => <QuestionCard key={q.question_id} q={q} p={currentViewItemId} />)}
+          <br></br>
+        </div>
         {!disableMoreQuestionsButton
         && (
           <Button
@@ -86,7 +90,7 @@ export default function QuestionsList({ currentViewItemId }) {
           ADD A QUESTION&nbsp;
           <strong>+</strong>
         </Button>
-      </div>
+      </>
     );
   }
 }

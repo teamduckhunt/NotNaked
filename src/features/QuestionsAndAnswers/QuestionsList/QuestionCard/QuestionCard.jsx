@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -59,12 +60,10 @@ export default function QuestionCard({ q, p }) {
         <br />
         <div className={styles.question} id="question">
           <p>
-            <strong>
-              Q: {q.question_body}
-            </strong>
+            Q: {q.question_body}
           </p>
           <p className={styles.helpful}>
-            Helpful?&nbsp;&nbsp;
+            Helpful?&nbsp;
             <button
               className={styles.yes}
               onClick={() => {
@@ -76,21 +75,20 @@ export default function QuestionCard({ q, p }) {
             >
               <u>
                 Yes
-              </u>
+              </u> ({q.question_helpfulness})
             </button>
-            ({q.question_helpfulness})
           </p>
           <p className={styles.add}>
             <u onClick={() => handleModalToggle()}>Add Answer</u>
           </p>
         </div>
         <br />
-        <div id="answer">
+        <div className={styles.answerHeader} id="answer">
           {answers.length === 0
-          && <strong>This question has no answers :(</strong>}
+          && <u>This question has no answers :(</u>}
           {answers.length > 0
-          && <strong><u>Answers</u></strong>}
-          {answers.slice(0, numberOfAnswers).map((a) => <AnswerCard key={a.answer_id} a={a} />)}
+          && <u>Answers</u>}
+          {answers.slice(0, numberOfAnswers).map((a) => <AnswerCard className={styles.answer} key={a.answer_id} a={a} />)}
           <br />
           {numberOfAnswers < answers.length
         && (
@@ -102,7 +100,7 @@ export default function QuestionCard({ q, p }) {
             LOAD MORE ANSWERS
           </Button>
         )}
-          {(numberOfAnswers >= answers.length && answers.length >= 2)
+          {(numberOfAnswers >= answers.length && answers.length > 2)
         && (
           <Button
             onClick={() => {
