@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReviewCard from './ReviewCard/ReviewCard.jsx';
-import { useGetAllReviewsByProductIdQuery, useGetReviewMetadataQuery } from '../../../services/reviews.js';
+import { useGetAllReviewsByProductIdQuery, useGetReviewMetadataQuery, useAddAReviewMutation } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
 import AddReviewModal from '../AddReviewModal/AddReviewModal.jsx';
 import { useProductInformationByIdQuery } from '../../../services/products.js';
@@ -20,6 +20,7 @@ export default function ReviewList({ productId, reviewCount }) {
   const [showMoreReviewsButton, setShowMoreReviewsButton] = useState(true);
   const curStarSelected = useSelector((state) => state.ratingBreakdown.filterByStar);
   const [toggleModal, setToggleModal] = useState(false);
+  const [addAReview] = useAddAReviewMutation();
 
   const handleModalToggle = () => {
     setToggleModal(!toggleModal);
@@ -79,7 +80,9 @@ export default function ReviewList({ productId, reviewCount }) {
           <AddReviewModal
           handleModalToggle={handleModalToggle}
           productName={productData.name}
-          characteristicId={metaData.characteristics} />
+          productId={productId}
+          characteristicId={metaData.characteristics}
+          addAReview={addAReview} />
         )}
       </div>
     );

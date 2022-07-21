@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import characteristicData from "./characteristics-data.json";
 import styles from './AddReviewModal.module.css';
 
-function CharacteristicsTable({ tableId }) {
-  const [characteristicDescription, setCharacteristicDescription] = useState(characteristicData);
+function CharacteristicsTable({ tableId, handleCharacteristicChange }) {
+  // const [characteristicDescription, setCharacteristicDescription] = useState(characteristicData);
   console.log(tableId);
 
   return (
@@ -32,56 +32,56 @@ function CharacteristicsTable({ tableId }) {
           </tr>
         </thead>
         <tbody>
-          {characteristicDescription.map((description) => (
+          {characteristicData.map((description) => (
             <tr key={description.id} className={styles.ct_tableRows}>
-              <td>
+              <td className={styles.ct_columns}>
                 {description.one}
                 <input
                   type='radio'
                   name={description.characteristic}
                   value='true'
-                // checked={recommend === true}
-                // onChange={this.handleRecommendOptionChange}
+                  // checked={recommend === true}
+                  onChange={handleCharacteristicChange}
                 />
               </td>
-              <td>{description.two}</td>
-              <td>
+              <td className={styles.ct_columns}>
+                {description.two}
                 <input
                   type='radio'
                   name={description.characteristic}
                   value='true'
-                // checked={recommend === true}
-                // onChange={this.handleRecommendOptionChange}
+                  // checked={recommend === true}
+                  onChange={handleCharacteristicChange}
                 />
               </td>
-              <td>{description.three}</td>
-              <td>
+              <td className={styles.ct_columns}>
+                {description.three}
                 <input
                   type='radio'
                   name={description.characteristic}
                   value='true'
-                // checked={recommend === true}
-                // onChange={this.handleRecommendOptionChange}
+                  // checked={recommend === true}
+                  onChange={handleCharacteristicChange}
                 />
               </td>
-              <td>{description.four}</td>
-              <td>
+              <td className={styles.ct_columns}>
+                {description.four}
                 <input
                   type='radio'
                   name={description.characteristic}
                   value='true'
-                // checked={recommend === true}
-                // onChange={this.handleRecommendOptionChange}
+                  // checked={recommend === true}
+                  onChange={handleCharacteristicChange}
                 />
               </td>
-              <td>{description.five}</td>
-              <td>
+              <td className={styles.ct_columns}>
+                {description.five}
                 <input
                   type='radio'
                   name={description.characteristic}
                   value='true'
-                // checked={recommend === true}
-                // onChange={this.handleRecommendOptionChange}
+                  // checked={recommend === true}
+                  onChange={handleCharacteristicChange}
                 />
               </td>
             </tr>
@@ -97,9 +97,10 @@ export default CharacteristicsTable;
 
 CharacteristicsTable.propTypes = {
   tableId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
+  handleCharacteristicChange: PropTypes.func.isRequired,
 };
 
-
+// Note :
 // Need to add the tableId to each radiobutton.
 // then pass a key value pair of id : rating, back to characteristics state.
 
@@ -114,3 +115,14 @@ CharacteristicsTable.propTypes = {
 // Sizeid : rating # (1-5)
 
 // Productid as a key and rating as a value.
+
+
+// name={characteristic_id}
+// onClick={handleCLick}
+// value is the number ?
+
+// Use flexbox for designing characteristic table.
+// outter - display: flex-direction-row
+// then each column set to display: flex-direction-column
+
+

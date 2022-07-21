@@ -60,10 +60,19 @@
 ============================= */
 
 .ct_tableHead{
-  display: table-header-group;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr,
+  display: flex;
+  justify-content: space-around;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr, */
 }
 
 .ct_tableRows {
   font-size: x-small;
+  display: flex;
+  flex-direction: row;
+}
+
+.ct_columns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

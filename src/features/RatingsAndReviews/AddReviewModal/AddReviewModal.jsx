@@ -20,6 +20,7 @@ export default class AddReviewModal extends React.Component {
     super(props);
 
     this.state = {
+      product_id: props.productId,
       rating: 0,
       summary: '',
       body: '',
@@ -28,10 +29,6 @@ export default class AddReviewModal extends React.Component {
       email: '',
       photos: [],
       characteristics: {},
-      date: '',
-      helpfulness: 0,
-      response: null,
-      // review_id ??
     };
     this.handleRecommendOptionChange = this.handleRecommendOptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,13 +39,19 @@ export default class AddReviewModal extends React.Component {
   }
 
   handleSubmit(e) {
+    const { addAReview } = this.props;
     e.preventDefault();
     console.log(this.state);
+    addAReview(this.state);
   }
 
   handleRecommendOptionChange(e) {
     const recommendOption = e.currentTarget.value === 'true';
     this.setState({ recommend: recommendOption });
+  }
+
+  handleCharacteristicChange(e) {
+    // const
   }
 
   handleSummaryChange(e) {
@@ -67,6 +70,7 @@ export default class AddReviewModal extends React.Component {
     this.setState({ email: e.target.value });
   }
 
+
   render() {
     const {
       handleModalToggle, productName, characteristicId,
@@ -74,6 +78,7 @@ export default class AddReviewModal extends React.Component {
     const {
       body, date, photos, rating, recommend, reviewer_name, summary, name, email,
     } = this.state;
+    console.log(characteristicId);
 
     return (
       <Modal>
@@ -155,13 +160,13 @@ export default class AddReviewModal extends React.Component {
             onChange={(e) => this.handleNameChange(e)}
           />
           <input
-            type='text'
+            type='email'
             value={email}
-            placeholder="Email"
+            placeholder="username@gmail.com"
             onChange={(e) => this.handleEmailChange(e)}
           />
           <Button type="submit">
-            Submit
+            Send Review
           </Button>
         </form>
         <Button type="button" onClick={() => handleModalToggle()}>
@@ -176,6 +181,8 @@ AddReviewModal.propTypes = {
   handleModalToggle: PropTypes.func.isRequired,
   productName: PropTypes.string.isRequired,
   characteristicId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
+  productId: PropTypes.number.isRequired,
+  addAReview: PropTypes.func.isRequired,
 };
 
 // Notes :
