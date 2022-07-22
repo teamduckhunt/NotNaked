@@ -1,18 +1,26 @@
 .add_review_box {
-  /* background-color: bisque; */
-  /* border: 1px black; */
-  margin: 2% 10%;
-  /* display: flex; */
-  flex-direction: row;
-  align-content: center;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  justify-items: center;
+  margin: 2px 50px;
 }
 
-.flex {
-  display: flex;
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.subtitle {
+  font-size: .9rem;
+  text-decoration: underline;
 }
 
-.cursor_pointer {
-  cursor: pointer;
+.close_btn {
+  float: right;
+  font-size: .7rem;
 }
 
 /* Add a Review Inputs
@@ -22,16 +30,30 @@ content: "*";
 color: red;
 display: flex;
 justify-content:flex-end;
-/* flex-direction: row; */
 }
 
 .input_rating {
-  margin: 1.5rem;
+  margin: 10px;
 }
 
 .input_field {
   width: fit-content;
   display: flex;
+  margin: .2rem;
+}
+
+.charReq {
+  margin: 5px;
+  font-family: 'Gill Sans';
+  font-weight: 500;
+  color: red;
+}
+
+.image_text {
+  margin: 5px;
+  font-family: 'Gill Sans';
+  font-weight: 500;
+  text-decoration: underline;
 }
 
 
@@ -41,15 +63,14 @@ justify-content:flex-end;
 .star_rating_container {
   display: flex;
   justify-content: flex-start;
-  /* background-color: #ffdeeb; */
-
+  padding: 10px;
 }
 
 .ratingDesc {
   margin-left: 5%;
-  /* display: flex;
-  align-items:flex-end; */
-
+  font-family:'Gill Sans';
+  font-size: 15px;
+  text-decoration: underline;
   }
 
 .star_container {
@@ -80,6 +101,10 @@ justify-content:flex-end;
 /* Characteristic table
 ============================= */
 
+.ct_table {
+  text-align: center;
+}
+
 .ct_tableHead{
   display: flex;
   justify-content: space-around;
@@ -90,7 +115,7 @@ justify-content:flex-end;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  /* margin: 10% 2%; */
+  margin: 10px 5px;
 }
 
 .ct_columns {

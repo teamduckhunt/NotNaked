@@ -83,8 +83,8 @@ export default class AddReviewModal extends React.Component {
       <Modal>
         <div>
           <form onSubmit={this.handleSubmit} className={styles.add_review_box}>
-            <h1>Write Your Review</h1>
-            <h3>
+            <h1 className={styles.title}>Write Your Review</h1>
+            <h3 className={styles.subtitle}>
               {`About the ${productName}`}
             </h3>
             <div className={styles.input_rating}>
@@ -156,7 +156,7 @@ export default class AddReviewModal extends React.Component {
                 </span>
               )}
             </div>
-            <div>
+            <div className={styles.image_text}>
               {'Add an image, \'Coming Soon\''}
             </div>
             <div className={`${styles.required} ${styles.input_field}`}>
@@ -181,7 +181,7 @@ export default class AddReviewModal extends React.Component {
               Send Review
             </Button>
           </form>
-          <Button type="button" onClick={() => handleModalToggle()}>
+          <Button type="button" className={styles.close_btn} onClick={() => handleModalToggle()}>
             Close
           </Button>
         </div>

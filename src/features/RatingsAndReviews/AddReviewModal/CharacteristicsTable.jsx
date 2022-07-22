@@ -58,7 +58,7 @@ function CharacteristicsTable({ characteristicId, handleCharacteristicChange, re
 
   return (
     <div>
-      <table>
+      <table className={styles.ct_table}>
         <thead>
           <tr className={styles.ct_tableHead}>
             <th>
