@@ -38,9 +38,7 @@ export default function ReviewCard({ review }) {
     return (
       <div>
         <p>
-          {' '}
           {toShow}
-          {' '}
         </p>
         <Button onClick={() => { setShowBody(true); }}>Show More...</Button>
       </div>
