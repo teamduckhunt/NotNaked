@@ -75,12 +75,10 @@ export default function ImageGallery({ currentViewItemId }) {
 
     const toggleClass = () => {
       setPicExpanded(!picExpanded);
-      // console.log(picExpanded);
     };
 
     const miniPicWasClicked = (index) => {
       setCurrent(index);
-      console.log('index', index);
     };
 
     const bigPicClass = picExpanded ? styles.expanded : styles.normal;
