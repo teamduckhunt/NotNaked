@@ -1,4 +1,5 @@
 const { DefinePlugin } = require('webpack');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 require('dotenv').config();
 
@@ -65,6 +66,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin(),
+    new FaviconsWebpackPlugin('./assets/duckLogo.png'),
     // new EnvironmentPlugin(['NODE_ENV', 'API_KEY']),
     new DefinePlugin({
       'process.env': JSON.stringify(process.env),
