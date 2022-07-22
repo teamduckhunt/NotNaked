@@ -1,33 +1,40 @@
-/* eslint-disable react/jsx-first-prop-new-line */
-/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReviewCard from './ReviewCard/ReviewCard.jsx';
-import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews.js';
+import { useGetAllReviewsByProductIdQuery, useGetReviewMetadataQuery, useAddAReviewMutation } from '../../../services/reviews.js';
 import Button from '../../UI/Button.jsx';
 import AddReviewModal from '../AddReviewModal/AddReviewModal.jsx';
 import { useProductInformationByIdQuery } from '../../../services/products.js';
 import { useSelector } from 'react-redux';
+import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
+import ErrorMessage from '../../UI/ErrorMessage.jsx';
 import styles from './ReviewList.module.css';
 
 export default function ReviewList({ productId, reviewCount }) {
   const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
   const { data, error, isLoading } = useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
+  const {data: productData, isLoading: productLoading} = useProductInformationByIdQuery(productId);
+  const { data: metaData, isLoading: metaLoading } = useGetReviewMetadataQuery(productId);
 
   const [numberOfReviews, setNumberOfReviews] = useState(2);
   const [showMoreReviewsButton, setShowMoreReviewsButton] = useState(true);
   const curStarSelected = useSelector((state) => state.ratingBreakdown.filterByStar);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [addAReview] = useAddAReviewMutation();
 
+  const handleModalToggle = () => {
+    setToggleModal(!toggleModal);
+  };
 
   if (error) {
-    return <>Oh no, there was an error!</>;
+    return <div className={styles.no_product}><ErrorMessage /></div>;
   }
 
-  if (isLoading) {
-    return <>Loading...</>;
+  if (isLoading || productLoading || metaLoading) {
+    return <div className={styles.no_proudct}><LoadingSpinner /></div>;
   }
 
-  if (data) {
+  if (data || productData || metaData) {
 
     // check if there are no more reviews
     const reviewListLengthCheck = () => {
@@ -43,6 +50,7 @@ export default function ReviewList({ productId, reviewCount }) {
     });
 
     const checkForStarFilter = (curStarSelected.length === 0) ? data.results : filteredReviewSet.filter(item => item !== undefined);
+
 
     return (
       <div className={styles.reviewList_border}>
@@ -65,9 +73,17 @@ export default function ReviewList({ productId, reviewCount }) {
             More Reviews
           </Button>
         }
-        <Button className={styles.reviewList_btn}>
+        <Button className={styles.reviewList_btn} onClick={handleModalToggle}>
           Add a Review
         </Button>
+        {toggleModal && (
+          <AddReviewModal
+          handleModalToggle={handleModalToggle}
+          productName={productData.name}
+          productId={productId}
+          characteristicId={metaData.characteristics}
+          addAReview={addAReview} />
+        )}
       </div>
     );
   }

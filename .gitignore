@@ -2,4 +2,3 @@ node_modules
 .env
 src/config/config.js
 dist
-coverage

@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { useGetAllReviewsByProductIdQuery } from '../../../services/reviews';
+import { useDispatch } from 'react-redux';
 import { setSortSelection } from './sortItemsSlice';
 import styles from './SortItems.module.css';
 
-export default function SortItems({ productId, reviewCount }) {
+export default function SortItems({ reviewCount }) {
   const dispatch = useDispatch();
 
   function handleChange(event) {
     const sortSelection = event.target.value;
     dispatch(setSortSelection(sortSelection));
   }
-  // const curSortSelected = useSelector((state) => state.sortItems.sortSelection);
-  // useGetAllReviewsByProductIdQuery({ reviewCount, productId, curSortSelected });
-
   return (
     <div className={styles.sortContainer}>
       {` ${reviewCount} reviews, sort by `}
@@ -29,10 +25,5 @@ export default function SortItems({ productId, reviewCount }) {
 }
 
 SortItems.propTypes = {
-  productId: PropTypes.number.isRequired,
   reviewCount: PropTypes.number.isRequired,
 };
-
-// NOTES :
-// sort should persist when star filters are selected,
-// meaning the stort value should be passed in rating breakdown as well.

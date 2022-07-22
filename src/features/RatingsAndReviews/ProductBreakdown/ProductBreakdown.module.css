@@ -38,3 +38,17 @@
   width: fit-content;
   max-width: 300px;
 }
+
+/* Error CSS
+======================= */
+
+.no_product {
+  flex: 1;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 228px;
+  height: 300px;
+}

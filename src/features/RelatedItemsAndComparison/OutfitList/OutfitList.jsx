@@ -45,7 +45,9 @@ export default function OutfitList({ currentViewItemId }) {
 
   return (
     <div className={styles.list_container}>
-      <h3 className={styles.list_title}>My Outfit</h3>
+      <div className={styles.titleCtn}>
+        <h3 className={styles.list_title}>My Outfit</h3>
+      </div>
       <ListContainer
         start={start}
         end={end}
