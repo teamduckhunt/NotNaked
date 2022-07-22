@@ -14,19 +14,10 @@ import pinterest from '../pics/pinterest.png';
 export default function AddToCart({ currentViewItemId }) {
   const { data, error, isLoading } = useProductStylesQuery(currentViewItemId);
   let curStyle = useSelector((state) => state.productStyles.selectedStyle);
-  // const curStyle = getState(selectedStyle);
   const [size, setSize] = useState(null);
   const [addedToBagDiv, setAddedToBagDiv] = useState(null);
   const [sizeWasSelected, setSizeWasSelected] = useState(false);
   const [defaultQuant, setDefaultQuant] = useState('-');
-
-  // skus:
-  //  1394769: {quantity: 8, size: 'XS'}
-  //  1394770: {quantity: 16, size: 'S'}
-  //  1394771: {quantity: 17, size: 'M'}
-  //  1394772: {quantity: 10, size: 'L'}
-  //  1394773: {quantity: 15, size: 'XL'}
-  //  1394774: {quantity: 4, size: 'XL'}
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -52,7 +43,6 @@ export default function AddToCart({ currentViewItemId }) {
   };
 
   if (data) {
-    // setSize(data.results[0].skus[1394769].size);
     if (curStyle.style_id === undefined) {
       curStyle = data.results[0];
     }

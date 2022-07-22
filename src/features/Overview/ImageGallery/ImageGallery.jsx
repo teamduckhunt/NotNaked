@@ -8,11 +8,6 @@ import { useProductStylesQuery } from '../../../services/products.js';
 import styles from './ImageGallery.module.css';
 import expand from '../pics/expand.png';
 
-// export const imageState = {
-//   start: 0,
-//   end: 4,
-// };
-
 export default function ImageGallery({ currentViewItemId }) {
   const { data, error, isLoading } = useProductStylesQuery(currentViewItemId);
   const curStyle = useSelector((state) => state.productStyles.selectedStyle);
@@ -22,8 +17,6 @@ export default function ImageGallery({ currentViewItemId }) {
   const [end, setEnd] = useState(4);
   let upArrow = null;
   let downArrow = null;
-
-  // const { start, end } = state;
 
   if (error) {
     return <div>There is an error!</div>;
@@ -40,7 +33,6 @@ export default function ImageGallery({ currentViewItemId }) {
     const length = curStyle.photos ? curStyle.photos.length : data.results[0].photos.length;
 
     const nextSlide = () => {
-      // setCurrent(current === length - 1 ? 0 : current + 1);
       setCurrent((cur) => (cur === length - 1 ? 0 : cur + 1));
       if (current >= end - 1) {
         setStart(current + 1);
@@ -49,7 +41,6 @@ export default function ImageGallery({ currentViewItemId }) {
     };
 
     const prevSlide = () => {
-      // setCurrent(current === 0 ? length - 1 : current - 1);
       setCurrent((cur) => (cur === 0 ? length - 1 : cur - 1));
       if (current <= start) {
         setStart(0);
@@ -58,19 +49,13 @@ export default function ImageGallery({ currentViewItemId }) {
     };
 
     const nextSlideMini = () => {
-      // if (current > 5 && current < length) {
-      //   setStart(current);
-      // }
-      // index = length - 1;
       setStart(start + 4);
       setEnd((en) => en + 4);
-      // setCurrent(current + 4);
     };
 
     const prevSlideMini = () => {
       setStart(start - 4);
       setEnd((en) => en - 4);
-      // setCurrent(current - 4);
     };
 
     const toggleClass = () => {
@@ -83,17 +68,6 @@ export default function ImageGallery({ currentViewItemId }) {
 
     const bigPicClass = picExpanded ? styles.expanded : styles.normal;
 
-    const sliceFunction = (start, end) => {
-      if (start < 0 && end > 0) {
-        return currentImage.slice(start).concat(currentImage.slice(0, end));
-      }
-      if (start < 0 && end < 0) {
-        setEnd(length - 1);
-        setStart(length - 6);
-      }
-      return currentImage.slice(start, end);
-    };
-
     if (start !== 0) {
       upArrow = <FaChevronUp onClick={prevSlideMini} className={styles.upArrow} />;
     }
@@ -105,40 +79,26 @@ export default function ImageGallery({ currentViewItemId }) {
     return (
       <div className={bigPicClass}>
         <button onClick={() => { toggleClass(); }} className={styles.expandButton} type="button">
-          <img src={expand} alt="" className={styles.expandPic} />
+          <img src={expand} alt="expanded version of style picture" className={styles.expandPic} />
         </button>
         <div className={styles.miniCarousel}>
           {upArrow}
-          {/* {sliceFunction(start, end).map((photo, index) => {
-            if (current === index + start) {
-              return (
-                <div key={index}>
-                  <img src={currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60')} className={styles.miniCarouselPic} alt="" />
-                  <div className={styles.currentPhotoMarker} />
-                </div>
-              );
-            } */}
+          {console.log(currentImage)}
           {currentImage.map((photo, index) => {
             if (index < start || index >= end) {
               return '';
             }
-            // return (
-            //   <div key={index}>
-            //     <img src={currentImage[index].thumbnail_url} className={styles.miniCarouselPic} alt="" />
-            //     <div className={styles.currentPhotoMarker} />
-            //   </div>
-            // );
 
             if (current === index) {
               return (
                 <div key={index}>
-                  <img src={photo.thumbnail_url?.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} alt="" />
+                  <img src={photo.thumbnail_url?.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} alt="picture of style" />
                   <div className={styles.currentPhotoMarker} />
                 </div>
               );
             }
             return (
-              <img src={photo.thumbnail_url} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
+              <img src={photo.thumbnail_url} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="picture of style" key={index} />
             );
           })}
           {downArrow}

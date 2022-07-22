@@ -17,5 +17,5 @@ export const imageGallerySlice = createSlice({
   },
 });
 
-export const { addProductImages } = imageGallerySlice.actions; // ?
-export default imageGallerySlice.reducer; // ?
+export const { addProductImages } = imageGallerySlice.actions;
+export default imageGallerySlice.reducer;

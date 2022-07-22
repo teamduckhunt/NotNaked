@@ -32,7 +32,7 @@ export default function ProductDetails({ currentViewItemId }) {
         <div className={styles.features}>
           {product.features.map((aFeature, index) => (
             <div key={index}>
-              <img src={pinkcheck} className={styles.checkMark} alt="" />
+              <img src={pinkcheck} className={styles.checkMark} alt="checkmark indicating current style selected" />
               {aFeature.feature}
               :
               {' '}
