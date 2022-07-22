@@ -6,7 +6,6 @@ import styles from './StyleSelector.module.css';
 
 export default function StyleCard({ style }) {
   const dispatch = useDispatch();
-
   return (
     <div>
       <button
@@ -17,7 +16,7 @@ export default function StyleCard({ style }) {
         }}
       >
         <img
-          src={style.photos[0].thumbnail_url.replace(/(?<=w=)(.*)/, '50&q=50')}
+          src={style.photos[0].thumbnail_url?.replace(/(?<=w=)(.*)/, '50&q=50')}
           alt={style.name}
           className={styles.stylePic}
         />

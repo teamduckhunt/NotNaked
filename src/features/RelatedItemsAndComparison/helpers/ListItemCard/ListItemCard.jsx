@@ -25,7 +25,7 @@ export default function ListItemCard({
   const [isOnHover, setIsOnHover] = useState(false);
   const handleProductClick = (e) => {
     e.preventDefault();
-    if (e.currentTarget.id === 'product') {
+    if (e.currentTarget.id === product.name) {
       handleOnClick();
       e.stopPropagation();
     }

@@ -1,7 +1,9 @@
 .overview {
-  margin-top: 3rem;
   padding-bottom: 10px;
   align-items: center;
+  width: 1280px;
+  margin: auto;
+  margin-top: 3rem;
 }
 
 .overviewHeaders {

@@ -108,7 +108,7 @@ export default function ImageGallery({ currentViewItemId }) {
         </div>
         <div className={styles.actualPic}>
           {currentImage.map((photo, index) => (
-            index === current && <img src={photo.url.replace(/(?<=w=)(.*)(?=&)/, '400')} className={styles.actualPicInside} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
+            index === current && <img src={photo.url?.replace(/(?<=w=)(.*)(?=&)/, '400')} className={styles.actualPicInside} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
           ))}
         </div>
         <div>
