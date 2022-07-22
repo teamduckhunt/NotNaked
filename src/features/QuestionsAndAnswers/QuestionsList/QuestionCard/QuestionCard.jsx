@@ -22,9 +22,9 @@ import styles from './QuestionCard.module.css';
 import Button from '../../../UI/Button.jsx';
 import AddQA from '../../QAModals/AddQA.jsx';
 
-export default function QuestionCard({ q, p }) {
-  const { data, error, isLoading } = useAnswerListQuery(q.question_id);
-  const { data: product } = useProductInformationByIdQuery(p);
+export default function QuestionCard({ question, productID }) {
+  const { data, error, isLoading } = useAnswerListQuery(question.question_id);
+  const { data: product } = useProductInformationByIdQuery(productID);
   const [addHelpful] = useAddQuestionHelpfulMutation();
   const [reportQuestion] = useReportQuestionMutation();
 
@@ -52,22 +52,22 @@ export default function QuestionCard({ q, p }) {
         {toggleModal && (
           <AddQA
             handleModalToggle={handleModalToggle}
-            ID={q.question_id}
-            questionBody={q.question_body}
+            ID={question.question_id}
+            questionBody={question.question_body}
             product={product.name}
           />
         )}
         <br />
         <div className={styles.question} id="question">
           <p>
-            Q: {q.question_body}
+            Q: {question.question_body}
           </p>
           <p className={styles.helpful}>
             Helpful?&nbsp;
             <button
               className={styles.yes}
               onClick={() => {
-                addHelpful(q.question_id);
+                addHelpful(question.question_id);
                 setDisableYes(true);
               }}
               disabled={disableYes}
@@ -75,7 +75,7 @@ export default function QuestionCard({ q, p }) {
             >
               <u>
                 Yes
-              </u> ({q.question_helpfulness})
+              </u> ({question.question_helpfulness})
             </button>
           </p>
           <p className={styles.add}>
@@ -88,7 +88,7 @@ export default function QuestionCard({ q, p }) {
           && <u>This question has no answers :(</u>}
           {answers.length > 0
           && <u>Answers</u>}
-          {answers.slice(0, numberOfAnswers).map((a) => <AnswerCard className={styles.answer} key={a.answer_id} a={a} />)}
+          {answers.slice(0, numberOfAnswers).map((answer) => <AnswerCard className={styles.answer} key={answer.answer_id} answer={answer} />)}
           <br />
           {numberOfAnswers < answers.length
         && (
@@ -118,6 +118,6 @@ export default function QuestionCard({ q, p }) {
 
 QuestionCard.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  q: PropTypes.object.isRequired,
-  p: PropTypes.number.isRequired,
+  question: PropTypes.object.isRequired,
+  productID: PropTypes.number.isRequired,
 };
