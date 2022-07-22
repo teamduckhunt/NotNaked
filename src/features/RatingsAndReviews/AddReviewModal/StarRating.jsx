@@ -1,5 +1,3 @@
-/* eslint-disable no-multiple-empty-lines */
-/* eslint-disable no-else-return */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import EmptyDuck from '../../../../assets/duckFeet-rating/empty.svg';
@@ -9,7 +7,6 @@ import styles from './AddReviewModal.module.css';
 
 function StarRating({ onChange }) {
   const [rating, setRating] = useState(0);
-  // const [hover, setHover] = useState(0);
   const [ratingDesc, setRatingDesc] = useState("");
 
   const changeRatingText = (ratingSelection) => {

@@ -1,16 +1,7 @@
-/* eslint-disable camelcase */
-/* eslint-disable import/extensions */
-/* eslint-disable jsx-quotes */
-/* eslint-disable no-else-return */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable react/self-closing-comp */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../UI/Button.jsx';
 import Modal from '../../UI/Modal.jsx';
-import { useAddAReviewMutation } from '../../../services/reviews.js';
 import StarRating from './StarRating.jsx';
 import CharacteristicsTable from './CharacteristicsTable.jsx';
 import styles from './AddReviewModal.module.css';
@@ -43,7 +34,6 @@ export default class AddReviewModal extends React.Component {
   handleSubmit(e) {
     const { addAReview } = this.props;
     e.preventDefault();
-    console.log(this.state);
     addAReview(this.state);
   }
 
@@ -54,7 +44,6 @@ export default class AddReviewModal extends React.Component {
 
   handleCharacteristicChange(e) {
     const { name, value } = e.target;
-    const { characteristics } = this.state;
     if (name) {
       this.setState((prevState) => (
         { characteristic: { ...prevState.characteristic, [name]: Number(value) } }
@@ -87,7 +76,7 @@ export default class AddReviewModal extends React.Component {
       handleModalToggle, productName, characteristicId,
     } = this.props;
     const {
-      body, date, photos, rating, recommend, reviewer_name, summary, name, email,
+      body, recommend, summary, name, email,
     } = this.state;
 
     return (
@@ -105,23 +94,23 @@ export default class AddReviewModal extends React.Component {
               Do you recommend this product ?
               <label>
                 <input
-                  type='radio'
-                  name='recommendOption'
-                  value='true'
+                  type="radio"
+                  name="recommendOption"
+                  value="true"
                   checked={recommend === true}
                   onChange={this.handleRecommendOptionChange}
-                  className='recommend_input'
+                  className="recommend_input"
                 />
                 Yes
               </label>
               <label>
                 <input
-                  type='radio'
-                  name='recommendOption'
-                  value='false'
+                  type="radio"
+                  name="recommendOption"
+                  value="false"
                   checked={recommend === false}
                   onChange={this.handleRecommendOptionChange}
-                  className='recommend_input'
+                  className="recommend_input"
                 />
                 No
               </label>
@@ -134,24 +123,22 @@ export default class AddReviewModal extends React.Component {
               <textarea
                 value={summary}
                 placeholder="Review Title"
-                maxLength='60'
-                cols='60'
-                rows='2'
+                maxLength="60"
+                cols="60"
+                rows="2"
                 onChange={(e) => this.handleSummaryChange(e)}
-              >
-              </textarea>
+              />
             </div>
             <div>
               <textarea
                 value={body}
-                placeholder='Why do you like the product?'
-                minLength='50'
-                maxLength='1000'
-                cols='60'
-                rows='5'
+                placeholder="Why do you like the product?"
+                minLength="50"
+                maxLength="1000"
+                cols="60"
+                rows="5"
                 onChange={(e) => this.handleBodyChange(e)}
-              >
-              </textarea>
+              />
               <div className={styles.charReq}>
                 {body.length < 50 && (
                   <span className={styles.charLeft}>
@@ -168,13 +155,13 @@ export default class AddReviewModal extends React.Component {
               {'Add an image, \'Coming Soon\''}
             </div>
             <input
-              type='text'
+              type="text"
               value={name}
               placeholder="What is your nickname"
               onChange={(e) => this.handleNameChange(e)}
             />
             <input
-              type='email'
+              type="email"
               value={email}
               placeholder="username@gmail.com"
               onChange={(e) => this.handleEmailChange(e)}
@@ -203,5 +190,4 @@ AddReviewModal.propTypes = {
 // Notes :
 // Add the error message on submit, if missing fields.
 // Add * to fields that are required.
-// Finish Rating
 // CSS Page

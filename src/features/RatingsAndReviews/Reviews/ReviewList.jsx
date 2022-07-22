@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-first-prop-new-line */
-/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ReviewCard from './ReviewCard/ReviewCard.jsx';
