@@ -13,23 +13,17 @@ import styleCheck from '../pics/stylecheck.png';
 
 export default function StyleList({ currentViewItemId }) {
   const { data: styles, error, isLoading } = useProductStylesQuery(currentViewItemId);
-  // const [style, setStyle] = useState({});
-  // const [curStyle, setcurStyle] = useState({});
   const curStyle = useSelector((state) => state.productStyles.selectedStyle);
 
   if (error) {
-    // console.log(error);
     return <div>There is an error!</div>;
   }
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  // console.log('styles data: ', data);
 
   if (styles) {
-    // console.log('price ', curStyle.original_price);
-    // console.log('style ', curStyle);
     const price = curStyle.original_price ? curStyle.original_price : styles.results[0].original_price;
     const salesPrice = curStyle.sale_price === undefined ? styles.results[0].sale_price : curStyle.sale_price;
 
@@ -49,7 +43,7 @@ export default function StyleList({ currentViewItemId }) {
               return (
                 <div className={classes.styleAndCheckmarkHolder} key={0}>
                   <StyleCard key={style.style_id} style={style} />
-                  <img src={styleCheck} className={classes.checkDot} alt="" />
+                  <img src={styleCheck} className={classes.checkDot} alt="checkmark indicating current style selected" />
                 </div>
               );
             }
@@ -57,7 +51,7 @@ export default function StyleList({ currentViewItemId }) {
               return (
                 <div className={classes.styleAndCheckmarkHolder}>
                   <StyleCard key={style.style_id} style={style} />
-                  <img src={styleCheck} className={classes.checkDot} alt="" />
+                  <img src={styleCheck} className={classes.checkDot} alt="checkmark indicating current style selected" />
                 </div>
               );
             }
