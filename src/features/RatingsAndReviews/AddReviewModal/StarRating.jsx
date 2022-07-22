@@ -1,38 +1,56 @@
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable no-else-return */
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import EmptyDuck from '../../../../assets/duckFeet-rating/empty.svg';
 import FullDuck from '../../../../assets/duckFeet-rating/empty.svg';
+import StarIcon from './StarIcon.jsx'
 import styles from './AddReviewModal.module.css';
 
-
-function StarRating() {
+function StarRating({ onChange }) {
   const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
+  // const [hover, setHover] = useState(0);
+  const [ratingDesc, setRatingDesc] = useState("");
+
+  const changeRatingText = (ratingSelection) => {
+    if (ratingSelection === 5) {
+      setRatingDesc('Great');
+    }
+    if (ratingSelection === 4) {
+      setRatingDesc('Good');
+    }
+    if (ratingSelection === 3) {
+      setRatingDesc('Average');
+    }
+    if (ratingSelection === 2) {
+      setRatingDesc('Fair');
+    }
+    if (ratingSelection === 1) {
+      setRatingDesc('Poor');
+    }
+  }
+
+  const changeRating = (ratingSelection) => {
+    console.log('rating', ratingSelection);
+    setRating(ratingSelection);
+    changeRatingText(ratingSelection)
+    onChange?.(ratingSelection);
+  };
+
   return (
     <div className={styles.star_rating_container}>
-      {[...Array(5)].map((star, index) => {
-        index += 1;
+      {[1, 2, 3, 4, 5].map((value, index) => {
         return (
-          <button
-            type="button"
-            key={index}
-            className={index <= (hover || rating) ? `${styles.on}` : `${styles.off}`}
-            // className={styles.on}
-            onClick={() => setRating(index)}
-            onMouseEnter={() => setHover(index)}
-            onMouseLeave={() => setHover(rating)}
-          >
-            <img src={EmptyDuck} className={styles.star} alt="Duck Feet" />
-            {/* <span className={styles.star}>{EmptyDuck}</span> */}
-          </button>
+            <StarIcon
+              key={value}
+              filled={value <= rating}
+              changeRating={() => changeRating(value)}
+            />
         );
       })}
+      {ratingDesc !== undefined && <div className={styles.ratingDesc}>{ratingDesc}</div>}
     </div>
   );
 }
 
 export default StarRating;
-
-
