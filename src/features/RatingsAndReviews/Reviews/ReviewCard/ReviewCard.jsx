@@ -45,7 +45,6 @@ export default function ReviewCard({ review }) {
       </div>
     );
   };
-  // console.log('reviewrating', review.rating);
 
   const handleModalToggle = (photo) => {
     setToggleModal(!toggleModal);

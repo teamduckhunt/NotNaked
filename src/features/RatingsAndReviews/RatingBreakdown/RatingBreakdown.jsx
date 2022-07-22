@@ -213,7 +213,3 @@ RatingBreakdown.propTypes = {
   productId: PropTypes.number.isRequired,
   reviewCount: PropTypes.number.isRequired,
 };
-
-// Strategy Notes :
-
-// add message for the filters that have been currently applied.
