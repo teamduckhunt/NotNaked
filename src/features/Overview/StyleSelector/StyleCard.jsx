@@ -17,7 +17,7 @@ export default function StyleCard({ style }) {
         }}
       >
         <img
-          src={style.photos[0].thumbnail_url}
+          src={style.photos[0].thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60')}
           alt={style.name}
           className={styles.stylePic}
         />
