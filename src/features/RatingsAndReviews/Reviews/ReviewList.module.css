@@ -6,9 +6,26 @@
 .reviewList {
   max-height: 800px;
   max-width: 775px;
+  overflow-x: hidden;
   overflow-y: auto;
+  word-wrap: break-word;
+
 }
 
 .reviewList_btn {
   margin-right: 3%;
+}
+
+/* Error CSS
+======================= */
+
+.no_product {
+  flex: 1;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 228px;
+  height: 300px;
 }
