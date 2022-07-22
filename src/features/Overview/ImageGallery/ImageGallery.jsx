@@ -78,7 +78,7 @@ export default function ImageGallery({ currentViewItemId }) {
       return currentImage.slice(start, end);
     };
 
-    console.log(currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60'));
+    console.log(currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60'));
     return (
       <div className={bigPicClass}>
         <button onClick={() => { toggleClass(); }} className={styles.expandButton} type="button">
@@ -90,14 +90,14 @@ export default function ImageGallery({ currentViewItemId }) {
             if (current === index) {
               return (
                 <div key={index}>
-                  <img src={currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} alt="" />
+                  <img src={currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60')} className={styles.miniCarouselPic} alt="" />
                   <div className={styles.currentPhotoMarker} />
                 </div>
               );
             }
             if (index < 5) {
               return (
-                <img src={photo.thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
+                <img src={photo.thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60')} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
               );
             }
           })}
