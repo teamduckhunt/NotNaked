@@ -1,18 +1,18 @@
 .feature_list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* text-align: center; */
   align-items: center;
   justify-items: center;
 }
 
 .current, .related_feature {
+  font-style: italic;
   font-size: 0.8rem;
   font-weight: 400;
-  padding: 8px;
+  padding: 10px;
 }
 .feature {
   font-size: 0.8rem;
   font-weight: 700;
-  padding: 8px;
+  padding: 10px;
 }

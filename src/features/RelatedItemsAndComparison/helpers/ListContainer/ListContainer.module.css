@@ -3,6 +3,7 @@
   width: 1130px;
   margin: 50px auto;
   min-height:200px;
+  border-radius: 12px;;
 }
 
 .trackContainer {
@@ -20,14 +21,24 @@
   width: 60px;
   height: 60px;
   border-radius:50%;
-  border: 1px solid #aaa;
+  border: 1px solid #000;
+  background-color: #ffdeeb;
   cursor: pointer;
 }
 
 .prev {
   left: -30px;
+  color: #000;
 }
 
 .next {
   right: -30px;
+  color: #000;
+}
+
+@media screen and (max-width: 480px) {
+  .listContainer {
+    overflow:scroll;
+    width: 480px;
+  }
 }

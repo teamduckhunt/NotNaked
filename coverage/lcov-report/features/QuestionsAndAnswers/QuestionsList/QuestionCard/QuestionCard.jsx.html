@@ -23,30 +23,54 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
+                <span class="strong">70.83% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>17/24</span>
+=======
                 <span class="strong">4.16% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>1/24</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
+                <span class="strong">64.7% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>11/17</span>
+=======
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>0/17</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
+                <span class="strong">28.57% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>2/7</span>
+=======
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>0/7</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         
             
             <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
+                <span class="strong">70.83% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>17/24</span>
+=======
                 <span class="strong">4.16% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>1/24</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         
             
@@ -61,7 +85,11 @@
             </div>
         </template>
     </div>
+<<<<<<< HEAD
+    <div class='status-line medium'></div>
+=======
     <div class='status-line low'></div>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -212,6 +240,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+=======
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -237,6 +292,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -280,7 +336,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-yes">20x</span>
+=======
 <span class="cline-any cline-no">&nbsp;</span>
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -336,6 +396,37 @@ import styles from './QuestionCard.module.css';
 import Button from '../../../UI/Button.jsx';
 import AddQA from '../../QAModals/AddQA.jsx';
 &nbsp;
+<<<<<<< HEAD
+export default function QuestionCard({ q, p }) {
+  const { data, error, isLoading } = useAnswerListQuery(q.question_id);
+  const { data: product } = useProductInformationByIdQuery(p);
+  const [addHelpful] = useAddQuestionHelpfulMutation();
+  const [reportQuestion] = useReportQuestionMutation();
+&nbsp;
+  const [numberOfAnswers, setNumberOfAnswers] = useState(2);
+  const [disableMoreAnswersButton, setDisableMoreAnswersButton] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [disableYes, setDisableYes] = useState(false);
+&nbsp;
+  const handleModalToggle = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >    setToggleModal(!toggleModal);</span>
+  };
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (error) {
+<span class="cstat-no" title="statement not covered" >    return &lt;&gt;Oh no, there was an error&lt;/&gt;;</span>
+  }
+&nbsp;
+  if (isLoading) {
+    return &lt;&gt;Loading...&lt;/&gt;;
+  }
+&nbsp;
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (data) {
+    const answers = data.results;
+    return (
+      &lt;&gt;
+        {toggleModal &amp;&amp; (
+<span class="branch-1 cbranch-no" title="branch not covered" >          &lt;AddQA</span>
+=======
 export default function <span class="fstat-no" title="function not covered" >QuestionCard(</span>{ q, p }) {
   const { data, error, isLoading } = <span class="cstat-no" title="statement not covered" >useAnswerListQuery(q.question_id);</span>
   const { data: product } = <span class="cstat-no" title="statement not covered" >useProductInformationByIdQuery(p);</span>
@@ -365,6 +456,7 @@ export default function <span class="fstat-no" title="function not covered" >Que
       &lt;&gt;
         {toggleModal &amp;&amp; (
           &lt;AddQA
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             handleModalToggle={handleModalToggle}
             ID={q.question_id}
             questionBody={q.question_body}
@@ -402,10 +494,17 @@ export default function <span class="fstat-no" title="function not covered" >Que
         &lt;br /&gt;
         &lt;div id="answer"&gt;
           {answers.length === 0
+<<<<<<< HEAD
+          &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;strong&gt;This question has no answers :(&lt;/strong&gt;}</span>
+          {answers.length &gt; 0
+          &amp;&amp; &lt;strong&gt;&lt;u&gt;Answers&lt;/u&gt;&lt;/strong&gt;}
+          {answers.slice(0, numberOfAnswers).map((a) =&gt; &lt;AnswerCard key={a.answer_id} a={a} /&gt;)}
+=======
           &amp;&amp; &lt;strong&gt;This question has no answers :(&lt;/strong&gt;}
           {answers.length &gt; 0
           &amp;&amp; &lt;strong&gt;&lt;u&gt;Answers&lt;/u&gt;&lt;/strong&gt;}
           {answers.slice(0, numberOfAnswers).map(<span class="fstat-no" title="function not covered" >(a</span>) =&gt; <span class="cstat-no" title="statement not covered" >&lt;AnswerCard key={a.answer_id} a={a} /&gt;)</span>}
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
           &lt;br /&gt;
           {numberOfAnswers &lt; answers.length
         &amp;&amp; (
@@ -417,9 +516,15 @@ export default function <span class="fstat-no" title="function not covered" >Que
             LOAD MORE ANSWERS
           &lt;/Button&gt;
         )}
+<<<<<<< HEAD
+          {(numberOfAnswers &gt; answers.length &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >answers.length &gt;= 2)</span>
+        &amp;&amp; (
+<span class="branch-2 cbranch-no" title="branch not covered" >          &lt;Button</span>
+=======
           {(numberOfAnswers &gt; answers.length &amp;&amp; answers.length &gt;= 2)
         &amp;&amp; (
           &lt;Button
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >              setNumberOfAnswers(2);</span>
             }}
@@ -445,7 +550,11 @@ QuestionCard.propTypes = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+<<<<<<< HEAD
+                at Tue Jul 19 2022 20:43:00 GMT-0700 (Pacific Daylight Time)
+=======
                 at Tue Jul 19 2022 21:28:40 GMT-0700 (Pacific Daylight Time)
+>>>>>>> c11122d75faeb85de63d0e8a3f9533fa90572796
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

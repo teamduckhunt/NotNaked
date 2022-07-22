@@ -1,20 +1,39 @@
 .question {
-  display: flex;
+  display: grid;
+  grid-template-columns: 5fr 1fr 0.6fr;
+  font-weight: 700;
+  font-size: large;
+  box-sizing: border-box;
+  padding-right: 12px;
 }
 
 .helpful {
-  margin-left: 10%;
+  font-weight: normal;
+  font-size: smaller;
   margin-right: 1%;
+  justify-self: end;
 }
 
 .add {
-  border-left: thick double white;
-  padding-left: 1%;
+  font-weight: normal;
+  font-size: smaller;
+  border-left: thick double black;
+  padding-left: 10px;
+  justify-self: end;
 }
 
 .yes {
   line-height: 2px;
+  font-size: 100%;
   background-color: transparent;
   border-color: transparent;
-  font-size: medium;
+  justify-self: end;
+}
+
+.answer {
+  font-weight: normal;
+}
+
+.answerHeader {
+  font-weight: 700;
 }

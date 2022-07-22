@@ -1,11 +1,13 @@
+/*************** Product Card ***************/
 .product_card_ctn {
   width: 228px;
   height: 300px;
   flex-shrink: 0;
   padding-right: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc;;
   border-radius: 0.5rem;
   margin-right: 50px;
+  letter-spacing: 1px;
 }
 
 .product_card {
@@ -21,24 +23,23 @@
   flex-shrink: 0;
 }
 
+/*************** Product Card Header ***************/
+
 .product_card_header {
   width: 228px;
   height: 120px;
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex: 1;
   position: relative;
 }
 
-.product_img {
-  width: 100%;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  cursor: pointer;
+.product_card_header, .product_action_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .product_action_button {
   position: absolute;
@@ -47,9 +48,6 @@
   border-radius: 50%;
   top: 6px;
   right: -6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 36px;
   width:50px;
   height:50px;
@@ -62,11 +60,11 @@
   cursor: pointer;
 }
 
+/*************** Product Card Body (Details) ***************/
 .product_card_body {
   flex: 0 0 80px;
-  /* flex-basis: 100px;
-  flex-grow: 0; */
-  background-color: #fff;
+  color: #fff;
+  background-color: rgba(0,0,0,0.7);
   padding: 10px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -75,19 +73,25 @@
 .category {
   font-size: 0.512rem;
   font-weight: 700;
-  color: rgba(0,0,0,0.5)
+  color: #fff;
 }
 .name {
   font-size: 0.8rem;
   font-weight: 700;
-  padding: 8px 0px;
+  padding: 10px 0px;
 }
 .price {
   font-size:0.64rem;
-  padding-bottom: 6px;
+  padding-bottom: 10px;
   font-weight: 400;
 }
+.slogan {
+  font-style: italic;
+  font-size: 0.64rem;
+  padding: 4px;
+}
 
+/*************** IRON-MAN!!!! ***************/
 .ironMan {
   width: 1rem;
   height: 1rem;
@@ -110,4 +114,42 @@
 
 .ironMan2 :hover{
   cursor: pointer;
+}
+
+/*************** Error and Loading ***************/
+.no_product {
+  font-weight: 500;
+  width: 228px;
+  height: 300px;
+  flex-shrink: 0;
+  padding-right: 15px;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  margin-right: 50px;
+}
+.noImage {
+  display: inline-block;
+  color: white;
+  padding: 8px;
+  background-color: rgba(214, 51, 108, 0.6);
+}
+
+.no_product, .noImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*************** Media Query ***************/
+
+@media screen and (max-width: 480px) {
+  .product_card_ctn {
+
+  }
+
+  .product_card {
+
+  }
+
 }

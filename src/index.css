@@ -19,9 +19,9 @@
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	font-family: 'Inter', sans-serif;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 :global(article), :global(aside), :global(details), :global(figcaption), :global(figure),
 :global(footer), :global(header), :global(hgroup), :global(menu), :global(nav), :global(section) {
@@ -44,4 +44,12 @@
 :global(table) {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	font-family: 'Inter', sans-serif;
+	overflow-x: hidden;
+	box-sizing: border-box;
 }

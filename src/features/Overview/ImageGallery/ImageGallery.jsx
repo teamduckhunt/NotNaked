@@ -78,6 +78,7 @@ export default function ImageGallery({ currentViewItemId }) {
       return currentImage.slice(start, end);
     };
 
+    console.log(currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60'));
     return (
       <div className={bigPicClass}>
         <button onClick={() => { toggleClass(); }} className={styles.expandButton} type="button">
@@ -89,14 +90,14 @@ export default function ImageGallery({ currentViewItemId }) {
             if (current === index) {
               return (
                 <div key={index}>
-                  <img src={currentImage[current].thumbnail_url} className={styles.miniCarouselPic} alt="" />
+                  <img src={currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} alt="" />
                   <div className={styles.currentPhotoMarker} />
                 </div>
               );
             }
             if (index < 5) {
               return (
-                <img src={photo.thumbnail_url} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
+                <img src={photo.thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
               );
             }
           })}
@@ -107,7 +108,7 @@ export default function ImageGallery({ currentViewItemId }) {
         </div>
         <div className={styles.actualPic}>
           {currentImage.map((photo, index) => (
-            index === current && <img src={photo.url} className={styles.actualPicInside} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
+            index === current && <img src={photo.url.replace(/(?<=w=)(.*)(?=&)/, '400')} className={styles.actualPicInside} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
           ))}
         </div>
         <div>

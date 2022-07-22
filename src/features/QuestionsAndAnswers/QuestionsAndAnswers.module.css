@@ -1,7 +1,55 @@
-.qa {
-  margin-left: 28%;
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+  .qa {
+    margin-left: 10%;
+  }
+
+  .notbold {
+    font-weight: normal;
+  }
 }
 
-.notbold {
-  font-weight: normal;
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+  .qa {
+    margin-left: 10%;
+  }
+
+  .notbold {
+    font-weight: normal;
+  }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px){
+  .qa {
+    margin-left: 10%;
+  }
+
+  .notbold {
+    font-weight: normal;
+  }
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px){
+  .qa {
+    margin: center;
+  }
+
+  .notbold {
+    font-weight: normal;
+  }
+}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+  .qa {
+    margin-left: 5%;
+    width: 1150px;
+  }
+
+  .notbold {
+    font-weight: normal;
+  }
 }

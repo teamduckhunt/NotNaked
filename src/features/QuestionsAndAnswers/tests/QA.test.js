@@ -14,7 +14,8 @@ import 'whatwg-fetch';
 // import { act } from 'react-dom/test-utils';
 import { reducer, screen, waitForElementToBeRemoved } from '../../../app/test-utils.jsx';
 import QuestionsAndAnswers from '../QuestionsAndAnswers.jsx';
-import QuestionsList from '../QuestionsList/QuestionsList.jsx';
+// import App from '../../../App.jsx';
+import AddQA from '../QAModals/AddQA.jsx';
 
 jest.mock('../../../app/redux-hooks');
 
@@ -36,7 +37,7 @@ describe('Testing Q&A', () => {
     expect(screen.getByPlaceholderText('HAVE A QUESTION? SEARCH FOR ANSWERS…')).toBeInTheDocument();
   });
 
-  test('Renders QA List', async () => {
+  test('Renders Question List', async () => {
     expect(screen.getByText(/Q: Do you know the muffin man?/i)).toBeInTheDocument();
   });
 
@@ -49,25 +50,34 @@ describe('Testing Q&A', () => {
   });
 });
 
-// describe('Testing List', () => {
+// describe('Testing Modal', () => {
 //   beforeEach(async () => {
-//     reducer(<QuestionsList currentViewItemId={40344} />);
-//     await waitForElementToBeRemoved(() => screen.queryByText(/Loading/i), { timeout: 3000 });
+//     reducer(
+//       <AddQA ID={40344} handleModalToggle={() => {}} product="Test" />,
+//     );
 //   });
 
 //   afterEach(() => {
 //     jest.clearAllMocks();
 //   });
 
-//   test('Renders QA List', async () => {
-//     expect(screen.getByText(/Q: Do you know the muffin man?/i)).toBeInTheDocument();
+//   test('Renders Title', () => {
+//     expect(screen.getByText(/Ask Your Question/i)).toBeInTheDocument();
 //   });
 
-//   test('Renders More Questions Button', async () => {
-//     expect(screen.getByText('MORE ANSWERED QUESTIONS')).toBeInTheDocument();
+//   test('Renders Subtitle', () => {
+//     expect(screen.getByText(/About the product/i)).toBeInTheDocument();
 //   });
 
-//   test('Renders Add A Question Button', async () => {
-//     expect(screen.getByText('ADD A QUESTION')).toBeInTheDocument();
+//   test('Renders Username Input', () => {
+//     expect(screen.getByText(/Username:/i)).toBeInTheDocument();
+//   });
+
+//   test('Renders Email Input', () => {
+//     expect(screen.getByText(/Email:/i)).toBeInTheDocument();
+//   });
+
+//   test('Renders Submit Button', () => {
+//     expect(screen.getByText(/Submit/i)).toBeInTheDocument();
 //   });
 // });

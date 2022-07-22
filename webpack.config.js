@@ -1,4 +1,6 @@
-// require("dotenv").config();
+const { DefinePlugin } = require('webpack');
+
+require('dotenv').config();
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,6 +9,11 @@ module.exports = {
   entry: './src/index.jsx',
   devServer: {
     historyApiFallback: true,
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
   module: {
     rules: [
@@ -58,7 +65,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin(),
-
+    // new EnvironmentPlugin(['NODE_ENV', 'API_KEY']),
+    new DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 };

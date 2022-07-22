@@ -1,27 +1,29 @@
 .info {
   display: flex;
-  width: 630px;
   margin-left: 2%;
-  border-bottom: 3.5px solid white;
+  border-bottom: 3px solid black;
   padding-bottom: 1%;
+  font-weight: normal;
+  font-size: small;
 }
 
 .body {
   display: flex;
   margin-left: 2%;
+  font-weight: normal;
 }
 
 .photo {
   margin-left: 2%;
   margin-bottom: 1%;
-  width: 150px;
-  height: 100px;
+  width: 10rem;
+  height: 6rem;
   border: solid black;
 }
 
 .details {
-  border-left: thick double white;
-  display:flex;
+  border-left: thick double black;
+  display: flex;
   padding-left: 2%;
   margin-left: 1%;
 }
@@ -30,5 +32,5 @@
   line-height: 2px;
   background-color: transparent;
   border-color: transparent;
-  font-size: medium;
+  font-size: small;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable arrow-parens */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -15,48 +16,62 @@ import styles from './AnswerCard.module.css';
 import {
   useAddAnswerHelpfulMutation, useReportAnswerMutation,
 } from '../../../../services/questions';
+import Image from '../../QAModals/Image.jsx';
 
-export default function AnswerCard({ a }) {
+export default function AnswerCard({ answer }) {
   const [addHelpful] = useAddAnswerHelpfulMutation();
   const [reportAnswer] = useReportAnswerMutation();
 
   const [disableYes, setDisableYes] = useState(false);
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-  const date = new Date(a.date).toLocaleDateString([], dateOptions);
+  const date = new Date(answer.date).toLocaleDateString([], dateOptions);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [image, setImage] = useState('');
+
+  const handleModalToggle = (photo) => {
+    setToggleModal(!toggleModal);
+    setImage(photo);
+  };
 
   return (
     <div>
+      {toggleModal && (
+        <Image
+          handleModalToggle={handleModalToggle}
+          image={image}
+        />
+      )}
       <br />
       <p className={styles.body}>
-        {a.body}
+        {answer.body}
       </p>
       <br />
-      {a.photos.length > 0
+      {answer.photos.length > 0
         // eslint-disable-next-line max-len
-        && a.photos.map(p => <img key={p.id} className={styles.photo} src={p.url} alt={a.answerer_name} />)}
+        && answer.photos.map(photo => <img key={photo.id} onClick={() => handleModalToggle(photo.url)} className={styles.photo} src={photo.url} alt={answer.answerer_name} />)}
       <br />
       <div className={styles.info} id="info">
         <p>
-          by {a.answerer_name.toLowerCase() === 'seller' && <strong>{a.answerer_name}</strong>}
-          {a.answerer_name.toLowerCase() !== 'seller' && `${a.answerer_name}`},
+          by {answer.answerer_name.toLowerCase() === 'seller' && <strong>{answer.answerer_name}</strong>}
+          {answer.answerer_name.toLowerCase() !== 'seller' && `${answer.answerer_name}`},
           &nbsp;&nbsp;{date}
         </p>
         <p className={styles.details}>
-          Helpful?&nbsp;&nbsp;
+          Helpful?&nbsp;
           <button
             className={styles.yes}
             onClick={() => {
-              addHelpful(a.answer_id);
+              addHelpful(answer.answer_id);
               setDisableYes(true);
             }}
             type="button"
             disabled={disableYes}
           >
-            <u>Yes</u> ({a.helpfulness})
+            <u>Yes</u> ({answer.helpfulness})
           </button>
         </p>
         <p className={styles.details}>
-          <u onClick={() => reportAnswer(a.answer_id)}>Report</u>
+          <u onClick={() => reportAnswer(answer.answer_id)}>Report</u>
         </p>
       </div>
     </div>
@@ -65,5 +80,5 @@ export default function AnswerCard({ a }) {
 
 AnswerCard.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  a: PropTypes.object.isRequired,
+  answer: PropTypes.object.isRequired,
 };
