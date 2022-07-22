@@ -12,7 +12,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 
 import React, { useState } from 'react';
-import { Image, Transformation } from 'cloudinary-react';
+import { Image } from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import styles from './AnswerCard.module.css';
 import {
@@ -50,7 +50,18 @@ export default function AnswerCard({ answer }) {
       <br />
       {answer.photos.length > 0
         // eslint-disable-next-line max-len
-        && answer.photos.map(photo => <Image key={photo.id} onClick={() => handleModalToggle(photo.url)} className={styles.photo} src={photo.url} alt={answer.answerer_name} />)}
+        && answer.photos.map(photo => (
+          <Image
+            loading="lazy"
+            width="100"
+            height="100"
+            key={photo.id}
+            onClick={() => handleModalToggle(photo.url)}
+            className={styles.photo}
+            src={photo.url}
+            alt={answer.answerer_name}
+          />
+        ))}
       <br />
       <div className={styles.info} id="info">
         <p>
