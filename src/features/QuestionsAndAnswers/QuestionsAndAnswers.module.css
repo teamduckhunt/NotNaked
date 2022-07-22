@@ -45,7 +45,7 @@
 /* Media Query for Large screens */
 @media (min-width: 1281px) {
   .qa {
-    margin-left: 10%;
+    margin-left: 5%;
     width: 1150px;
   }
 
