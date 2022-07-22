@@ -94,7 +94,6 @@ export default function ImageGallery({ currentViewItemId }) {
       return currentImage.slice(start, end);
     };
 
-    console.log(currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60'));
     if (start !== 0) {
       upArrow = <FaChevronUp onClick={prevSlideMini} className={styles.upArrow} />;
     }
