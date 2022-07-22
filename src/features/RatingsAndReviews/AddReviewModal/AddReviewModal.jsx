@@ -87,10 +87,10 @@ export default class AddReviewModal extends React.Component {
             <h3>
               {`About the ${productName}`}
             </h3>
-            <div>
+            <div className={styles.input_rating}>
               <StarRating onChange={this.handleRatingSelection} />
             </div>
-            <div>
+            <div className={`${styles.required} ${styles.input_field}`}>
               Do you recommend this product ?
               <label>
                 <input
@@ -100,6 +100,7 @@ export default class AddReviewModal extends React.Component {
                   checked={recommend === true}
                   onChange={this.handleRecommendOptionChange}
                   className="recommend_input"
+                  required
                 />
                 Yes
               </label>
@@ -111,6 +112,7 @@ export default class AddReviewModal extends React.Component {
                   checked={recommend === false}
                   onChange={this.handleRecommendOptionChange}
                   className="recommend_input"
+                  required
                 />
                 No
               </label>
@@ -119,7 +121,7 @@ export default class AddReviewModal extends React.Component {
               characteristicId={characteristicId}
               handleCharacteristicChange={this.handleCharacteristicChange}
             />
-            <div>
+            <div className={`${styles.required} ${styles.input_field}`}>
               <textarea
                 value={summary}
                 placeholder="Review Title"
@@ -127,9 +129,10 @@ export default class AddReviewModal extends React.Component {
                 cols="60"
                 rows="2"
                 onChange={(e) => this.handleSummaryChange(e)}
+                required
               />
             </div>
-            <div>
+            <div className={`${styles.required} ${styles.input_field}`}>
               <textarea
                 value={body}
                 placeholder="Why do you like the product?"
@@ -138,35 +141,42 @@ export default class AddReviewModal extends React.Component {
                 cols="60"
                 rows="5"
                 onChange={(e) => this.handleBodyChange(e)}
+                required
               />
-              <div className={styles.charReq}>
-                {body.length < 50 && (
-                  <span className={styles.charLeft}>
-                    {`
+            </div>
+            <div className={styles.charReq}>
+              {body.length < 50 && (
+                <span className={styles.charLeft}>
+                  {`
                     Minimum required characters left:
                     ${0 + body.length}
                     / 50
                     `}
-                  </span>
-                )}
-              </div>
+                </span>
+              )}
             </div>
             <div>
               {'Add an image, \'Coming Soon\''}
             </div>
-            <input
-              type="text"
-              value={name}
-              placeholder="What is your nickname"
-              onChange={(e) => this.handleNameChange(e)}
-            />
-            <input
-              type="email"
-              value={email}
-              placeholder="username@gmail.com"
-              onChange={(e) => this.handleEmailChange(e)}
-            />
-            <Button type="submit" onClick={this.handleSubmit}>
+            <div className={`${styles.required} ${styles.input_field}`}>
+              <input
+                type="text"
+                value={name}
+                placeholder="What is your nickname"
+                onChange={(e) => this.handleNameChange(e)}
+                required
+              />
+            </div>
+            <div className={`${styles.required} ${styles.input_field}`}>
+              <input
+                type="email"
+                value={email}
+                placeholder="username@gmail.com"
+                onChange={(e) => this.handleEmailChange(e)}
+                required
+              />
+            </div>
+            <Button type="submit">
               Send Review
             </Button>
           </form>
