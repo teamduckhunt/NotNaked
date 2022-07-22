@@ -77,8 +77,6 @@ export default function AddToCart({ currentViewItemId }) {
             <select className={styles.quantity}>
               <option defaultValue="">{defaultQuant}</option>
               {size ? Object.keys(curStyle.skus).map((item) => {
-                console.log(1, size);
-                console.log(2, curStyle.skus[item].size);
                 if (curStyle.skus[item].size === size) {
                   const amount = curStyle.skus[item].quantity;
                   const quant = amount > 15 ? [...Array(15).keys()] : [...Array(amount).keys()];

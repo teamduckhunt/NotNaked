@@ -13,9 +13,8 @@
 }
 
 .rr_header {
-  font-weight: normal;
-  justify-content: flex-start;
-  align-items: flex-start;
+  font-weight: 700;
+  font-size: 1.25rem;
 }
 
 .rr_breakdowns {

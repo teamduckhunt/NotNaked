@@ -38,7 +38,7 @@ export default function ReviewCard({ review }) {
     const toShow = `${review.body.substring(0, 250)}...`;
     return (
       <div>
-        <p>
+        <p className={styles.showBtnCtn}>
           {toShow}
         </p>
         <Button onClick={() => { setShowBody(true); }}>Show More...</Button>
