@@ -1,21 +1,19 @@
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
-import React, { useRef } from 'react';
+import React from 'react';
 import { useProductInformationByIdQuery } from '../../../services/products.js';
 import styles from './ProductInfo.module.css';
 import RatingToDuckFeet from '../../../helpers/RatingToDuckFeet.jsx';
 import { useGetReviewMetadataQuery } from '../../../services/reviews';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating';
 
-export default function ProductInfo({ currentViewItemId, reviewSection, scrollToElement }) {
-  // const reviewSection = useRef(null);
+export default function ProductInfo({ currentViewItemId, scrollToElement }) {
   const { data: metaData } = useGetReviewMetadataQuery(currentViewItemId);
   const {
     data: product,
     error,
     isLoading,
   } = useProductInformationByIdQuery(currentViewItemId);
-  // const window = document.defaultView;
 
   if (error) {
     return <div>There is an error!</div>;
