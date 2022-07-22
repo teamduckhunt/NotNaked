@@ -64,7 +64,9 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      lang: 'en',
+    }),
     // new EnvironmentPlugin(['NODE_ENV', 'API_KEY']),
     new DefinePlugin({
       'process.env': JSON.stringify(process.env),
