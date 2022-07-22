@@ -132,13 +132,10 @@ export default function ImageGallery({ currentViewItemId }) {
 
             if (current === index) {
               return (
-                <>
-                  <img src={photo.thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60')} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
-                  <div key={index}>
-                    <img src={photo.thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} alt="" />
-                    <div className={styles.currentPhotoMarker} />
-                  </div>
-                </>
+                <div key={index}>
+                  <img src={photo.thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} alt="" />
+                  <div className={styles.currentPhotoMarker} />
+                </div>
               );
             }
             return (
