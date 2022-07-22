@@ -97,7 +97,6 @@ margin-left: 5%;
 .ct_tableHead{
   display: flex;
   justify-content: space-around;
-  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr, */
 }
 
 .ct_tableRows {
