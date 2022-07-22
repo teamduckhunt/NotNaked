@@ -35,7 +35,9 @@ export default function RelatedProductList({ currentViewItemId }) {
 
   return (
     <div className={styles.list_container}>
-      <h3 className={styles.list_title}>Related Products</h3>
+      <div className={styles.titleCtn}>
+        <h3 className={styles.list_title}>Related Products</h3>
+      </div>
       <ListContainer
         start={start}
         end={end}
