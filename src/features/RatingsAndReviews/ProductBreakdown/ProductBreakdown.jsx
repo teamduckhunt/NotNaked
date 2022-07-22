@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useGetReviewMetadataQuery } from '../../../services/reviews.js';
 import ProductScaleFeature from './ProductScaleFeature/ProductScaleFeature.jsx';
+import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
+import ErrorMessage from '../../UI/ErrorMessage.jsx';
 import styles from './ProductBreakdown.module.css';
 
 export default function ProductBreakdown({ productId }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(productId);
 
   if (error) {
-    return <>Oh no, there was an error loading the product breakdown.</>;
+    return <div className={styles.no_product}><ErrorMessage /></div>;
   }
 
   if (isLoading) {
-    return <>Loading...</>;
+    return <div className={styles.no_proudct}><LoadingSpinner /></div>;
   }
 
   if (data) {

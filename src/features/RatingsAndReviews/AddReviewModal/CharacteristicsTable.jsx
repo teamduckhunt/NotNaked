@@ -1,18 +1,66 @@
+/* eslint-disable react/jsx-indent */
 /* eslint-disable max-len */
 /* eslint-disable jsx-quotes */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import CharacteristicTableRow from './CharacteristicTableRow.jsx';
 import styles from './AddReviewModal.module.css';
-import data from "./characteristics-data.json";
 
-function CharacteristicsTable() {
-  const [characteristicDescription, setCharacteristicDescription] = useState(data);
-  const descriptionName = ['size', 'width', 'comfort', 'quality', 'length', 'fit'];
+function CharacteristicsTable({ characteristicId, handleCharacteristicChange }) {
+  const newObject = Object.keys(characteristicId).map((type) => {
+    let leftDescription = '';
+    let middleDescription = '';
+    let rightDescription = '';
+
+    switch (type) {
+      case 'Fit':
+        leftDescription = 'Runs tight';
+        middleDescription = 'Perfect';
+        rightDescription = 'Runs long';
+        break;
+      case 'Width':
+        leftDescription = 'Too narrow';
+        middleDescription = 'Perfect';
+        rightDescription = 'Too wide';
+        break;
+      case 'Comfort':
+        leftDescription = 'Uncomfortable';
+        middleDescription = 'Ok';
+        rightDescription = 'Perfect';
+        break;
+      case 'Size':
+        leftDescription = 'Too Small';
+        middleDescription = 'Perfect';
+        rightDescription = 'Too Large';
+        break;
+      case 'Quality':
+        leftDescription = 'Poor';
+        middleDescription = 'What I expected';
+        rightDescription = 'Perfect';
+        break;
+      case 'Length':
+        leftDescription = 'Runs short';
+        middleDescription = 'Perfect';
+        rightDescription = 'Runs long';
+        break;
+      default:
+        break;
+    }
+
+    return ({
+      name: type,
+      id: characteristicId[type].id,
+      leftDescription,
+      middleDescription,
+      rightDescription,
+    });
+  });
+
   return (
     <div>
       <table>
         <thead>
-          <tr>
+          <tr className={styles.ct_tableHead}>
             <th>
               1
             </th>
@@ -31,61 +79,22 @@ function CharacteristicsTable() {
           </tr>
         </thead>
         <tbody>
-          {characteristicDescription.map((description) => (
-            <tr>
-              <td>
-                {description.one}
-                <input
-                  type='radio'
-                  name='one' /* {descriptionName[i]} */
-                  value='true'
-                // checked={recommend === true}
-                // onChange={this.handleRecommendOptionChange}
-                />
-              </td>
-              <td>{description.two}</td>
-              <input
-                type='radio'
-                name='two'
-                value='true'
-              // checked={recommend === true}
-              // onChange={this.handleRecommendOptionChange}
-              />
-              <td>{description.three}</td>
-              <input
-                type='radio'
-                name='one'
-                value='true'
-              // checked={recommend === true}
-              // onChange={this.handleRecommendOptionChange}
-              />
-              <td>{description.four}</td>
-              <input
-                type='radio'
-                name='one'
-                value='true'
-              // checked={recommend === true}
-              // onChange={this.handleRecommendOptionChange}
-              />
-              <td>{description.five}</td>
-              <input
-                type='radio'
-                name='one'
-                value='true'
-              // checked={recommend === true}
-              // onChange={this.handleRecommendOptionChange}
-              />
-            </tr>
+          {newObject.map((characteristicData) => (
+            <CharacteristicTableRow
+              characteristicData={characteristicData}
+              key={characteristicData.id}
+              handleCharacteristicChange={handleCharacteristicChange}
+            />
           ))}
         </tbody>
       </table>
-
     </div>
   );
 }
 
 export default CharacteristicsTable;
 
-
-// characteristics	object
-// Object of keys representing characteristic_id and values representing the review value for that characteristic. { "14": 5, "15": 5 //...}
+CharacteristicsTable.propTypes = {
+  characteristicId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
+  handleCharacteristicChange: PropTypes.func.isRequired,
+};

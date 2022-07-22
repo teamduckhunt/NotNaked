@@ -10,6 +10,8 @@ import getAverageRating from '../../../helpers/getAverageRating/getAverageRating
 import { setFilterByStar } from './ratingBreakdownSlice.js';
 import RatingBarFeature from './RatingBarFeature/RatingBarFeature.jsx';
 import RatingToDuckFeet from '../../../helpers/RatingToDuckFeet.jsx';
+import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
+import ErrorMessage from '../../UI/ErrorMessage.jsx';
 import styles from './RatingBreakdown.module.css';
 
 export default function RatingBreakdown({ productId, reviewCount }) {
@@ -66,11 +68,11 @@ export default function RatingBreakdown({ productId, reviewCount }) {
   const resetButton = (Object.values(starFilter).includes(true));
 
   if (error) {
-    return <>Oh no, there was an error loading rating breakdown</>;
+    return <div className={styles.no_product}><ErrorMessage /></div>;
   }
 
   if (isLoading || reviewLoading) {
-    return <>Loading...</>;
+    return <div className={styles.no_proudct}><LoadingSpinner /></div>;
   }
 
   if (data || reviewData) {
@@ -208,7 +210,3 @@ RatingBreakdown.propTypes = {
   productId: PropTypes.number.isRequired,
   reviewCount: PropTypes.number.isRequired,
 };
-
-// Strategy Notes :
-
-// add message for the filters that have been currently applied.
