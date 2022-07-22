@@ -26,7 +26,6 @@ export default function ListItemCard({
   const handleProductClick = (e) => {
     e.preventDefault();
     if (e.currentTarget.id === product.name) {
-      console.log('product');
       handleOnClick();
       e.stopPropagation();
     }
