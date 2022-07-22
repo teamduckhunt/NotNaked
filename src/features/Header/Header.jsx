@@ -5,7 +5,7 @@ import name from '../../../assets/nakedLogo.png';
 
 export default function Header() {
   return (
-    <div>
+    <>
       <div className={styles.header}>
         <div className={styles.brandLogo}>
           <img src={logo} alt="" className={styles.logo} />
@@ -16,6 +16,6 @@ export default function Header() {
       {/* <div className={styles.announcement}>
         SITE WIDE ANNOUNCEMENT MESSAGE - SALE! / DISCOUNT OFFER - NEW PRODUCT HIGHLIGHT
       </div> */}
-    </div>
+    </>
   );
 }
