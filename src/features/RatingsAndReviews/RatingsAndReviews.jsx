@@ -6,17 +6,19 @@ import SortItems from './SortItems/SortItems.jsx';
 import RatingBreakdown from './RatingBreakdown/RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown/ProductBreakdown.jsx';
 import { useGetReviewMetadataQuery } from '../../services/reviews.js';
+import LoadingSpinner from '../UI/LoadingSpinner.jsx';
+import ErrorMessage from '../UI/ErrorMessage.jsx';
 import styles from './RatingsAndReviews.module.css';
 
 export default function RatingsAndReviews({ currentViewItemId, reviewSection }) {
   const { data, error, isLoading } = useGetReviewMetadataQuery(currentViewItemId);
 
   if (error) {
-    return <>Oh no, there was an error loading rating breakdown</>;
+    return <div className={styles.no_product}><ErrorMessage /></div>;
   }
 
   if (isLoading) {
-    return <>Loading...</>;
+    return <div className={styles.no_proudct}><LoadingSpinner /></div>;
   }
 
   if (data) {
