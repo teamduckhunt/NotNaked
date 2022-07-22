@@ -29,7 +29,6 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
   const image = styles && (styles.results[0].photos[0].thumbnail_url || 'https://picsum.photos/200');
   const imageAvailable = image === 'https://picsum.photos/200';
   const handleModalToggle = () => {
-    console.log('toggled');
     setToggleModal(!toggleModal);
   };
 
