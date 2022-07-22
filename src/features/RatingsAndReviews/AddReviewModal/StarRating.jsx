@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import EmptyDuck from '../../../../assets/duckFeet-rating/empty.svg';
-import FullDuck from '../../../../assets/duckFeet-rating/empty.svg';
+import EmptyDuck from '../../../../assets/duckfeet-rating/empty.svg';
+import FullDuck from '../../../../assets/duckfeet-rating/empty.svg';
 import StarIcon from './StarIcon.jsx'
 import styles from './AddReviewModal.module.css';
 
