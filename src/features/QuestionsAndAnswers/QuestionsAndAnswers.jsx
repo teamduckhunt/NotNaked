@@ -10,9 +10,9 @@ import styles from './QuestionsAndAnswers.module.css';
 export default function QuestionsAndAnswers({ currentViewItemId }) {
   return (
     <div className={styles.qa} id="QA">
-      <h5 className={styles.notbold}>
+      <h3 className={styles.bold}>
         QUESTIONS & ANSWERS
-      </h5>
+      </h3>
       <br />
       <Search />
       <QuestionList key={currentViewItemId} currentViewItemId={currentViewItemId} />

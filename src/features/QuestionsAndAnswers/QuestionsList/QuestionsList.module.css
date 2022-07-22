@@ -4,13 +4,13 @@
   overflow-y: auto;
 }
 
-.moreButton {
+.addButton, .moreButton {
   font-size: 90%;
+  margin-top: 1rem;
 }
 
 .addButton {
-  margin-left: 1%;
-  font-size: 90%;
+  margin-left: 16px;
 }
 
 .no_product {

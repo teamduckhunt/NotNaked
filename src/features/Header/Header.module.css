@@ -1,14 +1,26 @@
 .header {
   display: flex;
   background-color: #ffdeeb;
+  width: 100vw;
+}
+
+.brandLogo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 8px;
+  margin-left: 12px;
 }
 
 .logo {
-  width: 50px;
+  width: 100px;
+  height: 100px;
 }
 
 .name {
-  width: 70px;
+  /* TODO: increase to 150-200px */
+  width: 100px;
+  height: 100px;
 }
 
 .search {

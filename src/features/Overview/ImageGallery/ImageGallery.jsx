@@ -113,7 +113,7 @@ export default function ImageGallery({ currentViewItemId }) {
             if (current === index + start) {
               return (
                 <div key={index}>
-                  <img src={currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} alt="" />
+                  <img src={currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60')} className={styles.miniCarouselPic} alt="" />
                   <div className={styles.currentPhotoMarker} />
                 </div>
               );
