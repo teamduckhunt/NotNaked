@@ -83,14 +83,14 @@ export default class AddReviewModal extends React.Component {
       <Modal>
         <div>
           <form onSubmit={this.handleSubmit} className={styles.add_review_box}>
-            <h1>Write Your Review</h1>
-            <h3>
+            <h1 className={styles.title}>Write Your Review</h1>
+            <h3 className={styles.subtitle}>
               {`About the ${productName}`}
             </h3>
-            <div>
+            <div className={styles.input_rating}>
               <StarRating onChange={this.handleRatingSelection} />
             </div>
-            <div>
+            <div className={`${styles.required} ${styles.input_field}`}>
               Do you recommend this product ?
               <label>
                 <input
@@ -100,6 +100,7 @@ export default class AddReviewModal extends React.Component {
                   checked={recommend === true}
                   onChange={this.handleRecommendOptionChange}
                   className="recommend_input"
+                  required
                 />
                 Yes
               </label>
@@ -111,6 +112,7 @@ export default class AddReviewModal extends React.Component {
                   checked={recommend === false}
                   onChange={this.handleRecommendOptionChange}
                   className="recommend_input"
+                  required
                 />
                 No
               </label>
@@ -118,8 +120,9 @@ export default class AddReviewModal extends React.Component {
             <CharacteristicsTable
               characteristicId={characteristicId}
               handleCharacteristicChange={this.handleCharacteristicChange}
+              required="required"
             />
-            <div>
+            <div className={`${styles.required} ${styles.input_field}`}>
               <textarea
                 value={summary}
                 placeholder="Review Title"
@@ -127,9 +130,10 @@ export default class AddReviewModal extends React.Component {
                 cols="60"
                 rows="2"
                 onChange={(e) => this.handleSummaryChange(e)}
+                required
               />
             </div>
-            <div>
+            <div className={`${styles.required} ${styles.input_field}`}>
               <textarea
                 value={body}
                 placeholder="Why do you like the product?"
@@ -138,39 +142,46 @@ export default class AddReviewModal extends React.Component {
                 cols="60"
                 rows="5"
                 onChange={(e) => this.handleBodyChange(e)}
+                required
               />
-              <div className={styles.charReq}>
-                {body.length < 50 && (
-                  <span className={styles.charLeft}>
-                    {`
+            </div>
+            <div className={styles.charReq}>
+              {body.length < 50 && (
+                <span className={styles.charLeft}>
+                  {`
                     Minimum required characters left:
                     ${0 + body.length}
                     / 50
                     `}
-                  </span>
-                )}
-              </div>
+                </span>
+              )}
             </div>
-            <div>
+            <div className={styles.image_text}>
               {'Add an image, \'Coming Soon\''}
             </div>
-            <input
-              type="text"
-              value={name}
-              placeholder="What is your nickname"
-              onChange={(e) => this.handleNameChange(e)}
-            />
-            <input
-              type="email"
-              value={email}
-              placeholder="username@gmail.com"
-              onChange={(e) => this.handleEmailChange(e)}
-            />
-            <Button type="submit" onClick={this.handleSubmit}>
+            <div className={`${styles.required} ${styles.input_field}`}>
+              <input
+                type="text"
+                value={name}
+                placeholder="What is your nickname"
+                onChange={(e) => this.handleNameChange(e)}
+                required
+              />
+            </div>
+            <div className={`${styles.required} ${styles.input_field}`}>
+              <input
+                type="email"
+                value={email}
+                placeholder="username@gmail.com"
+                onChange={(e) => this.handleEmailChange(e)}
+                required
+              />
+            </div>
+            <Button type="submit">
               Send Review
             </Button>
           </form>
-          <Button type="button" onClick={() => handleModalToggle()}>
+          <Button type="button" className={styles.close_btn} onClick={() => handleModalToggle()}>
             Close
           </Button>
         </div>
@@ -186,8 +197,3 @@ AddReviewModal.propTypes = {
   productId: PropTypes.number.isRequired,
   addAReview: PropTypes.func.isRequired,
 };
-
-// Notes :
-// Add the error message on submit, if missing fields.
-// Add * to fields that are required.
-// CSS Page

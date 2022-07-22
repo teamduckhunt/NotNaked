@@ -28,7 +28,6 @@ function StarRating({ onChange }) {
   }
 
   const changeRating = (ratingSelection) => {
-    console.log('rating', ratingSelection);
     setRating(ratingSelection);
     changeRatingText(ratingSelection)
     onChange?.(ratingSelection);

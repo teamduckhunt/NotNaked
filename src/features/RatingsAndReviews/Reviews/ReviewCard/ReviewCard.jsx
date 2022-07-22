@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Image } from 'cloudinary-react';
 import Button from '../../../UI/Button.jsx';
 import { useAddHelpfulCountMutation, useReportReviewMutation } from '../../../../services/reviews.js';
 import RatingToDuckFeet from '../../../../helpers/RatingToDuckFeet.jsx';
@@ -73,7 +74,16 @@ export default function ReviewCard({ review }) {
         )}
         {review.photos.length > 0 && review.photos.map((photo) => (
           <div key={photo.id} className={styles.rc_photo} role="button" tabIndex={0} onClick={() => handleModalToggle(photo.url)}>
-            <img src={photo.url} key={photo.id} className={styles.img} alt={review.reviwer_name} />
+            <Image
+              loading="lazy"
+              width="100"
+              height="100"
+              key={photo.id}
+              className={styles.img}
+              src={photo.url}
+              alt={review.reviewer_name}
+            />
+            {/* <img src={photo.url} key={photo.id} className={styles.img} alt={review.reviwer_name} /> */}
           </div>
         ))}
       </div>
