@@ -7,15 +7,15 @@ export default function Header() {
   return (
     <div>
       <div className={styles.header}>
-        <div>
+        <div className={styles.brandLogo}>
           <img src={logo} alt="" className={styles.logo} />
-          <img src={name} alt="" className={styles.name} />
+          <img src={name} alt="" className={styles.logo} />
         </div>
-        <input type="text" className={styles.search} />
+        {/* <input type="text" className={styles.search} /> */}
       </div>
-      <div className={styles.announcement}>
+      {/* <div className={styles.announcement}>
         SITE WIDE ANNOUNCEMENT MESSAGE - SALE! / DISCOUNT OFFER - NEW PRODUCT HIGHLIGHT
-      </div>
+      </div> */}
     </div>
   );
 }

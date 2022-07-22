@@ -47,9 +47,10 @@
 }
 
 body {
+	overflow-x: hidden;
+	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
 	font-family: 'Inter', sans-serif;
-	overflow-x: hidden;
-	box-sizing: border-box;
+	scroll-behavior: smooth;
 }

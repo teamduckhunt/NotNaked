@@ -27,13 +27,17 @@
   font-size: small;
 }
 
+.showBtnCtn {
+  margin-bottom: 0.5rem;
+}
+
 /* Review Body Section
 ======================== */
 
 .rc_body {
   margin-left: 2%;
   margin-bottom: 2%;
-  font-size: small;
+  font-size: 0.8rem;
   flex-wrap: wrap;
 }
 
