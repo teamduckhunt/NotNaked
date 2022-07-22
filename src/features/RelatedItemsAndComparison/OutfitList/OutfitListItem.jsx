@@ -32,7 +32,7 @@ export default function OutfitListItem({ productId, handleDeleteOutfit }) {
       product={data}
       productId={productId}
       averageRating={rating}
-      productImage={image}
+      productImage={image.replace(/(?<=w=)(.*)(?=&)/, '100')}
       imageAvailable={imageAvailable}
       handleOnClick={handleDeleteOutfit}
     >
