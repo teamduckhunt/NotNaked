@@ -54,7 +54,7 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
         product={data}
         averageRating={averageRating}
         productId={productId}
-        productImage={image.replace(/(?<=w=)(.*)(?=&)/, '200')}
+        productImage={image.replace(/(?<=w=)(.*)(?=&)/, '243')}
         imageAvailable={imageAvailable}
         productSalesPrice={styles.results[0].sale_price}
         handleOnClick={handleModalToggle}
