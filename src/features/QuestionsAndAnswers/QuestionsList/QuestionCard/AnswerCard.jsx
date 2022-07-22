@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable arrow-parens */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -15,6 +16,7 @@ import styles from './AnswerCard.module.css';
 import {
   useAddAnswerHelpfulMutation, useReportAnswerMutation,
 } from '../../../../services/questions';
+import Image from '../../QAModals/Image.jsx';
 
 export default function AnswerCard({ a }) {
   const [addHelpful] = useAddAnswerHelpfulMutation();
@@ -23,9 +25,22 @@ export default function AnswerCard({ a }) {
   const [disableYes, setDisableYes] = useState(false);
   const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
   const date = new Date(a.date).toLocaleDateString([], dateOptions);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [image, setImage] = useState('');
+
+  const handleModalToggle = (photo) => {
+    setToggleModal(!toggleModal);
+    setImage(photo);
+  };
 
   return (
     <div>
+      {toggleModal && (
+        <Image
+          handleModalToggle={handleModalToggle}
+          image={image}
+        />
+      )}
       <br />
       <p className={styles.body}>
         {a.body}
@@ -33,7 +48,7 @@ export default function AnswerCard({ a }) {
       <br />
       {a.photos.length > 0
         // eslint-disable-next-line max-len
-        && a.photos.map(p => <img key={p.id} className={styles.photo} src={p.url} alt={a.answerer_name} />)}
+        && a.photos.map(p => <img key={p.id} onClick={() => handleModalToggle(p.url)} className={styles.photo} src={p.url} alt={a.answerer_name} />)}
       <br />
       <div className={styles.info} id="info">
         <p>
@@ -42,7 +57,7 @@ export default function AnswerCard({ a }) {
           &nbsp;&nbsp;{date}
         </p>
         <p className={styles.details}>
-          Helpful?&nbsp;&nbsp;
+          Helpful?&nbsp;
           <button
             className={styles.yes}
             onClick={() => {

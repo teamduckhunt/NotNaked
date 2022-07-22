@@ -21,7 +21,9 @@
 	font: inherit;
 	font-family: 'Inter', sans-serif;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
+
 /* HTML5 display-role reset for older browsers */
 :global(article), :global(aside), :global(details), :global(figcaption), :global(figure),
 :global(footer), :global(header), :global(hgroup), :global(menu), :global(nav), :global(section) {

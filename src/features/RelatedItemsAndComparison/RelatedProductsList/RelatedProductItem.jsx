@@ -19,6 +19,7 @@ import { useGetReviewMetadataQuery } from '../../../services/reviews';
 import getAverageRating from '../../../helpers/getAverageRating/getAverageRating';
 import IronMan from '../../../../assets/iron-man.svg';
 import classes from '../helpers/ListItemCard/ListItemCard.module.css';
+import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
 
 export default function RelatedProductItem({ productId, currentViewItemId }) {
   const [toggleModal, setToggleModal] = useState(false);
@@ -26,19 +27,19 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
   const { data: metaData, isLoading: metaLoading } = useGetReviewMetadataQuery(productId);
   const { data: styles, isLoading: stylesLoading } = useProductStylesQuery(productId);
   const image = styles && (styles.results[0].photos[0].thumbnail_url || 'https://picsum.photos/200');
-
+  const imageAvailable = image === 'https://picsum.photos/200';
   const handleModalToggle = () => {
     setToggleModal(!toggleModal);
   };
 
   if (error) {
-    return <>Oh no, there was an error</>;
+    return <div className={classes.no_product}>Oh no, there was an error</div>;
   }
 
   if (isLoading || stylesLoading || metaLoading) {
-    return <>Loading...</>;
+    return <div className={classes.no_product}><LoadingSpinner /></div>;
   }
-  const averageRating = getAverageRating(metaData);
+  const averageRating = metaData ? getAverageRating(metaData) : 0;
   const InfinityStone = <img className={classes.ironMan2} src={IronMan} alt="Iron Man" />;
   return (
     <>
@@ -53,7 +54,8 @@ export default function RelatedProductItem({ productId, currentViewItemId }) {
         product={data}
         averageRating={averageRating}
         productId={productId}
-        productImage={image}
+        productImage={image.replace(/(?<=w=)(.*)(?=&)/, '200')}
+        imageAvailable={imageAvailable}
         productSalesPrice={styles.results[0].sale_price}
         handleOnClick={handleModalToggle}
       >
