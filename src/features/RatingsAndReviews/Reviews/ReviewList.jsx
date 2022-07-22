@@ -6,6 +6,8 @@ import Button from '../../UI/Button.jsx';
 import AddReviewModal from '../AddReviewModal/AddReviewModal.jsx';
 import { useProductInformationByIdQuery } from '../../../services/products.js';
 import { useSelector } from 'react-redux';
+import LoadingSpinner from '../../UI/LoadingSpinner.jsx';
+import ErrorMessage from '../../UI/ErrorMessage.jsx';
 import styles from './ReviewList.module.css';
 
 export default function ReviewList({ productId, reviewCount }) {
@@ -25,11 +27,11 @@ export default function ReviewList({ productId, reviewCount }) {
   };
 
   if (error) {
-    return <>Oh no, there was an error!</>;
+    return <div className={styles.no_product}><ErrorMessage /></div>;
   }
 
   if (isLoading || productLoading || metaLoading) {
-    return <>Loading...</>;
+    return <div className={styles.no_proudct}><LoadingSpinner /></div>;
   }
 
   if (data || productData || metaData) {
