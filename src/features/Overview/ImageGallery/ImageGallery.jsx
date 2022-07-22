@@ -20,6 +20,8 @@ export default function ImageGallery({ currentViewItemId }) {
   const [picExpanded, setPicExpanded] = useState(false);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(4);
+  let upArrow = null;
+  let downArrow = null;
 
   // const { start, end } = state;
 
@@ -38,27 +40,41 @@ export default function ImageGallery({ currentViewItemId }) {
     const length = curStyle.photos ? curStyle.photos.length : data.results[0].photos.length;
 
     const nextSlide = () => {
-      setCurrent(current === length - 1 ? 0 : current + 1);
+      // setCurrent(current === length - 1 ? 0 : current + 1);
+      setCurrent((cur) => (cur === length - 1 ? 0 : cur + 1));
+      if (current >= end - 1) {
+        setStart(current + 1);
+        setEnd(current + 4);
+      }
     };
 
     const prevSlide = () => {
-      setCurrent(current === 0 ? length - 1 : current - 1);
+      // setCurrent(current === 0 ? length - 1 : current - 1);
+      setCurrent((cur) => (cur === 0 ? length - 1 : cur - 1));
+      if (current <= start) {
+        setStart(0);
+        setEnd(4);
+      }
     };
 
-    const nextSlideMini = (length) => {
-      if (current > 5 && current < length) {
-        dispatch({ type: 'INCREMENT' });
-      }
-      index = length - 1;
+    const nextSlideMini = () => {
+      // if (current > 5 && current < length) {
+      //   setStart(current);
+      // }
+      // index = length - 1;
+      setStart(start + 4);
+      setEnd((en) => en + 4);
+      // setCurrent(current + 4);
     };
 
     const prevSlideMini = () => {
-      index = 0;
+      setStart(start - 4);
+      setEnd((en) => en - 4);
+      // setCurrent(current - 4);
     };
 
     const toggleClass = () => {
       setPicExpanded(!picExpanded);
-      // console.log(picExpanded);
     };
 
     const miniPicWasClicked = (index) => {
@@ -79,29 +95,57 @@ export default function ImageGallery({ currentViewItemId }) {
     };
 
     console.log(currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60'));
+    if (start !== 0) {
+      upArrow = <FaChevronUp onClick={prevSlideMini} className={styles.upArrow} />;
+    }
+
+    if (end < length) {
+      downArrow = <FaChevronDown onClick={nextSlideMini} className={styles.downArrow} />;
+    }
+
     return (
       <div className={bigPicClass}>
         <button onClick={() => { toggleClass(); }} className={styles.expandButton} type="button">
           <img src={expand} alt="" className={styles.expandPic} />
         </button>
         <div className={styles.miniCarousel}>
-          <FaChevronUp onClick={prevSlideMini} className={styles.upArrow} />
-          {sliceFunction(start, end).map((photo, index) => {
-            if (current === index) {
+          {upArrow}
+          {/* {sliceFunction(start, end).map((photo, index) => {
+            if (current === index + start) {
               return (
                 <div key={index}>
                   <img src={currentImage[current].thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60')} className={styles.miniCarouselPic} alt="" />
                   <div className={styles.currentPhotoMarker} />
                 </div>
               );
+            } */}
+          {currentImage.map((photo, index) => {
+            if (index < start || index >= end) {
+              return '';
             }
-            if (index < 5) {
+            // return (
+            //   <div key={index}>
+            //     <img src={currentImage[index].thumbnail_url} className={styles.miniCarouselPic} alt="" />
+            //     <div className={styles.currentPhotoMarker} />
+            //   </div>
+            // );
+
+            if (current === index) {
               return (
-                <img src={photo.thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60')} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
+                <>
+                  <img src={photo.thumbnail_url.replace(/(?<=w=)(.*)/, '60&q=60')} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
+                  <div key={index}>
+                    <img src={photo.thumbnail_url.replace(/(?<=w=)(.*)(?=&)/, '60')} className={styles.miniCarouselPic} alt="" />
+                    <div className={styles.currentPhotoMarker} />
+                  </div>
+                </>
               );
             }
+            return (
+              <img src={photo.thumbnail_url} className={styles.miniCarouselPic} onClick={() => { miniPicWasClicked(index); }} alt="" key={index} />
+            );
           })}
-          <FaChevronDown onClick={nextSlideMini} className={styles.downArrow} />
+          {downArrow}
         </div>
         <div>
           <FaChevronLeft className={styles.leftArrow} onClick={prevSlide} />

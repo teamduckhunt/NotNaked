@@ -21,7 +21,7 @@
 }
 
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px){
+/* @media (min-width: 768px) and (max-width: 1024px){
   .qa {
     margin-left: 10%;
   }
@@ -29,10 +29,10 @@
   .notbold {
     font-weight: normal;
   }
-}
+} */
 
 /* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px){
+/* @media (min-width: 1025px) and (max-width: 1280px){
   .qa {
     margin: center;
   }
@@ -40,10 +40,10 @@
   .notbold {
     font-weight: normal;
   }
-}
+} */
 
 /* Media Query for Large screens */
-@media (min-width: 1281px) {
+/* @media (min-width: 1281px) {
   .qa {
     margin-left: 5%;
     width: 1150px;
@@ -52,4 +52,15 @@
   .notbold {
     font-weight: normal;
   }
+} */
+
+.qa {
+  width: 1150px;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.bold {
+  font-weight: 700;
+  font-size: 1.25rem;
 }
