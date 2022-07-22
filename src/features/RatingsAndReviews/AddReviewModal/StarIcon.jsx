@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FullDuck from '../../../../assets/duckFeet-rating/full.svg';
-import EmptyDuck from '../../../../assets/duckFeet-rating/empty.svg';
+import FullDuck from '../../../../assets/duckfeet-rating/full.svg';
+import EmptyDuck from '../../../../assets/duckfeet-rating/empty.svg';
 import styles from './AddReviewModal.module.css';
 
 export default function StarIcon({ filled, changeRating }) {
