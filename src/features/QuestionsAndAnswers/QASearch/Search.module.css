@@ -1,17 +1,14 @@
 .form {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
   border: solid black;
-  width: 650px;
   height: 50px;
-  align-items: center;
-  justify-content: center;
 }
 
 .input {
   background-color: transparent;
   border-color: transparent;
   outline: none;
-  width: 580px;
   font-size: large;
   padding-left: 10px;
 }
@@ -21,5 +18,6 @@
   border-color: transparent;
   width: 3rem;
   height: 3rem;
-  border-radius: 40%;
+  border-radius: 30%;
+  justify-self: end;
 }

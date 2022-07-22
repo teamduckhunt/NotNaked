@@ -98,20 +98,17 @@ export default function RatingBreakdown({ productId, reviewCount }) {
       <div className={styles.rating_border}>
         <div className={styles.rating_subText}>
           <div className={styles.rating_alignment}>
-            <p className={styles.rating_text}>
+            <div className={styles.rating_text}>
               {Math.round(avgRating * 10) / 10}
-            </p>
-            <p className={styles.duck_feet}>
+            </div>
+            <div className={styles.duck_feet}>
               <RatingToDuckFeet rating={avgRating} />
-            </p>
+            </div>
           </div>
           {numOfReviews}
-          {' '}
-          total reviews
+          {` total reviews`}
           <br />
-          {recommendedPercentage()}
-          {' '}
-          % of customers recommend this product.
+          {`${recommendedPercentage()}% of customers recommend this product.`}
         </div>
         <div>
           <div className={styles.rating_bar_layout}>
@@ -192,13 +189,13 @@ export default function RatingBreakdown({ productId, reviewCount }) {
                 >
                   Remove All Filters
                 </Button>
-                <div className={styles.reset_subText}>
+                {/* <div className={styles.reset_subText}>
                   {activeFilters.map((filter) => (
                     <div>
                       {`${filter}, `}
                     </div>
                   ))}
-                </div>
+                </div> */}
               </>
             )}
         </div>

@@ -1,8 +1,16 @@
 .list {
   font-size: medium;
-  max-height: 700px;
-  max-width: 655px;
+  max-height: 40rem;
   overflow-y: auto;
+}
+
+.addButton, .moreButton {
+  font-size: 90%;
+  margin-top: 1rem;
+}
+
+.addButton {
+  margin-left: 16px;
 }
 
 .no_product {

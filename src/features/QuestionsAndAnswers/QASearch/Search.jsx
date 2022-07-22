@@ -3,7 +3,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Search.module.css';
-import FullDuck from '../../../../assets/duckFeet-rating/full.svg';
+import FullDuck from '../../../../assets/duckfeet-rating/full.svg';
 import { setSearch } from '../questionsAndAnswersSlice.jsx';
 
 export default function Search() {
