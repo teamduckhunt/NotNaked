@@ -22,7 +22,7 @@
   width: 250px;
   height: 45px;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   margin-right: 10px;
   border: 1px solid black;
   background: none;
@@ -55,7 +55,7 @@
 
 .share {
   padding-left: 60px;
-  padding-top: 10px;
+  padding-top:5px;
 }
 
 .addedToCart {

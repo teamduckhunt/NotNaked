@@ -13,7 +13,6 @@ import Overview from './features/Overview/Overview.jsx';
 import RatingsAndReviews from './features/RatingsAndReviews/RatingsAndReviews.jsx';
 import QuestionsAndAnswers from './features/QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 import RelatedItemsAndComparison from './features/RelatedItemsAndComparison/RelatedItemsAndComparison.jsx';
-import styles from './App.module.css';
 
 function ProductDetailPage() {
   const { productId } = useParams();
@@ -28,7 +27,7 @@ function ProductDetailPage() {
     }
   };
   return (
-    <div id="app" className={styles.app}>
+    <div id="app">
       <Header />
       <Overview currentViewItemId={+productId} reviewSection={reviewSection} scrollToElement={scrollToElement} />
       <RelatedItemsAndComparison currentViewItemId={+productId} />

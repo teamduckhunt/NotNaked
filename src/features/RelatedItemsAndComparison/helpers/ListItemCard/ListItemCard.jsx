@@ -46,13 +46,15 @@ export default function ListItemCard({
         style={{ backgroundImage: `url(${productImage})` }}
       >
         <Link
+          aria-label="Navigate to the selected item'ss detailed page"
           to={`/product/${productId}`}
           style={{ textDecoration: 'none', color: 'inherit' }}
         >
           <header className={styles.product_card_header}>
             <button
               type="button"
-              id="product"
+              id={product.name}
+              aria-label="View characteristic comparison table"
               className={styles.product_action_button}
               onClick={handleProductClick}
             >
