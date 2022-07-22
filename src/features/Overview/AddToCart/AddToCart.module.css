@@ -56,16 +56,17 @@
 .share {
   padding-left: 60px;
   padding-top:5px;
+  position: absolute;
 }
 
 .addedToCart {
   background-color: #ffdeeb;
   width: 200px;
-  padding-left: 19px;
+  padding-left: 10px;
 }
 
 .pleaseSelectSize {
   background-color: #e4e4e4;
   width: 200px;
-  padding-left: 40px;
+  padding-left: 20px;
 }
