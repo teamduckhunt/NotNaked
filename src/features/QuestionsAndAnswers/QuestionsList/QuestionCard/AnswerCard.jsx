@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable arrow-parens */
 /* eslint-disable react/self-closing-comp */
@@ -11,12 +12,13 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 
 import React, { useState } from 'react';
+import { Image } from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import styles from './AnswerCard.module.css';
 import {
   useAddAnswerHelpfulMutation, useReportAnswerMutation,
 } from '../../../../services/questions';
-import Image from '../../QAModals/Image.jsx';
+import ImageModal from '../../QAModals/Image.jsx';
 
 export default function AnswerCard({ answer }) {
   const [addHelpful] = useAddAnswerHelpfulMutation();
@@ -36,7 +38,7 @@ export default function AnswerCard({ answer }) {
   return (
     <div>
       {toggleModal && (
-        <Image
+        <ImageModal
           handleModalToggle={handleModalToggle}
           image={image}
         />
@@ -48,7 +50,18 @@ export default function AnswerCard({ answer }) {
       <br />
       {answer.photos.length > 0
         // eslint-disable-next-line max-len
-        && answer.photos.map(photo => <img key={photo.id} onClick={() => handleModalToggle(photo.url)} className={styles.photo} src={photo.url} alt={answer.answerer_name} />)}
+        && answer.photos.map(photo => (
+          <Image
+            loading="lazy"
+            width="100"
+            height="100"
+            key={photo.id}
+            onClick={() => handleModalToggle(photo.url)}
+            className={styles.photo}
+            src={photo.url}
+            alt={answer.answerer_name}
+          />
+        ))}
       <br />
       <div className={styles.info} id="info">
         <p>

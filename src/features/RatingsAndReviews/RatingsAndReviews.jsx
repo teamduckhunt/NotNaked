@@ -32,9 +32,9 @@ export default function RatingsAndReviews({ currentViewItemId, reviewSection }) 
     };
     return (
       <div className={styles.rr_container} ref={reviewSection}>
-        <h5 className={styles.rr_header}>
+        <h3 className={styles.rr_header}>
           RATINGS & REVIEWS
-        </h5>
+        </h3>
         <div className={styles.rr_main}>
           <br />
           <div className={styles.rr_breakdowns}>
