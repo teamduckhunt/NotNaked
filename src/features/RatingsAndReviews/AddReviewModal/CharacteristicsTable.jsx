@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import CharacteristicTableRow from './CharacteristicTableRow.jsx';
 import styles from './AddReviewModal.module.css';
 
-function CharacteristicsTable({ characteristicId, handleCharacteristicChange }) {
+function CharacteristicsTable({ characteristicId, handleCharacteristicChange, required }) {
   const newObject = Object.keys(characteristicId).map((type) => {
     let leftDescription = '';
     let middleDescription = '';
@@ -84,6 +84,7 @@ function CharacteristicsTable({ characteristicId, handleCharacteristicChange }) 
               characteristicData={characteristicData}
               key={characteristicData.id}
               handleCharacteristicChange={handleCharacteristicChange}
+              required={required}
             />
           ))}
         </tbody>
@@ -97,4 +98,5 @@ export default CharacteristicsTable;
 CharacteristicsTable.propTypes = {
   characteristicId: PropTypes.shape({ subProp: PropTypes.string }).isRequired,
   handleCharacteristicChange: PropTypes.func.isRequired,
+  required: PropTypes.string.isRequired,
 };

@@ -120,6 +120,7 @@ export default class AddReviewModal extends React.Component {
             <CharacteristicsTable
               characteristicId={characteristicId}
               handleCharacteristicChange={this.handleCharacteristicChange}
+              required="required"
             />
             <div className={`${styles.required} ${styles.input_field}`}>
               <textarea
@@ -196,8 +197,3 @@ AddReviewModal.propTypes = {
   productId: PropTypes.number.isRequired,
   addAReview: PropTypes.func.isRequired,
 };
-
-// Notes :
-// Add the error message on submit, if missing fields.
-// Add * to fields that are required.
-// CSS Page
