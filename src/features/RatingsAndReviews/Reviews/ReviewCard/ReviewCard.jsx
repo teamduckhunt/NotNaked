@@ -14,6 +14,7 @@ export default function ReviewCard({ review }) {
   const [showBody, setShowBody] = useState(false);
   const [disableYesButton, setDisableYesButton] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
+  const [image, setImage] = useState('');
 
   const [incrementHelpfulCount] = useAddHelpfulCountMutation();
   const [reportReview] = useReportReviewMutation();
@@ -46,8 +47,9 @@ export default function ReviewCard({ review }) {
   };
   // console.log('reviewrating', review.rating);
 
-  const handleModalToggle = () => {
+  const handleModalToggle = (photo) => {
     setToggleModal(!toggleModal);
+    setImage(photo);
   };
 
   return (
@@ -67,11 +69,11 @@ export default function ReviewCard({ review }) {
         </div>
       </div>
       <div className={styles.rc_photo_container}>
+        {toggleModal && (
+          <ImageModal handleModalToggle={handleModalToggle} image={image} />
+        )}
         {review.photos.length > 0 && review.photos.map((photo) => (
-          <div key={photo.id} className={styles.rc_photo} role="button" tabIndex={0} onClick={handleModalToggle}>
-            {toggleModal && (
-              <ImageModal handleModalToggle={handleModalToggle} image={photo.url} />
-            )}
+          <div key={photo.id} className={styles.rc_photo} role="button" tabIndex={0} onClick={() => handleModalToggle(photo.url)}>
             <img src={photo.url} key={photo.id} className={styles.img} alt={review.reviwer_name} />
           </div>
         ))}
