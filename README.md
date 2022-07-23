@@ -1,33 +1,33 @@
-# !Naked <img src="https://img.shields.io/badge/NotNaked-Ducks-d6336c?style=plastic" /> <img align="center" src="assets/readMeLogo2.png" alt="Logo" width="80" height="80">
+# !Naked <img src="https://img.shields.io/badge/NotNaked-Ducks-d6336c?style=plastic" /> <img align="center" src="assets/readMeLogo2.png" alt="Logo" width="80" height="80"> <br /> "It's funny because we're clothed."
 
-### It's funny because we're clothed.
-
------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Description
+## Description
 
 !Naked is a front-end web application for all your online shopping needs. Anything from clothing, sunglasses, and shoes.
 
------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### How To Install
+## Install
 
 After cloning please run the following in your terminal
-  * npm install
+  >npm install
 
-<ins>Developer mode:</ins>
-  * npm start
+## Developer mode
+  >npm start
 
-  <ins>Production mode:</ins>
-  * npm run build
-  * npm run server (or node ./server)
-
+## Production mode
+  >npm run build
+  >npm run server (or node ./server)
+  
+## Opening Site
 After running the npm scripts, http://localhost:0355 should appear in the console open it by
   * CMD + click <br />
   or
   * typing it into your browsers url
 
+## Test
+ >npm run test
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Tech Stack
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) 	![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
 ### Team Links
 
