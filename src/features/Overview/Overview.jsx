@@ -3,7 +3,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
-// eslint-disable-next-line import/extensions
 import ImageGallery from './ImageGallery/ImageGallery.jsx';
 import ProductInfo from './ProductInfo/ProductInfo.jsx';
 import ProductDetails from './ProductDetails/ProductDetails.jsx';

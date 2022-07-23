@@ -65,7 +65,9 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
-    new HtmlWebpackPlugin({ title: 'notNaked' }),
+    new HtmlWebpackPlugin({
+      title: 'notNaked',
+    }),
     new FaviconsWebpackPlugin('./assets/duckLogo.png'),
     // new EnvironmentPlugin(['NODE_ENV', 'API_KEY']),
     new DefinePlugin({
