@@ -13,7 +13,7 @@ After cloning please run the following in your terminal
   >npm start
 
 ## Production mode
-  >npm run build
+  >npm run build <br />
   >npm run server (or node ./server)
   
 ## Opening Site
