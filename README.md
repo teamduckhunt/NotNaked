@@ -5,21 +5,26 @@
 !Naked is a front-end web application for all your online shopping needs. Anything from clothing, sunglasses, and shoes.
 
 ### Features
-  * <b>Product Overview:</b> An image gallery with a carousel for the main and mini images, along with product description.
+  * ### Product Overview, created by Isabelle
+    * An image gallery with a carousel for the main and mini images, along with product description.
     * style selector
     * add to cart selectors
-  * <b>Related Items & Comparisons:</b> An image carousel displaying related products.
+  * ### Related Items & Comparisons, created by Heemo
+    * An image carousel displaying related products.
     * compare products
     * add and delete products from your outfit collection
-  * <b>Questions & Answers:</b> Answers & Questions relating to the current product.
+  * ### Questions & Answers, created by Bruce
+    * Answers & Questions relating to the current product.
     * add questions/answers
     * report questions/answers
     * mark as helpful
-  * <b>Ratings & Reviews:</b> Ratings & Reviews relating to the current product.
+  * ### Ratings & Reviews, created by Peter
+    * Ratings & Reviews relating to the current product.
     * add a rating/review
     * report rating/review
     * mark as helpful
-  * <b>Google Lighthouse Report</b> <br />
+    
+  * ### Google Lighthouse Report <br />
   <img src="https://img.shields.io/badge/Performance-92-success?style=for-the-badge&logo=google" /> <img src="https://img.shields.io/badge/Accessibility-77-yellow?style=for-the-badge&logo=google" /> <img src="https://img.shields.io/badge/Best%20Practice-75-yellow?style=for-the-badge&logo=google" /> <img src="https://img.shields.io/badge/SEO-75-yellow?style=for-the-badge&logo=google" /> <br />
 
 ## Install
