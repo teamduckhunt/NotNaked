@@ -85,7 +85,7 @@ After running the npm scripts, http://localhost:0355 should appear in the consol
   </tr>
   <tr>
     <td>
-      <a href="https://www.linkedin.com/in/bruce-diesel-rabago-b5b519180">
+      <a href="https://www.linkedin.com/in/bruce-diesel-rabago">
         <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
       </a>
     <td>
