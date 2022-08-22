@@ -25,7 +25,7 @@
     * mark as helpful
     
   * ### Google Lighthouse Report <br />
-  <img src="https://img.shields.io/badge/Performance-92-success?style=for-the-badge&logo=google" /> <img src="https://img.shields.io/badge/Accessibility-77-yellow?style=for-the-badge&logo=google" /> <img src="https://img.shields.io/badge/Best%20Practice-75-yellow?style=for-the-badge&logo=google" /> <img src="https://img.shields.io/badge/SEO-75-yellow?style=for-the-badge&logo=google" /> <br />
+  <img src="https://img.shields.io/badge/Performance-92-success?style=for-the-badge&logo=google" /> <img src="https://img.shields.io/badge/Accessibility-87-yellow?style=for-the-badge&logo=google" /> <img src="https://img.shields.io/badge/Best%20Practice-75-yellow?style=for-the-badge&logo=google" /> <img src="https://img.shields.io/badge/SEO-82-yellow?style=for-the-badge&logo=google" /> <br />
 
 ## Install
 
