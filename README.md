@@ -1,7 +1,6 @@
 # !Naked <img src="https://img.shields.io/badge/NotNaked-Ducks-d6336c?style=plastic" /> <img align="center" src="assets/readMeLogo2.png" alt="Logo" width="80" height="80"> <br /> "It's funny because we're clothed."
-
-![NotNaked](https://i.imgur.com/4E0VDlx.gif) 
-![NotNaked](https://i.imgur.com/DsHGA2A.gif) 
+:-----------------------:|:-------------------------:|
+![NotNaked](https://i.imgur.com/4E0VDlx.gif) | ![NotNaked](https://i.imgur.com/DsHGA2A.gif) 
 
 ## Description
 
