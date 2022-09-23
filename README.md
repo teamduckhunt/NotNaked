@@ -1,11 +1,12 @@
 # !Naked <img src="https://img.shields.io/badge/NotNaked-Ducks-d6336c?style=plastic" /> <img align="center" src="assets/readMeLogo2.png" alt="Logo" width="80" height="80"> <br /> "It's funny because we're clothed."
 
+![NotNaked](https://i.imgur.com/4E0VDlx.gif) 
+![NotNaked](https://i.imgur.com/DsHGA2A.gif) 
+
 ## Description
 
 !Naked is a front-end web application for all your online shopping needs. Anything from clothing, sunglasses, and shoes.
 
-![NotNaked](https://i.imgur.com/4E0VDlx.gif) 
-![NotNaked](https://i.imgur.com/DsHGA2A.gif) 
 ### Features
   * ### Product Overview, created by Isabelle
     * An image gallery with a carousel for the main and mini images, along with product description.
