@@ -43,7 +43,7 @@ After cloning please run the following in your terminal
   >npm run server (or node ./server)
   
 ## Opening Site
-After running the npm scripts, http://localhost:0355 should appear in the console open it by
+After running the npm scripts, http://localhost:3000 should appear in the console open it by
   * CMD + click <br />
   or
   * typing it into your browsers url
