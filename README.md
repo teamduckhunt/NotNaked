@@ -64,10 +64,12 @@ After running the npm scripts, http://localhost:0355 should appear in the consol
     <th>Peter</th>
     <th>Isabelle</th>
   </tr>
-
+  <tr>
+   <td>
       <a href="https://github.com/BungaloBuce">
         <img src="https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
       </a>
+    </td>   
     <td>
       <a href="https://github.com/heemo521">
         <img src="https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
