@@ -4,6 +4,8 @@
 
 !Naked is a front-end web application for all your online shopping needs. Anything from clothing, sunglasses, and shoes.
 
+![NotNaked](https://i.imgur.com/4E0VDlx.gif) 
+![NotNaked](https://i.imgur.com/DsHGA2A.gif) 
 ### Features
   * ### Product Overview, created by Isabelle
     * An image gallery with a carousel for the main and mini images, along with product description.
